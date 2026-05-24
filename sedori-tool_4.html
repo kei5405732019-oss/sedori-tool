@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>せどり価格比較ツール</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+:root {
+  --bg:#0d0f14;--sur:#161920;--sur2:#1e2230;--bdr:#2a2f3f;
+  --ac:#4fffb0;--ac2:#ff6b6b;--ac3:#ffd166;
+  --tx:#e8eaf0;--txd:#7880a0;--txm:#454a60;
+  --kk:#ff4b6e;--yh:#06c47a;--r:8px;
+  --mono:'JetBrains Mono',monospace;--jp:'Noto Sans JP',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--tx);font-family:var(--jp);min-height:100vh;display:flex;flex-direction:column;}
+.hd{padding:13px 22px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:11px;background:var(--sur);}
+.logo{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--ac);letter-spacing:.15em;padding:2px 8px;border:1px solid var(--ac);border-radius:4px;}
+.hd-t{font-size:14px;font-weight:700;}
+.inp-sec{padding:16px 22px;background:var(--sur);border-bottom:1px solid var(--bdr);}
+.inp-row{display:flex;gap:8px;align-items:center;max-width:540px;}
+.inp-lbl{font-family:var(--mono);font-size:11px;color:var(--ac);letter-spacing:.12em;white-space:nowrap;}
+.jan-in{flex:1;background:var(--bg);border:1px solid var(--bdr);border-radius:var(--r);padding:9px 13px;font-family:var(--mono);font-size:19px;font-weight:600;color:var(--tx);letter-spacing:.08em;outline:none;transition:border-color .2s;}
+.jan-in:focus{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,255,176,.07);}
+.jan-in::placeholder{color:var(--txm);font-size:14px;}
+.btn-go{padding:9px 20px;background:var(--ac);color:#0d0f14;border:none;border-radius:var(--r);font-weight:700;font-size:13px;cursor:pointer;font-family:var(--jp);white-space:nowrap;transition:opacity .15s,transform .1s;}
+.btn-go:hover{opacity:.9;transform:translateY(-1px);}
+.btn-go:disabled{opacity:.35;cursor:not-allowed;transform:none;}
+.sbar{padding:8px 22px;display:flex;align-items:center;gap:9px;min-height:38px;border-bottom:1px solid var(--bdr);}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--txm);flex-shrink:0;}
+.sdot.loading{background:var(--ac3);animation:pulse .8s infinite;}
+.sdot.ok{background:var(--ac);}
+.sdot.error{background:var(--ac2);}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.stxt{font-size:12px;color:var(--txd);font-family:var(--mono);}
+.pbar{padding:11px 22px;border-bottom:1px solid var(--bdr);display:none;gap:16px;align-items:center;flex-wrap:wrap;}
+.pbar.on{display:flex;}
+.pi{display:flex;flex-direction:column;gap:2px;}
+.pilbl{font-size:10px;font-family:var(--mono);color:var(--txm);letter-spacing:.1em;text-transform:uppercase;}
+.pival.mono{font-family:var(--mono);font-size:13px;}
+.pival.big{font-size:14px;font-weight:700;max-width:500px;}
+.psep{width:1px;background:var(--bdr);align-self:stretch;}
+.kfix{padding:10px 22px;border-bottom:1px solid var(--bdr);background:var(--sur);display:none;align-items:center;gap:8px;flex-wrap:wrap;}
+.kfix.on{display:flex;}
+.kfix-lbl{font-size:11px;color:var(--txm);font-family:var(--mono);white-space:nowrap;}
+.kfix-in{background:var(--bg);border:1px solid var(--bdr);border-radius:6px;padding:7px 11px;font-size:13px;font-family:var(--mono);color:var(--tx);outline:none;width:220px;transition:border-color .2s;}
+.kfix-in:focus{border-color:var(--ac);}
+.kfix-in::placeholder{color:var(--txm);}
+.btn-kfix{padding:7px 14px;background:var(--ac);color:#0d0f14;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--jp);white-space:nowrap;}
+.btn-kfix:hover{opacity:.85;}
+.kfix-hint{font-size:10px;color:var(--txm);font-family:var(--mono);width:100%;}
+/* メモ */
+.memo-bar{padding:10px 22px;border-bottom:1px solid var(--bdr);background:#1a1f2e;display:none;}
+.memo-bar.on{display:block;}
+.memo-header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.memo-label{font-size:10px;font-family:var(--mono);color:var(--txm);letter-spacing:.1em;}
+.memo-text{font-size:13px;color:var(--ac3);font-weight:600;}
+.memo-edit-btn{margin-left:auto;background:transparent;border:1px solid var(--bdr);color:var(--txm);border-radius:5px;padding:3px 10px;font-size:11px;cursor:pointer;}
+.memo-edit-btn:hover{border-color:var(--ac3);color:var(--ac3);}
+.memo-form{margin-top:8px;display:none;}
+.memo-form.on{display:block;}
+.tag-row{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;}
+.tag-btn{border-radius:5px;padding:4px 11px;font-size:13px;cursor:pointer;border:1px solid;}
+.tag-btn:hover{opacity:.8;}
+.memo-input-row{display:flex;gap:8px;align-items:center;}
+.memo-in{flex:1;background:var(--bg);border:1px solid var(--bdr);border-radius:6px;padding:7px 11px;font-size:13px;color:var(--tx);outline:none;font-family:var(--jp);}
+.memo-in:focus{border-color:var(--ac3);}
+.memo-save-btn{padding:7px 14px;background:var(--ac3);color:#0d0f14;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.memo-hint{font-size:10px;color:var(--txm);margin-top:5px;font-family:var(--mono);}
+.memo-add-bar{padding:6px 22px;border-bottom:1px solid var(--bdr);display:none;}
+.memo-add-bar.on{display:block;}
+/* グリッド */
+.grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 22px;}
+.panel{background:var(--sur);border:1px solid var(--bdr);border-radius:10px;display:flex;flex-direction:column;overflow:hidden;min-height:200px;}
+.phd{padding:11px 15px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--bdr);}
+.badge{font-size:9px;font-family:var(--mono);font-weight:600;letter-spacing:.1em;padding:2px 6px;border-radius:4px;text-transform:uppercase;}
+.badge.kk{background:rgba(255,75,110,.12);color:var(--kk);border:1px solid rgba(255,75,110,.2);}
+.badge.yh{background:rgba(6,196,122,.12);color:var(--yh);border:1px solid rgba(6,196,122,.2);}
+.pnm{font-size:12px;font-weight:600;}
+.pbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:18px 16px;}
+.ph{text-align:center;color:var(--txm);font-size:12px;line-height:1.8;}
+.ph .ico{font-size:26px;display:block;margin-bottom:6px;opacity:.3;}
+.ag{display:flex;flex-direction:column;gap:8px;width:100%;}
+.ba{display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 16px;border:none;border-radius:var(--r);font-family:var(--jp);font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;transition:all .15s;width:100%;}
+.ba.kk{background:var(--kk);color:#fff;}
+.ba.kk:hover{background:#ff2d52;box-shadow:0 4px 14px rgba(255,75,110,.3);}
+.ba.yh{background:var(--yh);color:#fff;}
+.ba.yh:hover{background:#04a867;box-shadow:0 4px 14px rgba(6,196,122,.3);}
+.ba.sub{background:transparent;border:1px solid var(--bdr);color:var(--txd);font-size:11px;padding:7px 13px;}
+.ba.sub:hover{border-color:var(--txd);color:var(--tx);background:var(--sur2);}
+.urlbox{width:100%;background:var(--bg);border:1px solid var(--bdr);border-radius:5px;padding:7px 9px;font-family:var(--mono);font-size:10px;color:var(--txm);word-break:break-all;line-height:1.5;}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--sur2);border:1px solid var(--bdr);color:var(--tx);padding:9px 18px;border-radius:8px;font-size:12px;font-family:var(--mono);box-shadow:0 4px 20px rgba(0,0,0,.5);z-index:9999;opacity:0;transition:opacity .3s;max-width:88vw;text-align:center;pointer-events:none;}
+@media(max-width:640px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="logo">SEDORI</div>
+  <div class="hd-t">価格推移比較ツール</div>
+  <button onclick="document.getElementById('manualPanel').style.display='flex'" style="margin-left:auto;background:transparent;border:1px solid #2a2f3f;color:#7880a0;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;font-family:var(--jp);">📖 使い方</button>
+</header>
+
+<section class="inp-sec">
+  <div class="inp-row">
+    <span class="inp-lbl">JAN</span>
+    <input class="jan-in" type="text" id="janIn" placeholder="4547410511178" maxlength="14" inputmode="numeric" autocomplete="off">
+    <button class="btn-go" id="btnGo" onclick="run()">検索</button>
+  </div>
+</section>
+
+<div class="sbar">
+  <div class="sdot" id="sdot"></div>
+  <div class="stxt" id="stxt">JANコードを入力してください</div>
+</div>
+
+<div class="pbar" id="pbar">
+  <div class="pi"><div class="pilbl">JAN</div><div class="pival mono" id="piJan">—</div></div>
+  <div class="psep"></div>
+  <div class="pi"><div class="pilbl">商品名</div><div class="pival big" id="piName">—</div></div>
+  <div class="psep"></div>
+  <div class="pi"><div class="pilbl">Kコード</div><div class="pival mono" id="piKcode">—</div></div>
+</div>
+
+<!-- メモ表示バー（メモあり） -->
+<div class="memo-bar" id="memoBar">
+  <div class="memo-header">
+    <span class="memo-label">MEMO</span>
+    <span class="memo-text" id="memoText"></span>
+    <button class="memo-edit-btn" onclick="toggleMemoForm('memoBar')">編集</button>
+  </div>
+  <div class="memo-form" id="memoEditForm">
+    <div class="tag-row">
+      <button class="tag-btn" style="background:#2a1f14;border-color:#5a3a1a;color:#ffa040;" onclick="insertTag('memoEditIn','🔥')">🔥 熱い</button>
+      <button class="tag-btn" style="background:#141a2a;border-color:#1a3a5a;color:#40a0ff;" onclick="insertTag('memoEditIn','🧊')">🧊 熱くない</button>
+      <button class="tag-btn" style="background:#2a2514;border-color:#5a501a;color:#ffd040;" onclick="insertTag('memoEditIn','⚠️')">⚠️ 注意</button>
+      <button class="tag-btn" style="background:#2a1414;border-color:#5a1a1a;color:#ff6060;" onclick="insertTag('memoEditIn','📉')">📉 下落</button>
+      <button class="tag-btn" style="background:#142a1a;border-color:#1a5a2a;color:#40ff80;" onclick="insertTag('memoEditIn','📈')">📈 上昇</button>
+    </div>
+    <div class="memo-input-row">
+      <input class="memo-in" type="text" id="memoEditIn" maxlength="80" placeholder="例: 🔥 クーポン日だけ強い">
+      <button class="memo-save-btn" onclick="saveMemo('memoEditIn')">保存</button>
+    </div>
+    <div class="memo-hint">保存すると年月が自動で付加されます（例: [2025/05] 🔥 クーポン日だけ強い）</div>
+  </div>
+</div>
+
+<!-- メモ追加バー（メモなし） -->
+<div class="memo-add-bar" id="memoAddBar">
+  <div class="memo-form on" id="memoAddForm" style="display:none;">
+    <div class="tag-row">
+      <button class="tag-btn" style="background:#2a1f14;border-color:#5a3a1a;color:#ffa040;" onclick="insertTag('memoAddIn','🔥')">🔥 熱い</button>
+      <button class="tag-btn" style="background:#141a2a;border-color:#1a3a5a;color:#40a0ff;" onclick="insertTag('memoAddIn','🧊')">🧊 熱くない</button>
+      <button class="tag-btn" style="background:#2a2514;border-color:#5a501a;color:#ffd040;" onclick="insertTag('memoAddIn','⚠️')">⚠️ 注意</button>
+      <button class="tag-btn" style="background:#2a1414;border-color:#5a1a1a;color:#ff6060;" onclick="insertTag('memoAddIn','📉')">📉 下落</button>
+      <button class="tag-btn" style="background:#142a1a;border-color:#1a5a2a;color:#40ff80;" onclick="insertTag('memoAddIn','📈')">📈 上昇</button>
+    </div>
+    <div class="memo-input-row">
+      <input class="memo-in" type="text" id="memoAddIn" maxlength="80" placeholder="例: 🔥 クーポン日だけ強い">
+      <button class="memo-save-btn" onclick="saveMemo('memoAddIn')">保存</button>
+    </div>
+    <div class="memo-hint">保存すると年月が自動で付加されます（例: [2025/05] 🔥 クーポン日だけ強い）</div>
+  </div>
+  <button id="memoAddBtn" onclick="showMemoAddForm()" style="background:transparent;border:none;color:var(--txm);font-size:11px;font-family:var(--mono);cursor:pointer;padding:4px 0;">＋ メモを追加</button>
+</div>
+
+<div class="kfix" id="kfix">
+  <span class="kfix-lbl">Kコード修正:</span>
+  <input class="kfix-in" type="text" id="kfixIn" placeholder="K0001471198">
+  <button class="btn-kfix" onclick="fixKcode()">更新</button>
+  <div class="kfix-hint">違う商品だった場合、価格コムのURLからKコードをコピーして貼り付けEnter</div>
+</div>
+
+<div class="grid">
+  <div class="panel">
+    <div class="phd"><div class="badge kk">価格コム</div><div class="pnm">最安値価格推移</div></div>
+    <div class="pbody" id="kkBody">
+      <div class="ph"><span class="ico">📈</span>JANを入力して検索してください</div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="phd"><div class="badge yh">ヤフトク</div><div class="pnm">買取価格推移</div></div>
+    <div class="pbody" id="yhBody">
+      <div class="ph"><span class="ico">📊</span>JANを入力して検索してください</div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxxVHSZ-OpaF2vSEfP2bRR8ki45EdrZankJE84JucwHvsg_lJ4aC8g0H0-WHbTuAKUeyw/exec';
+
+// ── メモ関連 ──────────────────────────────
+function showMemo(memo) {
+  const bar = document.getElementById('memoBar');
+  const addBar = document.getElementById('memoAddBar');
+  if (memo) {
+    document.getElementById('memoText').textContent = memo;
+    document.getElementById('memoEditIn').value = memo.replace(/^\[\d{4}\/\d{2}\]\s*/, '');
+    bar.classList.add('on');
+    addBar.classList.remove('on');
+  } else {
+    bar.classList.remove('on');
+    addBar.classList.add('on');
+    document.getElementById('memoAddForm').style.display = 'none';
+    document.getElementById('memoAddBtn').style.display = 'block';
+    document.getElementById('memoAddIn').value = '';
+  }
+}
+
+function hideMemo() {
+  document.getElementById('memoBar').classList.remove('on');
+  document.getElementById('memoAddBar').classList.remove('on');
+}
+
+function toggleMemoForm(barId) {
+  const form = document.getElementById('memoEditForm');
+  form.classList.toggle('on');
+  if (form.classList.contains('on')) {
+    document.getElementById('memoEditIn').focus();
+  }
+}
+
+function showMemoAddForm() {
+  document.getElementById('memoAddBtn').style.display = 'none';
+  document.getElementById('memoAddForm').style.display = 'block';
+  document.getElementById('memoAddIn').focus();
+}
+
+function insertTag(inputId, tag) {
+  const el = document.getElementById(inputId);
+  // 既存のタグを削除して新しいタグを先頭に
+  el.value = tag + ' ' + el.value.replace(/^[🔥🧊⚠️📉📈]+\s*/, '');
+  el.focus();
+}
+
+async function saveMemo(inputId) {
+  const jan = document.getElementById('piJan').textContent;
+  if (!jan || jan === '—') return;
+  const rawVal = document.getElementById(inputId).value.trim();
+  if (!rawVal) return;
+  // 年月を自動付加
+  const now = new Date();
+  const ym = now.getFullYear() + '/' + String(now.getMonth() + 1).padStart(2, '0');
+  const cleanVal = rawVal.replace(/^\[\d{4}\/\d{2}\]\s*/, '');
+  const val = '[' + ym + '] ' + cleanVal;
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({jan, memo: val})
+    });
+    showMemo(val);
+    toast('メモを保存しました: ' + val);
+  } catch(e) {
+    toast('保存エラー: ' + e.message);
+  }
+}
+
+// ── UI ──────────────────────────────────
+function setStatus(type, txt) {
+  document.getElementById('sdot').className = 'sdot ' + type;
+  document.getElementById('stxt').textContent = txt;
+}
+function toast(msg, ms=3500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.opacity = '1';
+  clearTimeout(t._t); t._t = setTimeout(() => t.style.opacity = '0', ms);
+}
+
+function renderKK(kcode) {
+  const hist = 'https://kakaku.com/item/' + kcode + '/pricehistory/?lid=itemview_pricehistory';
+  const item = 'https://kakaku.com/item/' + kcode + '/';
+  document.getElementById('piKcode').textContent = kcode;
+  document.getElementById('kfixIn').value = kcode;
+  document.getElementById('kkBody').innerHTML = `
+    <div class="ag">
+      <a href="${hist}" target="_blank" rel="noopener" class="ba kk">📈 価格推移グラフを開く</a>
+      <a href="${item}" target="_blank" rel="noopener" class="ba sub">🔗 商品ページを開く</a>
+      <div class="urlbox">${hist}</div>
+    </div>`;
+}
+
+function fixKcode() {
+  let v = document.getElementById('kfixIn').value.trim();
+  if (!v) return;
+  const m = v.match(/K\d{7,12}/);
+  if (m) v = m[0];
+  else if (!v.startsWith('K')) v = 'K' + v;
+  renderKK(v);
+  setStatus('ok', '✓ Kコード更新: ' + v);
+  const jan = document.getElementById('piJan').textContent;
+  if (jan && jan !== '—') saveKcode(jan, v);
+  toast('Kコードを更新してスプレッドシートに保存しました');
+}
+
+async function saveKcode(jan, kcode) {
+  try {
+    await fetch(GAS_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams({jan, kcode})
+    });
+  } catch(e) {}
+}
+
+function renderYH(jan) {
+  document.getElementById('yhBody').dataset.jan = jan;
+  document.getElementById('yhBody').innerHTML = `
+    <div class="ag">
+      <button onclick="openYH(document.getElementById('yhBody').dataset.jan)" class="ba yh">📊 ヤフトク買取価格を開く</button>
+      <a href="https://yahutoku.com/kakaku2" target="_blank" rel="noopener" class="ba sub">🔗 手動で開く</a>
+    </div>
+    <div style="font-size:11px;color:var(--txm);font-family:var(--mono);text-align:center;margin-top:4px;">JAN: ${jan}</div>`;
+}
+
+function openYH(jan) {
+  navigator.clipboard.writeText(jan).catch(()=>{});
+  window.open('https://yahutoku.com/kakaku2?_=' + Date.now(), '_blank');
+  toast('JAN ' + jan + ' をコピーしました。フォームに貼り付けてCheckを押してください。', 5000);
+}
+
+// ── メイン ──────────────────────────────
+async function run() {
+  const jan = document.getElementById('janIn').value.replace(/\D/g, '');
+  if (jan.length < 8 || jan.length > 14) { setStatus('error', 'JANは8〜14桁で入力してください'); return; }
+
+  document.getElementById('btnGo').disabled = true;
+  document.getElementById('pbar').classList.remove('on');
+  document.getElementById('kfix').classList.remove('on');
+  document.getElementById('kkBody').innerHTML = '<div class="ph"><span class="ico" style="animation:pulse .8s infinite;display:block;font-size:26px;margin-bottom:6px;">⏳</span>検索中...</div>';
+  document.getElementById('yhBody').innerHTML = '<div class="ph"><span class="ico" style="animation:pulse .8s infinite;display:block;font-size:26px;margin-bottom:6px;">⏳</span>準備中...</div>';
+  document.getElementById('piJan').textContent = '—';
+  document.getElementById('piName').textContent = '—';
+  document.getElementById('piKcode').textContent = '—';
+  hideMemo();
+  setStatus('loading', 'JAN ' + jan + ' を検索中...');
+
+  try {
+    const res = await fetch(GAS_URL + '?jan=' + jan, { signal: AbortSignal.timeout(15000) });
+    if (!res.ok) throw new Error('GAS HTTP ' + res.status);
+    const data = await res.json();
+
+    if (data.status === 'notfound') {
+      setStatus('error', 'マスタに該当JANなし');
+      document.getElementById('kkBody').innerHTML = '<div class="ph"><span class="ico">🔍</span>マスタに未登録のJANです</div>';
+      document.getElementById('yhBody').innerHTML = '<div class="ph"><span class="ico">📊</span>マスタに未登録のJANです</div>';
+      document.getElementById('btnGo').disabled = false;
+      return;
+    }
+
+    const name = data.name;
+    const kcode = data.kcode || null;
+
+    document.getElementById('piJan').textContent = jan;
+    document.getElementById('piName').textContent = name;
+    document.getElementById('piKcode').textContent = kcode || '—';
+    document.getElementById('pbar').classList.add('on');
+    document.getElementById('kfixIn').value = kcode || '';
+    document.getElementById('kfix').classList.add('on');
+
+    renderYH(jan);
+    showMemo(data.memo || null);
+
+    if (kcode) {
+      renderKK(kcode);
+      setStatus('ok', '✓ ' + name + ' — ' + kcode + '（違う商品なら下のKコード欄で修正）');
+    } else {
+      document.getElementById('kkBody').innerHTML = `
+        <div class="ph"><span class="ico">🔍</span>Kコード未登録<br>
+        <small style="font-size:10px;opacity:.7">価格コムで<a href="https://search.kakaku.com/${encodeURIComponent(data.keyword||name)}/" target="_blank" style="color:var(--kk);">「${data.keyword||name}」を検索</a><br>商品URLのKコードを上の欄に入力</small></div>`;
+      setStatus('error', name + ' — Kコードを修正欄に入力してください');
+    }
+
+  } catch(e) {
+    setStatus('error', '取得エラー: ' + e.message);
+    document.getElementById('kkBody').innerHTML = '<div class="ph"><span class="ico">❌</span>エラーが発生しました</div>';
+    document.getElementById('yhBody').innerHTML = '<div class="ph"><span class="ico">❌</span>エラーが発生しました</div>';
+  }
+
+  document.getElementById('btnGo').disabled = false;
+}
+
+document.getElementById('janIn').addEventListener('keydown', e => { if (e.key === 'Enter') run(); });
+document.getElementById('janIn').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, ''); });
+document.getElementById('kfixIn').addEventListener('keydown', e => { if (e.key === 'Enter') fixKcode(); });
+document.getElementById('memoEditIn').addEventListener('keydown', e => { if (e.key === 'Enter') saveMemo('memoEditIn'); });
+document.getElementById('memoAddIn').addEventListener('keydown', e => { if (e.key === 'Enter') saveMemo('memoAddIn'); });
+</script>
+
+<div id="manualPanel" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:10000;overflow-y:auto;">
+  <div style="background:#161920;border:1px solid #2a2f3f;border-radius:12px;max-width:620px;margin:40px auto;padding:28px 32px;color:#e8eaf0;font-family:'Noto Sans JP',sans-serif;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div style="font-size:16px;font-weight:700;">📖 使い方マニュアル</div>
+      <button onclick="document.getElementById('manualPanel').style.display='none'" style="background:transparent;border:1px solid #2a2f3f;color:#7880a0;border-radius:6px;padding:4px 12px;cursor:pointer;font-size:12px;">閉じる</button>
+    </div>
+    <div style="font-size:13px;line-height:2;">
+      <div style="color:#4fffb0;font-weight:700;margin-bottom:6px;font-size:11px;letter-spacing:.1em;">── 基本的な使い方 ──</div>
+      <ol style="padding-left:18px;margin-bottom:16px;">
+        <li>JANコードを入力して<b>検索</b>ボタン（またはEnter）を押す</li>
+        <li>スプレッドシートのマスタから商品名が自動取得される</li>
+        <li><b>価格コムのグラフ</b>はKコードが登録済みなら即座にボタンが表示される</li>
+        <li><b>ヤフトク</b>はボタンを押して別タブで開く</li>
+      </ol>
+      <div style="color:#4fffb0;font-weight:700;margin-bottom:6px;font-size:11px;letter-spacing:.1em;">── Kコードについて ──</div>
+      <ul style="padding-left:18px;margin-bottom:16px;">
+        <li>初回は「価格コムで〇〇を検索」リンクで商品を探す</li>
+        <li>価格コムの商品ページURL（kakaku.com/item/<b style="color:#4fffb0;">K0001234567</b>/）からKコードをコピー</li>
+        <li>Kコード修正欄に貼り付けてEnterまたは<b>更新</b>ボタン</li>
+        <li>次回から同じJANを入れると自動でグラフが開く</li>
+      </ul>
+      <div style="color:#4fffb0;font-weight:700;margin-bottom:6px;font-size:11px;letter-spacing:.1em;">── メモ機能 ──</div>
+      <ul style="padding-left:18px;margin-bottom:16px;">
+        <li>検索後に「＋ メモを追加」からメモを登録できる</li>
+        <li>🔥熱い / 🧊熱くない / ⚠️注意 / 📉下落 / 📈上昇 のタグを選んで入力</li>
+        <li>保存すると <b style="color:#ffd166;">[2025/05] 🔥 クーポン日だけ強い</b> のように年月が自動付加される</li>
+        <li>次回同じJANを検索するとメモが黄色で表示される</li>
+        <li>スプレッドシートのF列を直接編集してもOK</li>
+      </ul>
+      <div style="color:#4fffb0;font-weight:700;margin-bottom:6px;font-size:11px;letter-spacing:.1em;">── ヤフトク ──</div>
+      <ul style="padding-left:18px;margin-bottom:16px;">
+        <li>ボタンを押すとJANがクリップボードにコピーされて別タブが開く</li>
+        <li>ヤフトクのページで<b>クリア</b>ボタンを押してからJANを貼り付ける</li>
+        <li><b>Check</b>ボタンを押すとグラフが表示される</li>
+      </ul>
+      <div style="color:#4fffb0;font-weight:700;margin-bottom:6px;font-size:11px;letter-spacing:.1em;">── 注意点 ──</div>
+      <ul style="padding-left:18px;margin-bottom:8px;">
+        <li>JANはスプレッドシートのマスタに登録されている商品のみ対応</li>
+        <li>先頭が0から始まるJAN（例：0815820024170）はそのまま入力してOK</li>
+        <li>インターネット接続が必要（スプレッドシートと通信するため）</li>
+        <li>Kコード・メモを更新するとスプレッドシートに自動保存される</li>
+        <li>複数人で使えばKコードとメモが全員に共有される</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
