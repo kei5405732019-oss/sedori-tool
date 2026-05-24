@@ -96,6 +96,47 @@ body{background:var(--bg);color:var(--tx);font-family:var(--jp);min-height:100vh
 </head>
 <body>
 
+<div id="keyScreen" style="display:none;position:fixed;inset:0;background:#0d0f14;z-index:99999;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px;">
+  <div style="font-family:monospace;font-size:10px;color:#4fffb0;border:1px solid #4fffb0;padding:3px 10px;border-radius:4px;letter-spacing:.15em;">SEDORI</div>
+  <div style="font-size:22px;font-weight:700;color:#e8eaf0;">価格推移比較ツール</div>
+  <div style="font-size:13px;color:#7880a0;text-align:center;">アクセスキーを入力してください</div>
+  <input id="keyInput" type="password" placeholder="アクセスキー"
+    style="padding:12px 18px;border-radius:8px;border:1px solid #2a2f3f;background:#161920;color:#e8eaf0;font-size:16px;width:260px;outline:none;text-align:center;letter-spacing:.1em;"
+    onkeydown="if(event.key==='Enter')submitSedoriKey()">
+  <button onclick="submitSedoriKey()"
+    style="padding:11px 40px;background:#4fffb0;color:#0d0f14;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;">入力</button>
+  <div id="keyError" style="display:none;color:#ff6b6b;font-size:13px;">キーが違います。管理者に問い合わせてください。</div>
+</div>
+<script>
+function showSedoriKeyScreen(msg){
+  const ks = document.getElementById('keyScreen');
+  ks.style.display = 'flex';
+  if(msg){
+    const errEl = document.getElementById('keyError');
+    errEl.textContent = msg;
+    errEl.style.display = 'block';
+  }
+  setTimeout(()=>document.getElementById('keyInput').focus(), 100);
+}
+function submitSedoriKey(){
+  const key = document.getElementById('keyInput').value.trim();
+  if(!key) return;
+  // キーをそのまま保存（検証は最初のJAN検索時に行う）
+  localStorage.setItem('sedori_key', key);
+  ACCESS_KEY = key;
+  document.getElementById('keyScreen').style.display = 'none';
+}
+// 起動時チェック
+(function(){
+  const saved = localStorage.getItem('sedori_key');
+  if(!saved){
+    showSedoriKeyScreen();
+  } else {
+    ACCESS_KEY = saved;
+  }
+})();
+</script>
+
 <header class="hd">
   <div class="logo">SEDORI</div>
   <div class="hd-t">価格推移比較ツール</div>
@@ -191,6 +232,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--jp);min-height:100vh
 
 <script>
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbxxVHSZ-OpaF2vSEfP2bRR8ki45EdrZankJE84JucwHvsg_lJ4aC8g0H0-WHbTuAKUeyw/exec';
+let ACCESS_KEY = localStorage.getItem('sedori_key') || '';
 
 // ── メモ関連 ──────────────────────────────
 function showMemo(memo) {
@@ -250,7 +292,7 @@ async function saveMemo(inputId) {
     await fetch(GAS_URL, {
       method: 'POST', mode: 'no-cors',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams({jan, memo: val})
+      body: new URLSearchParams({jan, memo: val, key: ACCESS_KEY})
     });
     showMemo(val);
     toast('メモを保存しました: ' + val);
@@ -301,7 +343,7 @@ async function saveKcode(jan, kcode) {
     await fetch(GAS_URL, {
       method: 'POST', mode: 'no-cors',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams({jan, kcode})
+      body: new URLSearchParams({jan, kcode, key: ACCESS_KEY})
     });
   } catch(e) {}
 }
@@ -339,10 +381,17 @@ async function run() {
   setStatus('loading', 'JAN ' + jan + ' を検索中...');
 
   try {
-    const res = await fetch(GAS_URL + '?jan=' + jan, { signal: AbortSignal.timeout(15000) });
+    const res = await fetch(GAS_URL + '?jan=' + jan + '&key=' + ACCESS_KEY, { signal: AbortSignal.timeout(15000) });
     if (!res.ok) throw new Error('GAS HTTP ' + res.status);
     const data = await res.json();
 
+    if (data.message === 'unauthorized' || data.status === 'error') {
+      localStorage.removeItem('sedori_key');
+      ACCESS_KEY = '';
+      showSedoriKeyScreen('キーが変更されました。新しいキーを入力してください。');
+      document.getElementById('btnGo').disabled = false;
+      return;
+    }
     if (data.status === 'notfound') {
       setStatus('error', 'マスタに該当JANなし');
       document.getElementById('kkBody').innerHTML = '<div class="ph"><span class="ico">🔍</span>マスタに未登録のJANです</div>';
