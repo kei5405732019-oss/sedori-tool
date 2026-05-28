@@ -54,11 +54,11 @@ body{font-family:Meiryo,'Hiragino Sans','Noto Sans JP',sans-serif;background:var
 .ev-time{font-size:12px;font-weight:700;white-space:nowrap;flex-shrink:0}
 .ev-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ev-仕入{background:#daeeff;color:#0a4a7a}
-.ev-リサーチ{background:#d0f5e8;color:#065038}
-.ev-出品{background:#fef0cc;color:#5a3500}
-.ev-発送{background:#fde8f0;color:#6b1a38}
-.ev-確認{background:#e8e4fc;color:#2d1e7a}
-.ev-その他{background:#ebebeb;color:#444}
+.ev-鬼アツ仕入れ{background:#ffe0b2;color:#7a3500}
+.ev-キャンペーン{background:#d0f5e8;color:#065038}
+.ev-通常予定{background:#e8e8e8;color:#444444}
+.ev-鬼鬼鬼超仕入れ{background:#ffcccc;color:#7a0a0a}
+.ev-その他{background:#ede8fc;color:#3a1e7a}
 .day-hint{font-size:10px;color:var(--text3);padding:2px 0}
 .day-memo-wrap{border-top:2px solid var(--border);margin-top:6px;padding-top:6px}
 .day-memo-top{display:flex;align-items:center;justify-content:space-between;gap:4px}
@@ -257,7 +257,7 @@ body{font-family:Meiryo,'Hiragino Sans','Noto Sans JP',sans-serif;background:var
       <div id="todoList"></div>
       <div class="add-row">
         <input id="todoInput" placeholder="チェック項目..." onkeydown="if(event.key==='Enter')addTodo()">
-        <select id="todoCat"><option>仕入</option><option>リサーチ</option><option>出品</option><option>発送</option><option>確認</option><option>その他</option></select>
+        <select id="todoCat"><option>仕入</option><option>鬼アツ仕入れ</option><option>キャンペーン</option><option>通常予定</option><option>鬼鬼鬼超仕入れ</option><option>その他</option></select>
         <button onclick="addTodo()">追加</button>
       </div>
     </div>
@@ -284,7 +284,7 @@ body{font-family:Meiryo,'Hiragino Sans','Noto Sans JP',sans-serif;background:var
     <div class="sheet-title" id="sheetTitle">予定を追加</div>
     <div class="fg"><label>タイトル</label><input id="evTitle" placeholder="例: ハードオフ仕入れ"></div>
     <div class="fg"><label>カテゴリ</label>
-      <select id="evCat"><option>仕入</option><option>リサーチ</option><option>出品</option><option>発送</option><option>確認</option><option>その他</option></select>
+      <select id="evCat"><option>仕入</option><option>鬼アツ仕入れ</option><option>キャンペーン</option><option>通常予定</option><option>鬼鬼鬼超仕入れ</option><option>その他</option></select>
     </div>
     <div class="fg"><label>日付</label><input id="evDate" type="date" oninput="updateRepeatPreview()"></div>
     <div class="fg"><label>時間帯</label>
@@ -373,8 +373,8 @@ async function gasCall(fn, args) {
 }
 
 const DAYS=['月','火','水','木','金','土','日'];
-const BG={仕入:'#daeeff',リサーチ:'#d0f5e8',出品:'#fef0cc',発送:'#fde8f0',確認:'#e8e4fc',その他:'#ebebeb'};
-const FG={仕入:'#0a4a7a',リサーチ:'#065038',出品:'#5a3500',発送:'#6b1a38',確認:'#2d1e7a',その他:'#444'};
+const BG={仕入:'#daeeff',鬼アツ仕入れ:'#ffe0b2',キャンペーン:'#d0f5e8',通常予定:'#e8e8e8',鬼鬼鬼超仕入れ:'#ffcccc',その他:'#ede8fc'};
+const FG={仕入:'#0a4a7a',鬼アツ仕入れ:'#7a3500',キャンペーン:'#065038',通常予定:'#444444',鬼鬼鬼超仕入れ:'#7a0a0a',その他:'#3a1e7a'};
 const PRI_DOT={高:'#c0392b',中:'#e67e22',低:'#27ae60'};
 const TIMES=[];
 for(let h=0;h<=23;h++){TIMES.push(h+':00');TIMES.push(h+':30');}
