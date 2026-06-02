@@ -30,6 +30,7 @@
 html, body { height: 100%; overflow-x: hidden; }
 body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-bottom: 80px; }
 
+/* ── ヘッダー ── */
 .hdr {
   background: var(--sur);
   border-bottom: 1px solid var(--bdr);
@@ -45,6 +46,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 .hdr-title { font-size: 15px; font-weight: 700; }
 .hdr-date { font-family: var(--mono); font-size: 11px; color: var(--txd); margin-left: auto; }
 
+/* ── 口座不足カード ── */
 .shortage-bar {
   padding: 10px 12px;
   display: flex; gap: 8px; overflow-x: auto;
@@ -68,6 +70,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 .ac-pred { font-size: 9px; color: var(--txd); margin-top: 2px; }
 .ac-shortage { font-size: 10px; font-weight: 700; color: var(--ac2); }
 
+/* ── タブ ── */
 .tabs {
   display: flex; background: var(--sur);
   border-bottom: 1px solid var(--bdr);
@@ -81,9 +84,11 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 }
 .tab.active { color: var(--ac); border-bottom-color: var(--ac); }
 
+/* ── ページ ── */
 .page { display: none; }
 .page.active { display: block; }
 
+/* ── カレンダー ── */
 .cal-wrap { padding: 10px 12px; }
 .cal-nav {
   display: flex; align-items: center; justify-content: space-between;
@@ -106,6 +111,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
   border-bottom: 1px solid var(--bdr); padding: 3px 2px;
   cursor: pointer; overflow: hidden; transition: background .15s;
 }
+.cal-cell:last-child { border-right: none; }
 .cal-cell:nth-child(7n) { border-right: none; }
 .cal-cell:hover { background: var(--sur2); }
 .cal-cell.today { background: rgba(124,109,255,.08); }
@@ -131,6 +137,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 .chip-planned.chip-income { border-color: #43d9ad; color: #43d9ad; }
 .chip-planned.chip-transfer { border-color: #9d91ff; color: #9d91ff; }
 
+/* ── 入力シート ── */
 .input-wrap { padding: 12px; }
 .mode-btns { display: flex; gap: 6px; margin-bottom: 14px; }
 .mode-btn {
@@ -171,6 +178,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 .btn-save.transfer { background: var(--ac); color: #fff; }
 .btn-save:active { transform: scale(.97); }
 
+/* ── 一覧 ── */
 .list-wrap { padding: 12px; }
 .list-filter { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; scrollbar-width: none; }
 .list-filter::-webkit-scrollbar { display: none; }
@@ -212,6 +220,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 .tx-del:hover { color: var(--ac2); }
 .empty-msg { text-align: center; color: var(--txd); font-size: 13px; padding: 40px 0; }
 
+/* ── FAB ── */
 .fab {
   position: fixed; bottom: 18px; right: 16px;
   width: 52px; height: 52px; border-radius: 50%;
@@ -223,6 +232,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 }
 .fab:active { transform: scale(.9); }
 
+/* ── オーバーレイ ── */
 .overlay {
   display: none; position: fixed; inset: 0;
   background: rgba(0,0,0,.6); z-index: 500;
@@ -257,8 +267,10 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
   <div class="hdr-date" id="todayLabel"></div>
 </header>
 
+<!-- 口座残高・不足カード -->
 <div class="shortage-bar" id="shortageBar"></div>
 
+<!-- タブ -->
 <div class="tabs">
   <button class="tab active" data-tab="cal" onclick="switchTab('cal')">📅 カレンダー</button>
   <button class="tab" data-tab="input" onclick="switchTab('input')">✏️ 入力</button>
@@ -266,6 +278,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
   <button class="tab" data-tab="accounts" onclick="switchTab('accounts')">🏦 口座</button>
 </div>
 
+<!-- カレンダーページ -->
 <div class="page active" id="page-cal">
   <div class="cal-wrap">
     <div class="cal-nav">
@@ -277,6 +290,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
   </div>
 </div>
 
+<!-- 入力ページ -->
 <div class="page" id="page-input">
   <div class="input-wrap">
     <div class="mode-btns">
@@ -331,6 +345,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
   </div>
 </div>
 
+<!-- 一覧ページ -->
 <div class="page" id="page-list">
   <div class="list-wrap">
     <div class="list-filter">
@@ -345,6 +360,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
   </div>
 </div>
 
+<!-- 口座管理ページ -->
 <div class="page" id="page-accounts">
   <div class="input-wrap">
     <div style="margin-bottom:14px;">
@@ -378,6 +394,7 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 
 <button class="fab" onclick="switchTab('input')">＋</button>
 
+<!-- 詳細オーバーレイ -->
 <div class="overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
   <div class="sheet">
     <div class="sheet-handle"></div>
@@ -391,6 +408,9 @@ body { background: var(--bg); color: var(--tx); font-family: var(--jp); padding-
 </div>
 
 <script>
+// ─────────────────────────────────────────
+// データストア（localStorageで永続化）
+// ─────────────────────────────────────────
 function load(key, def) {
   try { const d = localStorage.getItem(key); return d ? JSON.parse(d) : def; } catch(e) { return def; }
 }
@@ -399,31 +419,40 @@ function save(key, val) {
 }
 
 let accounts = load('kk_accounts', [
-  { id: 'cash',    name: '現金',            type: 'cash',   bal: 0 },
-  { id: 'rakuten', name: '楽天銀行',        type: 'bank',   bal: 0 },
-  { id: 'yamada',  name: 'ヤマダネオバンク', type: 'bank',  bal: 0 },
-  { id: 'paypay',  name: 'PayPay合計',      type: 'paypay', bal: 0 },
+  { id: 'cash',    name: '現金',          type: 'cash',   bal: 0 },
+  { id: 'rakuten', name: '楽天銀行',      type: 'bank',   bal: 0 },
+  { id: 'yamada',  name: 'ヤマダネオバンク', type: 'bank', bal: 0 },
+  { id: 'paypay',  name: 'PayPay合計',    type: 'paypay', bal: 0 },
 ]);
 let txList = load('kk_txlist', []);
 
 function saveAll() { save('kk_accounts', accounts); save('kk_txlist', txList); }
 
-let mode = 'expense';
-let txStatus = 'real';
+// ─────────────────────────────────────────
+// 状態
+// ─────────────────────────────────────────
+let mode = 'expense';    // expense / income / transfer
+let txStatus = 'real';   // real / plan
 let calOff = 0;
 let listFilter = 'all';
 let detailTxId = null;
-const today = new Date();
 
+// ─────────────────────────────────────────
+// ヘッダー日付
+// ─────────────────────────────────────────
+const today = new Date();
 document.getElementById('todayLabel').textContent =
   today.getFullYear() + '/' + String(today.getMonth()+1).padStart(2,'0') + '/' + String(today.getDate()).padStart(2,'0');
 
+// ─────────────────────────────────────────
 // 口座残高カード
+// ─────────────────────────────────────────
 function renderShortageBar() {
   const bar = document.getElementById('shortageBar');
   bar.innerHTML = '';
   accounts.forEach(ac => {
     const pred = calcPredBal(ac);
+    const diff = pred - ac.bal;
     const cls = pred < 0 ? 'danger' : pred < ac.bal * 0.2 ? 'warn' : 'ok';
     const card = document.createElement('div');
     card.className = 'ac-card ' + cls;
@@ -438,12 +467,11 @@ function renderShortageBar() {
 }
 
 function calcPredBal(ac) {
-  // 未来の予定取引のみ予測残高に反映（実績は既にac.balに含まれている）
+  // 未来の予定取引を反映した予測残高
   const todayStr = d2s(today);
   let pred = ac.bal;
   txList.forEach(tx => {
-    if (tx.status !== 'plan') return; // 予定のみ
-    if (tx.date <= todayStr) return;  // 未来のみ
+    if (tx.date <= todayStr) return; // 未来のみ
     if (tx.type === 'expense' && tx.fromAc === ac.id) pred -= tx.amount;
     if (tx.type === 'income' && tx.toAc === ac.id) pred += tx.amount;
     if (tx.type === 'transfer') {
@@ -454,7 +482,9 @@ function calcPredBal(ac) {
   return pred;
 }
 
+// ─────────────────────────────────────────
 // タブ切替
+// ─────────────────────────────────────────
 function switchTab(tab) {
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'page-' + tab));
@@ -464,7 +494,9 @@ function switchTab(tab) {
   if (tab === 'accounts') renderAccounts();
 }
 
+// ─────────────────────────────────────────
 // カレンダー
+// ─────────────────────────────────────────
 function shiftMonth(d) { calOff += d; renderCal(); }
 
 function renderCal() {
@@ -472,6 +504,8 @@ function renderCal() {
   document.getElementById('calLabel').textContent = base.getFullYear() + '年' + (base.getMonth()+1) + '月';
   const grid = document.getElementById('calGrid');
   grid.innerHTML = '';
+
+  // ヘッダー
   const hdrRow = document.createElement('div');
   hdrRow.className = 'cal-hdr-row';
   ['日','月','火','水','木','金','土'].forEach(d => {
@@ -479,9 +513,11 @@ function renderCal() {
     hdrRow.appendChild(h);
   });
   grid.appendChild(hdrRow);
+
   const todayStr = d2s(today);
   let cur = new Date(base);
-  cur.setDate(1 - base.getDay());
+  cur.setDate(1 - base.getDay()); // 月の最初の日曜から
+
   for (let w = 0; w < 6; w++) {
     const wr = document.createElement('div'); wr.className = 'cal-week';
     for (let d = 0; d < 7; d++) {
@@ -489,11 +525,14 @@ function renderCal() {
       const isThis = cur.getMonth() === base.getMonth();
       const cell = document.createElement('div');
       cell.className = 'cal-cell' + (ds === todayStr ? ' today' : '');
+
       const dayEl = document.createElement('div');
       const dayCls = ds === todayStr ? 'today-n' : !isThis ? 'other' : d === 0 ? 'sun' : d === 6 ? 'sat' : '';
       dayEl.className = 'cal-day' + (dayCls ? ' ' + dayCls : '');
       dayEl.textContent = cur.getDate();
       cell.appendChild(dayEl);
+
+      // その日の取引
       const dayTxs = txList.filter(tx => tx.date === ds).slice(0, 3);
       if (dayTxs.length) {
         const chips = document.createElement('div'); chips.className = 'cal-chips';
@@ -506,7 +545,13 @@ function renderCal() {
         });
         cell.appendChild(chips);
       }
-      cell.onclick = () => { document.getElementById('inDate').value = ds; switchTab('input'); };
+
+      // クリックで入力日をセット
+      cell.onclick = () => {
+        document.getElementById('inDate').value = ds;
+        switchTab('input');
+      };
+
       wr.appendChild(cell);
       cur.setDate(cur.getDate() + 1);
     }
@@ -515,7 +560,9 @@ function renderCal() {
   }
 }
 
+// ─────────────────────────────────────────
 // 入力
+// ─────────────────────────────────────────
 function initInputDate() {
   const el = document.getElementById('inDate');
   if (!el.value) el.value = d2s(today);
@@ -529,9 +576,16 @@ function setMode(m) {
   });
   const fgTo = document.getElementById('fgTo');
   const lblFrom = document.getElementById('lblFrom');
-  if (m === 'expense') { fgTo.style.display = 'none'; lblFrom.textContent = '支出元口座'; }
-  else if (m === 'income') { fgTo.style.display = 'none'; lblFrom.textContent = '入金先口座'; }
-  else { fgTo.style.display = 'block'; lblFrom.textContent = '振替元口座'; }
+  if (m === 'expense') {
+    fgTo.style.display = 'none';
+    lblFrom.textContent = '支出元口座';
+  } else if (m === 'income') {
+    fgTo.style.display = 'none';
+    lblFrom.textContent = '入金先口座';
+  } else {
+    fgTo.style.display = 'block';
+    lblFrom.textContent = '振替元口座';
+  }
   const btn = document.getElementById('btnSave');
   btn.className = 'btn-save ' + m;
   btn.textContent = m === 'expense' ? '支出を記録' : m === 'income' ? '収入を記録' : '振替を記録';
@@ -543,6 +597,23 @@ function setStatus(s) {
   document.getElementById('btnPlan').className = 'status-btn' + (s === 'plan' ? ' active-plan' : '');
 }
 
+
+// ─────────────────────────────────────────
+// 今日以前の予定を自動で実績に変換
+// ─────────────────────────────────────────
+function autoConfirmPlans() {
+  const todayStr = d2s(today);
+  let changed = false;
+  txList.forEach(tx => {
+    if (tx.status === 'plan' && tx.date <= todayStr) {
+      tx.status = 'real';
+      applyTxToBal(tx, 1); // 残高に反映
+      changed = true;
+    }
+  });
+  if (changed) saveAll();
+}
+
 function populateSelects() {
   ['inFrom','inTo'].forEach(id => {
     const sel = document.getElementById(id);
@@ -550,27 +621,15 @@ function populateSelects() {
   });
 }
 
-// 今日以前の予定を自動で実績に変換
-function autoConfirmPlans() {
-  const todayStr = d2s(today);
-  let changed = false;
-  txList.forEach(tx => {
-    if (tx.status === 'plan' && tx.date <= todayStr) {
-      tx.status = 'real';
-      applyTxToBal(tx, 1);
-      changed = true;
-    }
-  });
-  if (changed) saveAll();
-}
-
 function saveTx() {
   const amount = parseInt(document.getElementById('inAmount').value) || 0;
   const date = document.getElementById('inDate').value;
   const desc = document.getElementById('inDesc').value.trim();
   if (!amount || !date) { alert('日付と金額は必須です'); return; }
+
   const fromId = document.getElementById('inFrom').value;
   const toId = document.getElementById('inTo').value;
+
   const tx = {
     id: Date.now().toString(),
     type: mode,
@@ -583,20 +642,27 @@ function saveTx() {
     cat: document.getElementById('inCat').value,
     memo: document.getElementById('inMemo').value,
   };
-  // 実績のみ残高に反映（予定は反映しない）
+
+  // 実績なら残高を即反映（予定は反映しない）
   if (tx.status === 'real') applyTxToBal(tx, 1);
+
   txList.push(tx);
   saveAll();
-  autoConfirmPlans();
+  autoConfirmPlans(); // 過去の予定を自動実績化
   renderShortageBar();
+
+  // リセット
   document.getElementById('inAmount').value = '';
   document.getElementById('inDesc').value = '';
   document.getElementById('inMemo').value = '';
   document.getElementById('inCat').value = '';
+
+  // カレンダーに戻る
   switchTab('cal');
 }
 
 function applyTxToBal(tx, dir) {
+  // dir: 1=適用, -1=取消
   function adj(id, delta) {
     const ac = accounts.find(a => a.id === id);
     if (ac) ac.bal += delta * dir;
@@ -609,7 +675,9 @@ function applyTxToBal(tx, dir) {
   }
 }
 
+// ─────────────────────────────────────────
 // 一覧
+// ─────────────────────────────────────────
 function setFilter(f, btn) {
   listFilter = f;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -626,12 +694,18 @@ function renderList() {
   else if (listFilter === 'transfer') filtered = filtered.filter(t => t.type === 'transfer');
   else if (listFilter === 'plan') filtered = filtered.filter(t => t.status === 'plan');
   else if (listFilter === 'real') filtered = filtered.filter(t => t.status === 'real');
-  if (!filtered.length) { wrap.innerHTML = '<div class="empty-msg">取引がありません</div>'; return; }
+
+  if (!filtered.length) {
+    wrap.innerHTML = '<div class="empty-msg">取引がありません</div>';
+    return;
+  }
+
   filtered.forEach(tx => {
     const sign = tx.type === 'expense' ? '-' : tx.type === 'income' ? '+' : '⇄';
     const fromAcName = accounts.find(a => a.id === tx.fromAc)?.name || '';
     const toAcName = accounts.find(a => a.id === tx.toAc)?.name || '';
     const acInfo = tx.type === 'transfer' ? `${fromAcName} → ${toAcName}` : fromAcName || toAcName;
+
     const item = document.createElement('div');
     item.className = 'tx-item';
     item.innerHTML = `
@@ -652,13 +726,17 @@ function deleteTx(id) {
   const tx = txList.find(t => t.id === id);
   if (!tx) return;
   if (!confirm('削除しますか？')) return;
-  if (tx.status === 'real') applyTxToBal(tx, -1);
+  const todayStr2 = d2s(today);
+  if (tx.status === 'real' && tx.date <= todayStr2) applyTxToBal(tx, -1);
   txList = txList.filter(t => t.id !== id);
   saveAll();
   renderShortageBar();
   renderList();
 }
 
+// ─────────────────────────────────────────
+// 詳細オーバーレイ
+// ─────────────────────────────────────────
 function openDetail(id) {
   const tx = txList.find(t => t.id === id);
   if (!tx) return;
@@ -668,10 +746,22 @@ function openDetail(id) {
   document.getElementById('detailTitle').textContent = tx.desc;
   document.getElementById('detailBody').innerHTML = `
     <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
-      <div style="display:flex;justify-content:space-between;"><span style="color:var(--txd)">種別</span><span>${tx.type === 'expense' ? '💸 支出' : tx.type === 'income' ? '💰 収入' : '🔄 振替'}</span></div>
-      <div style="display:flex;justify-content:space-between;"><span style="color:var(--txd)">状態</span><span>${tx.status === 'real' ? '✅ 実績' : '📅 予定'}</span></div>
-      <div style="display:flex;justify-content:space-between;"><span style="color:var(--txd)">金額</span><span style="font-family:var(--mono);font-size:16px;font-weight:700">${fmtMoney(tx.amount)}円</span></div>
-      <div style="display:flex;justify-content:space-between;"><span style="color:var(--txd)">日付</span><span>${tx.date}</span></div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="color:var(--txd)">種別</span>
+        <span>${tx.type === 'expense' ? '💸 支出' : tx.type === 'income' ? '💰 収入' : '🔄 振替'}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="color:var(--txd)">状態</span>
+        <span>${tx.status === 'real' ? '✅ 実績' : '📅 予定'}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="color:var(--txd)">金額</span>
+        <span style="font-family:var(--mono);font-size:16px;font-weight:700">${fmtMoney(tx.amount)}円</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="color:var(--txd)">日付</span>
+        <span>${tx.date}</span>
+      </div>
       ${tx.type !== 'income' ? `<div style="display:flex;justify-content:space-between;"><span style="color:var(--txd)">出金元</span><span>${fromAcName}</span></div>` : ''}
       ${tx.type !== 'expense' ? `<div style="display:flex;justify-content:space-between;"><span style="color:var(--txd)">入金先</span><span>${toAcName}</span></div>` : ''}
       ${tx.cat ? `<div style="display:flex;justify-content:space-between;"><span style="color:var(--txd)">カテゴリ</span><span>${tx.cat}</span></div>` : ''}
@@ -682,9 +772,14 @@ function openDetail(id) {
 }
 
 function closeDetail() { document.getElementById('detailOverlay').classList.remove('open'); detailTxId = null; }
-function deleteTxFromDetail() { if (detailTxId) { deleteTx(detailTxId); closeDetail(); } }
 
+function deleteTxFromDetail() {
+  if (detailTxId) { deleteTx(detailTxId); closeDetail(); }
+}
+
+// ─────────────────────────────────────────
 // 口座管理
+// ─────────────────────────────────────────
 function renderAccounts() {
   const wrap = document.getElementById('acList');
   wrap.innerHTML = '';
@@ -694,8 +789,14 @@ function renderAccounts() {
     const typeIcon = { bank: '🏦', cash: '💴', paypay: '📱', card: '💳', other: '📂' }[ac.type] || '📂';
     item.innerHTML = `
       <span style="font-size:18px">${typeIcon}</span>
-      <div style="flex:1"><div style="font-size:13px;font-weight:700">${ac.name}</div><div style="font-size:11px;color:var(--txd)">${ac.type}</div></div>
-      <input type="number" value="${ac.bal}" style="width:100px;font-family:var(--mono);font-size:13px;padding:5px 8px;border:1px solid var(--bdr);border-radius:6px;background:var(--bg);color:var(--tx);text-align:right" onchange="updateBal('${ac.id}', this.value)">
+      <div style="flex:1">
+        <div style="font-size:13px;font-weight:700">${ac.name}</div>
+        <div style="font-size:11px;color:var(--txd)">${ac.type}</div>
+      </div>
+      <div>
+        <input type="number" value="${ac.bal}" style="width:100px;font-family:var(--mono);font-size:13px;padding:5px 8px;border:1px solid var(--bdr);border-radius:6px;background:var(--bg);color:var(--tx);text-align:right"
+          onchange="updateBal('${ac.id}', this.value)">
+      </div>
       <button onclick="deleteAccount('${ac.id}')" style="background:none;border:none;color:var(--txm);font-size:14px;cursor:pointer;padding:2px 6px">✕</button>
     `;
     wrap.appendChild(item);
@@ -728,14 +829,34 @@ function deleteAccount(id) {
   renderShortageBar();
 }
 
+// ─────────────────────────────────────────
+// ユーティリティ
+// ─────────────────────────────────────────
 function d2s(d) {
   return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
 }
-function fmtMoney(n) { return '¥' + Number(n).toLocaleString(); }
-function fmtMoneyShort(n) { if (n >= 10000) return Math.floor(n/1000) + 'k'; return String(n); }
+function fmtMoney(n) {
+  return '¥' + Number(n).toLocaleString();
+}
+function fmtMoneyShort(n) {
+  if (n >= 10000) return Math.floor(n/1000) + 'k';
+  return String(n);
+}
 
-// Enterキーナビゲーション
+// ─────────────────────────────────────────
+// 初期化
+// ─────────────────────────────────────────
+autoConfirmPlans();
+renderShortageBar();
+renderCal();
+populateSelects();
+initInputDate();
+
+// ─────────────────────────────────────────
+// Enterキーで次の項目へ・最後は保存
+// ─────────────────────────────────────────
 const INPUT_ORDER = ['inDate','inAmount','inFrom','inTo','inDesc','inCat','inMemo'];
+
 function getVisibleInputs() {
   return INPUT_ORDER.filter(id => {
     const el = document.getElementById(id);
@@ -745,32 +866,40 @@ function getVisibleInputs() {
     return true;
   });
 }
+
 document.addEventListener('keydown', function(e) {
   if (e.key !== 'Enter') return;
   const active = document.activeElement;
   if (!active) return;
+
+  // selectはEnterで変更確定→次へ
   const tag = active.tagName.toLowerCase();
   if (tag !== 'input' && tag !== 'select') return;
+
+  // 入力ページが表示中のみ
   const page = document.getElementById('page-input');
   if (!page.classList.contains('active')) return;
+
   e.preventDefault();
+
   const visible = getVisibleInputs();
   const idx = visible.indexOf(active.id);
+
   if (idx === -1) return;
+
   if (idx < visible.length - 1) {
+    // 次の項目へフォーカス
     const nextEl = document.getElementById(visible[idx + 1]);
-    if (nextEl) { nextEl.focus(); if (nextEl.tagName.toLowerCase() === 'input') nextEl.select(); }
+    if (nextEl) {
+      nextEl.focus();
+      if (nextEl.tagName.toLowerCase() === 'input') nextEl.select();
+    }
   } else {
+    // 最後の項目→保存
     saveTx();
   }
 });
 
-// 初期化
-autoConfirmPlans();
-renderShortageBar();
-renderCal();
-populateSelects();
-initInputDate();
 </script>
 </body>
 </html>
