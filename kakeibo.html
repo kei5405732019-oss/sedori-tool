@@ -643,8 +643,8 @@ function saveTx() {
     memo: document.getElementById('inMemo').value,
   };
 
-  // 実績なら残高を即反映（予定は反映しない）
-  if (tx.status === 'real') applyTxToBal(tx, 1);
+  // 実績かつ今日以前のみ残高に反映
+  if (tx.status === 'real' && tx.date <= d2s(today)) applyTxToBal(tx, 1);
 
   txList.push(tx);
   saveAll();
