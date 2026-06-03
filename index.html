@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="かつらぎ屋">
+<meta name="theme-color" content="#0d0f14">
+<title>かつらぎ屋ツールランチャー</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0d0f14;color:#e8eaf0;font-family:'Noto Sans JP',sans-serif;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;}
+.hd{padding:20px 24px 16px;border-bottom:1px solid #2a2f3f;background:#161920;}
+.logo{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:#4fffb0;letter-spacing:.15em;padding:2px 8px;border:1px solid #4fffb0;border-radius:4px;display:inline-block;margin-bottom:10px;}
+.hd-title{font-size:20px;font-weight:700;}
+.hd-sub{font-size:12px;color:#454a60;margin-top:4px;font-family:'JetBrains Mono',monospace;}
+.grid{padding:24px;display:flex;flex-direction:column;gap:16px;max-width:600px;width:100%;margin:0 auto;}
+.card{background:#161920;border:1px solid #2a2f3f;border-radius:12px;padding:20px 22px;text-decoration:none;color:#e8eaf0;display:flex;align-items:center;gap:18px;transition:all .2s;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.card:hover,.card:active{border-color:#4fffb0;background:#1a1f2e;transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.4);}
+.card-icon{font-size:36px;flex-shrink:0;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:12px;}
+.card-icon.green{background:rgba(79,255,176,.1);}
+.card-icon.teal{background:rgba(15,138,99,.15);}
+.card-icon.purple{background:rgba(124,109,255,.15);}
+.card-icon.orange{background:rgba(249,115,22,.15);}
+.card-body{flex:1;}
+.card-name{font-size:17px;font-weight:700;margin-bottom:4px;}
+.card-desc{font-size:12px;color:#7880a0;line-height:1.6;}
+.card-badge{font-size:10px;font-family:'JetBrains Mono',monospace;color:#4fffb0;border:1px solid #2a2f3f;padding:2px 8px;border-radius:4px;margin-top:6px;display:inline-block;letter-spacing:.08em;}
+.card-arrow{font-size:22px;color:#2a2f3f;flex-shrink:0;}
+.card:hover .card-arrow,.card:active .card-arrow{color:#4fffb0;}
+.hint{padding:0 24px;max-width:600px;width:100%;margin:0 auto;}
+.hint-box{background:#161920;border:1px solid #2a2f3f;border-radius:10px;padding:14px 16px;}
+.hint-title{font-size:10px;font-family:'JetBrains Mono',monospace;color:#454a60;letter-spacing:.1em;margin-bottom:8px;}
+.hint-text{font-size:12px;color:#7880a0;line-height:1.8;}
+.hint-text b{color:#4fffb0;}
+.footer{padding:20px 24px;text-align:center;font-size:11px;color:#2a2f3f;font-family:'JetBrains Mono',monospace;margin-top:auto;}
+</style>
+</head>
+<body>
+<header class="hd">
+  <div class="logo">KATURAGIYA</div>
+  <div class="hd-title">かつらぎ屋ツールランチャー</div>
+  <div class="hd-sub">ツールを選んでください</div>
+</header>
+
+<div class="grid">
+  <a class="card" href="./sedori.html">
+    <div class="card-icon green">📈</div>
+    <div class="card-body">
+      <div class="card-name">価格推移比較ツール</div>
+      <div class="card-desc">JANコードを入力して価格コムの価格推移グラフとヤフトクの買取価格推移を確認。Kコードやメモを蓄積して使うほど育つ調査DB。</div>
+      <div class="card-badge">SEDORI TOOL</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="card" href="./techo.html">
+    <div class="card-icon teal">📒</div>
+    <div class="card-body">
+      <div class="card-name">せどり手帳</div>
+      <div class="card-desc">仕入れ予定・タスク・チェックリスト・ポイント倍率を管理。週間・月間カレンダーで仕入れスケジュールを一元管理。</div>
+      <div class="card-badge">TECHO</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="card" href="./kakeibo.html">
+    <div class="card-icon purple">💴</div>
+    <div class="card-body">
+      <div class="card-name">かつらぎ家計簿</div>
+      <div class="card-desc">口座残高・支出入力・不足アラート・総資産管理。カレンダーで未来の引き落とし予定を管理して資金ショートを防ぐ。</div>
+      <div class="card-badge">KAKEIBO</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a class="card" href="https://script.google.com/macros/s/AKfycbw1I7deBxcB21OGWYhzZ3lNcFgSyMeNdnk8TzhxA-7D8IVyIzbfmbRWNQsofbe6two2iQ/exec" target="_blank">
+    <div class="card-icon orange">🕐</div>
+    <div class="card-body">
+      <div class="card-name">出退勤管理</div>
+      <div class="card-desc">出勤・退勤の打刻をスマホから簡単に記録。押し忘れをDiscordで通知。スプレッドシートに自動集計。</div>
+      <div class="card-badge">KINTAI</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+</div>
+
+<div class="hint">
+  <div class="hint-box">
+    <div class="hint-title">📱 スマホのホーム画面に追加する方法</div>
+    <div class="hint-text">
+      <b>iPhone (Safari):</b> 画面下の共有ボタン →「ホーム画面に追加」<br>
+      <b>Android (Chrome):</b> 右上メニュー →「ホーム画面に追加」
+    </div>
+  </div>
+</div>
+
+<div class="footer">kei5405732019-oss / sedori-tool</div>
+</body>
+</html>
