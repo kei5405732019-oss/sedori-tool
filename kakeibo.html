@@ -267,9 +267,16 @@ window.addEventListener('load', function(){
     <div class="total-label">現在総資産</div>
     <div class="total-val" id="totalNow">¥0</div>
   </div>
-  <div class="total-item" style="text-align:right">
+  <div class="total-item" style="text-align:center">
+    <div class="total-label">SS総資産</div>
+    <div class="total-val" id="sheetTotalVal" style="font-size:13px">--</div>
+    <div style="font-size:10px;font-weight:700" id="sheetTotalDiff">--</div>
+  </div>
+  <div class="total-item" style="text-align:right;display:flex;flex-direction:column;gap:4px;align-items:flex-end">
     <div class="total-label">予測総資産</div>
     <div class="total-val pred" id="totalPred">¥0</div>
+    <button onclick="syncToSheet()" style="font-size:10px;padding:3px 10px;border:1px solid var(--ac3);background:transparent;color:var(--ac3);border-radius:6px;cursor:pointer;font-family:var(--jp)">🔄 SS同期</button>
+    <div style="font-size:9px" id="syncStatus"></div>
   </div>
 </div>
 
@@ -740,6 +747,7 @@ function goHome() {
   renderShortageBar();
   renderCal();
   renderAlerts();
+  syncToSheet(); // 取引保存時に自動同期
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === 'cal'));
   document.querySelectorAll('.page').forEach(p => p.classList.toggle('active', p.id === 'page-cal'));
 }
@@ -1287,6 +1295,57 @@ function toggleAlertPanel() {
   });
 })();
 
+
+// ─── GAS連携 ───
+const GAS_KAKEIBO_URL = 'https://script.google.com/macros/s/AKfycbw1I7deBxcB21OGWYhzZ3lNcFgSyMeNdnk8TzhxA-7D8IVyIzbfmbRWNQsofbe6two2iQ/exec';
+
+function calcTotalAsset() {
+  return accounts.reduce((sum, ac) => sum + calcBal(ac), 0);
+}
+
+// 総資産をGASに送信してL列を更新
+function syncToSheet() {
+  const total = calcTotalAsset();
+  const url = GAS_KAKEIBO_URL + '?fn=syncTotal&key=katuragiya&total=' + total;
+  const el = document.getElementById('syncStatus');
+  if (el) { el.textContent = '同期中...'; el.style.color = 'var(--ac4)'; }
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        if (el) { el.textContent = 'SS:' + fmtMoney(data.newTotal); el.style.color = 'var(--ac3)'; }
+        updateSheetTotalDisplay(data.newTotal);
+      } else {
+        if (el) { el.textContent = 'エラー'; el.style.color = 'var(--ac2)'; }
+      }
+    })
+    .catch(() => { if (el) { el.textContent = '接続失敗'; el.style.color = 'var(--ac2)'; } });
+}
+
+// GASからM列（スプレッドシートの総資産）を取得して表示
+function loadSheetTotal() {
+  const url = GAS_KAKEIBO_URL + '?fn=getTotal&key=katuragiya';
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) updateSheetTotalDisplay(data.m);
+    })
+    .catch(() => {});
+}
+
+function updateSheetTotalDisplay(val) {
+  const el = document.getElementById('sheetTotalVal');
+  if (el) el.textContent = fmtMoney(val);
+  // 差異を計算して色で表示
+  const localTotal = calcTotalAsset();
+  const diff = localTotal - val;
+  const diffEl = document.getElementById('sheetTotalDiff');
+  if (diffEl) {
+    diffEl.textContent = diff === 0 ? '一致✅' : (diff > 0 ? '+' : '') + fmtMoney(diff);
+    diffEl.style.color = diff === 0 ? 'var(--ac3)' : 'var(--ac2)';
+  }
+}
+
 // ─── 初期化 ───
 renderShortageBar();
 renderCal();
@@ -1294,6 +1353,7 @@ renderAlerts();
 populateSelects();
 initInputDate();
 renderTags();
+loadSheetTotal(); // 起動時にSS総資産を取得
 </script>
 </body>
 </html>
