@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="訪問ログ">
+<meta name="theme-color" content="#0d0f14">
+<title>訪問ログ｜かつらぎ屋</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0f14;color:#e8eaf0;font-family:'Noto Sans JP',sans-serif;min-height:100vh;padding-bottom:120px}
+.hd{padding:16px 20px 12px;border-bottom:1px solid #1e2030;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#0d0f14;z-index:10}
+.hd h1{font-size:18px;font-weight:700;letter-spacing:.5px}
+.hd .tab{display:flex;gap:4px}
+.hd .tab button{background:none;border:1px solid #2a2d3a;color:#8b8fa3;padding:6px 12px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit}
+.hd .tab button.active{background:#2a2d3a;color:#e8eaf0;border-color:#3d4155}
+.section{padding:16px 20px 8px}
+.section-title{font-size:12px;color:#6b6f85;font-weight:500;margin-bottom:10px;letter-spacing:1px}
+/* 企業グリッド */
+.company-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.company-btn{background:#151722;border:1px solid #2a2d3a;color:#c8cad4;padding:12px 4px;border-radius:8px;font-size:13px;font-family:inherit;cursor:pointer;text-align:center;transition:all .15s;line-height:1.3}
+.company-btn.selected{background:#1a3a5c;border-color:#2d7bd5;color:#7eb8f7}
+.company-btn:active{transform:scale(.96)}
+/* 入力系 */
+.store-input,.profit-input{width:100%;background:#151722;border:1px solid #2a2d3a;color:#e8eaf0;padding:12px 14px;border-radius:8px;font-size:15px;font-family:inherit;outline:none}
+.store-input:focus,.profit-input:focus{border-color:#3d4155}
+.store-input::placeholder,.profit-input::placeholder,.memo-input::placeholder{color:#4a4e64}
+.recent-stores{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.recent-btn{background:#1a1d2a;border:1px solid #252838;color:#8b8fa3;padding:6px 12px;border-radius:16px;font-size:12px;cursor:pointer;font-family:inherit}
+.recent-btn:active{background:#252838}
+/* カテゴリチップ */
+.cat-chips{display:flex;flex-wrap:wrap;gap:6px}
+.cat-chip{background:#151722;border:1px solid #2a2d3a;color:#9a9db0;padding:8px 12px;border-radius:16px;font-size:12px;cursor:pointer;font-family:inherit;transition:all .15s}
+.cat-chip.selected{background:#1c3327;border-color:#2d9b5a;color:#6ee09a}
+.cat-chip.kei{border-color:#3a2d1c}
+.cat-chip.kei.selected{background:#3a2d1c;border-color:#d4a43a;color:#f0d060}
+.cat-chip:active{transform:scale(.95)}
+/* 結果ボタン */
+.result-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.result-btn{padding:14px 4px;border-radius:8px;font-size:14px;font-weight:500;font-family:inherit;cursor:pointer;text-align:center;border:1px solid #2a2d3a;background:#151722;color:#9a9db0;transition:all .15s}
+.result-btn:active{transform:scale(.96)}
+.result-btn[data-v="爆益"].selected{background:#2a1520;border-color:#d4395a;color:#f06080}
+.result-btn[data-v="微益"].selected{background:#2a2515;border-color:#d4a43a;color:#f0d060}
+.result-btn[data-v="空振り"].selected{background:#1a1d2a;border-color:#6b6f85;color:#b0b3c4}
+.result-btn[data-v="偵察"].selected{background:#151c2a;border-color:#3a6bd4;color:#70a0f0}
+.detail-row{display:flex;gap:10px;align-items:center}
+.yen{color:#6b6f85;font-size:14px}
+.memo-input{width:100%;background:#151722;border:1px solid #2a2d3a;color:#e8eaf0;padding:12px 14px;border-radius:8px;font-size:14px;font-family:inherit;outline:none;resize:none;height:60px}
+.failure-chips{display:flex;flex-wrap:wrap;gap:6px}
+.failure-chip{background:#151722;border:1px solid #2a2d3a;color:#8b8fa3;padding:6px 12px;border-radius:16px;font-size:12px;cursor:pointer;font-family:inherit}
+.failure-chip.selected{background:#2a1520;border-color:#d4395a;color:#f06080}
+/* 送信 */
+.submit-area{position:fixed;bottom:0;left:0;right:0;padding:16px 20px;background:linear-gradient(transparent,#0d0f14 30%);z-index:10}
+.submit-btn{width:100%;padding:16px;background:#2d7bd5;border:none;color:#fff;font-size:16px;font-weight:700;font-family:inherit;border-radius:10px;cursor:pointer;letter-spacing:1px;transition:all .15s}
+.submit-btn:active{transform:scale(.98);background:#2568b5}
+.submit-btn:disabled{background:#2a2d3a;color:#6b6f85}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-100px);background:#1c3327;border:1px solid #2d9b5a;color:#6ee09a;padding:14px 24px;border-radius:10px;font-size:14px;font-weight:500;z-index:100;transition:transform .3s ease;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.error{background:#2a1520;border-color:#d4395a;color:#f06080}
+/* 履歴 */
+#historyView{display:none;padding:16px 20px}
+.log-card{background:#151722;border:1px solid #2a2d3a;border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.log-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.log-date{color:#8b8fa3;font-size:12px}
+.log-result{font-size:12px;font-weight:700;padding:3px 10px;border-radius:10px}
+.log-result.爆益{background:#2a1520;color:#f06080}
+.log-result.微益{background:#2a2515;color:#f0d060}
+.log-result.空振り{background:#1a1d2a;color:#b0b3c4}
+.log-result.偵察{background:#151c2a;color:#70a0f0}
+.log-store{font-size:15px;font-weight:500;margin-bottom:4px}
+.log-cat{font-size:12px;color:#6b6f85}
+.log-profit{font-size:13px;color:#6ee09a;margin-top:4px}
+.log-memo{font-size:12px;color:#6b6f85;margin-top:4px;font-style:italic}
+.log-empty{text-align:center;color:#4a4e64;padding:40px 0;font-size:14px}
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.stat-box{background:#151722;border:1px solid #2a2d3a;border-radius:8px;padding:12px;text-align:center}
+.stat-num{font-size:22px;font-weight:700}
+.stat-label{font-size:11px;color:#6b6f85;margin-top:2px}
+/* ログカレンダー */
+.cal-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cal-nav button{background:none;border:1px solid #2a2d3a;color:#c8cad4;width:36px;height:36px;border-radius:8px;font-size:18px;cursor:pointer;font-family:inherit}
+.cal-nav button:active{background:#2a2d3a}
+.cal-month{font-size:16px;font-weight:700}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:16px}
+.cal-dow{text-align:center;font-size:11px;color:#6b6f85;padding:4px 0}
+.cal-dow.sun{color:#d4395a}
+.cal-dow.sat{color:#3a8ad4}
+.cal-cell{min-height:52px;background:#151722;border-radius:6px;padding:3px 4px;cursor:pointer;border:1px solid transparent;transition:border-color .15s;position:relative;overflow:hidden}
+.cal-cell:active{border-color:#3d4155}
+.cal-cell.today{border-color:#2d7bd5}
+.cal-cell.selected{border-color:#d4a43a}
+.cal-cell.empty{background:transparent;cursor:default}
+.cal-day{font-size:11px;color:#6b6f85;margin-bottom:2px}
+.cal-cell.today .cal-day{color:#7eb8f7;font-weight:700}
+.cal-cell.has-log .cal-day{color:#e8eaf0}
+.cal-dots{display:flex;flex-wrap:wrap;gap:2px}
+.cal-tag{font-size:8px;line-height:1.3;padding:1px 3px;border-radius:3px;white-space:nowrap;overflow:hidden;max-width:100%}
+.cal-tag.r-爆益{background:#2a1520;color:#f06080}
+.cal-tag.r-微益{background:#2a2515;color:#f0d060}
+.cal-tag.r-空振り{background:#1a1d2a;color:#b0b3c4}
+.cal-tag.r-偵察{background:#151c2a;color:#70a0f0}
+.cal-detail{margin-bottom:16px}
+.cal-detail-title{font-size:13px;color:#8b8fa3;margin-bottom:8px;font-weight:500}
+/* ===== 暦ビュー ===== */
+.legend-wrap{margin-bottom:16px}
+.legend-title{font-size:12px;color:#6b6f85;font-weight:500;margin-bottom:8px;letter-spacing:1px}
+.legend-grid{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.legend-item{display:flex;align-items:center;gap:4px;font-size:11px;color:#9a9db0}
+.legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.legend-score{display:flex;gap:8px;margin-top:6px;font-size:11px;color:#6b6f85}
+.legend-score span{display:flex;align-items:center;gap:3px}
+.score-ex{display:inline-block;width:8px;height:8px;border-radius:2px}
+/* 月カード */
+.month-card{background:#151722;border:1px solid #2a2d3a;border-radius:10px;margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.month-card.current{border-color:#2d7bd5}
+.month-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;cursor:pointer}
+.month-name{font-size:16px;font-weight:700}
+.month-name .m-num{color:#6b6f85;font-weight:400;font-size:13px;margin-left:6px}
+.month-badge{font-size:11px;padding:3px 8px;border-radius:8px;background:#1a3a5c;color:#7eb8f7}
+.month-body{display:none;padding:0 16px 14px;border-top:1px solid #1e2030}
+.month-body.open{display:block}
+.month-section{margin-top:10px}
+.month-section-title{font-size:11px;color:#6b6f85;margin-bottom:6px;font-weight:500}
+.month-chips{display:flex;flex-wrap:wrap;gap:4px}
+.m-chip{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:500;border:1px solid;line-height:1.4}
+.m-chip.s3{font-weight:700}
+.m-chip.s2{opacity:.85}
+/* 企業決算グループ色 */
+.c-mar{background:#0f1a2e;border-color:#2d5bd4;color:#6da0f7} /* 3月決算 青系 */
+.c-aug{background:#2a1015;border-color:#d43a3a;color:#f07070} /* 8月決算 赤系 */
+.c-feb{background:#1a0f2a;border-color:#9a5ad4;color:#c090f0} /* 2月決算 紫系 */
+/* カテゴリグループ色 */
+.g-cam{background:#2a2510;border-color:#d4a43a;color:#f0d060}  /* カメラ ゴールド */
+.g-sma{background:#0f1a2e;border-color:#3a8ad4;color:#70b8f0}  /* スマホ ブルー */
+.g-gam{background:#0f2a1a;border-color:#2d9b5a;color:#60e090}  /* ゲーム グリーン */
+.g-av{background:#1a102a;border-color:#8a5ad4;color:#b090f0}   /* AV パープル */
+.g-kit{background:#2a1a0f;border-color:#d47a3a;color:#f0a060}  /* キッチン オレンジ */
+.g-air{background:#0f2a2a;border-color:#3ab8b8;color:#70e8e8}  /* 空調 シアン */
+.g-cln{background:#152a0f;border-color:#5ab83a;color:#90e870}  /* 掃除 ライム */
+.g-pc{background:#0f1a25;border-color:#3a7ad4;color:#70a8f0}   /* PC ライトブルー */
+.g-bty{background:#2a0f1a;border-color:#d45a8a;color:#f080b0}  /* 美容 ピンク */
+</style>
+</head>
+<body>
+
+<div class="hd">
+  <h1>🏬 訪問ログ</h1>
+  <div class="tab">
+    <button class="active" onclick="showTab('input')">入力</button>
+    <button onclick="showTab('history')">履歴</button>
+  </div>
+</div>
+
+<!-- ===== 入力ビュー ===== -->
+<div id="inputView">
+  <div class="section">
+    <div class="section-title">企業</div>
+    <div class="company-grid" id="companyGrid"></div>
+  </div>
+  <div class="section">
+    <div class="section-title">店舗名</div>
+    <input class="store-input" id="storeInput" type="text" placeholder="例：イオン高槻店">
+    <div class="recent-stores" id="recentStores"></div>
+  </div>
+  <div class="section">
+    <div class="section-title">カテゴリ（複数可）</div>
+    <div class="cat-chips" id="catChips"></div>
+  </div>
+  <div class="section">
+    <div class="section-title">結果</div>
+    <div class="result-row">
+      <button class="result-btn" data-v="爆益" onclick="selectResult(this)">🔥爆益</button>
+      <button class="result-btn" data-v="微益" onclick="selectResult(this)">💰微益</button>
+      <button class="result-btn" data-v="空振り" onclick="selectResult(this)">💨空振り</button>
+      <button class="result-btn" data-v="偵察" onclick="selectResult(this)">👁偵察</button>
+    </div>
+  </div>
+  <div class="section" id="profitSection" style="display:none">
+    <div class="section-title">粗利見込み</div>
+    <div class="detail-row">
+      <span class="yen">¥</span>
+      <input class="profit-input" id="profitInput" type="number" placeholder="0" inputmode="numeric">
+    </div>
+  </div>
+  <div class="section" id="failureSection" style="display:none">
+    <div class="section-title">空振り理由</div>
+    <div class="failure-chips">
+      <button class="failure-chip" onclick="selectFailure(this)">在庫なし</button>
+      <button class="failure-chip" onclick="selectFailure(this)">値段合わず</button>
+      <button class="failure-chip" onclick="selectFailure(this)">状態悪い</button>
+      <button class="failure-chip" onclick="selectFailure(this)">競合先取り</button>
+      <button class="failure-chip" onclick="selectFailure(this)">その他</button>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">メモ（任意）</div>
+    <textarea class="memo-input" id="memoInput" placeholder="商品名、型番、気づきなど"></textarea>
+  </div>
+  <div class="section" style="margin-top:16px;border-top:1px solid #1e2030;padding-top:20px">
+    <div class="section-title">📅 値下げ暦カレンダー</div>
+    <div class="legend-wrap">
+      <div class="legend-title">カテゴリ色</div>
+      <div class="legend-grid" id="catLegend"></div>
+      <div class="legend-title" style="margin-top:10px">企業・決算グループ色</div>
+      <div class="legend-grid" id="compLegend"></div>
+      <div class="legend-score">
+        <span><span class="score-ex" style="background:#d4a43a"></span> 3＝底値/総決算</span>
+        <span><span class="score-ex" style="background:#6b6f85"></span> 2＝狙い目/中間決算</span>
+      </div>
+    </div>
+    <div id="monthCards"></div>
+  </div>
+</div>
+
+<!-- ===== 履歴ビュー ===== -->
+<div id="historyView">
+  <div class="stats-bar" id="statsBar"></div>
+  <div class="cal-nav">
+    <button onclick="calMove(-1)">◀</button>
+    <span class="cal-month" id="calMonth"></span>
+    <button onclick="calMove(1)">▶</button>
+  </div>
+  <div class="cal-grid" id="calGrid"></div>
+  <div class="cal-detail" id="calDetail"></div>
+  <div id="logList"></div>
+</div>
+
+<div class="submit-area" id="submitArea">
+  <button class="submit-btn" id="submitBtn" onclick="submitLog()">記録する</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxzjPVVxGWP3u8nLCTZRhKGZjXgW5KjU3Jccq9HhzsD-kQ2jWLNVSpVwjHwMDPb3c7k/exec';
+const ACCESS_KEY = 'katuragiya';
+
+// ===== 企業 =====
+const COMPANIES = [
+  'イオン','ビックカメラ','コジマ','ヤマダ電機',
+  'エディオン','ジョーシン','ケーズデンキ','ヨドバシカメラ',
+  'ノジマ','ソフマップ','ベスト電器','ゲオ'
+];
+
+// ===== カテゴリ =====
+const CATEGORIES = [
+  {name:'デジカメ/ミラーレス',kei:true,g:'cam'},{name:'カメラレンズ',kei:true,g:'cam'},
+  {name:'ゲーム機本体',kei:true,g:'gam'},{name:'iPhone',kei:true,g:'sma'},
+  {name:'テレビ',kei:false,g:'av'},{name:'ブルーレイ/DVDレコーダー',kei:false,g:'av'},
+  {name:'炊飯器',kei:false,g:'kit'},{name:'電子レンジ/オーブン',kei:false,g:'kit'},
+  {name:'掃除機',kei:false,g:'cln'},{name:'ロボット掃除機',kei:false,g:'cln'},
+  {name:'空気清浄機',kei:false,g:'air'},{name:'ノートPC',kei:false,g:'pc'},
+  {name:'Androidスマホ',kei:false,g:'sma'},{name:'iPad',kei:false,g:'sma'},
+  {name:'タブレット',kei:false,g:'sma'},{name:'美容家電',kei:false,g:'bty'},
+  {name:'プリンター',kei:false,g:'pc'},{name:'加湿器',kei:false,g:'air'},
+  {name:'コーヒーメーカー',kei:false,g:'kit'},{name:'食器洗い乾燥機',kei:false,g:'kit'},
+  {name:'トースター',kei:false,g:'kit'},{name:'ホットプレート',kei:false,g:'kit'},
+  {name:'電気ケトル/ポット',kei:false,g:'kit'},{name:'ガスコンロ',kei:false,g:'kit'}
+];
+
+// ===== カテゴリグループ定義 =====
+const CAT_GROUPS = {
+  cam:{label:'📷 カメラ',css:'g-cam',color:'#d4a43a'},
+  sma:{label:'📱 スマホ',css:'g-sma',color:'#3a8ad4'},
+  gam:{label:'🎮 ゲーム',css:'g-gam',color:'#2d9b5a'},
+  av: {label:'📺 AV',css:'g-av',color:'#8a5ad4'},
+  kit:{label:'🍳 キッチン',css:'g-kit',color:'#d47a3a'},
+  air:{label:'🌬 空調',css:'g-air',color:'#3ab8b8'},
+  cln:{label:'🧹 掃除',css:'g-cln',color:'#5ab83a'},
+  pc: {label:'💻 PC',css:'g-pc',color:'#3a7ad4'},
+  bty:{label:'💄 美容',css:'g-bty',color:'#d45a8a'}
+};
+
+// ===== 企業決算グループ =====
+const COMP_GROUPS = {
+  mar:{label:'3月決算',css:'c-mar',color:'#2d5bd4',
+    members:['ヤマダ電機','ヨドバシカメラ','ケーズデンキ','エディオン','ジョーシン','ノジマ','ゲオ']},
+  aug:{label:'8月決算',css:'c-aug',color:'#d43a3a',
+    members:['ビックカメラ','コジマ','ソフマップ']},
+  feb:{label:'2月決算',css:'c-feb',color:'#9a5ad4',
+    members:['ベスト電器','イオン']}
+};
+
+function compGroup(name){
+  for(const[k,v]of Object.entries(COMP_GROUPS)) if(v.members.includes(name))return v;
+  return{css:'',color:'#6b6f85'};
+}
+function catCss(g){return CAT_GROUPS[g]?.css||'';}
+
+// ===== 月次スコアデータ（Excelから） =====
+// [1月,2月,...,12月]
+const P_SCORES = {
+  'ガスコンロ':        [1,1,2,0,1,2,1,2,3,0,1,2],
+  '炊飯器':            [2,0,1,0,2,3,3,1,1,0,0,2],
+  '電子レンジ/オーブン':[0,0,1,0,2,3,3,1,1,0,2,2],
+  'トースター':        [0,0,1,0,2,2,2,1,1,0,1,2],
+  'ホットプレート':    [1,0,1,2,2,2,1,1,1,0,0,1],
+  'コーヒーメーカー':  [1,0,2,0,1,2,1,1,2,0,1,2],
+  '電気ケトル/ポット': [1,0,2,0,0,1,1,1,2,0,1,2],
+  '食器洗い乾燥機':    [1,0,2,0,0,1,1,2,3,1,1,2],
+  'テレビ':            [2,0,2,0,0,1,2,3,3,0,1,2],
+  'ブルーレイ/DVDレコーダー':[0,2,3,3,0,1,1,0,1,1,1,1],
+  '掃除機':            [0,0,1,0,0,1,0,2,3,2,2,1],
+  'ロボット掃除機':    [1,0,2,0,0,1,2,1,1,0,3,2],
+  '空気清浄機':        [1,0,1,0,1,2,3,3,1,0,1,1],
+  '加湿器':            [0,1,3,3,1,0,0,0,2,2,0,0],
+  'デジカメ/ミラーレス':[2,0,2,0,0,1,1,0,2,0,1,2],
+  'カメラレンズ':      [1,1,2,0,0,1,0,0,2,0,1,2],
+  'ノートPC':          [2,2,2,2,2,0,1,1,2,0,1,2],
+  'プリンター':        [1,1,2,0,0,1,1,2,2,2,1,3],
+  'ゲーム機本体':      [1,0,1,0,0,1,1,0,1,0,2,1],
+  '美容家電':          [1,0,2,0,2,2,1,1,1,0,1,2],
+  'iPhone':            [1,2,2,0,0,1,0,0,2,2,1,2],
+  'Androidスマホ':     [1,2,3,0,1,1,1,0,2,1,1,2],
+  'iPad':              [1,1,2,0,0,1,1,0,1,2,2,2],
+  'タブレット':        [1,1,2,0,0,1,1,0,1,1,2,2]
+};
+const C_SCORES = {
+  'ヤマダ電機':    [0,1,3,0,0,0,0,1,2,0,0,0],
+  'ヨドバシカメラ':[0,1,3,0,0,0,0,1,2,0,0,0],
+  'ケーズデンキ':  [0,1,3,0,0,0,0,1,2,0,0,0],
+  'エディオン':    [0,1,3,0,0,0,0,1,2,0,0,0],
+  'ジョーシン':    [0,1,3,0,0,0,0,1,2,0,0,0],
+  'ノジマ':        [0,1,3,0,0,0,0,1,2,0,0,0],
+  'ゲオ':          [0,1,3,0,0,0,0,1,2,0,0,0],
+  'ビックカメラ':  [1,2,0,0,0,0,1,3,0,0,0,0],
+  'コジマ':        [1,2,0,0,0,0,1,3,0,0,0,0],
+  'ソフマップ':    [1,2,0,0,0,0,1,3,0,0,0,0],
+  'ベスト電器':    [1,3,0,0,0,0,1,2,0,0,0,0],
+  'イオン':        [1,3,0,0,0,0,1,2,0,0,0,0]
+};
+
+const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+// ===== 短縮名 =====
+function shortCat(n){
+  const m={'デジカメ/ミラーレス':'デジカメ','ブルーレイ/DVDレコーダー':'BDレコ','電子レンジ/オーブン':'レンジ','電気ケトル/ポット':'ケトル','食器洗い乾燥機':'食洗機','ロボット掃除機':'ロボ掃除','カメラレンズ':'レンズ','ゲーム機本体':'ゲーム機','Androidスマホ':'Android','美容家電':'美容','コーヒーメーカー':'コーヒー','ホットプレート':'ホットプレ','空気清浄機':'空気清浄','ノートPC':'ノートPC','タブレット':'タブレット','ガスコンロ':'ガスコンロ','プリンター':'プリンタ','加湿器':'加湿器','炊飯器':'炊飯器','トースター':'トースタ','掃除機':'掃除機','テレビ':'テレビ','iPhone':'iPhone','iPad':'iPad'};
+  return m[n]||n;
+}
+function shortComp(n){
+  const m={'ヤマダ電機':'ヤマダ','ヨドバシカメラ':'ヨドバシ','ケーズデンキ':'ケーズ','ビックカメラ':'ビック','ベスト電器':'ベスト','ゲオ（GEO/セカスト）':'ゲオ'};
+  return m[n]||n;
+}
+
+// ===== 状態 =====
+let selectedCompany=null,selectedCategories=new Set(),selectedResult=null,selectedFailure=null;
+
+// ===== 初期化 =====
+function init(){
+  renderCompanies();renderCategories();renderRecentStores();renderLegend();renderCalendar();
+}
+function renderCompanies(){
+  document.getElementById('companyGrid').innerHTML=COMPANIES.map(c=>
+    `<button class="company-btn" onclick="selectCompany(this,'${c}')">${c}</button>`).join('');
+}
+function renderCategories(){
+  document.getElementById('catChips').innerHTML=CATEGORIES.map(c=>
+    `<button class="cat-chip${c.kei?' kei':''}" onclick="toggleCat(this,'${c.name}')">${c.kei?'★ ':''}${c.name}</button>`).join('');
+}
+function renderRecentStores(){
+  const w=document.getElementById('recentStores');
+  const r=JSON.parse(localStorage.getItem('vl_recent_stores')||'[]');
+  w.innerHTML=r.length?r.slice(0,6).map(s=>`<button class="recent-btn" onclick="pickRecent('${s}')">${s}</button>`).join(''):'';
+}
+
+// ===== 選択ハンドラ =====
+function selectCompany(el,name){document.querySelectorAll('.company-btn').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');selectedCompany=name;}
+function toggleCat(el,name){el.classList.toggle('selected');selectedCategories.has(name)?selectedCategories.delete(name):selectedCategories.add(name);}
+function selectResult(el){
+  document.querySelectorAll('.result-btn').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');selectedResult=el.dataset.v;
+  document.getElementById('profitSection').style.display=(selectedResult==='爆益'||selectedResult==='微益')?'':'none';
+  document.getElementById('failureSection').style.display=selectedResult==='空振り'?'':'none';
+}
+function selectFailure(el){document.querySelectorAll('.failure-chip').forEach(b=>b.classList.remove('selected'));el.classList.add('selected');selectedFailure=el.textContent;}
+function pickRecent(name){
+  document.getElementById('storeInput').value=name;
+  const comp=COMPANIES.find(c=>name.startsWith(c)||name.includes(c));
+  if(comp){document.querySelectorAll('.company-btn').forEach(b=>{b.classList.toggle('selected',b.textContent===comp)});selectedCompany=comp;}
+}
+
+// ===== 送信 =====
+async function submitLog(){
+  if(!selectedCompany)return showToast('企業を選択してください',true);
+  if(!selectedResult)return showToast('結果を選択してください',true);
+  const data={key:ACCESS_KEY,action:'addVisitLog',timestamp:new Date().toISOString(),company:selectedCompany,store:document.getElementById('storeInput').value.trim()||selectedCompany,categories:[...selectedCategories].join(','),result:selectedResult,profit:document.getElementById('profitInput').value||'',failure_reason:selectedResult==='空振り'?(selectedFailure||''):'',memo:document.getElementById('memoInput').value.trim()};
+  const btn=document.getElementById('submitBtn');btn.disabled=true;btn.textContent='送信中...';
+  try{
+    const res=await fetch(GAS_URL,{method:'POST',body:JSON.stringify(data)});
+    let json;try{json=await res.json();}catch{json={success:true};}
+    if(json.error)throw new Error(json.error);
+    const sn=data.store;if(sn&&sn!==selectedCompany){let r=JSON.parse(localStorage.getItem('vl_recent_stores')||'[]');r=[sn,...r.filter(s=>s!==sn)].slice(0,10);localStorage.setItem('vl_recent_stores',JSON.stringify(r));renderRecentStores();}
+    let logs=JSON.parse(localStorage.getItem('vl_logs')||'[]');logs.unshift({...data,id:json.id||Date.now()});localStorage.setItem('vl_logs',JSON.stringify(logs.slice(0,200)));
+    showToast('✅ 記録しました');resetForm();
+  }catch(e){
+    let p=JSON.parse(localStorage.getItem('vl_pending')||'[]');p.push(data);localStorage.setItem('vl_pending',JSON.stringify(p));
+    let logs=JSON.parse(localStorage.getItem('vl_logs')||'[]');logs.unshift({...data,id:'pending_'+Date.now()});localStorage.setItem('vl_logs',JSON.stringify(logs.slice(0,200)));
+    showToast('📱 オフライン保存（後で同期）');resetForm();
+  }
+  btn.disabled=false;btn.textContent='記録する';
+}
+function resetForm(){selectedCompany=null;selectedCategories.clear();selectedResult=null;selectedFailure=null;document.querySelectorAll('.selected').forEach(b=>b.classList.remove('selected'));document.getElementById('storeInput').value='';document.getElementById('profitInput').value='';document.getElementById('memoInput').value='';document.getElementById('profitSection').style.display='none';document.getElementById('failureSection').style.display='none';}
+
+// ===== タブ =====
+function showTab(tab){
+  document.querySelectorAll('.tab button').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');
+  document.getElementById('inputView').style.display=tab==='input'?'':'none';
+  document.getElementById('historyView').style.display=tab==='history'?'':'none';
+  document.getElementById('submitArea').style.display=tab==='input'?'':'none';
+  if(tab==='history')renderHistory();
+}
+
+// ===== 履歴 =====
+let calYear,calMonth;
+function initCal(){const n=new Date();calYear=n.getFullYear();calMonth=n.getMonth();}
+function calMove(d){calMonth+=d;if(calMonth>11){calMonth=0;calYear++;}if(calMonth<0){calMonth=11;calYear--;}renderHistory();}
+
+function renderHistory(){
+  const logs=JSON.parse(localStorage.getItem('vl_logs')||'[]');const list=document.getElementById('logList'),stats=document.getElementById('statsBar');
+  if(!calYear)initCal();
+
+  // 統計
+  const total=logs.length,hits=logs.filter(l=>l.result==='爆益'||l.result==='微益').length,tp=logs.reduce((s,l)=>s+(parseInt(l.profit)||0),0);
+  stats.innerHTML=`<div class="stat-box"><div class="stat-num">${total}</div><div class="stat-label">総訪問</div></div><div class="stat-box"><div class="stat-num">${total?Math.round(hits/total*100):0}%</div><div class="stat-label">ヒット率</div></div><div class="stat-box"><div class="stat-num">¥${tp.toLocaleString()}</div><div class="stat-label">累計粗利</div></div>`;
+
+  // カレンダー描画
+  document.getElementById('calMonth').textContent=`${calYear}年${calMonth+1}月`;
+  const grid=document.getElementById('calGrid');
+  const dow=['日','月','火','水','木','金','土'];
+  let html=dow.map((d,i)=>`<div class="cal-dow${i===0?' sun':''}${i===6?' sat':''}">${d}</div>`).join('');
+
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  const today=new Date();const todayStr=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+
+  // 日付→ログ マップ
+  const logMap={};
+  logs.forEach(l=>{
+    const d=new Date(l.timestamp);
+    const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if(!logMap[key])logMap[key]=[];
+    logMap[key].push(l);
+  });
+
+  // 空セル
+  for(let i=0;i<firstDay;i++) html+='<div class="cal-cell empty"></div>';
+
+  // 日付セル
+  for(let d=1;d<=daysInMonth;d++){
+    const dateKey=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const dayLogs=logMap[dateKey]||[];
+    const isToday=dateKey===todayStr;
+    const cls=['cal-cell'];
+    if(isToday)cls.push('today');
+    if(dayLogs.length)cls.push('has-log');
+
+    let tags='';
+    if(dayLogs.length){
+      tags='<div class="cal-dots">'+dayLogs.slice(0,3).map(l=>{
+        const store=shortComp(l.store||l.company).slice(0,3);
+        return `<span class="cal-tag r-${l.result}">${store}</span>`;
+      }).join('')+(dayLogs.length>3?`<span class="cal-tag r-偵察">+${dayLogs.length-3}</span>`:'')+'</div>';
+    }
+
+    html+=`<div class="${cls.join(' ')}" onclick="showDayDetail('${dateKey}')"><div class="cal-day">${d}</div>${tags}</div>`;
+  }
+  grid.innerHTML=html;
+
+  // 詳細クリア
+  document.getElementById('calDetail').innerHTML='';
+
+  // 当月ログをリスト表示
+  const monthLogs=logs.filter(l=>{const d=new Date(l.timestamp);return d.getFullYear()===calYear&&d.getMonth()===calMonth;});
+  if(!monthLogs.length){list.innerHTML='<div class="log-empty">この月のログはありません</div>';return;}
+  list.innerHTML=monthLogs.map(l=>{const d=new Date(l.timestamp);return`<div class="log-card"><div class="log-top"><span class="log-date">${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}</span><span class="log-result ${l.result}">${l.result}</span></div><div class="log-store">${l.store||l.company}</div>${l.categories?`<div class="log-cat">${l.categories}</div>`:''}${l.profit?`<div class="log-profit">¥${parseInt(l.profit).toLocaleString()}</div>`:''}${l.failure_reason?`<div class="log-memo">理由: ${l.failure_reason}</div>`:''}${l.memo?`<div class="log-memo">${l.memo}</div>`:''}</div>`}).join('');
+}
+
+function showDayDetail(dateKey){
+  const logs=JSON.parse(localStorage.getItem('vl_logs')||'[]');
+  const dayLogs=logs.filter(l=>{const d=new Date(l.timestamp);return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`===dateKey;});
+  const wrap=document.getElementById('calDetail');
+
+  // 選択ハイライト
+  document.querySelectorAll('.cal-cell.selected').forEach(c=>c.classList.remove('selected'));
+  const cells=document.querySelectorAll('.cal-cell');
+  const dayNum=parseInt(dateKey.split('-')[2]);
+  cells.forEach(c=>{const dn=c.querySelector('.cal-day');if(dn&&parseInt(dn.textContent)===dayNum&&!c.classList.contains('empty'))c.classList.add('selected');});
+
+  if(!dayLogs.length){wrap.innerHTML=`<div class="cal-detail-title">${dateKey.replace(/-/g,'/')} — 記録なし</div>`;return;}
+  wrap.innerHTML=`<div class="cal-detail-title">${dateKey.replace(/-/g,'/')} — ${dayLogs.length}件</div>`+dayLogs.map(l=>`<div class="log-card"><div class="log-top"><span class="log-date">${(l.store||l.company)}</span><span class="log-result ${l.result}">${l.result}</span></div>${l.categories?`<div class="log-cat">${l.categories}</div>`:''}${l.profit?`<div class="log-profit">¥${parseInt(l.profit).toLocaleString()}</div>`:''}${l.failure_reason?`<div class="log-memo">理由: ${l.failure_reason}</div>`:''}${l.memo?`<div class="log-memo">${l.memo}</div>`:''}</div>`).join('');
+}
+
+// ===== 凡例 =====
+function renderLegend(){
+  document.getElementById('catLegend').innerHTML=Object.values(CAT_GROUPS).map(g=>
+    `<div class="legend-item"><div class="legend-dot" style="background:${g.color}"></div>${g.label}</div>`).join('');
+  document.getElementById('compLegend').innerHTML=Object.values(COMP_GROUPS).map(g=>
+    `<div class="legend-item"><div class="legend-dot" style="background:${g.color}"></div>${g.label}（${g.members.map(shortComp).join('・')}）</div>`).join('');
+}
+
+// ===== カレンダー =====
+function renderCalendar(){
+  const now=new Date(),curMonth=now.getMonth();
+  const wrap=document.getElementById('monthCards');
+  let html='';
+
+  for(let m=0;m<12;m++){
+    const isCur=m===curMonth;
+    // 商品スコア2以上
+    const hotProducts=[];
+    for(const[name,scores]of Object.entries(P_SCORES)){
+      if(scores[m]>=2){
+        const cat=CATEGORIES.find(c=>c.name===name);
+        hotProducts.push({name,short:shortCat(name),score:scores[m],g:cat?cat.g:'kit',kei:cat?cat.kei:false});
+      }
+    }
+    hotProducts.sort((a,b)=>b.score-a.score||(b.kei?1:0)-(a.kei?1:0));
+
+    // 企業スコア2以上
+    const hotComps=[];
+    for(const[name,scores]of Object.entries(C_SCORES)){
+      if(scores[m]>=2) hotComps.push({name,short:shortComp(name),score:scores[m],grp:compGroup(name)});
+    }
+    hotComps.sort((a,b)=>b.score-a.score);
+
+    const totalHot=hotProducts.length+hotComps.length;
+
+    html+=`<div class="month-card${isCur?' current':''}" id="month-${m}">
+      <div class="month-header" onclick="toggleMonth(${m})">
+        <span class="month-name">${MONTH_NAMES[m]}${isCur?'<span class="m-num">← 今月</span>':''}</span>
+        ${totalHot?`<span class="month-badge">${totalHot}件</span>`:''}
+      </div>
+      <div class="month-body${isCur?' open':''}">
+        ${hotComps.length?`<div class="month-section"><div class="month-section-title">🏢 企業セール</div><div class="month-chips">${hotComps.map(c=>`<span class="m-chip s${c.score} ${c.grp.css}">${c.short}${c.score===3?' 🔥':''}</span>`).join('')}</div></div>`:''}
+        ${hotProducts.length?`<div class="month-section"><div class="month-section-title">📦 狙い目カテゴリ</div><div class="month-chips">${hotProducts.map(p=>`<span class="m-chip s${p.score} ${catCss(p.g)}">${p.kei?'★':''}${p.short}${p.score===3?' 🔥':''}</span>`).join('')}</div></div>`:''}
+        ${!totalHot?'<div style="color:#4a4e64;font-size:13px;padding:8px 0">通常月 — 特別な狙い目なし</div>':''}
+      </div>
+    </div>`;
+  }
+  wrap.innerHTML=html;
+}
+function toggleMonth(m){
+  const body=document.querySelector(`#month-${m} .month-body`);
+  body.classList.toggle('open');
+}
+
+// ===== トースト =====
+function showToast(msg,isError){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(isError?' error':'');setTimeout(()=>t.className='toast',2500);}
+
+// ===== 未送信同期 =====
+async function syncPending(){
+  let pending=JSON.parse(localStorage.getItem('vl_pending')||'[]');if(!pending.length)return;
+  const synced=[];
+  for(const data of pending){try{const res=await fetch(GAS_URL,{method:'POST',body:JSON.stringify(data)});let json;try{json=await res.json();}catch{json={success:true};}if(!json.error)synced.push(data);}catch(e){break;}}
+  if(synced.length){pending=pending.filter(d=>!synced.includes(d));localStorage.setItem('vl_pending',JSON.stringify(pending));showToast(`📡 ${synced.length}件 同期完了`);}
+}
+
+init();setTimeout(syncPending,3000);
+</script>
+</body>
+</html>
