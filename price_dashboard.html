@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>価格トレンドボード | かつらぎ屋</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#11162A; --bg-panel:#1A2140; --bg-panel-2:#212a4d; --border:#2C3560;
+  --amber:#FFB627; --amber-dim:#8a6c2c; --coral:#FF6B6B; --green:#4ADE80;
+  --text:#F2EFE4; --text-muted:#8C95BD; --text-faint:#5C6491;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",sans-serif;min-height:100vh;}
+.mono{font-family:"JetBrains Mono",monospace;}
+.disp{font-family:"Barlow Condensed",sans-serif;}
+
+header{padding:20px clamp(16px,4vw,40px) 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.brand{display:flex;align-items:baseline;gap:12px;}
+.brand .tag{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:13px;letter-spacing:.2em;color:var(--bg);background:var(--amber);padding:3px 9px;border-radius:3px;}
+h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:clamp(22px,3vw,30px);margin:0;}
+.meta{font-size:12px;color:var(--text-muted);}
+
+main{padding:20px clamp(12px,3vw,32px);}
+
+/* tabs */
+.tab-bar{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);}
+.tab-btn{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;background:transparent;color:var(--text-faint);border:none;border-bottom:2px solid transparent;padding:9px 8px;margin-bottom:-1px;cursor:pointer;letter-spacing:.03em;transition:color .15s,border-color .15s;}
+.tab-btn:hover{color:var(--text-muted);}
+.tab-btn.active{color:var(--amber);border-bottom-color:var(--amber);}
+.view{display:none;} .view.active{display:block;}
+
+/* panels */
+.panel{background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin-bottom:16px;}
+.panel h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;margin:0 0 14px;letter-spacing:.04em;color:var(--text);}
+.panel h2 .n{font-size:12px;color:var(--text-faint);font-family:"JetBrains Mono",monospace;margin-left:8px;}
+.panels{display:flex;gap:14px;flex-wrap:wrap;}
+.panels .panel{flex:1 1 320px;}
+
+/* stat cards */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:16px;}
+.stat-card{background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.stat-card .label{font-size:11px;color:var(--text-faint);letter-spacing:.05em;margin-bottom:4px;}
+.stat-card .value{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:28px;color:var(--amber);}
+.stat-card .value .unit{font-size:14px;color:var(--text-muted);margin-left:3px;}
+
+/* category legend */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted);cursor:pointer;padding:2px 4px;border-radius:4px;}
+.legend-item:hover{background:var(--border);}
+.legend-dot{width:12px;height:3px;border-radius:2px;flex:0 0 auto;}
+.legend-item.muted{opacity:.35;}
+
+/* chart container */
+.chart-wrap{width:100%;overflow-x:auto;}
+
+/* rank rows */
+.rank-list{display:flex;flex-direction:column;gap:0;}
+.rank-row{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.rank-row:last-child{border-bottom:none;}
+.rk{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-faint);}
+.rk-name{font-size:13px;color:var(--text);}
+.rk-val{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--amber);text-align:right;white-space:nowrap;}
+.rk-sub{font-size:10px;color:var(--text-faint);margin-top:1px;}
+.rk-bar-wrap{grid-column:1/-1;height:4px;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;margin-top:-4px;}
+.rk-bar{height:100%;border-radius:2px;}
+
+/* mover cards */
+.mover-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.mover-list{display:flex;flex-direction:column;gap:8px;}
+.mover-item{background:var(--bg-panel-2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.mover-cat{font-size:13px;color:var(--text);}
+.mover-pct{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:20px;}
+.mover-pct.up{color:var(--green);}
+.mover-pct.dn{color:var(--coral);}
+.mover-detail{font-size:10px;color:var(--text-faint);margin-top:2px;}
+
+/* store table */
+.store-table{width:100%;border-collapse:collapse;font-size:12px;}
+.store-table th{text-align:left;color:var(--text-faint);font-weight:500;padding:5px 8px;border-bottom:1px solid var(--border);letter-spacing:.04em;}
+.store-table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,0.03);}
+.store-table tr:last-child td{border-bottom:none;}
+.store-table tr:hover td{background:rgba(255,182,39,0.04);}
+.bar-ratio{display:inline-block;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--amber-dim),var(--amber));vertical-align:middle;margin-right:6px;}
+
+/* spread badge */
+.spread-badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-family:"JetBrains Mono",monospace;font-weight:600;}
+.spread-badge.high{background:rgba(74,222,128,0.15);color:var(--green);}
+.spread-badge.mid{background:rgba(255,182,39,0.15);color:var(--amber);}
+.spread-badge.low{background:rgba(92,100,145,0.2);color:var(--text-faint);}
+
+/* cat selector */
+.cat-select{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.cat-btn{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);background:none;color:var(--text-muted);cursor:pointer;}
+.cat-btn:hover,.cat-btn.active{background:var(--amber);color:var(--bg);border-color:var(--amber);font-weight:700;}
+
+.empty-note{color:var(--text-faint);font-size:13px;padding:24px;text-align:center;}
+</style>
+</head>
+<body>
+<div id="keyScreen" style="display:none;position:fixed;inset:0;z-index:9999;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;letter-spacing:.2em;color:var(--bg);background:var(--amber);padding:3px 10px;border-radius:3px;">PRICE TREND</div>
+  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;">アクセスキーを入力</div>
+  <input id="keyInput" type="password" placeholder="access key" style="padding:12px 18px;border-radius:10px;border:1px solid var(--border);background:var(--bg-panel);color:var(--text);font-size:16px;width:260px;outline:none;text-align:center;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;">
+  <button id="keySubmit" style="padding:11px 32px;background:var(--amber);color:var(--bg);border:none;border-radius:8px;font-weight:700;font-size:15px;cursor:pointer;">入力</button>
+</div>
+
+<header>
+  <div class="brand">
+    <div class="tag">PRICE TREND</div>
+    <h1>価格トレンドボード</h1>
+  </div>
+  <div class="meta mono">
+    最終更新 <span id="updated-at">--</span>　スナップショット <span id="snap-count">-</span> 件
+  </div>
+</header>
+
+<main>
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="trend">カテゴリー推移</button>
+    <button class="tab-btn" data-tab="movers">急上昇アイテム</button>
+    <button class="tab-btn" data-tab="watch">★ウォッチリスト</button>
+    <button class="tab-btn" data-tab="spread">スプレッド分析</button>
+    <button class="tab-btn" data-tab="store">店舗別強み</button>
+    <button class="tab-btn" data-tab="mover">カテゴリー急変</button>
+    <button class="tab-btn" data-tab="opmap">仕入れ機会マップ</button>
+  </div>
+
+  <!-- ===== カテゴリー推移 ===== -->
+  <section id="view-trend" class="view active">
+    <div class="stat-row" id="trend-stats"></div>
+    <div class="panel">
+      <h2>カテゴリー別 平均買取価格トレンド <span class="n" id="trend-metric-label">全スナップショット</span></h2>
+      <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+        <button class="cat-btn active" data-metric="avg_buyback">買取価格</button>
+        <button class="cat-btn" data-metric="avg_spread">スプレッド</button>
+        <button class="cat-btn" data-metric="item_count">取扱件数</button>
+      </div>
+      <div class="chart-wrap" id="trend-chart"></div>
+      <div class="legend" id="trend-legend"></div>
+    </div>
+  </section>
+
+  <!-- ===== スプレッド分析 ===== -->
+  <section id="view-spread" class="view">
+    <div class="panel">
+      <h2>カテゴリー別 利益スプレッドランキング <span class="n">最新スナップショット時点</span></h2>
+      <div class="rank-list" id="spread-rank"></div>
+    </div>
+    <div class="panel">
+      <h2>スプレッド推移（上位カテゴリー） <span class="n">時系列</span></h2>
+      <div class="chart-wrap" id="spread-chart"></div>
+      <div class="legend" id="spread-legend"></div>
+    </div>
+  </section>
+
+  <!-- ===== 店舗別強み ===== -->
+  <section id="view-store" class="view">
+    <div class="cat-select" id="store-cat-select"></div>
+    <div class="panel">
+      <h2>店舗別 平均買取価格 <span class="n" id="store-cat-label"></span></h2>
+      <table class="store-table">
+        <thead><tr><th>店舗</th><th>平均買取価格</th><th>取扱件数</th><th>最高比</th></tr></thead>
+        <tbody id="store-table-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== 急上昇アイテム ===== -->
+  <section id="view-movers" class="view">
+    <div class="panel">
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;">
+        <span style="font-size:13px;color:var(--text-muted);">期間:</span>
+        <button class="cat-btn active" data-mover-period="week">1週間前比較</button>
+        <button class="cat-btn" data-mover-period="month">1ヶ月前比較</button>
+        <button class="cat-btn" data-mover-period="three_months">3ヶ月前比較</button>
+        <span style="font-size:13px;color:var(--text-muted);margin-left:16px;">方向:</span>
+        <button class="cat-btn active" data-mover-dir="up">📈 上昇</button>
+        <button class="cat-btn" data-mover-dir="down">📉 下降</button>
+        <input id="mover-search" type="text" placeholder="品番・JAN検索..." style="margin-left:auto;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-panel-2);color:var(--text);font-size:12px;width:200px;">
+      </div>
+      <h2 id="movers-title">急上昇アイテムTOP50 <span class="n" id="movers-compared">--</span></h2>
+      <div class="table-scroll">
+        <table class="store-table" id="movers-table">
+          <thead><tr>
+            <th>#</th><th>品番</th><th>カテゴリー</th>
+            <th style="text-align:right;">前回価格</th>
+            <th style="text-align:right;">現在価格</th>
+            <th style="text-align:right;">変動額</th>
+            <th style="text-align:center;">トレンド</th>
+            <th>★</th>
+          </tr></thead>
+          <tbody id="movers-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ウォッチリスト ===== -->
+  <section id="view-watch" class="view">
+    <div class="panel">
+      <h2>★ウォッチリスト登録</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">
+        <div style="flex:1 1 160px;">
+          <div style="font-size:10px;color:var(--text-faint);margin-bottom:3px;">JANコード</div>
+          <input id="watch-jan-input" type="text" placeholder="4549995622720" style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-panel-2);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;">
+        </div>
+        <div style="flex:1 1 200px;">
+          <div style="font-size:10px;color:var(--text-faint);margin-bottom:3px;">商品名（任意）</div>
+          <input id="watch-name-input" type="text" placeholder="Apple Watch Series 11..." style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-panel-2);color:var(--text);font-size:13px;">
+        </div>
+        <div style="flex:0 0 120px;">
+          <div style="font-size:10px;color:var(--text-faint);margin-bottom:3px;">原価（任意）</div>
+          <input id="watch-target-input" type="number" placeholder="50000" style="width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-panel-2);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;">
+        </div>
+        <button id="watch-add-btn" style="padding:8px 20px;background:var(--amber);color:var(--bg);border:none;border-radius:6px;font-weight:700;font-size:14px;cursor:pointer;flex:0 0 auto;">追加</button>
+      </div>
+      <div id="watch-add-status" style="font-size:11px;color:var(--text-faint);margin-top:6px;min-height:16px;"></div>
+    </div>
+    <div id="watch-list"></div>
+  </section>
+
+  <!-- ===== 仕入れ機会マップ ===== -->
+  <section id="view-opmap" class="view">
+    <div id="opmap-top3" class="stat-row"></div>
+    <div class="panel">
+      <h2>仕入れ機会マップ <span class="n" id="opmap-month-label"></span></h2>
+      <p style="font-size:12px;color:var(--text-faint);margin:0 0 14px;">
+        値下げカレンダー（季節・決算）× 実績スプレッド（CSV30000）の合成スコア。
+        濃いほど「小売が安くなる × 買取スプレッドが良い」タイミング。
+      </p>
+      <div style="overflow-x:auto;">
+        <table id="opmap-table" style="border-collapse:collapse;min-width:600px;width:100%;font-size:12px;"></table>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:11px;color:var(--text-faint);">
+        <span>■ <span style="color:var(--green)">緑が濃い</span> = 仕入れ好機（値下げ期 × スプレッド良好）</span>
+        <span>■ <span style="color:var(--amber)">黄</span> = 値下げ期だがスプレッドデータなし</span>
+        <span>■ <span style="color:var(--text-faint)">暗め</span> = 通常期</span>
+        <span>★ = ケイさん主力品目</span>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>スコア根拠 <span class="n">値下げカレンダー詳細</span></h2>
+      <table class="store-table" id="opmap-legend-table">
+        <thead><tr><th>カテゴリー</th><th>最強月（◎）</th><th>狙い目月（○）</th><th>理由</th></tr></thead>
+        <tbody id="opmap-legend-body"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+const GAS_URL = "https://script.google.com/macros/s/AKfycbzAKuTV0RB6Kl7dVD1vQMF2N8LKBLQ51UTSoIk3gnA9nMFJZcsvIZy3XxC_uHPQMLt2/exec";
+const ACCESS_KEY_STORAGE = "price_trend_key";
+const ACCESS_KEY = "katuragiya";
+
+// ===== キー認証画面 =====
+function showKeyScreen(){
+  document.getElementById("keyScreen").style.display = "flex";
+  document.getElementById("keyInput").focus();
+}
+function hideKeyScreen(){
+  document.getElementById("keyScreen").style.display = "none";
+}
+document.getElementById("keySubmit").addEventListener("click", ()=>{
+  const key = document.getElementById("keyInput").value.trim();
+  if(!key) return;
+  localStorage.setItem(ACCESS_KEY_STORAGE, key);
+  hideKeyScreen();
+  load();
+});
+document.getElementById("keyInput").addEventListener("keydown", e=>{
+  if(e.key==="Enter") document.getElementById("keySubmit").click();
+});
+const CAT_COLORS = [
+  "#FFB627","#60A5FA","#34D399","#F87171",
+  "#A78BFA","#FB923C","#38BDF8","#4ADE80",
+  "#F472B6","#FBBF24","#818CF8","#6EE7B7"
+];
+
+let gData = null;
+let currentTab = "trend";
+let currentMetric = "avg_buyback";
+let currentStoreCat = null;
+let hiddenCats = new Set();
+
+// ===== タブ切り替え =====
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentTab = btn.dataset.tab;
+    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+    document.getElementById(`view-${currentTab}`).classList.add("active");
+    renderActiveTab();
+  });
+});
+
+function renderActiveTab(){
+  if(!gData) return;
+  if(currentTab==="trend") renderTrend();
+  else if(currentTab==="movers") renderMovers();
+  else if(currentTab==="watch") renderWatch();
+  else if(currentTab==="spread") renderSpread();
+  else if(currentTab==="store") renderStore();
+  else if(currentTab==="mover") renderMover();
+  else if(currentTab==="opmap") renderOpmap();
+}
+
+// ===== SVG折れ線グラフ共通 =====
+function buildLineChart(containerId, snapshots, seriesMap, colorMap, visibleSet){
+  const el = document.getElementById(containerId);
+  const W = Math.max(el.clientWidth||700, snapshots.length*8+80);
+  const H = 240;
+  const PAD = {top:16,right:16,bottom:36,left:56};
+  const iW = W-PAD.left-PAD.right;
+  const iH = H-PAD.top-PAD.bottom;
+
+  // 表示対象の全値からY範囲を決定
+  let vals = [];
+  for(const [name, arr] of Object.entries(seriesMap)){
+    if(visibleSet && !visibleSet.has(name)) continue;
+    arr.forEach(v=>{ if(v!=null) vals.push(v); });
+  }
+  if(vals.length===0){ el.innerHTML='<div class="empty-note">データなし</div>'; return; }
+  const minV = Math.min(...vals)*0.95;
+  const maxV = Math.max(...vals)*1.05;
+  const range = maxV - minV || 1;
+
+  const xS = i => PAD.left + (snapshots.length<=1 ? iW/2 : i/(snapshots.length-1)*iW);
+  const yS = v => PAD.top + iH - (v-minV)/range*iH;
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:${snapshots.length*8+80}px;height:${H}px;">`;
+
+  // グリッド線
+  const ticks = 4;
+  for(let i=0;i<=ticks;i++){
+    const y = PAD.top + i/ticks*iH;
+    const v = Math.round(maxV - i/ticks*range);
+    const vStr = v>=10000 ? Math.round(v/1000)+"K" : v.toLocaleString();
+    svg+=`<line x1="${PAD.left}" y1="${y.toFixed(1)}" x2="${W-PAD.right}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>`;
+    svg+=`<text x="${PAD.left-6}" y="${(y+4).toFixed(1)}" text-anchor="end" fill="rgba(255,255,255,0.3)" font-size="10">${vStr}</text>`;
+  }
+
+  // X軸ラベル（間引き）
+  const step = Math.max(1, Math.ceil(snapshots.length/14));
+  snapshots.forEach((s,i)=>{
+    if(i%step!==0) return;
+    const x = xS(i);
+    const lbl = s.slice(2,7).replace("-","/"); // "YY/MM"
+    svg+=`<text x="${x.toFixed(1)}" y="${H-6}" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="9">${lbl}</text>`;
+  });
+
+  // 折れ線
+  let ci = 0;
+  for(const [name, arr] of Object.entries(seriesMap)){
+    const color = colorMap[name] || CAT_COLORS[ci%CAT_COLORS.length];
+    ci++;
+    if(visibleSet && !visibleSet.has(name)) continue;
+
+    // 連続した非nullセグメントに分割
+    let seg = [];
+    const flushSeg = ()=>{
+      if(seg.length<2) { seg=[]; return; }
+      const pts = seg.map(([i,v])=>`${xS(i).toFixed(1)},${yS(v).toFixed(1)}`).join(" ");
+      svg+=`<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" opacity="0.9"/>`;
+      seg=[];
+    };
+    arr.forEach((v,i)=>{
+      if(v!=null){ seg.push([i,v]); }
+      else { flushSeg(); }
+    });
+    flushSeg();
+
+    // 最新点に丸
+    for(let i=arr.length-1;i>=0;i--){
+      if(arr[i]!=null){
+        svg+=`<circle cx="${xS(i).toFixed(1)}" cy="${yS(arr[i]).toFixed(1)}" r="4" fill="${color}" stroke="var(--bg)" stroke-width="1.5"/>`;
+        break;
+      }
+    }
+  }
+
+  svg+="</svg>";
+  el.innerHTML = svg;
+}
+
+function buildLegend(containerId, categories, colorMap, onToggle){
+  const el = document.getElementById(containerId);
+  el.innerHTML = categories.map((cat,i)=>{
+    const color = colorMap[cat] || CAT_COLORS[i%CAT_COLORS.length];
+    const muted = hiddenCats.has(cat) ? "muted" : "";
+    return `<div class="legend-item ${muted}" data-cat="${cat}">
+      <div class="legend-dot" style="background:${color}"></div>
+      <span>${cat}</span>
+    </div>`;
+  }).join("");
+  el.querySelectorAll(".legend-item").forEach(item=>{
+    item.addEventListener("click",()=>{
+      const cat = item.dataset.cat;
+      if(hiddenCats.has(cat)) hiddenCats.delete(cat);
+      else hiddenCats.add(cat);
+      if(onToggle) onToggle();
+    });
+  });
+}
+
+// ===== カテゴリー推移 =====
+function renderTrend(){
+  const d = gData;
+  if(!d) return;
+  const cats = d.top_categories || [];
+  if(cats.length === 0){
+    document.getElementById("trend-stats").innerHTML = '<div class="stat-card"><div class="label">データ待ち</div><div class="value">-</div></div>';
+    document.getElementById("trend-chart").innerHTML = '<div class="empty-note">カテゴリーデータがありません</div>';
+    return;
+  }
+  const colorMap = {};
+  cats.forEach((c,i)=>colorMap[c]=CAT_COLORS[i%CAT_COLORS.length]);
+
+  // 統計カード
+  const snaps = d.snapshots || [];
+  const last = snaps.length > 0 ? snaps[snaps.length-1] : "-";
+  let totalItems=0;
+  const trends = d.category_trends || {};
+  for(const cat of cats){
+    const tr = trends[cat];
+    if(tr && tr.item_count){
+      const idx = snaps.length-1;
+      totalItems += (idx >= 0 ? tr.item_count[idx] : 0)||0;
+    }
+  }
+  document.getElementById("trend-stats").innerHTML = `
+    <div class="stat-card"><div class="label">カテゴリー数</div><div class="value">${cats.length}<span class="unit">種</span></div></div>
+    <div class="stat-card"><div class="label">スナップショット数</div><div class="value">${d.snapshot_count||0}<span class="unit">件</span></div></div>
+    <div class="stat-card"><div class="label">最終更新</div><div class="value" style="font-size:16px">${last}</div></div>
+  `;
+
+  const seriesMap = {};
+  for(const cat of cats){
+    if(trends[cat]) seriesMap[cat] = trends[cat][currentMetric] || [];
+  }
+
+  const visible = new Set(cats.filter(c=>!hiddenCats.has(c)));
+  buildLineChart("trend-chart", snaps, seriesMap, colorMap, visible);
+  buildLegend("trend-legend", cats, colorMap, ()=>{
+    const vis = new Set(cats.filter(c=>!hiddenCats.has(c)));
+    buildLineChart("trend-chart", snaps, seriesMap, colorMap, vis);
+    buildLegend("trend-legend", cats, colorMap, null);
+    document.querySelectorAll(".legend-item").forEach(item=>{
+      item.classList.toggle("muted", hiddenCats.has(item.dataset.cat));
+    });
+  });
+
+  const metricLabels = {avg_buyback:"買取価格（円）", avg_spread:"スプレッド（円）", item_count:"取扱件数（件）"};
+  document.getElementById("trend-metric-label").textContent = metricLabels[currentMetric]||"";
+}
+
+document.querySelectorAll("[data-metric]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll("[data-metric]").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentMetric = btn.dataset.metric;
+    renderTrend();
+  });
+});
+
+// ===== スプレッド分析 =====
+function renderSpread(){
+  const d = gData;
+  if(!d) return;
+
+  // ランキング
+  const el = document.getElementById("spread-rank");
+  if(!d.spread_ranking || d.spread_ranking.length===0){
+    el.innerHTML='<div class="empty-note">データなし</div>';
+  } else {
+    const maxSpread = Math.max(...d.spread_ranking.map(r=>r.avg_spread));
+    el.innerHTML = d.spread_ranking.map((r,i)=>{
+      const pct = Math.max(6, Math.round(r.avg_spread/maxSpread*100));
+      const level = r.avg_spread>5000?"high":r.avg_spread>1000?"mid":"low";
+      const label = r.avg_spread>5000?"高利益":"中利益";
+      return `<div class="rank-row">
+        <div class="rk">${String(i+1).padStart(2,"0")}</div>
+        <div class="rk-name">${r.category}
+          <span class="spread-badge ${level}">${label}</span>
+          <div class="rk-sub">Amazon平均 ¥${(r.avg_amazon||0).toLocaleString()} → 買取平均 ¥${(r.avg_buyback||0).toLocaleString()}</div>
+        </div>
+        <div class="rk-val">¥${r.avg_spread.toLocaleString()}</div>
+        <div class="rk-bar-wrap"><div class="rk-bar" style="width:${pct}%;background:linear-gradient(90deg,#3b5c2a,var(--green))"></div></div>
+      </div>`;
+    }).join("");
+  }
+
+  // スプレッド推移チャート（上位カテゴリー）
+  const spreadCats = (d.spread_ranking||[]).map(r=>r.category).slice(0,8);
+  const colorMap = {};
+  spreadCats.forEach((c,i)=>colorMap[c]=CAT_COLORS[i%CAT_COLORS.length]);
+  const seriesMap = {};
+  const trends = d.category_trends || {};
+  for(const cat of spreadCats){
+    if(trends[cat]) seriesMap[cat] = trends[cat].avg_spread || [];
+  }
+  const visible = new Set(spreadCats.filter(c=>!hiddenCats.has(c)));
+  buildLineChart("spread-chart", d.snapshots||[], seriesMap, colorMap, visible);
+  buildLegend("spread-legend", spreadCats, colorMap, ()=>{
+    const vis = new Set(spreadCats.filter(c=>!hiddenCats.has(c)));
+    buildLineChart("spread-chart", d.snapshots||[], seriesMap, colorMap, vis);
+  });
+}
+
+// ===== 店舗別強み =====
+function renderStore(){
+  const d = gData;
+  if(!d) return;
+  const cats = Object.keys(d.store_best||{});
+  if(cats.length===0){ return; }
+  if(!currentStoreCat || !cats.includes(currentStoreCat)) currentStoreCat = cats[0];
+
+  const sel = document.getElementById("store-cat-select");
+  sel.innerHTML = cats.map(cat=>`
+    <button class="cat-btn ${cat===currentStoreCat?"active":""}" data-cat="${cat}">${cat}</button>
+  `).join("");
+  sel.querySelectorAll(".cat-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      currentStoreCat = btn.dataset.cat;
+      renderStore();
+    });
+  });
+
+  document.getElementById("store-cat-label").textContent = currentStoreCat;
+  const stores = d.store_best[currentStoreCat]||[];
+  const tbody = document.getElementById("store-table-body");
+  if(stores.length===0){
+    tbody.innerHTML=`<tr><td colspan="4" style="text-align:center;color:var(--text-faint);padding:20px;">データなし</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = stores.map((s,i)=>`
+    <tr>
+      <td style="font-weight:${i===0?700:400};color:${i===0?"var(--amber)":"var(--text)"}">
+        ${i===0?"👑 ":""}${s.store}
+      </td>
+      <td class="mono" style="color:var(--amber)">¥${s.avg_price.toLocaleString()}</td>
+      <td class="mono" style="color:var(--text-muted)">${s.count.toLocaleString()}件</td>
+      <td>
+        <span class="bar-ratio" style="width:${s.ratio}px;max-width:80px;"></span>
+        <span class="mono" style="font-size:11px;color:var(--text-faint)">${s.ratio}%</span>
+      </td>
+    </tr>
+  `).join("");
+}
+
+let currentMoverPeriod = "week";
+let currentMoverDir = "up";
+let watchJans = new Set();
+
+function escapeHtml(str){
+  return String(str).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+} // ★追加用のローカルキャッシュ
+
+// ===== 急上昇アイテム =====
+
+// トレンド方向を計算（複数期間の変動を確認）
+function getTrend(jan, d){
+  if(!d.item_movers || !d.item_movers.comparison) return {arrows:"", label:""};
+  const periods = ["week","month","three_months"];
+  const labels = ["1W","1M","3M"];
+  let arrows = [];
+  for(let i=0; i<periods.length; i++){
+    const cmp = d.item_movers.comparison[periods[i]];
+    if(!cmp) continue;
+    const inUp = (cmp.up||[]).find(x=>x.jan===jan);
+    const inDn = (cmp.down||[]).find(x=>x.jan===jan);
+    if(inUp) arrows.push({dir:"up", label:labels[i], pct:inUp.pct});
+    else if(inDn) arrows.push({dir:"dn", label:labels[i], pct:inDn.pct});
+  }
+  if(arrows.length === 0) return {html:"-"};
+  const html = arrows.map(a=>{
+    const color = a.dir==="up" ? "var(--green)" : "var(--coral)";
+    const arrow = a.dir==="up" ? "▲" : "▼";
+    return `<span style="color:${color};font-size:10px;" title="${a.label}: ${a.pct>0?"+":""}${a.pct}%">${arrow}${a.label}</span>`;
+  }).join(" ");
+  // 全期間同じ方向なら強調
+  const allUp = arrows.every(a=>a.dir==="up");
+  const allDn = arrows.every(a=>a.dir==="dn");
+  const badge = allUp ? '<div style="font-size:9px;color:var(--green);font-weight:700;">🔥継続上昇</div>'
+    : allDn ? '<div style="font-size:9px;color:var(--coral);font-weight:700;">⚠️継続下降</div>' : '';
+  return {html: html + badge};
+}
+
+function renderMovers(){
+  const d = gData;
+  if(!d.item_movers || !d.item_movers.comparison){
+    document.getElementById("movers-body").innerHTML =
+      '<tr><td colspan="9" style="text-align:center;color:var(--text-faint);padding:20px;">アイテムデータがありません。--rebuild-itemsで再構築してください。</td></tr>';
+    return;
+  }
+  const periodLabels = {week:"1週間前", month:"1ヶ月前", three_months:"3ヶ月前"};
+  const cmp = d.item_movers.comparison[currentMoverPeriod];
+  if(!cmp){
+    document.getElementById("movers-body").innerHTML =
+      `<tr><td colspan="9" style="text-align:center;color:var(--text-faint);padding:20px;">${periodLabels[currentMoverPeriod]}のデータがありません</td></tr>`;
+    return;
+  }
+  document.getElementById("movers-compared").textContent =
+    `${periodLabels[currentMoverPeriod]} (${cmp.compared_to}) との比較`;
+  document.getElementById("movers-title").textContent =
+    currentMoverDir==="up" ? `急上昇アイテムTOP50` : `急下降アイテムTOP50`;
+
+  const list = currentMoverDir==="up" ? cmp.up : cmp.down;
+  const search = (document.getElementById("mover-search").value || "").toLowerCase();
+  const filtered = search
+    ? list.filter(m => (m.name||"").toLowerCase().includes(search) || (m.jan||"").includes(search))
+    : list;
+
+  // ウォッチJAN収集（gDataから取得）
+  const watchSet = new Set((d.watchlist&&d.watchlist.entries||[]).map(e=>e.jan));
+
+  if(filtered.length === 0){
+    document.getElementById("movers-body").innerHTML =
+      '<tr><td colspan="9" style="text-align:center;color:var(--text-faint);padding:20px;">該当なし</td></tr>';
+    return;
+  }
+  document.getElementById("movers-body").innerHTML = filtered.map((m,i)=>{
+    const changeColor = m.change>0 ? "var(--green)" : "var(--coral)";
+    const isWatched = watchSet.has(m.jan) || watchJans.has(m.jan);
+    const starColor = isWatched ? "var(--amber)" : "var(--text-faint)";
+    const starLabel = isWatched ? "★" : "☆";
+    const trend = getTrend(m.jan, d);
+    return `<tr>
+      <td class="mono" style="color:var(--text-faint);">${i+1}</td>
+      <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(m.name||"")}">${escapeHtml(m.name||"")}<div style="font-size:10px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;">JAN:${m.jan} / ${m.store_count||0}店 / ${escapeHtml(m.store||"")}</div></td>
+      <td style="font-size:11px;color:var(--text-muted);">${escapeHtml(m.category||"")}</td>
+      <td class="mono" style="text-align:right;color:var(--text-muted);">¥${m.prev.toLocaleString()}</td>
+      <td class="mono" style="text-align:right;color:var(--text);">¥${m.curr.toLocaleString()}</td>
+      <td class="mono" style="text-align:right;color:${changeColor};font-weight:700;">${m.change>0?"+":""}¥${m.change.toLocaleString()}<div style="font-size:10px;">${m.pct>0?"+":""}${m.pct}%</div></td>
+      <td style="text-align:center;">${trend.html}</td>
+      <td><button class="watch-toggle" data-jan="${m.jan}" data-name="${escapeHtml(m.name||"")}" data-cat="${escapeHtml(m.category||"")}" style="background:none;border:none;font-size:18px;color:${starColor};cursor:pointer;padding:2px 6px;">${starLabel}</button></td>
+    </tr>`;
+  }).join("");
+
+  // ★ボタンのクリックイベント
+  document.querySelectorAll(".watch-toggle").forEach(btn=>{
+    btn.addEventListener("click", async ()=>{
+      const jan = btn.dataset.jan;
+      const name = btn.dataset.name;
+      const cat = btn.dataset.cat || "";
+      const isCurrentlyWatched = btn.textContent.trim() === "★";
+      btn.disabled = true;
+      btn.style.opacity = "0.3";
+      try {
+        await toggleWatch(jan, name, !isCurrentlyWatched, cat);
+        btn.textContent = isCurrentlyWatched ? "☆" : "★";
+        btn.style.color = isCurrentlyWatched ? "var(--text-faint)" : "var(--amber)";
+        if(isCurrentlyWatched) watchJans.delete(jan);
+        else watchJans.add(jan);
+      } catch(e){
+        console.error("ウォッチ操作失敗:", e);
+      }
+      btn.style.opacity = "1";
+      btn.disabled = false;
+    });
+  });
+}
+
+async function toggleWatch(jan, name, add, category){
+  const key = localStorage.getItem(ACCESS_KEY_STORAGE);
+  const action = add ? "watch_add" : "watch_remove";
+  const params = new URLSearchParams({key, action, jan});
+  if(add && name) params.set("name", name);
+  if(add && category) params.set("category", category);
+  const resp = await fetch(`${GAS_URL}?${params.toString()}`);
+  const data = await resp.json();
+  if(data.error) throw new Error(data.error);
+  return data;
+}
+
+async function updateWatchTarget(jan, target){
+  const key = localStorage.getItem(ACCESS_KEY_STORAGE);
+  const params = new URLSearchParams({key, action:"watch_update", jan, target: String(target)});
+  const resp = await fetch(`${GAS_URL}?${params.toString()}`);
+  return await resp.json();
+}
+
+// 期間切り替えボタン
+document.querySelectorAll("[data-mover-period]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll("[data-mover-period]").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentMoverPeriod = btn.dataset.moverPeriod;
+    renderMovers();
+  });
+});
+document.querySelectorAll("[data-mover-dir]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll("[data-mover-dir]").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    currentMoverDir = btn.dataset.moverDir;
+    renderMovers();
+  });
+});
+// 検索ボックス
+let moverSearchTimer = null;
+const moverSearchEl = document.getElementById("mover-search");
+if(moverSearchEl){
+  moverSearchEl.addEventListener("input", ()=>{
+    clearTimeout(moverSearchTimer);
+    moverSearchTimer = setTimeout(renderMovers, 200);
+  });
+}
+
+// ===== ウォッチリスト =====
+// 追加ボタン
+document.getElementById("watch-add-btn").addEventListener("click", async ()=>{
+  const jan = document.getElementById("watch-jan-input").value.trim();
+  if(!jan){ document.getElementById("watch-add-status").textContent = "JANコードを入力してください"; return; }
+  const name = document.getElementById("watch-name-input").value.trim();
+  const target = document.getElementById("watch-target-input").value.trim();
+  const btn = document.getElementById("watch-add-btn");
+  btn.disabled = true; btn.textContent = "登録中...";
+  document.getElementById("watch-add-status").textContent = "";
+  try{
+    const key = localStorage.getItem(ACCESS_KEY_STORAGE);
+    const params = new URLSearchParams({key, action:"watch_add", jan});
+    if(name) params.set("name", name);
+    if(target) params.set("target", target);
+    const resp = await fetch(`${GAS_URL}?${params.toString()}`);
+    const data = await resp.json();
+    if(data.status === "added"){
+      document.getElementById("watch-add-status").innerHTML = `<span style="color:var(--green);">✓ ${jan} を追加しました</span>`;
+      document.getElementById("watch-jan-input").value = "";
+      document.getElementById("watch-name-input").value = "";
+      document.getElementById("watch-target-input").value = "";
+      watchJans.add(jan);
+      await renderWatch();
+    } else if(data.status === "already_exists"){
+      document.getElementById("watch-add-status").innerHTML = `<span style="color:var(--amber);">既に登録済みです</span>`;
+    } else {
+      document.getElementById("watch-add-status").innerHTML = `<span style="color:var(--coral);">エラー: ${data.error||data.status}</span>`;
+    }
+  } catch(e){
+    document.getElementById("watch-add-status").innerHTML = `<span style="color:var(--coral);">通信エラー: ${escapeHtml(e.message)}</span>`;
+  }
+  btn.disabled = false; btn.textContent = "追加";
+});
+
+async function renderWatch(){
+  const el = document.getElementById("watch-list");
+  el.innerHTML = '<div class="empty-note" style="padding:20px;">読み込み中...</div>';
+
+  // GASからウォッチリストを直接取得（最新を保証）
+  let entries = [];
+  try{
+    const key = localStorage.getItem(ACCESS_KEY_STORAGE);
+    const resp = await fetch(`${GAS_URL}?key=${encodeURIComponent(key)}&action=watch_list`);
+    const data = await resp.json();
+    entries = data.entries || [];
+  } catch(e){
+    el.innerHTML = `<div class="empty-note" style="padding:20px;color:var(--coral);">ウォッチリスト取得失敗: ${escapeHtml(e.message)}</div>`;
+    return;
+  }
+
+  if(entries.length === 0){
+    el.innerHTML = '<div class="empty-note" style="padding:30px;">ウォッチリストは空です。上のフォームからJANコードを入力するか、「急上昇アイテム」タブの☆ボタンで追加してください。</div>';
+    return;
+  }
+
+  // gDataからアイテム価格情報を補完
+  const watchData = (gData && gData.watchlist) ? gData.watchlist : null;
+  const watchSnaps = (watchData && watchData.snapshots) || (gData ? gData.snapshots : []) || [];
+  const wdEntries = (watchData && watchData.entries) || [];
+  const wdMap = {};
+  wdEntries.forEach(e=>{ wdMap[e.jan] = e; });
+
+  // カテゴリーでグループ化
+  const catGroups = new Map();
+  for(const ent of entries){
+    const wd = wdMap[ent.jan] || {};
+    const cat = ent.category || wd.category || "未分類";
+    if(!catGroups.has(cat)) catGroups.set(cat, []);
+    catGroups.get(cat).push({...ent, ...wd, category: cat});
+  }
+
+  let html = `<div style="font-size:12px;color:var(--text-muted);margin:12px 0 8px;">計 ${entries.length} 件（共有リスト）</div>`;
+
+  for(const [cat, items] of catGroups){
+    html += `<div class="panel" style="margin-bottom:12px;">
+      <h2 style="font-size:14px;margin-bottom:10px;">${escapeHtml(cat)} <span class="n">${items.length}件</span></h2>`;
+
+    for(const item of items){
+      const curr = item.current_price || null;
+      const target = item.target_price;
+      const name = item.name || "(名前未取得)";
+
+      // 現在価格表示
+      let priceHtml = curr ? `¥${curr.toLocaleString()}` : '<span style="color:var(--text-faint);">次回更新で反映</span>';
+
+      // 希望価格（原価）との差額表示 + 背景色
+      let diffHtml = "";
+      let rowBg = "";
+      if(target && curr){
+        const diff = curr - target;
+        const pct = target > 0 ? (diff / target * 100) : 0;
+        if(diff >= 0){
+          // 利益（緑系）：差額が大きいほど濃い緑
+          const intensity = Math.min(0.35, Math.abs(pct) / 100 * 0.5);
+          rowBg = `background:rgba(74,222,128,${intensity.toFixed(2)});`;
+          diffHtml = `<div style="font-size:13px;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--green);">+¥${diff.toLocaleString()} (+${pct.toFixed(1)}%)</div>
+            <div style="font-size:10px;color:var(--text-faint);">原価¥${target.toLocaleString()} → 現在¥${curr.toLocaleString()}</div>`;
+        } else {
+          // 損失（赤系）：差額が大きいほど濃い赤
+          const intensity = Math.min(0.35, Math.abs(pct) / 100 * 0.5);
+          rowBg = `background:rgba(248,113,113,${intensity.toFixed(2)});`;
+          diffHtml = `<div style="font-size:13px;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--coral);">¥${diff.toLocaleString()} (${pct.toFixed(1)}%)</div>
+            <div style="font-size:10px;color:var(--text-faint);">原価¥${target.toLocaleString()} → 現在¥${curr.toLocaleString()}</div>`;
+        }
+      } else if(target){
+        diffHtml = `<div style="font-size:11px;color:var(--text-faint);">原価¥${target.toLocaleString()}（価格データ次回更新で反映）</div>`;
+      }
+
+      // ミニトレンド（価格推移）
+      const chartId = `wc-${item.jan}`;
+
+      html += `<div style="border-bottom:1px solid var(--border);padding:10px 0;display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;border-radius:6px;${rowBg}padding:10px 12px;">
+        <div style="flex:1 1 200px;min-width:0;">
+          <div style="font-size:13px;color:var(--text);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
+          <div style="font-size:10px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;margin-top:2px;">JAN:${item.jan} ${item.current_store?`/ ${escapeHtml(item.current_store)}`:""}</div>
+        </div>
+        <div style="flex:0 0 auto;text-align:right;">
+          <div style="font-size:20px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--amber);">${priceHtml}</div>
+          ${diffHtml}
+        </div>
+        <div style="flex:0 0 auto;display:flex;gap:6px;align-items:center;">
+          <input type="number" class="watch-target-edit" data-jan="${item.jan}" value="${target||""}" placeholder="原価" style="width:90px;padding:4px 6px;border-radius:4px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:11px;font-family:'JetBrains Mono',monospace;">
+          <button class="watch-save-btn" data-jan="${item.jan}" style="padding:4px 8px;background:var(--border);color:var(--text-muted);border:none;border-radius:4px;font-size:10px;cursor:pointer;">保存</button>
+          <button class="watch-del-btn" data-jan="${item.jan}" style="padding:4px 8px;background:none;border:1px solid var(--coral);color:var(--coral);border-radius:4px;font-size:10px;cursor:pointer;">削除</button>
+        </div>
+        <div id="${chartId}" style="flex:1 1 300px;min-width:200px;max-width:100%;"></div>
+      </div>`;
+    }
+    html += "</div>";
+  }
+
+  el.innerHTML = html;
+
+  // ミニチャート描画
+  for(const [cat, items] of catGroups){
+    for(const item of items){
+      if(item.prices && item.prices.length > 0){
+        drawWatchChart(`wc-${item.jan}`, watchSnaps, item.prices, item.amazons);
+      }
+    }
+  }
+
+  // 希望価格保存ボタン
+  document.querySelectorAll(".watch-save-btn").forEach(btn=>{
+    btn.addEventListener("click", async ()=>{
+      const jan = btn.dataset.jan;
+      const input = document.querySelector(`.watch-target-edit[data-jan="${jan}"]`);
+      const target = input ? input.value.trim() : "";
+      btn.textContent = "保存中";
+      btn.disabled = true;
+      try{
+        await updateWatchTarget(jan, target);
+        btn.textContent = "✓";
+        btn.style.color = "var(--green)";
+        setTimeout(()=>{ btn.textContent = "保存"; btn.style.color = ""; }, 1500);
+      } catch(e){
+        btn.textContent = "失敗";
+        btn.style.color = "var(--coral)";
+      }
+      btn.disabled = false;
+    });
+  });
+
+  // 削除ボタン
+  document.querySelectorAll(".watch-del-btn").forEach(btn=>{
+    btn.addEventListener("click", async ()=>{
+      const jan = btn.dataset.jan;
+      if(!confirm(`JAN:${jan} をウォッチリストから削除しますか？`)) return;
+      btn.textContent = "削除中";
+      btn.disabled = true;
+      try{
+        await toggleWatch(jan, "", false);
+        watchJans.delete(jan);
+        await renderWatch();
+      } catch(e){
+        btn.textContent = "失敗";
+        btn.disabled = false;
+      }
+    });
+  });
+}
+
+function drawWatchChart(containerId, snapshots, prices, amazons){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  const W = Math.max(el.clientWidth||500, 400);
+  const H = 110;
+  const PAD = {top:8,right:10,bottom:22,left:50};
+  const iW = W-PAD.left-PAD.right;
+  const iH = H-PAD.top-PAD.bottom;
+
+  const allVals = [...(prices||[]).filter(v=>v!=null), ...(amazons||[]).filter(v=>v!=null)];
+  if(allVals.length===0){
+    el.innerHTML = '<div style="color:var(--text-faint);font-size:11px;padding:10px;">データなし</div>';
+    return;
+  }
+  const minV = Math.min(...allVals)*0.95;
+  const maxV = Math.max(...allVals)*1.05;
+  const range = maxV - minV || 1;
+  const xS = i => PAD.left + (snapshots.length<=1?iW/2:i/(snapshots.length-1)*iW);
+  const yS = v => PAD.top + iH - (v-minV)/range*iH;
+
+  let svg = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:${H}px;">`;
+
+  // グリッド
+  for(let i=0;i<=3;i++){
+    const y = PAD.top + i/3*iH;
+    const v = Math.round(maxV - i/3*range);
+    const vStr = v>=10000 ? Math.round(v/1000)+"K" : v.toLocaleString();
+    svg += `<line x1="${PAD.left}" y1="${y.toFixed(1)}" x2="${W-PAD.right}" y2="${y.toFixed(1)}" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>`;
+    svg += `<text x="${PAD.left-4}" y="${(y+3).toFixed(1)}" text-anchor="end" fill="rgba(255,255,255,0.3)" font-size="9">${vStr}</text>`;
+  }
+
+  // 買取価格ライン
+  const drawLine = (vals, color) => {
+    let seg = [];
+    const flush = () => {
+      if(seg.length>=2){
+        const pts = seg.map(([i,v])=>`${xS(i).toFixed(1)},${yS(v).toFixed(1)}`).join(" ");
+        svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/>`;
+      }
+      seg=[];
+    };
+    vals.forEach((v,i)=>{ if(v!=null) seg.push([i,v]); else flush(); });
+    flush();
+    // 最終点
+    for(let i=vals.length-1;i>=0;i--){
+      if(vals[i]!=null){
+        svg += `<circle cx="${xS(i).toFixed(1)}" cy="${yS(vals[i]).toFixed(1)}" r="3" fill="${color}"/>`;
+        break;
+      }
+    }
+  };
+  drawLine(prices||[], "var(--amber)");
+  drawLine(amazons||[], "rgba(96,165,250,0.6)");
+
+  // X軸ラベル
+  const step = Math.max(1, Math.ceil(snapshots.length/8));
+  snapshots.forEach((s,i)=>{
+    if(i%step!==0) return;
+    const x = xS(i);
+    svg += `<text x="${x.toFixed(1)}" y="${H-4}" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8">${s.slice(5,10)}</text>`;
+  });
+
+  svg += "</svg>";
+  el.innerHTML = svg + `<div style="font-size:10px;color:var(--text-faint);margin-top:2px;text-align:right;"><span style="color:var(--amber);">●</span> 買取最高値　<span style="color:rgba(96,165,250,0.8);">●</span> Amazon価格</div>`;
+}
+
+// ===== カテゴリー急変 =====
+function renderMover(){
+  const d = gData;
+  if(!d) return;
+  const up = (d.recent_movers&&d.recent_movers.up)||[];
+  const dn = (d.recent_movers&&d.recent_movers.down)||[];
+
+  const mkList = (list, cls) => list.length===0
+    ? '<div class="empty-note">データなし</div>'
+    : list.map(m=>`
+      <div class="mover-item">
+        <div>
+          <div class="mover-cat">${m.category}</div>
+          <div class="mover-detail mono">¥${m.prev.toLocaleString()} → ¥${m.curr.toLocaleString()} (${m.change>0?"+":""}¥${m.change.toLocaleString()})</div>
+        </div>
+        <div class="mover-pct ${cls}">${m.pct>0?"+":""}${m.pct}%</div>
+      </div>`).join("");
+
+  document.getElementById("mover-up").innerHTML = mkList(up,"up");
+  document.getElementById("mover-dn").innerHTML = mkList(dn,"dn");
+}
+
+// ===== 仕入れ機会マップ =====
+// 値下げカレンダー（季節・決算スコア）
+// score: 3=◎底値/総決算, 2=○中間決算/狙い目, 1=・処分始まる, 0=通常
+// star: ケイさん主力品目
+const MARKDOWN_CALENDAR = [
+  {
+    cat:"デジカメ・カメラ", star:true,
+    months:[0,1,2,0,0,0,1,3,2,1,0,0],
+    peak:[8], mid:[3,2],
+    reason:"8月ビック・コジマ総決算がカメラ系の最大の山。2月中間も狙い目。3月は他チェーン決算"
+  },
+  {
+    cat:"スマートフォン", star:true,
+    months:[1,2,3,1,1,2,1,1,2,3,1,1],
+    peak:[3,9], mid:[2,6],
+    reason:"3月MNP奨励金最大＋新生活。9月秋モデル発表前の旧型処分。6月は閑散期てこ入れ"
+  },
+  {
+    cat:"タブレットPC", star:true,
+    months:[0,1,3,1,0,0,0,1,2,1,0,0],
+    peak:[3], mid:[9,8],
+    reason:"3月新生活需要で型落ち処分が集中。8月以降は秋冬新モデル前の在庫調整"
+  },
+  {
+    cat:"ノートパソコン(Win)", star:false,
+    months:[0,1,3,1,0,0,0,2,2,1,0,1],
+    peak:[3], mid:[8,9],
+    reason:"3月新生活・法人決算が最大。8月ビック系総決算・9月ヤマダ系中間も値引きあり"
+  },
+  {
+    cat:"テレビ・AV機器", star:false,
+    months:[1,2,3,1,0,0,0,2,2,1,1,2],
+    peak:[3], mid:[8,9,12],
+    reason:"3月新生活最大。年末12月のボーナス商戦後の在庫処分も狙い目"
+  },
+  {
+    cat:"ゲーム機", star:true,
+    months:[1,1,2,0,0,0,0,1,1,1,1,3],
+    peak:[12], mid:[3],
+    reason:"12月年末ボーナス商戦後に旧型処分。3月も決算在庫放出あり"
+  },
+  {
+    cat:"エアコン", star:false,
+    months:[0,0,1,1,2,2,2,3,3,1,0,0],
+    peak:[8,9], mid:[5,6,7],
+    reason:"8〜9月シーズン終わりに型落ち底値。5〜7月は在庫切れで値引き減る"
+  },
+  {
+    cat:"掃除機", star:false,
+    months:[3,1,1,0,0,0,2,1,2,1,0,1],
+    peak:[1], mid:[7,9],
+    reason:"1月新春セール・型落ち処分が底値。7〜9月も旧モデル整理"
+  },
+  {
+    cat:"電子レンジ", star:false,
+    months:[1,2,3,1,0,0,0,1,2,2,0,1],
+    peak:[3], mid:[2,9],
+    reason:"3月新生活需要で最安。9月秋モデル前の旧型処分"
+  },
+  {
+    cat:"プリンタ", star:false,
+    months:[0,1,3,1,0,0,0,2,2,1,0,1],
+    peak:[3], mid:[8,9],
+    reason:"3月法人決算・新生活需要。8〜9月決算在庫整理"
+  },
+  {
+    cat:"PC周辺機器その他", star:false,
+    months:[0,1,2,1,0,0,0,2,2,1,0,1],
+    peak:[3], mid:[8,9],
+    reason:"PCに準じる。3月・9月決算が中心"
+  },
+  {
+    cat:"ヘッドセット", star:false,
+    months:[0,1,2,1,0,0,0,1,2,1,0,2],
+    peak:[3], mid:[9,12],
+    reason:"3月と年末ボーナス商戦後12月が狙い目"
+  },
+];
+
+// CSV30000のカテゴリー名とカレンダーのカテゴリーを紐付けるマッピング
+const CAT_MAP = {
+  "デジカメ・カメラ":    ["デジカメ・カメラ関連","デジタルカメラ","一眼カメラ","カメラ"],
+  "スマートフォン":      ["スマートフォン","携帯電話・スマートフォン"],
+  "タブレットPC":        ["タブレット","タブレットPC"],
+  "ノートパソコン(Win)": ["ノートパソコン","PC","パソコン"],
+  "テレビ・AV機器":      ["テレビ・AV機器","テレビ","ブルーレイ","ブルーレイレコーダー"],
+  "ゲーム機":            ["ゲーム","ゲーム機","Nintendo","PlayStation"],
+  "エアコン":            ["エアコン","空調"],
+  "掃除機":              ["掃除機","クリーナー"],
+  "電子レンジ":          ["電子レンジ","調理家電","オーブン","炊飯器"],
+  "プリンタ":            ["プリンタ","プリンター","複合機"],
+  "PC周辺機器その他":    ["PC周辺機器","PC周辺機器その他","マウス","キーボード"],
+  "ヘッドセット":        ["ヘッドセット","ヘッドホン","イヤホン"],
+};
+
+function getSpreadForCat(calCatName){
+  if(!gData) return null;
+  const aliases = CAT_MAP[calCatName] || [calCatName];
+  // spread_rankingから一致するカテゴリーを探す
+  const ranking = gData.spread_ranking || [];
+  for(const alias of aliases){
+    const found = ranking.find(r=>r.category===alias || r.category.includes(alias) || alias.includes(r.category));
+    if(found) return found.avg_spread;
+  }
+  // category_trendsからも探す
+  const trends = gData.category_trends || {};
+  for(const alias of aliases){
+    const key = Object.keys(trends).find(k=>k===alias || k.includes(alias) || alias.includes(k));
+    if(key){
+      const arr = trends[key].avg_spread;
+      const last = [...arr].reverse().find(v=>v!=null);
+      if(last) return last;
+    }
+  }
+  return null;
+}
+
+function renderOpmap(){
+  const now = new Date();
+  const currentMonth = now.getMonth(); // 0-indexed
+  const MONTHS = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+
+  document.getElementById("opmap-month-label").textContent =
+    `現在 ${now.getFullYear()}年${currentMonth+1}月`;
+
+  // スプレッドの最大値（正規化用）
+  const spreadValues = MARKDOWN_CALENDAR.map(row=>getSpreadForCat(row.cat)).filter(v=>v!=null);
+  const maxSpread = spreadValues.length>0 ? Math.max(...spreadValues) : 1;
+
+  // 合成スコアを計算（0〜1）
+  const scores = MARKDOWN_CALENDAR.map(row=>{
+    const monthScores = row.months.map((ms, mi)=>{
+      const seasonal = ms / 3; // 0〜1
+      const spread = getSpreadForCat(row.cat);
+      const spreadFactor = spread ? (spread / maxSpread) : 0.3; // データなし=0.3
+      return seasonal * (0.5 + 0.5 * spreadFactor);
+    });
+    return monthScores;
+  });
+
+  // ヒートマップテーブル構築
+  let html = `<thead><tr>
+    <th style="text-align:left;padding:6px 10px;color:var(--text-faint);font-weight:500;white-space:nowrap;min-width:140px;">カテゴリー</th>
+    ${MONTHS.map((m,i)=>{
+      const isCur = i===currentMonth;
+      return `<th style="text-align:center;padding:5px 3px;font-size:11px;${isCur?"color:var(--amber);font-weight:700;":"color:var(--text-faint);font-weight:400;"}">${m}</th>`;
+    }).join("")}
+    <th style="text-align:right;padding:5px 8px;color:var(--text-faint);font-size:11px;">スプレッド</th>
+  </tr></thead><tbody>`;
+
+  MARKDOWN_CALENDAR.forEach((row, ri)=>{
+    const spread = getSpreadForCat(row.cat);
+    const spreadStr = spread ? `¥${Math.round(spread).toLocaleString()}` : "-";
+    html += `<tr>
+      <td style="padding:5px 10px;font-size:12px;color:var(--text);white-space:nowrap;">
+        ${row.star?"★ ":""}${row.cat}
+      </td>
+      ${scores[ri].map((score,mi)=>{
+        const ms = row.months[mi];
+        const isCur = mi===currentMonth;
+        const hasSpread = getSpreadForCat(row.cat)!=null;
+
+        // 色決定
+        let bg, textC;
+        if(ms===0){
+          bg = "rgba(44,53,96,0.4)"; textC="transparent";
+        } else if(!hasSpread){
+          // データなし→琥珀色系
+          const alpha = ms/3*0.6;
+          bg = `rgba(255,182,39,${alpha})`; textC = ms>=2?"rgba(0,0,0,0.7)":"transparent";
+        } else {
+          // データあり→緑系
+          const alpha = 0.15 + score*0.8;
+          bg = `rgba(74,222,128,${alpha.toFixed(2)})`; textC = score>0.5?"rgba(0,0,0,0.8)":"transparent";
+        }
+
+        const label = ms===3?"◎":ms===2?"○":ms===1?"・":"";
+        const border = isCur ? "outline:2px solid var(--amber);outline-offset:-2px;" : "";
+        return `<td style="text-align:center;padding:4px 2px;${border}background:${bg};border-radius:3px;">
+          <span style="font-size:11px;color:${textC};font-weight:700;">${label}</span>
+        </td>`;
+      }).join("")}
+      <td style="text-align:right;padding:5px 8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:${spread?"var(--green)":"var(--text-faint)"};">${spreadStr}</td>
+    </tr>`;
+  });
+
+  html += "</tbody>";
+  document.getElementById("opmap-table").innerHTML = html;
+
+  // 今月のTOP3カード
+  const thisMonthScores = MARKDOWN_CALENDAR.map((row,ri)=>({
+    cat: row.cat, star: row.star,
+    score: scores[ri][currentMonth],
+    ms: row.months[currentMonth],
+    spread: getSpreadForCat(row.cat),
+  })).filter(r=>r.ms>0).sort((a,b)=>b.score-a.score).slice(0,3);
+
+  document.getElementById("opmap-top3").innerHTML = thisMonthScores.length===0
+    ? ""
+    : thisMonthScores.map((r,i)=>{
+      const grade = r.ms===3?"◎ 最強":r.ms===2?"○ 狙い目":"・ 参考";
+      const spreadNote = r.spread ? `スプレッド ¥${Math.round(r.spread).toLocaleString()}` : "スプレッドデータ準備中";
+      return `<div class="stat-card" style="border-color:${i===0?"var(--amber)":"var(--border)"};">
+        <div class="label">${i===0?"🥇":i===1?"🥈":"🥉"} 今月 ${grade}</div>
+        <div class="value" style="font-size:18px;">${r.star?"★ ":""}${r.cat}</div>
+        <div style="font-size:11px;color:var(--text-faint);margin-top:4px;">${spreadNote}</div>
+      </div>`;
+    }).join("");
+
+  // カレンダー根拠テーブル
+  document.getElementById("opmap-legend-body").innerHTML = MARKDOWN_CALENDAR.map(row=>{
+    const peakMonths = row.peak.map(m=>m+"月").join("・");
+    const midMonths = row.mid.map(m=>m+"月").join("・");
+    return `<tr>
+      <td style="color:var(--text);padding:6px 8px;">${row.star?"★ ":""}${row.cat}</td>
+      <td style="color:var(--green);font-weight:700;padding:6px 8px;">${peakMonths}</td>
+      <td style="color:var(--amber);padding:6px 8px;">${midMonths}</td>
+      <td style="color:var(--text-faint);padding:6px 8px;font-size:11px;">${row.reason}</td>
+    </tr>`;
+  }).join("");
+}
+
+// ===== データ読み込み =====
+async function load(){
+  const key = localStorage.getItem(ACCESS_KEY_STORAGE);
+  if(!key){ showKeyScreen(); return; }
+  try{
+    const url = GAS_URL
+      ? `${GAS_URL}?key=${encodeURIComponent(key)}`
+      : `./trend_data.json?${Date.now()}`;
+    const resp = await fetch(url);
+    if(!resp.ok) throw new Error("HTTP " + resp.status);
+    const text = await resp.text();
+    const data = JSON.parse(text);
+    if(data.error === "unauthorized"){
+      localStorage.removeItem(ACCESS_KEY_STORAGE);
+      showKeyScreen();
+      return;
+    }
+    if(data.error){
+      throw new Error(data.error);
+    }
+    gData = data;
+    document.getElementById("updated-at").textContent = gData.generated_at||"-";
+    document.getElementById("snap-count").textContent = gData.snapshot_count||"-";
+    try{ renderActiveTab(); }catch(renderErr){
+      console.error("renderActiveTab error:", renderErr);
+    }
+    setTimeout(load, 3600000);
+  }catch(e){
+    document.querySelector("main").innerHTML = `<div class="empty-note" style="padding:60px;font-size:16px;">データを読み込めません。<br><span style="font-size:12px;color:var(--coral);">${escapeHtml(e.message||e)}</span></div>`;
+  }
+}
+
+load();
+</script>
+</body>
+</html>
