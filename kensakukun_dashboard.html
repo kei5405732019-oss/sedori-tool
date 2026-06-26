@@ -578,9 +578,32 @@
       </div>
     </div>
 
+    <!-- 履歴・お気に入り -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+      <div class="panel" style="padding:14px 16px;">
+        <h2 style="margin-bottom:10px;">🕘 検索履歴 <span class="n" id="history-n">0件</span></h2>
+        <div id="history-list" style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="color:var(--text-faint);font-size:12px;">履歴なし</span>
+        </div>
+      </div>
+      <div class="panel" style="padding:14px 16px;">
+        <h2 style="margin-bottom:10px;">⭐ お気に入り <span class="n" id="fav-n">0件</span></h2>
+        <div id="fav-list" style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span style="color:var(--text-faint);font-size:12px;">お気に入りなし</span>
+        </div>
+      </div>
+    </div>
+
     <div id="search-result-wrap" style="display:none;">
       <div class="panel" style="margin-bottom:16px;">
-        <h2 id="search-result-title">検索結果</h2>
+        <h2 id="search-result-title" style="display:flex;align-items:center;justify-content:space-between;">
+          <span id="search-result-title-text">検索結果</span>
+          <button id="fav-toggle-btn" onclick="toggleFav()"
+            style="background:transparent;border:1px solid var(--amber-dim);border-radius:6px;
+                   color:var(--amber);font-size:13px;padding:4px 12px;cursor:pointer;">
+            ⭐ お気に入り追加
+          </button>
+        </h2>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;">
           <div class="stat-card" style="flex:1;min-width:120px;">
             <div class="label">総申請数</div>
@@ -1068,6 +1091,9 @@ function runSearch(){
   document.getElementById("search-result-wrap").style.display = "none";
   document.getElementById("search-empty").style.display = "none";
 
+  currentSearchQuery = q;
+  addHistory(q);
+
   const matched = lastData.filter(e => e.item_name && e.item_name.includes(q));
   if(matched.length === 0){
     document.getElementById("search-empty").style.display = "block";
@@ -1075,7 +1101,8 @@ function runSearch(){
   }
 
   const nameSet = [...new Set(matched.map(e => e.item_name))];
-  document.getElementById("search-result-title").textContent = "「" + q + "」の申請履歴";
+  document.getElementById("search-result-title-text").textContent = "「" + q + "」の申請履歴";
+  updateFavBtn();
 
   const dates = matched.map(e => parseDT(e.requested_at));
   const daySet = new Set(matched.map(e => e.requested_at.slice(0,10)));
@@ -1130,6 +1157,122 @@ function runSearch(){
   document.getElementById("search-result-wrap").style.display = "block";
 }
 
+// ===== 履歴・お気に入り =====
+const SEARCH_HISTORY_KEY = "kensakukun_search_history";
+const SEARCH_FAV_KEY = "kensakukun_search_favs";
+const MAX_HISTORY = 20;
+
+let currentSearchQuery = "";
+
+function loadHistory(){
+  try { return JSON.parse(localStorage.getItem(SEARCH_HISTORY_KEY) || "[]"); } catch{ return []; }
+}
+function saveHistory(list){
+  localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(list));
+}
+function loadFavs(){
+  try { return JSON.parse(localStorage.getItem(SEARCH_FAV_KEY) || "[]"); } catch{ return []; }
+}
+function saveFavs(list){
+  localStorage.setItem(SEARCH_FAV_KEY, JSON.stringify(list));
+}
+
+function addHistory(q){
+  let list = loadHistory().filter(x => x !== q);
+  list.unshift(q);
+  if(list.length > MAX_HISTORY) list = list.slice(0, MAX_HISTORY);
+  saveHistory(list);
+  renderHistory();
+}
+
+function renderHistory(){
+  const list = loadHistory();
+  const el = document.getElementById("history-list");
+  const n = document.getElementById("history-n");
+  if(!el||!n) return;
+  n.textContent = list.length + "件";
+  if(list.length === 0){ el.innerHTML = '<span style="color:var(--text-faint);font-size:12px;">履歴なし</span>'; return; }
+  el.innerHTML = "";
+  list.forEach(function(q){
+    const wrap = document.createElement("span");
+    wrap.style.cssText = "display:inline-flex;align-items:center;gap:4px;background:var(--bg-panel-2);border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:12px;font-family:JetBrains Mono,monospace;";
+    const txt = document.createElement("span");
+    txt.textContent = q;
+    txt.style.cssText = "cursor:pointer;color:var(--text);";
+    txt.onclick = function(){ searchFrom(q); };
+    const del = document.createElement("span");
+    del.textContent = "✕";
+    del.style.cssText = "cursor:pointer;color:var(--text-faint);margin-left:2px;font-size:11px;";
+    del.onclick = function(){ removeHistory(q); };
+    wrap.appendChild(txt);
+    wrap.appendChild(del);
+    el.appendChild(wrap);
+  });
+}
+
+function removeHistory(q){
+  saveHistory(loadHistory().filter(x => x !== q));
+  renderHistory();
+}
+
+function renderFavs(){
+  const list = loadFavs();
+  const el = document.getElementById("fav-list");
+  const n = document.getElementById("fav-n");
+  if(!el||!n) return;
+  n.textContent = list.length + "件";
+  if(list.length === 0){ el.innerHTML = '<span style="color:var(--text-faint);font-size:12px;">お気に入りなし</span>'; return; }
+  el.innerHTML = "";
+  list.forEach(function(q){
+    const wrap = document.createElement("span");
+    wrap.style.cssText = "display:inline-flex;align-items:center;gap:4px;background:rgba(255,182,39,0.1);border:1px solid var(--amber-dim);border-radius:999px;padding:3px 10px;font-size:12px;font-family:JetBrains Mono,monospace;";
+    const txt = document.createElement("span");
+    txt.textContent = "⭐ " + q;
+    txt.style.cssText = "cursor:pointer;color:var(--amber);";
+    txt.onclick = function(){ searchFrom(q); };
+    const del = document.createElement("span");
+    del.textContent = "✕";
+    del.style.cssText = "cursor:pointer;color:var(--text-faint);margin-left:2px;font-size:11px;";
+    del.onclick = function(){ removeFav(q); };
+    wrap.appendChild(txt);
+    wrap.appendChild(del);
+    el.appendChild(wrap);
+  });
+}
+
+function removeFav(q){
+  saveFavs(loadFavs().filter(x => x !== q));
+  renderFavs();
+  updateFavBtn();
+}
+
+function toggleFav(){
+  if(!currentSearchQuery) return;
+  const list = loadFavs();
+  const idx = list.indexOf(currentSearchQuery);
+  if(idx >= 0){
+    list.splice(idx, 1);
+  } else {
+    list.unshift(currentSearchQuery);
+  }
+  saveFavs(list);
+  renderFavs();
+  updateFavBtn();
+}
+
+function updateFavBtn(){
+  const btn = document.getElementById("fav-toggle-btn");
+  if(!btn || !currentSearchQuery) return;
+  const isFav = loadFavs().includes(currentSearchQuery);
+  btn.textContent = isFav ? "⭐ お気に入り済み" : "⭐ お気に入り追加";
+  btn.style.background = isFav ? "rgba(255,182,39,0.15)" : "transparent";
+}
+
+function searchFrom(q){
+  document.getElementById("search-input").value = q;
+  runSearch();
+}
+
 function clearSearch(){
   document.getElementById("search-input").value = "";
   document.getElementById("search-result-wrap").style.display = "none";
@@ -1139,6 +1282,8 @@ function clearSearch(){
 document.addEventListener("DOMContentLoaded", ()=>{
   const inp = document.getElementById("search-input");
   if(inp) inp.addEventListener("keydown", e=>{ if(e.key==="Enter") runSearch(); });
+  renderHistory();
+  renderFavs();
 });
 let selectedDate = null;    // "YYYY-MM-DD" or null
 let calYear = new Date().getFullYear();
