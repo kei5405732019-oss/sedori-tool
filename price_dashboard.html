@@ -257,6 +257,27 @@ main{padding:20px clamp(12px,3vw,32px);}
 
 <script>
 const GAS_URL = "https://script.google.com/macros/s/AKfycbzAKuTV0RB6Kl7dVD1vQMF2N8LKBLQ51UTSoIk3gnA9nMFJZcsvIZy3XxC_uHPQMLt2/exec";
+const KCODE_GAS_URL = "https://script.google.com/macros/s/AKfycbxxVHSZ-OpaF2vSEfP2bRR8ki45EdrZankJE84JucwHvsg_lJ4aC8g0H0-WHbTuAKUeyw/exec";
+const KCODE_CACHE = {};
+
+async function openKakaku(jan){
+  if(!jan) return;
+  if(KCODE_CACHE[jan] !== undefined){
+    const url = KCODE_CACHE[jan] ? "https://kakaku.com/item/" + KCODE_CACHE[jan] + "/" : "https://kakaku.com/search_results/" + jan + "/";
+    window.open(url, "_blank");
+    return;
+  }
+  try{
+    const res = await fetch(KCODE_GAS_URL + "?action=get&jan=" + jan + "&key=katuragiya");
+    const d = await res.json();
+    const kcode = (d.status === "ok" && d.kcode) ? d.kcode : null;
+    KCODE_CACHE[jan] = kcode;
+    const url = kcode ? "https://kakaku.com/item/" + kcode + "/" : "https://kakaku.com/search_results/" + jan + "/";
+    window.open(url, "_blank");
+  } catch(e){
+    window.open("https://kakaku.com/search_results/" + jan + "/", "_blank");
+  }
+}
 const ACCESS_KEY_STORAGE = "price_trend_key";
 const ACCESS_KEY = "katuragiya";
 
@@ -373,7 +394,7 @@ async function kaitoriSearch(){
       <div style="margin-bottom:12px;padding:12px;background:var(--bg-panel-2);border-radius:8px;">
         <div style="font-size:15px;font-weight:700;color:var(--text);">${escapeHtml(d.name||"(商品名なし)")}</div>
         <div style="font-size:11px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;margin-top:4px;">JAN: ${escapeHtml(d.jan)} / ${d.store_count}店が買取中${cost>0?` / 仕入値: ¥${cost.toLocaleString()}`:''}</div>
-        <div style="margin-top:6px;display:flex;gap:8px;"><a href="https://search.rakuten.co.jp/search/mall/${encodeURIComponent(d.jan)}/" target="_blank" style="font-size:11px;color:var(--amber);text-decoration:none;border:1px solid var(--amber-dim);border-radius:4px;padding:2px 8px;">楽天</a><a href="https://kakaku.com/search_results/${encodeURIComponent(d.jan)}/" target="_blank" style="font-size:11px;color:#4ADE80;text-decoration:none;border:1px solid rgba(74,222,128,0.4);border-radius:4px;padding:2px 8px;">価格コム</a></div>
+        <div style="margin-top:6px;display:flex;gap:8px;"><a href="https://search.rakuten.co.jp/search/mall/${encodeURIComponent(d.jan)}/" target="_blank" style="font-size:11px;color:var(--amber);text-decoration:none;border:1px solid var(--amber-dim);border-radius:4px;padding:2px 8px;">楽天</a><span onclick="openKakaku('${d.jan}')" style="font-size:11px;color:#4ADE80;text-decoration:none;border:1px solid rgba(74,222,128,0.4);border-radius:4px;padding:2px 8px;cursor:pointer;">価格コム</span></div>
       </div>
       <table class="store-table" style="width:100%;">
         <thead><tr>
@@ -740,7 +761,7 @@ function renderMovers(){
 
     return `<tr>
       <td class="mono" style="color:var(--text-faint);">${i+1}</td>
-      <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(m.name||"")}">${escapeHtml(m.name||"")}${tcgBadge}<div style="font-size:10px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;">JAN:${m.jan} / ${m.store_count||0}店 / ${escapeHtml(m.store||"")}</div><div style="margin-top:3px;display:flex;gap:6px;"><a href="https://search.rakuten.co.jp/search/mall/${m.jan}/" target="_blank" style="font-size:10px;color:var(--amber);text-decoration:none;border:1px solid var(--amber-dim);border-radius:3px;padding:1px 5px;">楽天</a><a href="https://kakaku.com/search_results/${m.jan}/" target="_blank" style="font-size:10px;color:#4ADE80;text-decoration:none;border:1px solid rgba(74,222,128,0.4);border-radius:3px;padding:1px 5px;">価格コム</a></div></td>
+      <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(m.name||"")}">${escapeHtml(m.name||"")}${tcgBadge}<div style="font-size:10px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;">JAN:${m.jan} / ${m.store_count||0}店 / ${escapeHtml(m.store||"")}</div><div style="margin-top:3px;display:flex;gap:6px;"><a href="https://search.rakuten.co.jp/search/mall/${m.jan}/" target="_blank" style="font-size:10px;color:var(--amber);text-decoration:none;border:1px solid var(--amber-dim);border-radius:3px;padding:1px 5px;">楽天</a><span onclick="openKakaku('${m.jan}')" style="font-size:10px;color:#4ADE80;text-decoration:none;border:1px solid rgba(74,222,128,0.4);border-radius:3px;padding:1px 5px;cursor:pointer;">価格コム</span></div></td>
       <td style="font-size:11px;color:var(--text-muted);">${escapeHtml(m.category||"")}</td>
       ${priceCells}
       <td class="mono" style="text-align:right;color:${changeColor};font-weight:700;">${m.change>0?"+":""}¥${m.change.toLocaleString()}<div style="font-size:10px;">${m.pct>0?"+":""}${m.pct}%</div></td>
@@ -953,7 +974,7 @@ async function renderWatch(){
       html += `<div style="border-bottom:1px solid var(--border);padding:10px 0;display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;border-radius:6px;${rowBg}padding:10px 12px;">
         <div style="flex:1 1 200px;min-width:0;">
           <div style="font-size:13px;color:var(--text);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(name)}">${escapeHtml(name)}</div>
-          <div style="font-size:10px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;margin-top:2px;">JAN:${item.jan} ${item.current_store?`/ ${escapeHtml(item.current_store)}`:""}</div><div style="margin-top:4px;display:flex;gap:6px;"><a href="https://search.rakuten.co.jp/search/mall/${item.jan}/" target="_blank" style="font-size:10px;color:var(--amber);text-decoration:none;border:1px solid var(--amber-dim);border-radius:3px;padding:1px 5px;">楽天</a><a href="https://kakaku.com/search_results/${item.jan}/" target="_blank" style="font-size:10px;color:#4ADE80;text-decoration:none;border:1px solid rgba(74,222,128,0.4);border-radius:3px;padding:1px 5px;">価格コム</a></div>
+          <div style="font-size:10px;color:var(--text-faint);font-family:'JetBrains Mono',monospace;margin-top:2px;">JAN:${item.jan} ${item.current_store?`/ ${escapeHtml(item.current_store)}`:""}</div><div style="margin-top:4px;display:flex;gap:6px;"><a href="https://search.rakuten.co.jp/search/mall/${item.jan}/" target="_blank" style="font-size:10px;color:var(--amber);text-decoration:none;border:1px solid var(--amber-dim);border-radius:3px;padding:1px 5px;">楽天</a><span onclick="openKakaku('${item.jan}')" style="font-size:10px;color:#4ADE80;text-decoration:none;border:1px solid rgba(74,222,128,0.4);border-radius:3px;padding:1px 5px;cursor:pointer;">価格コム</span></div>
         </div>
         <div style="flex:0 0 auto;text-align:right;">
           <div style="font-size:20px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--amber);">${priceHtml}</div>
