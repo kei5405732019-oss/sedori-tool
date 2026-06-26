@@ -1172,12 +1172,12 @@ function renderHistory(){
   if(!el) return;
   document.getElementById("history-n").textContent=list.length+"件";
   if(list.length===0){ el.innerHTML='<span style="color:var(--text-faint);font-size:12px;">履歴なし</span>'; return; }
-  el.innerHTML=list.map(q=>
-    '<span style="display:inline-flex;align-items:center;gap:4px;background:var(--bg-panel-2);border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:12px;font-family:JetBrains Mono,monospace;">'+
-    '<span onclick="searchFrom(''+q.replace(/\/g,"\\").replace(/'/g,"\'")+'\`)" style="cursor:pointer;color:var(--text);">'+q+'</span>'+
-    '<span onclick="removeHistory(''+q.replace(/\/g,"\\").replace(/'/g,"\'")+'\`)" style="cursor:pointer;color:var(--text-faint);margin-left:2px;font-size:11px;">✕</span>'+
-    '</span>'
-  ).join("");
+  el.innerHTML=list.map(function(q){
+    return '<span style="display:inline-flex;align-items:center;gap:4px;background:var(--bg-panel-2);border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:12px;font-family:JetBrains Mono,monospace;">'+
+    '<span onclick="searchFrom(this.dataset.q)" data-q="'+q.replace(/"/g,"&quot;")+'" style="cursor:pointer;color:var(--text);">'+q+'</span>'+
+    '<span onclick="removeHistory(this.parentElement.querySelector('span').dataset.q)" style="cursor:pointer;color:var(--text-faint);margin-left:2px;font-size:11px;">✕</span>'+
+    '</span>';
+  }).join("");
 }
 
 function removeHistory(q){ saveHistory(loadHistory().filter(x=>x!==q)); renderHistory(); }
@@ -1188,12 +1188,12 @@ function renderFavs(){
   if(!el) return;
   document.getElementById("fav-n").textContent=list.length+"件";
   if(list.length===0){ el.innerHTML='<span style="color:var(--text-faint);font-size:12px;">お気に入りなし</span>'; return; }
-  el.innerHTML=list.map(q=>
-    '<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(255,182,39,0.1);border:1px solid var(--amber-dim);border-radius:999px;padding:3px 10px;font-size:12px;font-family:JetBrains Mono,monospace;">'+
-    '<span onclick="searchFrom(''+q.replace(/\/g,"\\").replace(/'/g,"\'")+'\`)" style="cursor:pointer;color:var(--amber);">⭐ '+q+'</span>'+
-    '<span onclick="removeFav(''+q.replace(/\/g,"\\").replace(/'/g,"\'")+'\`)" style="cursor:pointer;color:var(--text-faint);margin-left:2px;font-size:11px;">✕</span>'+
-    '</span>'
-  ).join("");
+  el.innerHTML=list.map(function(q){
+    return '<span style="display:inline-flex;align-items:center;gap:4px;background:rgba(255,182,39,0.1);border:1px solid var(--amber-dim);border-radius:999px;padding:3px 10px;font-size:12px;font-family:JetBrains Mono,monospace;">'+
+    '<span onclick="searchFrom(this.dataset.q)" data-q="'+q.replace(/"/g,"&quot;")+'" style="cursor:pointer;color:var(--amber);">⭐ '+q+'</span>'+
+    '<span onclick="removeFav(this.parentElement.querySelector('span').dataset.q)" style="cursor:pointer;color:var(--text-faint);margin-left:2px;font-size:11px;">✕</span>'+
+    '</span>';
+  }).join("");
 }
 
 function removeFav(q){ saveFavs(loadFavs().filter(x=>x!==q)); renderFavs(); updateFavBtn(); }
