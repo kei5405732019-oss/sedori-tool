@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一丁目トレンドウォッチャー</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#11162A;
+    --bg-panel:#1A2140;
+    --bg-panel-2:#212a4d;
+    --border:#2C3560;
+    --amber:#FFB627;
+    --amber-dim:#8a6c2c;
+    --coral:#FF6B6B;
+    --green:#4ADE80;
+    --text:#F2EFE4;
+    --text-muted:#8C95BD;
+    --text-faint:#5C6491;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0;padding:0;
+    background:radial-gradient(ellipse at top left,rgba(255,182,39,0.06),transparent 45%),
+               radial-gradient(ellipse at bottom right,rgba(255,107,107,0.05),transparent 50%),
+               var(--bg);
+    color:var(--text);
+    font-family:"Noto Sans JP",sans-serif;
+    min-height:100vh;
+  }
+  .mono{font-family:"JetBrains Mono",monospace;}
+  .disp{font-family:"Barlow Condensed",sans-serif;}
+
+  header{
+    padding:22px clamp(16px,4vw,40px) 18px;
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:flex-end;justify-content:space-between;
+    flex-wrap:wrap;gap:14px;
+  }
+  .brand{display:flex;align-items:baseline;gap:14px;}
+  .brand .tag{
+    font-family:"Barlow Condensed",sans-serif;
+    font-weight:800;font-size:13px;letter-spacing:0.22em;
+    color:var(--bg);background:var(--amber);
+    padding:3px 9px;border-radius:3px;
+  }
+  h1{
+    font-family:"Barlow Condensed",sans-serif;
+    font-weight:700;font-size:clamp(24px,3.4vw,34px);
+    margin:0;letter-spacing:0.01em;
+  }
+  .sub{color:var(--text-muted);font-size:13px;margin-top:4px;}
+  #status-dot{
+    display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:#4ADE80;margin-right:6px;vertical-align:1px;
+    box-shadow:0 0 6px #4ADE80;
+  }
+
+  /* tabs */
+  .tab-bar{
+    display:flex;gap:0;border-bottom:1px solid var(--border);
+    padding:0 clamp(16px,4vw,40px);
+    overflow-x:auto;
+  }
+  .tab-btn{
+    font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;
+    letter-spacing:0.04em;background:transparent;color:var(--text-muted);
+    border:none;border-bottom:2px solid transparent;
+    padding:14px 20px;cursor:pointer;white-space:nowrap;
+    transition:all .15s;
+  }
+  .tab-btn:hover{color:var(--text);}
+  .tab-btn.active{color:var(--amber);border-bottom-color:var(--amber);}
+
+  .view{display:none;}
+  .view.active{display:block;}
+
+  main{padding:22px clamp(16px,4vw,40px) 50px;max-width:1400px;margin:0 auto;}
+
+  .panel{
+    background:var(--bg-panel);border:1px solid var(--border);border-radius:12px;
+    padding:18px 18px 16px;margin-bottom:16px;
+  }
+  .panel h2{
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:15px;
+    letter-spacing:0.06em;margin:0 0 14px;color:var(--text);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .panel h2 .n{font-size:11px;color:var(--text-faint);font-weight:500;}
+
+  .stat-row{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:12px;margin-bottom:20px;
+  }
+  .stat-card{
+    background:var(--bg-panel);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;
+  }
+  .stat-card .label{font-size:11px;color:var(--text-faint);letter-spacing:0.08em;}
+  .stat-card .value{
+    font-family:"Barlow Condensed",sans-serif;font-weight:800;
+    font-size:32px;color:var(--text);line-height:1.1;margin-top:4px;
+  }
+  .stat-card .value .unit{font-size:14px;color:var(--text-muted);font-weight:500;margin-left:3px;}
+
+  /* cat chips */
+  .cat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .cat-chip{
+    font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;
+    background:var(--bg-panel-2);border:1px solid var(--border);border-radius:999px;
+    padding:4px 12px;cursor:pointer;color:var(--text-muted);transition:all .15s;
+  }
+  .cat-chip:hover{border-color:var(--amber-dim);color:var(--text);}
+  .cat-chip.active{background:var(--amber);color:#241A05;border-color:var(--amber);}
+
+  /* table */
+  .tbl-wrap{overflow-x:auto;max-height:600px;overflow-y:auto;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead th{
+    position:sticky;top:0;
+    text-align:left;color:var(--text-faint);font-weight:500;
+    padding:6px 10px;border-bottom:1px solid var(--border);
+    background:var(--bg-panel);font-size:11px;letter-spacing:0.06em;
+  }
+  tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);}
+  tbody tr:hover{background:rgba(255,255,255,0.03);}
+  tbody td{padding:7px 10px;color:var(--text);}
+  .price{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--amber);}
+  .price.up{color:var(--coral);}
+  .price.down{color:var(--green);}
+  .jan{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-faint);}
+  .cond{font-size:11px;color:var(--text-muted);}
+  .diff-up{color:var(--coral);font-family:"JetBrains Mono",monospace;font-size:12px;}
+  .diff-down{color:var(--green);font-family:"JetBrains Mono",monospace;font-size:12px;}
+
+  /* search */
+  .search-wrap{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+  .search-input{
+    flex:1;min-width:220px;
+    background:var(--bg);border:1px solid var(--border);border-radius:8px;
+    color:var(--text);font-family:"JetBrains Mono",monospace;font-size:14px;
+    padding:10px 14px;outline:none;transition:border-color .15s;
+  }
+  .search-input:focus{border-color:var(--amber);}
+  .btn-amber{
+    background:var(--amber);color:#241A05;
+    font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:15px;
+    letter-spacing:.04em;border:none;border-radius:8px;
+    padding:10px 24px;cursor:pointer;
+  }
+  .btn-clear{
+    background:transparent;color:var(--text-muted);font-size:13px;
+    border:1px solid var(--border);border-radius:8px;
+    padding:10px 16px;cursor:pointer;
+  }
+
+  /* search result stats */
+  .result-stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:10px;margin-bottom:16px;
+  }
+
+  /* day table */
+  .day-row{border-bottom:1px solid rgba(255,255,255,0.04);}
+  .day-row td{padding:8px 10px;}
+  .day-row.today{background:rgba(255,182,39,0.06);}
+
+  .empty{color:var(--text-faint);font-size:13px;padding:24px;text-align:center;}
+
+  footer{
+    text-align:center;padding:20px;
+    font-size:12px;color:var(--text-faint);
+    border-top:1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="brand">
+      <span class="tag">ICHOME WATCH</span>
+      <h1>一丁目トレンドウォッチャー</h1>
+    </div>
+    <div class="sub"><span id="status-dot"></span><span id="status-text">読み込み中…</span></div>
+  </div>
+  <div style="text-align:right;font-size:12px;color:var(--text-muted);">
+    更新: <span class="mono" id="updated-at">--</span><br>
+    総件数: <span class="mono" id="total-count">-</span>件
+  </div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active" data-tab="today">今日の価格</button>
+  <button class="tab-btn" data-tab="movers">価格変動</button>
+  <button class="tab-btn" data-tab="search">🔍 品番サーチ</button>
+</div>
+
+<main>
+
+<!-- 今日の価格タブ -->
+<section id="view-today" class="view active">
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="label">取得商品数</div>
+      <div class="value" id="stat-items">-<span class="unit">件</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">カテゴリー数</div>
+      <div class="value" id="stat-cats">-<span class="unit">種</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="label">最高買取</div>
+      <div class="value" style="font-size:20px;" id="stat-max">-</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">取得日</div>
+      <div class="value" style="font-size:20px;" id="stat-date">-</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>カテゴリー <span class="n" id="today-n"></span></h2>
+    <div class="cat-chips" id="cat-chips"></div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>商品名</th>
+            <th>JAN</th>
+            <th>コンディション</th>
+            <th style="text-align:right;">買取価格</th>
+            <th style="text-align:center;">楽天</th>
+            <th style="text-align:center;">価格コム</th>
+          </tr>
+        </thead>
+        <tbody id="today-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 価格変動タブ -->
+<section id="view-movers" class="view">
+  <div class="panel">
+    <h2>価格変動（前回比） <span class="n" id="movers-n"></span></h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>商品名</th>
+            <th>JAN</th>
+            <th>コンディション</th>
+            <th style="text-align:right;">現在価格</th>
+            <th style="text-align:right;">前回価格</th>
+            <th style="text-align:right;">変動</th>
+          </tr>
+        </thead>
+        <tbody id="movers-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 品番サーチタブ -->
+<section id="view-search" class="view">
+  <div class="panel">
+    <h2>🔍 品番サーチ</h2>
+    <div class="search-wrap">
+      <input id="search-input" class="search-input" type="text" placeholder="JAN or 商品名で検索（例: 4549292189803）">
+      <button class="btn-amber" onclick="runSearch()">検索</button>
+      <button class="btn-clear" onclick="clearSearch()">クリア</button>
+    </div>
+    <div style="font-size:12px;color:var(--text-faint);">全期間のデータから検索します。部分一致対応。</div>
+  </div>
+
+  <div id="search-result-wrap" style="display:none;">
+    <div class="result-stats" id="search-stats"></div>
+    <div class="panel">
+      <h2 id="search-title">検索結果</h2>
+      <div class="tbl-wrap" style="max-height:500px;">
+        <table>
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>コンディション</th>
+              <th style="text-align:right;">買取価格</th>
+              <th style="text-align:right;">前日比</th>
+            </tr>
+          </thead>
+          <tbody id="search-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="search-empty" style="display:none;" class="panel">
+    <div class="empty">該当する商品が見つかりませんでした</div>
+  </div>
+</section>
+
+</main>
+
+<footer>買取一丁目の価格データをラズパイで毎朝8時に自動取得・蓄積しています</footer>
+
+<script>
+const API_BASE = 'http://100.83.71.66:5001';
+const CAT_NAMES = {
+  10000001: 'カメラ・レンズ',
+  10000002: 'スマホ・タブレット',
+  10000003: '家電',
+  10000004: 'PC・周辺機器',
+  10000005: 'ゲーム',
+  10000006: 'その他'
+};
+
+let allData = [];
+let currentCat = 'all';
+
+// タブ切り替え
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('view-' + btn.dataset.tab).classList.add('active');
+    if(btn.dataset.tab === 'movers') loadMovers();
+  });
+});
+
+function escapeHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function fmtPrice(p){
+  return '¥' + Number(p).toLocaleString();
+}
+
+function rakuUrl(jan){ return `https://search.rakuten.co.jp/search/mall/${jan}/`; }
+function kakakuUrl(jan){ return `https://kakaku.com/search_results/${jan}/`; }
+
+// 今日の価格ロード
+async function loadToday(){
+  try{
+    const res = await fetch(API_BASE + '/api/today');
+    const data = await res.json();
+    allData = data;
+
+    // stats
+    const jans = new Set(data.map(d=>d.jan));
+    const cats = new Set(data.map(d=>d.category));
+    const maxItem = data.reduce((a,b)=>b.price>a.price?b:a, data[0]);
+
+    document.getElementById('stat-items').innerHTML = jans.size + '<span class="unit">件</span>';
+    document.getElementById('stat-cats').innerHTML = cats.size + '<span class="unit">種</span>';
+    document.getElementById('stat-max').textContent = maxItem ? fmtPrice(maxItem.price) : '-';
+    document.getElementById('stat-date').textContent = new Date().toLocaleDateString('ja-JP');
+    document.getElementById('total-count').textContent = data.length;
+    document.getElementById('updated-at').textContent = new Date().toLocaleTimeString('ja-JP');
+    document.getElementById('status-dot').style.background = '#4ADE80';
+    document.getElementById('status-dot').style.boxShadow = '0 0 6px #4ADE80';
+    document.getElementById('status-text').textContent = '稼働中';
+
+    // カテゴリーチップ
+    const chipWrap = document.getElementById('cat-chips');
+    chipWrap.innerHTML = '<span class="cat-chip active" data-cat="all" onclick="filterCat(this,\'all\')">すべて</span>';
+    cats.forEach(c => {
+      const name = CAT_NAMES[c] || c;
+      const count = data.filter(d=>d.category===c).length;
+      chipWrap.innerHTML += `<span class="cat-chip" data-cat="${c}" onclick="filterCat(this,${c})">${name} <span style="opacity:.6;">${count}</span></span>`;
+    });
+
+    renderToday(data);
+  }catch(e){
+    document.getElementById('status-text').textContent = 'エラー: ' + e.message;
+    document.getElementById('status-dot').style.background = '#FF6B6B';
+  }
+}
+
+function filterCat(el, cat){
+  document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  currentCat = cat;
+  const filtered = cat === 'all' ? allData : allData.filter(d=>d.category==cat);
+  renderToday(filtered);
+}
+
+function renderToday(data){
+  document.getElementById('today-n').textContent = data.length + '件';
+  const tbody = document.getElementById('today-body');
+  if(data.length === 0){ tbody.innerHTML = `<tr><td colspan="7" class="empty">データなし</td></tr>`; return; }
+  tbody.innerHTML = data.map((d,i)=>`
+    <tr>
+      <td class="mono" style="color:var(--text-faint);font-size:11px;">${String(i+1).padStart(3,'0')}</td>
+      <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(d.name)}">${escapeHtml(d.name)}</td>
+      <td class="jan">${d.jan}</td>
+      <td class="cond">${escapeHtml(d.condition_name)}</td>
+      <td style="text-align:right;" class="price">${fmtPrice(d.price)}</td>
+      <td style="text-align:center;"><a href="${rakuUrl(d.jan)}" target="_blank" style="color:var(--amber);font-size:11px;text-decoration:none;border:1px solid var(--amber-dim);border-radius:3px;padding:1px 6px;">楽天</a></td>
+      <td style="text-align:center;"><span onclick="openKakaku('${d.jan}')" style="color:var(--green);font-size:11px;cursor:pointer;border:1px solid rgba(74,222,128,0.4);border-radius:3px;padding:1px 6px;">価格コム</span></td>
+    </tr>
+  `).join('');
+}
+
+// 価格変動ロード
+async function loadMovers(){
+  const tbody = document.getElementById('movers-body');
+  tbody.innerHTML = `<tr><td colspan="7" class="empty">読み込み中…</td></tr>`;
+  try{
+    const res = await fetch(API_BASE + '/api/movers');
+    const data = await res.json();
+    document.getElementById('movers-n').textContent = data.length + '件';
+    if(data.length === 0){
+      tbody.innerHTML = `<tr><td colspan="7" class="empty">前回データなし（明日以降に表示されます）</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = data.map((d,i)=>{
+      const diffClass = d.diff > 0 ? 'diff-up' : 'diff-down';
+      const diffStr = (d.diff > 0 ? '+' : '') + Number(d.diff).toLocaleString() + '円';
+      return `<tr>
+        <td class="mono" style="color:var(--text-faint);font-size:11px;">${String(i+1).padStart(3,'0')}</td>
+        <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(d.name)}</td>
+        <td class="jan">${d.jan}</td>
+        <td class="cond">${escapeHtml(d.condition_name)}</td>
+        <td style="text-align:right;" class="price">${fmtPrice(d.today_price)}</td>
+        <td style="text-align:right;color:var(--text-muted);">${fmtPrice(d.prev_price)}</td>
+        <td style="text-align:right;" class="${diffClass}">${diffStr}</td>
+      </tr>`;
+    }).join('');
+  }catch(e){
+    tbody.innerHTML = `<tr><td colspan="7" class="empty">エラー: ${e.message}</td></tr>`;
+  }
+}
+
+// 品番サーチ
+async function runSearch(){
+  const q = document.getElementById('search-input').value.trim();
+  if(!q) return;
+  document.getElementById('search-result-wrap').style.display = 'none';
+  document.getElementById('search-empty').style.display = 'none';
+
+  try{
+    const res = await fetch(API_BASE + '/api/search?q=' + encodeURIComponent(q));
+    const data = await res.json();
+
+    if(data.length === 0){
+      document.getElementById('search-empty').style.display = 'block';
+      return;
+    }
+
+    // stats
+    const dates = [...new Set(data.map(d=>d.snapshot_dt))].sort();
+    const jans = [...new Set(data.map(d=>d.jan))];
+    const maxPrice = Math.max(...data.map(d=>d.price));
+    const minPrice = Math.min(...data.map(d=>d.price));
+
+    document.getElementById('search-title').textContent = `「${q}」の価格履歴`;
+    document.getElementById('search-stats').innerHTML = `
+      <div class="stat-card"><div class="label">件数</div><div class="value">${data.length}<span class="unit">件</span></div></div>
+      <div class="stat-card"><div class="label">記録日数</div><div class="value">${dates.length}<span class="unit">日</span></div></div>
+      <div class="stat-card"><div class="label">最高価格</div><div class="value" style="font-size:18px;">${fmtPrice(maxPrice)}</div></div>
+      <div class="stat-card"><div class="label">最低価格</div><div class="value" style="font-size:18px;">${fmtPrice(minPrice)}</div></div>
+    `;
+
+    // テーブル（日付降順）
+    const DAYS = ['日','月','火','水','木','金','土'];
+    const tbody = document.getElementById('search-body');
+    tbody.innerHTML = data.map(d=>{
+      const dt = new Date(d.snapshot_dt);
+      const dow = DAYS[dt.getDay()];
+      const isToday = d.snapshot_dt === new Date().toISOString().slice(0,10);
+      return `<tr class="day-row${isToday?' today':''}">
+        <td class="mono" style="color:var(--text);">${d.snapshot_dt} <span style="color:var(--text-muted);">${dow}</span>${isToday?' <span style="color:var(--amber);font-size:10px;">TODAY</span>':''}</td>
+        <td class="cond">${escapeHtml(d.condition_name)}</td>
+        <td style="text-align:right;" class="price">${fmtPrice(d.price)}</td>
+        <td style="text-align:right;color:var(--text-faint);font-size:11px;">-</td>
+      </tr>`;
+    }).join('');
+
+    document.getElementById('search-result-wrap').style.display = 'block';
+  }catch(e){
+    document.getElementById('search-empty').style.display = 'block';
+  }
+}
+
+function clearSearch(){
+  document.getElementById('search-input').value = '';
+  document.getElementById('search-result-wrap').style.display = 'none';
+  document.getElementById('search-empty').style.display = 'none';
+}
+
+document.getElementById('search-input').addEventListener('keydown', e=>{
+  if(e.key === 'Enter') runSearch();
+});
+
+// 価格コムKコード
+const KCODE_CACHE = {};
+const KCODE_GAS = 'https://script.google.com/macros/s/AKfycbxxVHSZ-OpaF2vSEfP2bRR8ki45EdrZankJE84JucwHvsg_lJ4aC8g0H0-WHbTuAKUeyw/exec';
+async function openKakaku(jan){
+  if(KCODE_CACHE[jan] !== undefined){
+    window.open(KCODE_CACHE[jan] ? `https://kakaku.com/item/${KCODE_CACHE[jan]}/` : `https://kakaku.com/search_results/${jan}/`, '_blank');
+    return;
+  }
+  try{
+    const res = await fetch(`${KCODE_GAS}?action=get&jan=${jan}&key=katuragiya`);
+    const d = await res.json();
+    const kcode = d.status==='ok' && d.kcode ? d.kcode : null;
+    KCODE_CACHE[jan] = kcode;
+    window.open(kcode ? `https://kakaku.com/item/${kcode}/` : `https://kakaku.com/search_results/${jan}/`, '_blank');
+  }catch(e){
+    window.open(`https://kakaku.com/search_results/${jan}/`, '_blank');
+  }
+}
+
+// 初期ロード
+loadToday();
+</script>
+</body>
+</html>
