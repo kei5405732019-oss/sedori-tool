@@ -306,7 +306,8 @@
 <footer>買取一丁目の価格データをラズパイで毎朝8時に自動取得・蓄積しています</footer>
 
 <script>
-const API_BASE = 'http://100.83.71.66:5001';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbw12nBEJoS8lXihUbAr3t1bZiK0LRjKyx1fQV1bypKJyyB7hpI7eMTv9wi54hjfJ_hK/exec';
+const ACCESS_KEY = 'katuragiya';
 const CAT_NAMES = {
   10000001: 'カメラ・レンズ',
   10000002: 'スマホ・タブレット',
@@ -344,8 +345,9 @@ function kakakuUrl(jan){ return `https://kakaku.com/search_results/${jan}/`; }
 // 今日の価格ロード
 async function loadToday(){
   try{
-    const res = await fetch(API_BASE + '/api/today');
-    const data = await res.json();
+    const res = await fetch(`${GAS_URL}?key=${ACCESS_KEY}&action=ichome_today`);
+    const json = await res.json();
+    const data = json.data || [];
     allData = data;
 
     // stats
@@ -396,7 +398,7 @@ function renderToday(data){
       <td class="mono" style="color:var(--text-faint);font-size:11px;">${String(i+1).padStart(3,'0')}</td>
       <td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${escapeHtml(d.name)}">${escapeHtml(d.name)}</td>
       <td class="jan">${d.jan}</td>
-      <td class="cond">${escapeHtml(d.condition_name)}</td>
+      <td class="cond">${escapeHtml(d.condition)}</td>
       <td style="text-align:right;" class="price">${fmtPrice(d.price)}</td>
       <td style="text-align:center;"><a href="${rakuUrl(d.jan)}" target="_blank" style="color:var(--amber);font-size:11px;text-decoration:none;border:1px solid var(--amber-dim);border-radius:3px;padding:1px 6px;">楽天</a></td>
       <td style="text-align:center;"><span onclick="openKakaku('${d.jan}')" style="color:var(--green);font-size:11px;cursor:pointer;border:1px solid rgba(74,222,128,0.4);border-radius:3px;padding:1px 6px;">価格コム</span></td>
@@ -409,8 +411,8 @@ async function loadMovers(){
   const tbody = document.getElementById('movers-body');
   tbody.innerHTML = `<tr><td colspan="7" class="empty">読み込み中…</td></tr>`;
   try{
-    const res = await fetch(API_BASE + '/api/movers');
-    const data = await res.json();
+    // 価格変動は複数日データ蓄積後に対応予定
+    const data = [];
     document.getElementById('movers-n').textContent = data.length + '件';
     if(data.length === 0){
       tbody.innerHTML = `<tr><td colspan="7" class="empty">前回データなし（明日以降に表示されます）</td></tr>`;
@@ -423,7 +425,7 @@ async function loadMovers(){
         <td class="mono" style="color:var(--text-faint);font-size:11px;">${String(i+1).padStart(3,'0')}</td>
         <td style="max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(d.name)}</td>
         <td class="jan">${d.jan}</td>
-        <td class="cond">${escapeHtml(d.condition_name)}</td>
+        <td class="cond">${escapeHtml(d.condition)}</td>
         <td style="text-align:right;" class="price">${fmtPrice(d.today_price)}</td>
         <td style="text-align:right;color:var(--text-muted);">${fmtPrice(d.prev_price)}</td>
         <td style="text-align:right;" class="${diffClass}">${diffStr}</td>
@@ -442,8 +444,9 @@ async function runSearch(){
   document.getElementById('search-empty').style.display = 'none';
 
   try{
-    const res = await fetch(API_BASE + '/api/search?q=' + encodeURIComponent(q));
-    const data = await res.json();
+    const res = await fetch(`${GAS_URL}?key=${ACCESS_KEY}&action=ichome_search&q=${encodeURIComponent(q)}`);
+    const json = await res.json();
+    const data = json.data || [];
 
     if(data.length === 0){
       document.getElementById('search-empty').style.display = 'block';
@@ -473,7 +476,7 @@ async function runSearch(){
       const isToday = d.snapshot_dt === new Date().toISOString().slice(0,10);
       return `<tr class="day-row${isToday?' today':''}">
         <td class="mono" style="color:var(--text);">${d.snapshot_dt} <span style="color:var(--text-muted);">${dow}</span>${isToday?' <span style="color:var(--amber);font-size:10px;">TODAY</span>':''}</td>
-        <td class="cond">${escapeHtml(d.condition_name)}</td>
+        <td class="cond">${escapeHtml(d.condition)}</td>
         <td style="text-align:right;" class="price">${fmtPrice(d.price)}</td>
         <td style="text-align:right;color:var(--text-faint);font-size:11px;">-</td>
       </tr>`;
