@@ -454,7 +454,7 @@ async function runSearch(){
     }
 
     // stats
-    const dates = [...new Set(data.map(d=>d.snapshot_dt))].sort();
+    const dates = [...new Set(data.map(d=>d.date))].sort();
     const jans = [...new Set(data.map(d=>d.jan))];
     const maxPrice = Math.max(...data.map(d=>d.price));
     const minPrice = Math.min(...data.map(d=>d.price));
@@ -471,11 +471,13 @@ async function runSearch(){
     const DAYS = ['日','月','火','水','木','金','土'];
     const tbody = document.getElementById('search-body');
     tbody.innerHTML = data.map(d=>{
-      const dt = new Date(d.snapshot_dt);
+      const dt = new Date(d.date);
+      const dateStr = dt.toLocaleDateString('ja-JP',{year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\//g,'-');
       const dow = DAYS[dt.getDay()];
-      const isToday = d.snapshot_dt === new Date().toISOString().slice(0,10);
+      const todayStr = new Date().toISOString().slice(0,10);
+      const isToday = d.date && d.date.slice(0,10) === todayStr;
       return `<tr class="day-row${isToday?' today':''}">
-        <td class="mono" style="color:var(--text);">${d.snapshot_dt} <span style="color:var(--text-muted);">${dow}</span>${isToday?' <span style="color:var(--amber);font-size:10px;">TODAY</span>':''}</td>
+        <td class="mono" style="color:var(--text);">${dateStr} <span style="color:var(--text-muted);">${dow}</span>${isToday?' <span style="color:var(--amber);font-size:10px;">TODAY</span>':''}</td>
         <td class="cond">${escapeHtml(d.condition)}</td>
         <td style="text-align:right;" class="price">${fmtPrice(d.price)}</td>
         <td style="text-align:right;color:var(--text-faint);font-size:11px;">-</td>
