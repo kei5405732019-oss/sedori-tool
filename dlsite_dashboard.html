@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLsite AIフロア トラッカー</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242836;
+    --border: #2e3346;
+    --text: #e2e4ea;
+    --text2: #8b8fa4;
+    --accent: #6c5ce7;
+    --accent2: #a29bfe;
+    --green: #00b894;
+    --red: #ff6b6b;
+    --orange: #fdcb6e;
+    --pink: #fd79a8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.4em;
+    margin-bottom: 4px;
+    color: var(--accent2);
+  }
+  .subtitle {
+    color: var(--text2);
+    font-size: 0.85em;
+    margin-bottom: 20px;
+  }
+  .controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .controls button {
+    padding: 6px 14px;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+  }
+  .controls button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .controls input[type="date"] {
+    padding: 6px 10px;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.85em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .card h2 {
+    font-size: 1em;
+    color: var(--accent2);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+  }
+  .card.full { grid-column: 1 / -1; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82em;
+  }
+  th {
+    text-align: left;
+    color: var(--text2);
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  td {
+    padding: 6px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover { background: var(--surface2); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--surface2);
+    border-radius: 4px;
+    font-size: 0.78em;
+    margin: 1px 2px;
+    color: var(--text);
+  }
+  .tag.hot { background: var(--accent); color: #fff; }
+  .bar-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bar {
+    height: 18px;
+    background: var(--accent);
+    border-radius: 3px;
+    min-width: 2px;
+  }
+  .bar-label {
+    font-size: 0.78em;
+    color: var(--text2);
+    white-space: nowrap;
+  }
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .stat-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    flex: 1;
+    text-align: center;
+  }
+  .stat-box .value {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+  .stat-box .label {
+    font-size: 0.78em;
+    color: var(--text2);
+    margin-top: 2px;
+  }
+  .delta-up { color: var(--green); }
+  .delta-down { color: var(--red); }
+  #loading {
+    text-align: center;
+    padding: 60px;
+    color: var(--text2);
+  }
+  .price-tag { color: var(--orange); font-weight: 600; }
+  .sales-num { color: var(--green); font-weight: 600; }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .jan-input {
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.9em;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<h1>DLsite AIフロア トラッカー</h1>
+<p class="subtitle">AI生成作品 売れ筋分析ダッシュボード</p>
+
+<div class="stat-row" id="statsRow">
+  <div class="stat-box"><div class="value" id="totalWorks">-</div><div class="label">トラッキング作品数</div></div>
+  <div class="stat-box"><div class="value" id="avgPrice">-</div><div class="label">平均価格</div></div>
+  <div class="stat-box"><div class="value" id="avgSales">-</div><div class="label">平均販売数</div></div>
+  <div class="stat-box"><div class="value" id="topTag">-</div><div class="label">最頻タグ</div></div>
+</div>
+
+<div class="controls">
+  <button class="active" onclick="switchTab('ranking')">ランキング</button>
+  <button onclick="switchTab('tags')">タグ分析</button>
+  <button onclick="switchTab('price')">価格帯分布</button>
+  <button onclick="switchTab('pace')">日販ペース</button>
+  <button onclick="switchTab('trend')">販売数推移</button>
+  <button onclick="switchTab('combo')">タグ組合せ</button>
+</div>
+
+<div id="tab-ranking">
+  <div class="controls">
+    <button class="active" onclick="switchRankType('daily')">24時間</button>
+    <button onclick="switchRankType('weekly')">7日間</button>
+    <button onclick="switchRankType('monthly')">30日間</button>
+    <select id="dateSelect" onchange="loadDate(this.value)" style="padding:6px 10px;background:var(--surface2);color:var(--text);border:1px solid var(--border);border-radius:6px;font-size:0.85em;">
+      <option value="">最新</option>
+    </select>
+  </div>
+  <div class="card full">
+    <h2>ランキング一覧</h2>
+    <table>
+      <thead><tr>
+        <th>#</th><th>タイトル</th><th>サークル</th>
+        <th class="num">価格</th><th class="num">期間販売</th>
+        <th class="num">総販売</th><th class="num">日販</th>
+        <th>タグ</th>
+      </tr></thead>
+      <tbody id="rankingBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="tab-tags" style="display:none">
+  <div class="grid">
+    <div class="card">
+      <h2>タグ別 出現回数（ランキング内）</h2>
+      <div id="tagFreqChart"></div>
+    </div>
+    <div class="card">
+      <h2>タグ別 平均販売数</h2>
+      <div id="tagSalesChart"></div>
+    </div>
+  </div>
+</div>
+
+<div id="tab-price" style="display:none">
+  <div class="card full">
+    <h2>価格帯別 作品数・平均販売数</h2>
+    <div id="priceChart"></div>
+  </div>
+</div>
+
+<div id="tab-pace" style="display:none">
+  <div class="card full">
+    <h2>日販ペースランキング（販売数 ÷ 経過日数）</h2>
+    <table>
+      <thead><tr>
+        <th>#</th><th>タイトル</th><th class="num">総販売</th>
+        <th class="num">経過日数</th><th class="num">日販ペース</th>
+        <th>タグ</th>
+      </tr></thead>
+      <tbody id="paceBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="tab-trend" style="display:none">
+  <div class="card full">
+    <h2>販売数推移（定点観測）</h2>
+    <input type="text" class="jan-input" id="trendSearch" placeholder="作品名で検索..." oninput="filterTrend()">
+    <div id="trendChart"></div>
+  </div>
+</div>
+
+<div id="tab-combo" style="display:none">
+  <div class="card full">
+    <h2>タグ組合せ 頻度・平均販売数</h2>
+    <table>
+      <thead><tr>
+        <th>タグ組合せ</th><th class="num">出現回数</th>
+        <th class="num">平均販売数</th><th class="num">最大販売数</th>
+      </tr></thead>
+      <tbody id="comboBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// === データ格納 ===
+let DATA = [];
+let currentTab = 'ranking';
+let currentRankType = 'daily';
+let currentDate = '';
+
+// === GASからデータ取得（後でURL設定） ===
+// const GAS_READ_URL = "YOUR_GAS_READ_URL";
+
+// === デモ/ローカルデータ読み込み ===
+async function loadData() {
+  // GAS実装後はfetchに切り替え
+  // const resp = await fetch(GAS_READ_URL);
+  // DATA = await resp.json();
+
+  // ローカルテスト用: data.jsonを読み込み
+  try {
+    const resp = await fetch('dlsite_data.json');
+    DATA = await resp.json();
+  } catch(e) {
+    // デモデータ
+    DATA = [];
+  }
+
+  if (DATA.length > 0) {
+    populateDateSelect();
+    renderAll();
+  } else {
+    document.getElementById('rankingBody').innerHTML =
+      '<tr><td colspan="8" style="text-align:center;color:var(--text2);padding:30px;">データ未取得。dlsite_tracker.py を実行してください。</td></tr>';
+  }
+}
+
+function populateDateSelect() {
+  const dates = [...new Set(DATA.map(d => d.fetch_date))].sort().reverse();
+  const sel = document.getElementById('dateSelect');
+  sel.innerHTML = '';
+  dates.forEach(d => {
+    const opt = document.createElement('option');
+    opt.value = d;
+    opt.textContent = d;
+    sel.appendChild(opt);
+  });
+  currentDate = dates[0] || '';
+}
+
+function getFilteredData() {
+  let filtered = DATA;
+  if (currentDate) filtered = filtered.filter(d => d.fetch_date === currentDate);
+  if (currentRankType) filtered = filtered.filter(d => d.ranking_type === currentRankType);
+  return filtered;
+}
+
+function getAllLatest() {
+  // 最新日の全ランキングタイプから重複排除
+  const latest = DATA.filter(d => d.fetch_date === currentDate);
+  const seen = new Set();
+  return latest.filter(d => {
+    if (seen.has(d.product_id)) return false;
+    seen.add(d.product_id);
+    return true;
+  });
+}
+
+// === 統計サマリー ===
+function renderStats() {
+  const data = getAllLatest();
+  if (!data.length) return;
+
+  document.getElementById('totalWorks').textContent = data.length;
+  document.getElementById('avgPrice').textContent =
+    '¥' + Math.round(data.reduce((s, d) => s + (d.price || 0), 0) / data.length).toLocaleString();
+  document.getElementById('avgSales').textContent =
+    Math.round(data.reduce((s, d) => s + (d.total_sales || 0), 0) / data.length).toLocaleString();
+
+  // 最頻タグ
+  const tagCount = {};
+  data.forEach(d => {
+    (d.tags || '').split(',').filter(Boolean).forEach(t => {
+      tagCount[t] = (tagCount[t] || 0) + 1;
+    });
+  });
+  const topTag = Object.entries(tagCount).sort((a, b) => b[1] - a[1])[0];
+  document.getElementById('topTag').textContent = topTag ? topTag[0] : '-';
+}
+
+// === ランキングタブ ===
+function renderRanking() {
+  const data = getFilteredData().sort((a, b) => a.rank - b.rank);
+  const tbody = document.getElementById('rankingBody');
+  tbody.innerHTML = data.map(d => {
+    const days = d.release_date ? Math.max(1, Math.floor((new Date(currentDate) - new Date(d.release_date)) / 86400000)) : null;
+    const pace = days && d.total_sales ? (d.total_sales / days).toFixed(1) : '-';
+    const tags = (d.tags || '').split(',').filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
+    return `<tr>
+      <td>${d.rank}</td>
+      <td><a href="https://www.dlsite.com/aix/work/=/product_id/${d.product_id}.html" target="_blank">${d.title}</a></td>
+      <td>${d.circle_name}</td>
+      <td class="num price-tag">¥${(d.price || 0).toLocaleString()}</td>
+      <td class="num">${(d.period_sales || 0).toLocaleString()}</td>
+      <td class="num sales-num">${(d.total_sales || 0).toLocaleString()}</td>
+      <td class="num">${pace}</td>
+      <td>${tags}</td>
+    </tr>`;
+  }).join('');
+}
+
+// === タグ分析タブ ===
+function renderTagAnalysis() {
+  const data = getAllLatest();
+  const tagStats = {};
+  data.forEach(d => {
+    (d.tags || '').split(',').filter(Boolean).forEach(t => {
+      if (!tagStats[t]) tagStats[t] = { count: 0, totalSales: 0 };
+      tagStats[t].count++;
+      tagStats[t].totalSales += (d.total_sales || 0);
+    });
+  });
+
+  // 出現回数
+  const byFreq = Object.entries(tagStats).sort((a, b) => b[1].count - a[1].count).slice(0, 20);
+  const maxFreq = byFreq[0] ? byFreq[0][1].count : 1;
+  document.getElementById('tagFreqChart').innerHTML = byFreq.map(([tag, s]) => {
+    const pct = (s.count / maxFreq * 100).toFixed(0);
+    return `<div class="bar-container">
+      <div style="width:100px;text-align:right;font-size:0.82em;">${tag}</div>
+      <div class="bar" style="width:${pct}%"></div>
+      <div class="bar-label">${s.count}回</div>
+    </div>`;
+  }).join('');
+
+  // 平均販売数
+  const byAvg = Object.entries(tagStats)
+    .map(([tag, s]) => [tag, { ...s, avg: s.totalSales / s.count }])
+    .filter(([, s]) => s.count >= 2)
+    .sort((a, b) => b[1].avg - a[1].avg).slice(0, 20);
+  const maxAvg = byAvg[0] ? byAvg[0][1].avg : 1;
+  document.getElementById('tagSalesChart').innerHTML = byAvg.map(([tag, s]) => {
+    const pct = (s.avg / maxAvg * 100).toFixed(0);
+    return `<div class="bar-container">
+      <div style="width:100px;text-align:right;font-size:0.82em;">${tag}</div>
+      <div class="bar" style="width:${pct}%;background:var(--green)"></div>
+      <div class="bar-label">${Math.round(s.avg).toLocaleString()}</div>
+    </div>`;
+  }).join('');
+}
+
+// === 価格帯タブ ===
+function renderPriceAnalysis() {
+  const data = getAllLatest();
+  const brackets = [
+    { label: '~500円', min: 0, max: 500 },
+    { label: '501~1000円', min: 501, max: 1000 },
+    { label: '1001~1500円', min: 1001, max: 1500 },
+    { label: '1501~2000円', min: 1501, max: 2000 },
+    { label: '2001~3000円', min: 2001, max: 3000 },
+    { label: '3001円~', min: 3001, max: 999999 },
+  ];
+  const stats = brackets.map(b => {
+    const items = data.filter(d => d.price >= b.min && d.price <= b.max);
+    const avgSales = items.length ? Math.round(items.reduce((s, d) => s + (d.total_sales || 0), 0) / items.length) : 0;
+    return { ...b, count: items.length, avgSales };
+  });
+  const maxCount = Math.max(...stats.map(s => s.count), 1);
+
+  document.getElementById('priceChart').innerHTML = stats.map(s => {
+    const pct = (s.count / maxCount * 100).toFixed(0);
+    return `<div class="bar-container" style="margin-bottom:8px;">
+      <div style="width:110px;text-align:right;font-size:0.82em;">${s.label}</div>
+      <div class="bar" style="width:${pct}%;background:var(--orange)"></div>
+      <div class="bar-label">${s.count}作品 / 平均${s.avgSales.toLocaleString()}本</div>
+    </div>`;
+  }).join('');
+}
+
+// === 日販ペースタブ ===
+function renderPaceRanking() {
+  const data = getAllLatest();
+  const withPace = data
+    .filter(d => d.release_date && d.total_sales)
+    .map(d => {
+      const days = Math.max(1, Math.floor((new Date(currentDate) - new Date(d.release_date)) / 86400000));
+      return { ...d, days, pace: d.total_sales / days };
+    })
+    .sort((a, b) => b.pace - a.pace)
+    .slice(0, 30);
+
+  const tbody = document.getElementById('paceBody');
+  tbody.innerHTML = withPace.map((d, i) => {
+    const tags = (d.tags || '').split(',').filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
+    return `<tr>
+      <td>${i + 1}</td>
+      <td><a href="https://www.dlsite.com/aix/work/=/product_id/${d.product_id}.html" target="_blank">${d.title}</a></td>
+      <td class="num sales-num">${d.total_sales.toLocaleString()}</td>
+      <td class="num">${d.days}日</td>
+      <td class="num" style="color:var(--orange);font-weight:600">${d.pace.toFixed(1)}</td>
+      <td>${tags}</td>
+    </tr>`;
+  }).join('');
+}
+
+// === 販売数推移タブ ===
+function renderTrend() {
+  // 同一作品の日別販売数を表示
+  const dates = [...new Set(DATA.map(d => d.fetch_date))].sort();
+  if (dates.length < 2) {
+    document.getElementById('trendChart').innerHTML =
+      '<p style="color:var(--text2);padding:20px;">2日以上のデータが蓄積されると推移が表示されます。</p>';
+    return;
+  }
+
+  // 各作品の日別販売数を集計
+  const products = {};
+  DATA.forEach(d => {
+    if (!products[d.product_id]) {
+      products[d.product_id] = { title: d.title, data: {} };
+    }
+    // 同日に複数ランキングに出る場合は最大値を取る
+    const prev = products[d.product_id].data[d.fetch_date] || 0;
+    products[d.product_id].data[d.fetch_date] = Math.max(prev, d.total_sales || 0);
+  });
+
+  // 前日差分を計算
+  let rows = [];
+  Object.entries(products).forEach(([pid, p]) => {
+    const sortedDates = Object.keys(p.data).sort();
+    if (sortedDates.length < 2) return;
+    const latest = sortedDates[sortedDates.length - 1];
+    const prev = sortedDates[sortedDates.length - 2];
+    const delta = p.data[latest] - p.data[prev];
+    rows.push({
+      product_id: pid,
+      title: p.title,
+      latest_sales: p.data[latest],
+      delta,
+      dates: p.data,
+    });
+  });
+
+  rows.sort((a, b) => b.delta - a.delta);
+
+  const searchVal = document.getElementById('trendSearch').value.toLowerCase();
+  if (searchVal) {
+    rows = rows.filter(r => r.title.toLowerCase().includes(searchVal));
+  }
+
+  document.getElementById('trendChart').innerHTML = `<table>
+    <thead><tr><th>タイトル</th><th class="num">最新販売数</th><th class="num">前日差</th></tr></thead>
+    <tbody>${rows.slice(0, 30).map(r => `<tr>
+      <td><a href="https://www.dlsite.com/aix/work/=/product_id/${r.product_id}.html" target="_blank">${r.title}</a></td>
+      <td class="num sales-num">${r.latest_sales.toLocaleString()}</td>
+      <td class="num ${r.delta > 0 ? 'delta-up' : r.delta < 0 ? 'delta-down' : ''}">
+        ${r.delta > 0 ? '+' : ''}${r.delta.toLocaleString()}
+      </td>
+    </tr>`).join('')}</tbody>
+  </table>`;
+}
+
+function filterTrend() { renderTrend(); }
+
+// === タグ組合せタブ ===
+function renderCombo() {
+  const data = getAllLatest();
+  const combos = {};
+
+  data.forEach(d => {
+    const tags = (d.tags || '').split(',').filter(Boolean).sort();
+    // 2タグの組合せを全生成
+    for (let i = 0; i < tags.length; i++) {
+      for (let j = i + 1; j < tags.length; j++) {
+        const key = `${tags[i]} × ${tags[j]}`;
+        if (!combos[key]) combos[key] = { count: 0, totalSales: 0, maxSales: 0 };
+        combos[key].count++;
+        combos[key].totalSales += (d.total_sales || 0);
+        combos[key].maxSales = Math.max(combos[key].maxSales, d.total_sales || 0);
+      }
+    }
+  });
+
+  const sorted = Object.entries(combos)
+    .filter(([, s]) => s.count >= 2)
+    .map(([key, s]) => ({ key, ...s, avg: s.totalSales / s.count }))
+    .sort((a, b) => b.avg - a.avg)
+    .slice(0, 30);
+
+  document.getElementById('comboBody').innerHTML = sorted.map(s => `<tr>
+    <td>${s.key}</td>
+    <td class="num">${s.count}</td>
+    <td class="num sales-num">${Math.round(s.avg).toLocaleString()}</td>
+    <td class="num">${s.maxSales.toLocaleString()}</td>
+  </tr>`).join('');
+}
+
+// === タブ切り替え ===
+function switchTab(tab) {
+  currentTab = tab;
+  ['ranking', 'tags', 'price', 'pace', 'trend', 'combo'].forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none';
+  });
+  document.querySelectorAll('.controls')[0].querySelectorAll('button').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.includes(
+      { ranking: 'ランキング', tags: 'タグ分析', price: '価格帯', pace: '日販', trend: '推移', combo: '組合せ' }[tab]
+    ));
+  });
+  renderAll();
+}
+
+function switchRankType(type) {
+  currentRankType = type;
+  document.getElementById('tab-ranking').querySelectorAll('.controls button').forEach(btn => {
+    btn.classList.toggle('active',
+      (type === 'daily' && btn.textContent === '24時間') ||
+      (type === 'weekly' && btn.textContent === '7日間') ||
+      (type === 'monthly' && btn.textContent === '30日間')
+    );
+  });
+  renderRanking();
+}
+
+function loadDate(val) {
+  currentDate = val;
+  renderAll();
+}
+
+function renderAll() {
+  renderStats();
+  if (currentTab === 'ranking') renderRanking();
+  if (currentTab === 'tags') renderTagAnalysis();
+  if (currentTab === 'price') renderPriceAnalysis();
+  if (currentTab === 'pace') renderPaceRanking();
+  if (currentTab === 'trend') renderTrend();
+  if (currentTab === 'combo') renderCombo();
+}
+
+// === 起動 ===
+loadData();
+</script>
+</body>
+</html>
