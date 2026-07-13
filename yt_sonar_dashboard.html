@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>市場ソナー | かつらぎ屋</title>
+<style>
+  :root{
+    --sea-deep:#0b1220;      /* 夜の海・深層 */
+    --sea:#101a2e;           /* パネル */
+    --sea-line:#1e2c47;      /* 罫線 */
+    --ping:#39d98a;          /* ソナー反応(強) */
+    --ping-dim:#2a8f61;
+    --foam:#dfe8f5;          /* 主文字 */
+    --mist:#7d8ba3;          /* 補助文字 */
+    --amber:#f2b544;         /* 若いチャンネル */
+    --alert:#ff6b81;         /* 超異常値 */
+    --mono:"Consolas","Menlo","Osaka-Mono",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--sea-deep);color:var(--foam);
+    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    font-size:14px;line-height:1.55;
+    padding-bottom:48px;
+  }
+  header{
+    padding:18px 16px 10px;
+    border-bottom:1px solid var(--sea-line);
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  }
+  header h1{
+    font-size:18px;letter-spacing:.14em;font-weight:700;
+  }
+  header h1::before{content:"◉ ";color:var(--ping);animation:pulse 2.4s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  @media (prefers-reduced-motion: reduce){header h1::before{animation:none}}
+  header .gen{color:var(--mist);font-family:var(--mono);font-size:12px;}
+
+  nav{
+    display:flex;gap:4px;padding:10px 12px;position:sticky;top:0;
+    background:var(--sea-deep);border-bottom:1px solid var(--sea-line);
+    overflow-x:auto;z-index:5;
+  }
+  nav button{
+    background:none;border:1px solid var(--sea-line);color:var(--mist);
+    padding:7px 14px;border-radius:3px;cursor:pointer;font-size:13px;
+    white-space:nowrap;font-family:inherit;
+  }
+  nav button.on{color:var(--ping);border-color:var(--ping);}
+  nav button:focus-visible{outline:2px solid var(--ping);outline-offset:2px;}
+
+  main{max-width:960px;margin:0 auto;padding:14px 12px;}
+  section{display:none;}
+  section.on{display:block;}
+  .empty{color:var(--mist);padding:40px 0;text-align:center;}
+
+  /* ---- シグナルカード ---- */
+  .card{
+    background:var(--sea);border:1px solid var(--sea-line);
+    border-left:3px solid var(--ping-dim);
+    border-radius:4px;padding:12px 14px;margin-bottom:10px;
+    display:grid;grid-template-columns:86px 1fr;gap:4px 14px;
+    text-decoration:none;color:inherit;
+  }
+  .card:hover{border-color:var(--ping);}
+  .card.hot{border-left-color:var(--alert);}
+  .score{
+    grid-row:span 2;font-family:var(--mono);text-align:center;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .score b{font-size:26px;color:var(--ping);font-weight:700;line-height:1;}
+  .card.hot .score b{color:var(--alert);}
+  .score span{font-size:10px;color:var(--mist);letter-spacing:.1em;margin-top:4px;}
+  .t{font-size:14px;font-weight:600;
+     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .meta{font-family:var(--mono);font-size:12px;color:var(--mist);}
+  .meta em{font-style:normal;color:var(--foam);}
+  .badge{color:var(--amber);font-style:normal;}
+  .tag{
+    display:inline-block;border:1px solid var(--sea-line);border-radius:3px;
+    padding:0 6px;font-size:11px;color:var(--mist);margin-right:6px;
+  }
+
+  /* ---- 海図(カテゴリ)・自陣網テーブル ---- */
+  table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;}
+  th{color:var(--mist);font-weight:400;text-align:left;padding:8px 10px;
+     border-bottom:1px solid var(--sea-line);font-size:11px;letter-spacing:.08em;}
+  td{padding:9px 10px;border-bottom:1px solid var(--sea-line);}
+  td.num{text-align:right;color:var(--foam);}
+  .bar{height:5px;background:var(--sea-line);border-radius:2px;overflow:hidden;margin-top:4px;}
+  .bar i{display:block;height:100%;background:var(--ping-dim);}
+
+  .note{color:var(--mist);font-size:12px;margin:6px 2px 14px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>市場ソナー</h1>
+  <span class="gen" id="gen">読み込み中…</span>
+</header>
+<nav id="nav">
+  <button data-s="signals" class="on">全体網シグナル</button>
+  <button data-s="custom">カスタム網</button>
+  <button data-s="categories">海図</button>
+  <button data-s="field">自陣網</button>
+</nav>
+<main>
+  <section id="signals" class="on">
+    <p class="note">登録者に対して再生が異常に大きい動画。🌱=開設180日以内(後発でも入れた実例)。反応強度=再生÷登録。</p>
+    <div id="signals-list"></div>
+  </section>
+  <section id="custom">
+    <p class="note">スプレッドシートで指定したキーワードの精密監視。シートに1行足せば翌朝からここに載る。</p>
+    <div id="custom-list"></div>
+  </section>
+  <section id="categories">
+    <p class="note">昨日の急上昇チャートのカテゴリ別平均再生。海のどこが荒れているか。</p>
+    <div id="cat-table"></div>
+  </section>
+  <section id="field">
+    <p class="note">自陣キーワード(BGM/ファンタジー系)の需要定点観測。平均再生が高い=需要の深い漁場。</p>
+    <div id="field-table"></div>
+  </section>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const fmt=n=>n>=10000?(n/10000).toFixed(1)+"万":n.toLocaleString();
+
+document.getElementById("nav").addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  document.querySelectorAll("nav button").forEach(x=>x.classList.remove("on"));
+  document.querySelectorAll("main section").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  document.getElementById(b.dataset.s).classList.add("on");
+});
+
+function card(a){
+  const hot=a.outlier>=100;
+  const young=a.age<=180?'<em class="badge">🌱'+a.age+'日</em>':'開設'+(a.age>=9999?'不明':a.age+'日');
+  const tag=a.cat==="custom"?('<span class="tag">'+esc(a.src)+'</span>'):('<span class="tag">'+esc(a.cat)+'</span>');
+  return '<a class="card'+(hot?' hot':'')+'" href="https://youtu.be/'+a.id+'" target="_blank" rel="noopener">'
+    +'<div class="score"><b>x'+a.outlier+'</b><span>反応強度</span></div>'
+    +'<div class="t">'+tag+esc(a.title)+'</div>'
+    +'<div class="meta"><em>'+fmt(a.views)+'回</em> / 登録'+fmt(a.subs)+' / '+young+' / '+esc(a.ch)+'</div>'
+    +'</a>';
+}
+function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+fetch("yt_market.json").then(r=>r.json()).then(d=>{
+  $("#gen").textContent="更新 "+d.generated;
+  $("#signals-list").innerHTML=d.signals.length?d.signals.map(card).join(""):'<p class="empty">まだ反応なし。網は沈めたばかり。</p>';
+  $("#custom-list").innerHTML=d.custom.length?d.custom.map(card).join(""):'<p class="empty">シートにキーワードを足すとここに反応が出る。</p>';
+
+  if(d.categories.length){
+    const mx=Math.max(...d.categories.map(c=>c.avg));
+    $("#cat-table").innerHTML="<table><tr><th>カテゴリ</th><th>本数</th><th>平均再生</th></tr>"
+      +d.categories.map(c=>"<tr><td>"+esc(c.cat)+'<div class="bar"><i style="width:'+(c.avg/mx*100)+'%"></i></div></td><td class="num">'+c.n+'</td><td class="num">'+fmt(c.avg)+"</td></tr>").join("")+"</table>";
+  }else{$("#cat-table").innerHTML='<p class="empty">データ収集待ち。</p>';}
+
+  if(d.field.length){
+    $("#field-table").innerHTML="<table><tr><th>キーワード</th><th>本数</th><th>平均再生</th><th>最大</th><th>平均尺</th></tr>"
+      +d.field.map(f=>"<tr><td>"+esc(f.kw)+'</td><td class="num">'+f.n+'</td><td class="num">'+fmt(f.avg)+'</td><td class="num">'+fmt(f.max)+'</td><td class="num">'+f.min_avg+"分</td></tr>").join("")+"</table>";
+  }else{$("#field-table").innerHTML='<p class="empty">自陣網のデータ収集待ち。</p>';}
+}).catch(e=>{
+  $("#gen").textContent="yt_market.json が読めません: "+e;
+});
+</script>
+</body>
+</html>
