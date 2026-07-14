@@ -95,6 +95,7 @@ td.num{text-align:right;color:var(--text);}
   <button data-s="custom">カスタム網</button>
   <button data-s="categories">海図</button>
   <button data-s="field">自陣網</button>
+  <button data-s="review">振り返り</button>
   <button data-s="trend">推移</button>
   <button data-s="guide">読み方</button>
 </nav>
@@ -116,8 +117,17 @@ td.num{text-align:right;color:var(--text);}
   </section>
   <!-- 自陣網 -->
   <section id="field">
-    <p class="note">自陣キーワード(BGM/ファンタジー系)の需要定点観測。平均再生が高い=需要の深い漁場。</p>
+    <p class="note">自陣キーワード(BGM/ファンタジー系)の需要定点観測。平均再生が高い=需要の深い漁場。速度=直近2時点のΔviews/日。<em style="color:var(--alert);font-style:normal">2,000超</em>でアラート。</p>
+    <div id="field-alerts"></div>
     <div id="field-table"></div>
+  </section>
+  <!-- 振り返り -->
+  <section id="review">
+    <p class="note">キーワード別のΔ再生（時間窓比較）。<em style="color:var(--text);font-style:normal">24h→3日→7日→30日で伸びが続いていれば構造的需要、24hだけ跳ねて後が続かなければ一時バズ</em>。「投入」列で経過日数が自動表示されるので記憶不要。データが窓に足りない期間は「—」。</p>
+    <h3 style="font-size:13px;color:var(--purple);margin:14px 2px 8px;font-family:var(--mono)">カスタム網</h3>
+    <div id="review-custom"></div>
+    <h3 style="font-size:13px;color:var(--ping);margin:18px 2px 8px;font-family:var(--mono)">自陣網</h3>
+    <div id="review-field"></div>
   </section>
   <!-- 推移 -->
   <section id="trend">
@@ -132,6 +142,11 @@ td.num{text-align:right;color:var(--text);}
       <p><code>x30未満</code> 普通の範囲、チャンネル力で回している<br>
          <code>x30〜100</code> 需要がコンテンツに付いている。参入検討の価値あり<br>
          <code>x100超</code> 赤枠表示。バズか、供給が極端に不足しているジャンル。必ず中身を確認</p>
+    </div>
+    <div class="guide-section">
+      <h3>再生速度 (Δviews/日)</h3>
+      <p>自陣網の各動画について、直近2時点の再生数差分を日数で割った値。<strong>反応強度が「累積の深さ」なら、速度は「今まさに動いているか」</strong>。せどりで言うランキング急上昇に相当する。</p>
+      <p><code>2,000/日超</code> でアラート。⚡列はキーワード内でアラート中の動画本数。速度は最低2日分のデータが必要（収集初日は「—」表示）</p>
     </div>
     <div class="guide-section">
       <h3>🌱 開設日数</h3>
@@ -152,11 +167,19 @@ td.num{text-align:right;color:var(--text);}
       <p>毎日のスキャンで引っかかったシグナル数。<strong>緑=全体網、紫=カスタム網</strong>。両方とも上昇傾向なら市場全体が活発化している。カスタム網だけ上昇なら、指定したキーワード周辺が熱い。</p>
     </div>
     <div class="guide-section">
+      <h3>振り返りタブ（時間窓比較）</h3>
+      <p>キーワードごとに<strong>24h / 3日 / 7日 / 30日</strong>のΔ再生を並べて表示。判断は機械的に：</p>
+      <p><code>全窓で伸び継続</code> 構造的需要。参入検討へ<br>
+         <code>24hだけ大きく後が細い</code> 一時バズ。見送り<br>
+         <code>7日・30日が太く24hが細い</code> 需要は深いが今は静か。ストック型<br>
+         「投入」列に追跡開始日と経過日数が自動表示されるので、いつ入れたか覚えておく必要はない。<strong>経過14日を超えたキーワードが振り返り対象</strong>。</p>
+    </div>
+    <div class="guide-section">
       <h3>運用ルール</h3>
       <p><strong>毎朝</strong>：Discord通知またはこの画面をチェック(1分)。気になったジャンルがあればシートに1行追加。</p>
       <p><strong>週1</strong>：推移タブで全体の流れを確認。自陣網で定点キーワードの平均再生の上下を見る。</p>
       <p><strong>月1</strong>：「この1ヶ月で最も反応強度が高かったジャンル×自分の武器で再現可能か」を棚卸し。参入判断はここでやる。同時参入は最大2レーンまで。</p>
-      <p><strong>鉄則</strong>：全体網は「知る」ための網。見て即参入しない。カスタム網に入れて1〜2週間追跡し、一時的なバズか構造的な需要かを見極めてから動く。せどりで言う「1日の急騰では仕入れない、3日続いたら仕入れる」と同じ。</p>
+      <p><strong>鉄則</strong>：全体網は「知る」ための網。見て即参入しない。カスタム網に入れて1〜2週間追跡し、一時的なバズか構造的な需要かを見極めてから動く。せどりで言う「一瞬の急騰では仕入れない、続いたのを確認してから仕入れる」と同じ。判断の基準期間は<strong>1〜2週間</strong>で統一。</p>
     </div>
   </section>
 </main>
@@ -211,10 +234,36 @@ fetch("yt_market.json").then(r=>r.json()).then(d=>{
       +d.categories.map(c=>"<tr><td>"+esc(c.cat)+'<div class="bar"><i style="width:'+(c.avg/mx*100)+'%"></i></div></td><td class="num">'+c.n+'</td><td class="num">'+fmt(c.avg)+"</td></tr>").join("")+"</table>";
   }else{$("#cat-table").innerHTML='<p class="empty">データ収集待ち。</p>';}
 
+  const fa=d.field_alerts||[];
+  $("#field-alerts").innerHTML=fa.length?fa.map(a=>
+    '<a class="card hot" href="https://youtu.be/'+a.id+'" target="_blank" rel="noopener">'
+    +'<div class="score"><b>'+fmt(a.vel)+'</b><span>再生/日</span></div>'
+    +'<div class="t"><span class="tag">'+esc(a.kw)+'</span>'+esc(a.title)+'</div>'
+    +'<div class="meta"><em>'+fmt(a.views)+'回</em> / 速度アラート(2,000超)</div>'
+    +'</a>').join("")
+    :'<p class="note" style="margin-bottom:14px">現在、速度2,000/日超のアラートなし。</p>';
+
   if(d.field.length){
-    $("#field-table").innerHTML="<table><tr><th>キーワード</th><th>本数</th><th>平均再生</th><th>最大</th><th>平均尺</th></tr>"
-      +d.field.map(f=>"<tr><td>"+esc(f.kw)+'</td><td class="num">'+f.n+'</td><td class="num">'+fmt(f.avg)+'</td><td class="num">'+fmt(f.max)+'</td><td class="num">'+f.min_avg+"分</td></tr>").join("")+"</table>";
+    const vel=f=>f.vel==null?'<span style="color:var(--dim)">—</span>'
+      :(f.vel>=2000?'<span style="color:var(--alert)">'+fmt(f.vel)+'</span>':fmt(f.vel));
+    $("#field-table").innerHTML="<table><tr><th>キーワード</th><th>本数</th><th>平均再生</th><th>最大</th><th>速度/日</th><th>⚡</th><th>平均尺</th></tr>"
+      +d.field.map(f=>"<tr><td>"+esc(f.kw)+'</td><td class="num">'+f.n+'</td><td class="num">'+fmt(f.avg)+'</td><td class="num">'+fmt(f.max)+'</td><td class="num">'+vel(f)+'</td><td class="num">'+(f.n_alert?'<span style="color:var(--alert)">'+f.n_alert+'</span>':'0')+'</td><td class="num">'+f.min_avg+"分</td></tr>").join("")+"</table>";
   }else{$("#field-table").innerHTML='<p class="empty">自陣網のデータ収集待ち。</p>';}
+
+  // ---- 振り返り（時間窓比較） ----
+  function reviewTable(list){
+    if(!list||!list.length)return '<p class="empty">データ蓄積中。追跡2日目以降に表示されます。</p>';
+    const cell=(v,n)=>v==null?'<span style="color:var(--dim)">—</span>'
+      :('<span style="color:'+(v>0?'var(--text)':'var(--dim)')+'">+'+fmt(v)+'</span><span style="color:var(--dim);font-size:10px"> /'+n+'本</span>');
+    return "<table><tr><th>キーワード</th><th>投入</th><th>Δ24h</th><th>Δ3日</th><th>Δ7日</th><th>Δ30日</th></tr>"
+      +list.map(r=>"<tr><td>"+esc(r.kw)+'</td><td class="num" style="color:var(--mist)">'+r.start.slice(5)+'<br><span style="font-size:10px">'+(r.days!=null?r.days+'日目':'')+'</span></td>'
+        +'<td class="num">'+cell(r.d1,r.d1_n)+'</td>'
+        +'<td class="num">'+cell(r.d3,r.d3_n)+'</td>'
+        +'<td class="num">'+cell(r.d7,r.d7_n)+'</td>'
+        +'<td class="num">'+cell(r.d30,r.d30_n)+'</td></tr>').join("")+"</table>";
+  }
+  $("#review-custom").innerHTML=reviewTable(d.review_custom);
+  $("#review-field").innerHTML=reviewTable(d.review_field);
 
   renderTrend(d);
 }).catch(e=>{
