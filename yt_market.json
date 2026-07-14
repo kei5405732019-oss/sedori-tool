@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-14 10:09",
+ "generated": "2026-07-14 10:21",
  "signals": [
   {
    "id": "qFhspt7zsXg",
@@ -1315,6 +1315,179 @@
    "total": 99,
    "chart": 44,
    "custom": 55
+  }
+ ],
+ "review_custom": [
+  {
+   "kw": "ãã¡ã³ã¿ã¸ã¼ è¡ BGM",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "fantasy tavern music",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "ã¢ãã¡ ä½æ¥­ç¨BGM ãªãªã¸ãã«",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "ファンタジー 街 BGM",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "アニメ 作業用BGM オリジナル",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  }
+ ],
+ "review_field": [
+  {
+   "kw": "アニメ 作業用BGM オリジナル",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "fantasy tavern music",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "RPG town music",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "作業用BGM ファンタジー",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "fantasy sleep ambience",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "ファンタジー 街 BGM",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "fantasy market ambience",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
+  },
+  {
+   "kw": "medieval town ambience",
+   "start": "2026-07-13",
+   "days": 1,
+   "d1": null,
+   "d1_n": 0,
+   "d3": null,
+   "d3_n": 0,
+   "d7": null,
+   "d7_n": 0,
+   "d30": null,
+   "d30_n": 0
   }
  ]
 }
