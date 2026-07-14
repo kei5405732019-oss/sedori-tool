@@ -3,126 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="市場ソナー">
+<meta name="theme-color" content="#0d0f14">
 <title>市場ソナー | かつらぎ屋</title>
 <style>
-  :root{
-    --sea-deep:#0b1220;      /* 夜の海・深層 */
-    --sea:#101a2e;           /* パネル */
-    --sea-line:#1e2c47;      /* 罫線 */
-    --ping:#39d98a;          /* ソナー反応(強) */
-    --ping-dim:#2a8f61;
-    --foam:#dfe8f5;          /* 主文字 */
-    --mist:#7d8ba3;          /* 補助文字 */
-    --amber:#f2b544;         /* 若いチャンネル */
-    --alert:#ff6b81;         /* 超異常値 */
-    --mono:"Consolas","Menlo","Osaka-Mono",monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{
-    background:var(--sea-deep);color:var(--foam);
-    font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
-    font-size:14px;line-height:1.55;
-    padding-bottom:48px;
-  }
-  header{
-    padding:18px 16px 10px;
-    border-bottom:1px solid var(--sea-line);
-    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
-  }
-  header h1{
-    font-size:18px;letter-spacing:.14em;font-weight:700;
-  }
-  header h1::before{content:"◉ ";color:var(--ping);animation:pulse 2.4s infinite;}
-  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  @media (prefers-reduced-motion: reduce){header h1::before{animation:none}}
-  header .gen{color:var(--mist);font-family:var(--mono);font-size:12px;}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{
+  --bg:#0d0f14;--panel:#161920;--line:#2a2f3f;
+  --ping:#4fffb0;--ping-dim:#2a8f61;
+  --text:#e8eaf0;--mist:#7880a0;--dim:#454a60;
+  --amber:#f2b544;--alert:#ff6b81;--purple:#a78bfa;
+  --mono:'JetBrains Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans JP',sans-serif;font-size:14px;line-height:1.55;}
 
-  nav{
-    display:flex;gap:4px;padding:10px 12px;position:sticky;top:0;
-    background:var(--sea-deep);border-bottom:1px solid var(--sea-line);
-    overflow-x:auto;z-index:5;
-  }
-  nav button{
-    background:none;border:1px solid var(--sea-line);color:var(--mist);
-    padding:7px 14px;border-radius:3px;cursor:pointer;font-size:13px;
-    white-space:nowrap;font-family:inherit;
-  }
-  nav button.on{color:var(--ping);border-color:var(--ping);}
-  nav button:focus-visible{outline:2px solid var(--ping);outline-offset:2px;}
+/* ---- ヘッダ(ランチャー踏襲) ---- */
+.hd{padding:16px 20px 12px;border-bottom:1px solid var(--line);background:var(--panel);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.hd .logo{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--ping);letter-spacing:.15em;padding:2px 8px;border:1px solid var(--ping);border-radius:4px;}
+.hd h1{font-size:18px;font-weight:700;}
+.hd .gen{color:var(--dim);font-family:var(--mono);font-size:11px;margin-left:auto;}
+.back{color:var(--mist);text-decoration:none;font-size:12px;font-family:var(--mono);}
+.back:hover{color:var(--ping);}
 
-  main{max-width:960px;margin:0 auto;padding:14px 12px;}
-  section{display:none;}
-  section.on{display:block;}
-  .empty{color:var(--mist);padding:40px 0;text-align:center;}
+/* ---- ナビ ---- */
+nav{display:flex;gap:4px;padding:10px 12px;position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;z-index:5;-webkit-overflow-scrolling:touch;}
+nav button{background:none;border:1px solid var(--line);color:var(--mist);padding:7px 14px;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap;font-family:var(--mono);}
+nav button.on{color:var(--ping);border-color:var(--ping);background:rgba(79,255,176,.06);}
+nav button:focus-visible{outline:2px solid var(--ping);outline-offset:2px;}
 
-  /* ---- シグナルカード ---- */
-  .card{
-    background:var(--sea);border:1px solid var(--sea-line);
-    border-left:3px solid var(--ping-dim);
-    border-radius:4px;padding:12px 14px;margin-bottom:10px;
-    display:grid;grid-template-columns:86px 1fr;gap:4px 14px;
-    text-decoration:none;color:inherit;
-  }
-  .card:hover{border-color:var(--ping);}
-  .card.hot{border-left-color:var(--alert);}
-  .score{
-    grid-row:span 2;font-family:var(--mono);text-align:center;
-    display:flex;flex-direction:column;justify-content:center;
-  }
-  .score b{font-size:26px;color:var(--ping);font-weight:700;line-height:1;}
-  .card.hot .score b{color:var(--alert);}
-  .score span{font-size:10px;color:var(--mist);letter-spacing:.1em;margin-top:4px;}
-  .t{font-size:14px;font-weight:600;
-     display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .meta{font-family:var(--mono);font-size:12px;color:var(--mist);}
-  .meta em{font-style:normal;color:var(--foam);}
-  .badge{color:var(--amber);font-style:normal;}
-  .tag{
-    display:inline-block;border:1px solid var(--sea-line);border-radius:3px;
-    padding:0 6px;font-size:11px;color:var(--mist);margin-right:6px;
-  }
+main{max-width:960px;margin:0 auto;padding:14px 12px 60px;}
+section{display:none;}section.on{display:block;}
+.empty{color:var(--mist);padding:40px 0;text-align:center;}
+.note{color:var(--mist);font-size:12px;margin:6px 2px 14px;line-height:1.7;}
 
-  /* ---- 海図(カテゴリ)・自陣網テーブル ---- */
-  table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;}
-  th{color:var(--mist);font-weight:400;text-align:left;padding:8px 10px;
-     border-bottom:1px solid var(--sea-line);font-size:11px;letter-spacing:.08em;}
-  td{padding:9px 10px;border-bottom:1px solid var(--sea-line);}
-  td.num{text-align:right;color:var(--foam);}
-  .bar{height:5px;background:var(--sea-line);border-radius:2px;overflow:hidden;margin-top:4px;}
-  .bar i{display:block;height:100%;background:var(--ping-dim);}
+/* ---- シグナルカード ---- */
+.card{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--ping-dim);border-radius:8px;padding:12px 14px;margin-bottom:10px;display:grid;grid-template-columns:80px 1fr;gap:4px 14px;text-decoration:none;color:inherit;transition:border-color .2s;}
+.card:hover{border-color:var(--ping);}
+.card.hot{border-left-color:var(--alert);}
+.score{grid-row:span 2;font-family:var(--mono);text-align:center;display:flex;flex-direction:column;justify-content:center;}
+.score b{font-size:24px;color:var(--ping);font-weight:700;line-height:1;}
+.card.hot .score b{color:var(--alert);}
+.score span{font-size:10px;color:var(--mist);letter-spacing:.1em;margin-top:4px;}
+.t{font-size:13px;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.meta{font-family:var(--mono);font-size:11px;color:var(--mist);}
+.meta em{font-style:normal;color:var(--text);}
+.badge{color:var(--amber);font-style:normal;}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 6px;font-size:10px;color:var(--mist);margin-right:6px;font-family:var(--mono);}
 
-  .note{color:var(--mist);font-size:12px;margin:6px 2px 14px;}
+/* ---- テーブル ---- */
+table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;}
+th{color:var(--mist);font-weight:400;text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.08em;}
+td{padding:9px 10px;border-bottom:1px solid var(--line);}
+td.num{text-align:right;color:var(--text);}
+.bar{height:5px;background:var(--line);border-radius:2px;overflow:hidden;margin-top:4px;}
+.bar i{display:block;height:100%;background:var(--ping-dim);}
+
+/* ---- 推移チャート ---- */
+.chart-wrap{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px;}
+.chart-label{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.1em;margin-bottom:10px;}
+.chart{display:flex;align-items:flex-end;gap:3px;height:120px;}
+.chart-bar{flex:1;min-width:0;border-radius:3px 3px 0 0;position:relative;cursor:default;transition:background .15s;}
+.chart-bar:hover{opacity:.8;}
+.chart-bar .tip{display:none;position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#000;color:#fff;font-size:10px;font-family:var(--mono);padding:3px 7px;border-radius:4px;white-space:nowrap;z-index:3;}
+.chart-bar:hover .tip{display:block;}
+.chart-dates{display:flex;gap:3px;margin-top:4px;}
+.chart-dates span{flex:1;min-width:0;text-align:center;font-size:8px;font-family:var(--mono);color:var(--dim);overflow:hidden;}
+.legend{display:flex;gap:16px;margin-top:10px;font-size:11px;color:var(--mist);}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px;}
+
+/* ---- ガイド ---- */
+.guide-section{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-bottom:12px;}
+.guide-section h3{font-size:14px;font-weight:700;margin-bottom:8px;color:var(--ping);}
+.guide-section p{font-size:13px;color:var(--mist);line-height:1.8;margin-bottom:8px;}
+.guide-section strong{color:var(--text);font-weight:600;}
+.guide-section code{font-family:var(--mono);font-size:12px;color:var(--amber);background:rgba(255,182,39,.08);padding:1px 5px;border-radius:3px;}
+
+.footer{padding:20px 24px;text-align:center;font-size:11px;color:var(--dim);font-family:var(--mono);}
 </style>
 </head>
 <body>
-<header>
-  <h1>市場ソナー</h1>
+<header class="hd">
+  <span class="logo">KATURAGIYA</span>
+  <h1>📡 市場ソナー</h1>
   <span class="gen" id="gen">読み込み中…</span>
 </header>
 <nav id="nav">
-  <button data-s="signals" class="on">全体網シグナル</button>
+  <button data-s="signals" class="on">全体網</button>
   <button data-s="custom">カスタム網</button>
   <button data-s="categories">海図</button>
   <button data-s="field">自陣網</button>
+  <button data-s="trend">推移</button>
+  <button data-s="guide">読み方</button>
 </nav>
 <main>
+  <!-- 全体網 -->
   <section id="signals" class="on">
-    <p class="note">登録者に対して再生が異常に大きい動画。🌱=開設180日以内(後発でも入れた実例)。反応強度=再生÷登録。</p>
+    <p class="note">登録者に対して再生が異常に大きい動画を全ジャンルから自動検知。🌱=開設180日以内。反応強度=再生÷登録。</p>
     <div id="signals-list"></div>
   </section>
+  <!-- カスタム網 -->
   <section id="custom">
-    <p class="note">スプレッドシートで指定したキーワードの精密監視。シートに1行足せば翌朝からここに載る。</p>
+    <p class="note">スプレッドシートで指定したキーワードの精密監視。シートに1行足せば翌朝からここに反応が出る。</p>
     <div id="custom-list"></div>
   </section>
+  <!-- 海図 -->
   <section id="categories">
     <p class="note">昨日の急上昇チャートのカテゴリ別平均再生。海のどこが荒れているか。</p>
     <div id="cat-table"></div>
   </section>
+  <!-- 自陣網 -->
   <section id="field">
     <p class="note">自陣キーワード(BGM/ファンタジー系)の需要定点観測。平均再生が高い=需要の深い漁場。</p>
     <div id="field-table"></div>
   </section>
+  <!-- 推移 -->
+  <section id="trend">
+    <p class="note">日次の検知シグナル数の推移。毎朝のスキャンで何件引っかかったか。上昇=市場が活発、下降=静か。</p>
+    <div id="trend-chart"></div>
+  </section>
+  <!-- 読み方ガイド -->
+  <section id="guide">
+    <div class="guide-section">
+      <h3>反応強度 (x数値)</h3>
+      <p>再生回数÷チャンネル登録者数。<strong>チャンネルの力ではなくコンテンツ自体に需要が付いている度合い</strong>。せどりで言う「利ざやの深さ」に相当する。</p>
+      <p><code>x30未満</code> 普通の範囲、チャンネル力で回している<br>
+         <code>x30〜100</code> 需要がコンテンツに付いている。参入検討の価値あり<br>
+         <code>x100超</code> 赤枠表示。バズか、供給が極端に不足しているジャンル。必ず中身を確認</p>
+    </div>
+    <div class="guide-section">
+      <h3>🌱 開設日数</h3>
+      <p>チャンネル開設からの日数。<strong>180日以内で高反応なら「後発でも入れた」実証</strong>。ベテラン大手しか伸びていないジャンルは参入障壁が高い。🌱が多いジャンルほど今から入っても戦える。</p>
+    </div>
+    <div class="guide-section">
+      <h3>全体網 vs カスタム網 vs 自陣網</h3>
+      <p><strong>全体網</strong>：YouTube急上昇チャート全カテゴリから「登録少×再生大」を自動抽出。知らないジャンルとの遭遇装置。見るだけで世界が広がる。</p>
+      <p><strong>カスタム網</strong>：スプレッドシートに追加したキーワードの精密監視。全体網で「ん？」と思ったジャンルをここに投入して、日次で追跡する。</p>
+      <p><strong>自陣網</strong>：BGM/ファンタジー/作業用BGM等、自分の武器が直接活きるフィールドの定点観測。平均再生と最大再生で漁場の豊かさを見る。</p>
+    </div>
+    <div class="guide-section">
+      <h3>海図（カテゴリ別）</h3>
+      <p>急上昇チャートのカテゴリ別平均再生。<strong>棒が長い＝そのカテゴリの急上昇動画の平均が高い＝海が荒れている（競争も激しいが需要も大きい）</strong>。短い＝静かな海。自分の武器が使えるカテゴリの棒に注目。</p>
+    </div>
+    <div class="guide-section">
+      <h3>推移チャート</h3>
+      <p>毎日のスキャンで引っかかったシグナル数。<strong>緑=全体網、紫=カスタム網</strong>。両方とも上昇傾向なら市場全体が活発化している。カスタム網だけ上昇なら、指定したキーワード周辺が熱い。</p>
+    </div>
+    <div class="guide-section">
+      <h3>運用ルール</h3>
+      <p><strong>毎朝</strong>：Discord通知またはこの画面をチェック(1分)。気になったジャンルがあればシートに1行追加。</p>
+      <p><strong>週1</strong>：推移タブで全体の流れを確認。自陣網で定点キーワードの平均再生の上下を見る。</p>
+      <p><strong>月1</strong>：「この1ヶ月で最も反応強度が高かったジャンル×自分の武器で再現可能か」を棚卸し。参入判断はここでやる。同時参入は最大2レーンまで。</p>
+      <p><strong>鉄則</strong>：全体網は「知る」ための網。見て即参入しない。カスタム網に入れて1〜2週間追跡し、一時的なバズか構造的な需要かを見極めてから動く。せどりで言う「1日の急騰では仕入れない、3日続いたら仕入れる」と同じ。</p>
+    </div>
+  </section>
 </main>
+<div class="footer">kei5405732019-oss / sedori-tool</div>
 <script>
 const $=s=>document.querySelector(s);
 const fmt=n=>n>=10000?(n/10000).toFixed(1)+"万":n.toLocaleString();
@@ -145,7 +183,22 @@ function card(a){
     +'<div class="meta"><em>'+fmt(a.views)+'回</em> / 登録'+fmt(a.subs)+' / '+young+' / '+esc(a.ch)+'</div>'
     +'</a>';
 }
-function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function esc(s){return(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function renderTrend(data){
+  const d=data.trend_daily||[];
+  if(!d.length){$("#trend-chart").innerHTML='<p class="empty">データ収集中。2日目以降にグラフが表示されます。</p>';return;}
+  const mx=Math.max(...d.map(x=>x.total),1);
+  let bars="",dates="";
+  d.forEach(x=>{
+    const h=Math.max((x.total/mx)*100,2);
+    const chH=(x.chart/mx)*100;
+    const cuH=(x.custom/mx)*100;
+    bars+=`<div class="chart-bar" style="height:${h}%;background:linear-gradient(to top,var(--ping-dim) ${chH}%,var(--purple) ${chH}% ${chH+cuH}%,var(--line) ${chH+cuH}%)"><div class="tip">${x.date}<br>全体:${x.chart} カスタム:${x.custom}</div></div>`;
+    dates+=`<span>${x.date.slice(5)}</span>`;
+  });
+  $("#trend-chart").innerHTML=`<div class="chart-wrap"><div class="chart-label">日次シグナル検知数（過去30日）</div><div class="chart">${bars}</div><div class="chart-dates">${dates}</div><div class="legend"><span><i style="background:var(--ping-dim)"></i>全体網</span><span><i style="background:var(--purple)"></i>カスタム網</span></div></div>`;
+}
 
 fetch("yt_market.json").then(r=>r.json()).then(d=>{
   $("#gen").textContent="更新 "+d.generated;
@@ -162,8 +215,10 @@ fetch("yt_market.json").then(r=>r.json()).then(d=>{
     $("#field-table").innerHTML="<table><tr><th>キーワード</th><th>本数</th><th>平均再生</th><th>最大</th><th>平均尺</th></tr>"
       +d.field.map(f=>"<tr><td>"+esc(f.kw)+'</td><td class="num">'+f.n+'</td><td class="num">'+fmt(f.avg)+'</td><td class="num">'+fmt(f.max)+'</td><td class="num">'+f.min_avg+"分</td></tr>").join("")+"</table>";
   }else{$("#field-table").innerHTML='<p class="empty">自陣網のデータ収集待ち。</p>';}
+
+  renderTrend(d);
 }).catch(e=>{
-  $("#gen").textContent="yt_market.json が読めません: "+e;
+  $("#gen").textContent="yt_market.json 読込失敗: "+e;
 });
 </script>
 </body>
