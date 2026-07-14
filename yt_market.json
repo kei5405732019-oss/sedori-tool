@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-14 05:30",
+ "generated": "2026-07-14 09:34",
  "signals": [
   {
    "id": "qFhspt7zsXg",
@@ -822,6 +822,14 @@
    "avg": 289111,
    "max": 1155028,
    "min_avg": 131
+  }
+ ],
+ "trend_daily": [
+  {
+   "date": "2026-07-13",
+   "total": 99,
+   "chart": 44,
+   "custom": 55
   }
  ]
 }
