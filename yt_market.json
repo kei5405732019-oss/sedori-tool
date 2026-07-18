@@ -1,6 +1,150 @@
 {
- "generated": "2026-07-18 05:30",
+ "generated": "2026-07-19 05:30",
  "signals": [
+  {
+   "id": "pmEYzvWrNKc",
+   "title": "不可能を可能にした撮影テクニック",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "TheWorld",
+   "subs": 46000,
+   "views": 1590174,
+   "outlier": 34.6,
+   "age": 309,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "KAsyesGWik4",
+   "title": "ちゃんみな - “RED”～“NG” (from \"AREA OF DIAMOND FINAL\"@Tokyo Dome)",
+   "cat": "総合",
+   "src": "chart",
+   "ch": "ちゃんみな [CHANMINA]",
+   "subs": 11700,
+   "views": 385844,
+   "outlier": 33.0,
+   "age": 459,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "3C0EOqt7sqA",
+   "title": "M!LK - You!Joy!Parade! (Official Music Video)",
+   "cat": "総合",
+   "src": "chart",
+   "ch": "M!LK",
+   "subs": 34800,
+   "views": 1999122,
+   "outlier": 57.4,
+   "age": 1832,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "9mFz4AcFP0k",
+   "title": "世界でバズった滑り台の瞬間TOP5",
+   "cat": "ハウツー",
+   "src": "chart",
+   "ch": "しばランキング",
+   "subs": 74400,
+   "views": 2653499,
+   "outlier": 35.7,
+   "age": 1844,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "TAUJI5yGLEY",
+   "title": "ロバート秋山のネタ中に違う曲を流した結果#ロバート#ネタ#有田#即興#天才",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "Xx面白保管庫xX",
+   "subs": 17500,
+   "views": 4456313,
+   "outlier": 254.6,
+   "age": 60,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "StDF4ercILw",
+   "title": "バーで偶然仕事の松本潤に会うｗ #funny #cute",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "Coco Roll",
+   "subs": 19000,
+   "views": 877204,
+   "outlier": 46.2,
+   "age": 1458,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "jv1LDWF3634",
+   "title": "愛犬を触らせない本当の理由とは？#shorts",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "一分ルーム",
+   "subs": 32200,
+   "views": 1804962,
+   "outlier": 56.1,
+   "age": 359,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "f-lKuARPcfc",
+   "title": "化学を知る人間が本当に恐ろしい理由",
+   "cat": "映画アニメ",
+   "src": "chart",
+   "ch": "シネマこばこ",
+   "subs": 15400,
+   "views": 913131,
+   "outlier": 59.3,
+   "age": 264,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "q5DiGkdTcb0",
+   "title": "カイル・カードさんの表情が最高🤣",
+   "cat": "映画アニメ",
+   "src": "chart",
+   "ch": "める【プロフガチ】",
+   "subs": 28300,
+   "views": 1070086,
+   "outlier": 37.8,
+   "age": 110,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "g-tlgUAiXRU",
+   "title": "ジョルジーナは何度もロナウドにプライベートジェットをねだったしかしロナウドの言葉にジョルジーナは深く恥じ入った#クリスティアーノロナウド #ロナウド #ジョルジーナ #サッカー",
+   "cat": "ハウツー",
+   "src": "chart",
+   "ch": "Aidee Cichonski",
+   "subs": 11100,
+   "views": 808380,
+   "outlier": 72.8,
+   "age": 214,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "8vVTMjYB03A",
+   "title": "樹愛羅は天才 #イコラブ #齋藤樹愛羅 #大谷映美里",
+   "cat": "コメディ",
+   "src": "chart",
+   "ch": "sf0627",
+   "subs": 11700,
+   "views": 727525,
+   "outlier": 62.2,
+   "age": 2299,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "8I9uzqg7e7I",
+   "title": "とにかく全力なレイザーラモンHG #面白い #野球 #芸人 #hg #細木数子 【楽曲提供:箕輪レコーズ】",
+   "cat": "コメディ",
+   "src": "chart",
+   "ch": "公共おもしろジャパン(非公式)",
+   "subs": 41400,
+   "views": 1366804,
+   "outlier": 33.0,
+   "age": 441,
+   "date": "2026-07-18"
+  },
   {
    "id": "q1ElIA96W0A",
    "title": "ELEVATE",
@@ -8,9 +152,9 @@
    "src": "chart",
    "ch": "VOLTACTION - Topic",
    "subs": 6040,
-   "views": 202900,
-   "outlier": 33.6,
-   "age": 1463,
+   "views": 222269,
+   "outlier": 36.8,
+   "age": 1464,
    "date": "2026-07-17"
   },
   {
@@ -19,10 +163,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "ハル映画",
-   "subs": 79900,
-   "views": 2534328,
-   "outlier": 31.7,
-   "age": 321,
+   "subs": 81300,
+   "views": 3046224,
+   "outlier": 37.5,
+   "age": 322,
    "date": "2026-07-17"
   },
   {
@@ -32,9 +176,9 @@
    "src": "chart",
    "ch": "アホの証明",
    "subs": 51500,
-   "views": 2086668,
-   "outlier": 40.5,
-   "age": 424,
+   "views": 2662259,
+   "outlier": 51.7,
+   "age": 425,
    "date": "2026-07-17"
   },
   {
@@ -43,10 +187,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "政治拡散ラボ",
-   "subs": 80400,
-   "views": 1275061,
-   "outlier": 15.9,
-   "age": 138,
+   "subs": 81200,
+   "views": 1542696,
+   "outlier": 19.0,
+   "age": 139,
    "date": "2026-07-17"
   },
   {
@@ -55,10 +199,10 @@
    "cat": "総合",
    "src": "chart",
    "ch": "千葉 雄喜 / Yuki Chiba",
-   "subs": 10300,
-   "views": 340338,
-   "outlier": 33.0,
-   "age": 344,
+   "subs": 10400,
+   "views": 395775,
+   "outlier": 38.1,
+   "age": 345,
    "date": "2026-07-17"
   },
   {
@@ -67,10 +211,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "HUNTER × HUNTERストーリー解説録",
-   "subs": 37100,
-   "views": 1247314,
-   "outlier": 33.6,
-   "age": 394,
+   "subs": 37300,
+   "views": 1597754,
+   "outlier": 42.8,
+   "age": 395,
    "date": "2026-07-17"
   },
   {
@@ -79,10 +223,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "ジュリラン",
-   "subs": 39600,
-   "views": 1313984,
-   "outlier": 33.2,
-   "age": 1213,
+   "subs": 39800,
+   "views": 1628773,
+   "outlier": 40.9,
+   "age": 1214,
    "date": "2026-07-17"
   },
   {
@@ -92,9 +236,9 @@
    "src": "chart",
    "ch": "賛否は人生",
    "subs": 20300,
-   "views": 1032992,
-   "outlier": 50.9,
-   "age": 973,
+   "views": 1237628,
+   "outlier": 61.0,
+   "age": 974,
    "date": "2026-07-17"
   },
   {
@@ -103,10 +247,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "ちょっと1分",
-   "subs": 28800,
-   "views": 921290,
-   "outlier": 32.0,
-   "age": 568,
+   "subs": 29100,
+   "views": 1116019,
+   "outlier": 38.4,
+   "age": 569,
    "date": "2026-07-17"
   },
   {
@@ -115,10 +259,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "Zon Dalkan",
-   "subs": 19300,
-   "views": 661480,
-   "outlier": 34.3,
-   "age": 413,
+   "subs": 19700,
+   "views": 1102998,
+   "outlier": 56.0,
+   "age": 414,
    "date": "2026-07-17"
   },
   {
@@ -127,10 +271,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "アカポ K-POP",
-   "subs": 40200,
+   "subs": 40300,
    "views": 1234424,
-   "outlier": 30.7,
-   "age": 585,
+   "outlier": 30.6,
+   "age": 586,
    "date": "2026-07-17"
   },
   {
@@ -139,10 +283,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "Câu Cá Miền Tây",
-   "subs": 10800,
-   "views": 2539882,
-   "outlier": 235.2,
-   "age": 502,
+   "subs": 11100,
+   "views": 3021284,
+   "outlier": 272.2,
+   "age": 503,
    "date": "2026-07-17"
   },
   {
@@ -151,10 +295,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "共感ボタン",
-   "subs": 29000,
-   "views": 1175302,
-   "outlier": 40.5,
-   "age": 540,
+   "subs": 29500,
+   "views": 1954559,
+   "outlier": 66.3,
+   "age": 541,
    "date": "2026-07-17"
   },
   {
@@ -163,10 +307,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "となりのK",
-   "subs": 23100,
-   "views": 826962,
-   "outlier": 35.8,
-   "age": 136,
+   "subs": 23400,
+   "views": 1257433,
+   "outlier": 53.7,
+   "age": 137,
    "date": "2026-07-17"
   },
   {
@@ -175,10 +319,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "ちいさな巨人",
-   "subs": 26200,
-   "views": 624533,
-   "outlier": 23.8,
-   "age": 149,
+   "subs": 26600,
+   "views": 1129259,
+   "outlier": 42.5,
+   "age": 150,
    "date": "2026-07-17"
   },
   {
@@ -187,10 +331,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "逆襲の和田",
-   "subs": 10400,
+   "subs": 10700,
    "views": 919045,
-   "outlier": 88.4,
-   "age": 2093,
+   "outlier": 85.9,
+   "age": 2094,
    "date": "2026-07-17"
   },
   {
@@ -199,10 +343,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "ストローが必要だよ",
-   "subs": 28400,
-   "views": 4440306,
-   "outlier": 156.3,
-   "age": 253,
+   "subs": 28700,
+   "views": 4547663,
+   "outlier": 158.5,
+   "age": 254,
    "date": "2026-07-17"
   },
   {
@@ -211,10 +355,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "世界が驚くニッポン",
-   "subs": 35200,
-   "views": 1131936,
-   "outlier": 32.2,
-   "age": 283,
+   "subs": 35500,
+   "views": 1485690,
+   "outlier": 41.9,
+   "age": 284,
    "date": "2026-07-17"
   },
   {
@@ -226,7 +370,7 @@
    "subs": 43200,
    "views": 1509193,
    "outlier": 34.9,
-   "age": 4595,
+   "age": 4596,
    "date": "2026-07-16"
   },
   {
@@ -235,10 +379,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "ピッコロショート",
-   "subs": 99400,
-   "views": 3098653,
-   "outlier": 31.2,
-   "age": 1730,
+   "subs": 99500,
+   "views": 3137593,
+   "outlier": 31.5,
+   "age": 1731,
    "date": "2026-07-16"
   },
   {
@@ -247,10 +391,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "ミニセカ",
-   "subs": 55900,
-   "views": 3055528,
-   "outlier": 54.7,
-   "age": 265,
+   "subs": 56500,
+   "views": 3877994,
+   "outlier": 68.6,
+   "age": 266,
    "date": "2026-07-16"
   },
   {
@@ -259,10 +403,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "今日の世界バズ",
-   "subs": 53900,
-   "views": 2589832,
-   "outlier": 48.0,
-   "age": 429,
+   "subs": 54700,
+   "views": 2955941,
+   "outlier": 54.0,
+   "age": 430,
    "date": "2026-07-16"
   },
   {
@@ -271,10 +415,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "める【プロフガチ】",
-   "subs": 27400,
-   "views": 1864358,
-   "outlier": 68.0,
-   "age": 109,
+   "subs": 28300,
+   "views": 2571468,
+   "outlier": 90.9,
+   "age": 110,
    "date": "2026-07-16"
   },
   {
@@ -283,10 +427,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "ちょっと1分",
-   "subs": 28800,
-   "views": 2048848,
-   "outlier": 71.1,
-   "age": 568,
+   "subs": 29100,
+   "views": 2617950,
+   "outlier": 90.0,
+   "age": 569,
    "date": "2026-07-16"
   },
   {
@@ -295,10 +439,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "セカイのバグ",
-   "subs": 28600,
+   "subs": 28900,
    "views": 1779711,
-   "outlier": 62.2,
-   "age": 545,
+   "outlier": 61.6,
+   "age": 546,
    "date": "2026-07-16"
   },
   {
@@ -307,10 +451,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "Movie切り抜き",
-   "subs": 10100,
-   "views": 1252988,
-   "outlier": 124.1,
-   "age": 178,
+   "subs": 10300,
+   "views": 1637030,
+   "outlier": 158.9,
+   "age": 179,
    "date": "2026-07-16"
   },
   {
@@ -319,10 +463,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "Ddrh Ddrhg",
-   "subs": 16900,
-   "views": 1056449,
-   "outlier": 62.5,
-   "age": 211,
+   "subs": 17400,
+   "views": 1687111,
+   "outlier": 97.0,
+   "age": 212,
    "date": "2026-07-16"
   },
   {
@@ -331,10 +475,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "Marisyntha Clip",
-   "subs": 14700,
-   "views": 1141235,
-   "outlier": 77.6,
-   "age": 179,
+   "subs": 14900,
+   "views": 1373607,
+   "outlier": 92.2,
+   "age": 180,
    "date": "2026-07-16"
   },
   {
@@ -343,10 +487,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "Morpheis Cine",
-   "subs": 15700,
+   "subs": 15900,
    "views": 842085,
-   "outlier": 53.6,
-   "age": 190,
+   "outlier": 53.0,
+   "age": 191,
    "date": "2026-07-16"
   },
   {
@@ -355,10 +499,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "チラ見ショート",
-   "subs": 28800,
+   "subs": 28900,
    "views": 883580,
-   "outlier": 30.7,
-   "age": 1562,
+   "outlier": 30.6,
+   "age": 1563,
    "date": "2026-07-16"
   },
   {
@@ -367,10 +511,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "My GMOD",
-   "subs": 11000,
-   "views": 1276414,
-   "outlier": 116.0,
-   "age": 115,
+   "subs": 11200,
+   "views": 1548830,
+   "outlier": 138.3,
+   "age": 116,
    "date": "2026-07-16"
   },
   {
@@ -379,10 +523,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "オードリー",
-   "subs": 39600,
-   "views": 2320526,
-   "outlier": 58.6,
-   "age": 265,
+   "subs": 40200,
+   "views": 2399966,
+   "outlier": 59.7,
+   "age": 266,
    "date": "2026-07-15"
   },
   {
@@ -392,9 +536,9 @@
    "src": "chart",
    "ch": "あの",
    "subs": 68700,
-   "views": 3010578,
-   "outlier": 43.8,
-   "age": 1549,
+   "views": 3072698,
+   "outlier": 44.7,
+   "age": 1550,
    "date": "2026-07-15"
   },
   {
@@ -403,10 +547,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "フール",
-   "subs": 49900,
-   "views": 2408676,
-   "outlier": 48.3,
-   "age": 1846,
+   "subs": 50200,
+   "views": 2576225,
+   "outlier": 51.3,
+   "age": 1847,
    "date": "2026-07-15"
   },
   {
@@ -416,9 +560,9 @@
    "src": "chart",
    "ch": "Vaundy - Topic",
    "subs": 2240,
-   "views": 256748,
-   "outlier": 114.6,
-   "age": 2245,
+   "views": 305139,
+   "outlier": 136.2,
+   "age": 2246,
    "date": "2026-07-15"
   },
   {
@@ -427,10 +571,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "ゆきはなし",
-   "subs": 49500,
+   "subs": 49600,
    "views": 1891936,
-   "outlier": 38.2,
-   "age": 3874,
+   "outlier": 38.1,
+   "age": 3875,
    "date": "2026-07-15"
   },
   {
@@ -439,10 +583,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "H×H神回発掘",
-   "subs": 13800,
-   "views": 1159301,
-   "outlier": 84.0,
-   "age": 192,
+   "subs": 14000,
+   "views": 1366191,
+   "outlier": 97.6,
+   "age": 193,
    "date": "2026-07-15"
   },
   {
@@ -454,7 +598,7 @@
    "subs": 23800,
    "views": 1350389,
    "outlier": 56.7,
-   "age": 255,
+   "age": 256,
    "date": "2026-07-15"
   },
   {
@@ -463,10 +607,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "Tirzah Belrose0",
-   "subs": 17000,
+   "subs": 17200,
    "views": 1049140,
-   "outlier": 61.7,
-   "age": 1901,
+   "outlier": 61.0,
+   "age": 1902,
    "date": "2026-07-15"
   },
   {
@@ -475,10 +619,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "切ない劇場",
-   "subs": 38600,
+   "subs": 39200,
    "views": 1625682,
-   "outlier": 42.1,
-   "age": 2057,
+   "outlier": 41.5,
+   "age": 2058,
    "date": "2026-07-15"
   },
   {
@@ -487,10 +631,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "エブリデイshorts",
-   "subs": 22000,
+   "subs": 22200,
    "views": 1194770,
-   "outlier": 54.3,
-   "age": 202,
+   "outlier": 53.8,
+   "age": 203,
    "date": "2026-07-15"
   },
   {
@@ -499,10 +643,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "世界ノStory",
-   "subs": 22000,
-   "views": 1692815,
-   "outlier": 76.9,
-   "age": 399,
+   "subs": 22200,
+   "views": 2112266,
+   "outlier": 95.1,
+   "age": 400,
    "date": "2026-07-15"
   },
   {
@@ -511,10 +655,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "ちいさな巨人",
-   "subs": 26200,
+   "subs": 26600,
    "views": 642318,
-   "outlier": 24.5,
-   "age": 149,
+   "outlier": 24.1,
+   "age": 150,
    "date": "2026-07-15"
   },
   {
@@ -523,10 +667,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "絆タイム",
-   "subs": 21500,
+   "subs": 21700,
    "views": 1582123,
-   "outlier": 73.6,
-   "age": 182,
+   "outlier": 72.9,
+   "age": 183,
    "date": "2026-07-15"
   },
   {
@@ -536,9 +680,9 @@
    "src": "chart",
    "ch": "Mrs. GREEN APPLE - Topic",
    "subs": 50800,
-   "views": 3523276,
-   "outlier": 69.4,
-   "age": 3933,
+   "views": 3969353,
+   "outlier": 78.1,
+   "age": 3934,
    "date": "2026-07-14"
   },
   {
@@ -547,10 +691,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "ショーツ見る日",
-   "subs": 85600,
-   "views": 5853625,
-   "outlier": 68.4,
-   "age": 846,
+   "subs": 86300,
+   "views": 6157984,
+   "outlier": 71.4,
+   "age": 847,
    "date": "2026-07-14"
   },
   {
@@ -559,10 +703,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "カンテレ笑タイム【公式】",
-   "subs": 92000,
+   "subs": 92300,
    "views": 3022529,
-   "outlier": 32.9,
-   "age": 326,
+   "outlier": 32.7,
+   "age": 327,
    "date": "2026-07-14"
   },
   {
@@ -571,158 +715,158 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "テケテケさん",
-   "subs": 77000,
+   "subs": 77300,
    "views": 2497526,
-   "outlier": 32.4,
-   "age": 2812,
+   "outlier": 32.3,
+   "age": 2813,
    "date": "2026-07-14"
-  },
-  {
-   "id": "psulehPrie0",
-   "title": "『ハリー・ポッター』の撮影中に起きた前代未聞のハプニング。NGどころか伝説になった『神アドリブ』の瞬間TOP3ww【あるある】",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "共感ボタン",
-   "subs": 29000,
-   "views": 1815565,
-   "outlier": 62.6,
-   "age": 540,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "ISipIVNCY6E",
-   "title": "甲羅の上から聴診器？獣医さんが明かす、リクガメ診察のリアル。#月曜から夜ふかし #マツコ  #お笑い  #おもしろ動画",
-   "cat": "エンタメ",
-   "src": "chart",
-   "ch": "Câu Cá Miền Tây",
-   "subs": 10800,
-   "views": 5838435,
-   "outlier": 540.6,
-   "age": 502,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "SWxdFWHUe24",
-   "title": "トラウマで野球を断念したはずが、実は超絶技巧派だった件。#月曜から夜ふかし #マツコ  #おもしろ動画 #お笑い",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "My GMOD",
-   "subs": 11000,
-   "views": 2680678,
-   "outlier": 243.7,
-   "age": 115,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "0a1QwCLDtyI",
-   "title": "警察官であるあなたがこのような状況に遭遇した場合、どのように対処すべきでしょうか。# #ドラマ # #映画 #viralvideo #shorts",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "Ddrh Ddrhg",
-   "subs": 16900,
-   "views": 1385774,
-   "outlier": 82.0,
-   "age": 211,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "qFhspt7zsXg",
-   "title": "Number_i - BUGS LIFE (Official Music Video)",
-   "cat": "総合",
-   "src": "chart",
-   "ch": "Number_i",
-   "subs": 1570,
-   "views": 8655780,
-   "outlier": 5513.2,
-   "age": 51,
-   "date": "2026-07-13"
-  },
-  {
-   "id": "kcXKLaLNqww",
-   "title": "M!LK - しおざきわんだーらんど (塩﨑太智) (Official Music Video)",
-   "cat": "音楽",
-   "src": "chart",
-   "ch": "M!LK",
-   "subs": 34700,
-   "views": 3538700,
-   "outlier": 102.0,
-   "age": 1831,
-   "date": "2026-07-13"
-  },
-  {
-   "id": "el38Q_DN8Hg",
-   "title": "グッタイム",
-   "cat": "音楽",
-   "src": "chart",
-   "ch": "Snow Man - Topic",
-   "subs": 23600,
-   "views": 1985818,
-   "outlier": 84.1,
-   "age": 1326,
-   "date": "2026-07-13"
-  },
-  {
-   "id": "KsHKaP50FBE",
-   "title": "EBiDAN(恵比寿学園男子部) 「Yes! 東京」 MUSIC VIDEO",
-   "cat": "音楽",
-   "src": "chart",
-   "ch": "EBiDAN",
-   "subs": 138000,
-   "views": 15424867,
-   "outlier": 111.8,
-   "age": 946,
-   "date": "2026-07-13"
-  },
-  {
-   "id": "Y6kCZTIkQw4",
-   "title": "チラチLOVE (from M!LK ARENA TOUR 2025-2026 \"SMILE POP!\")",
-   "cat": "音楽",
-   "src": "chart",
-   "ch": "M!LK",
-   "subs": 34700,
-   "views": 2348700,
-   "outlier": 67.7,
-   "age": 1831,
-   "date": "2026-07-13"
-  },
-  {
-   "id": "OJoZX6W77qI",
-   "title": "YAO - 777 (feat. Awich, CHICO CARLITO, ONE OK ROCK & Paledusk) [Official Music Video]",
-   "cat": "音楽",
-   "src": "chart",
-   "ch": "YAO",
-   "subs": 32800,
-   "views": 1405584,
-   "outlier": 42.9,
-   "age": 45,
-   "date": "2026-07-13"
-  },
-  {
-   "id": "cyVDE5VFz04",
-   "title": "なんもねえ",
-   "cat": "音楽",
-   "src": "chart",
-   "ch": "Wasureranneyo - Topic",
-   "subs": 2330,
-   "views": 905732,
-   "outlier": 388.7,
-   "age": 4590,
-   "date": "2026-07-13"
-  },
-  {
-   "id": "EpuaeOKrNS8",
-   "title": "Why, Why",
-   "cat": "音楽",
-   "src": "chart",
-   "ch": "BE:FIRST - Topic",
-   "subs": 2800,
-   "views": 862553,
-   "outlier": 308.1,
-   "age": 1795,
-   "date": "2026-07-13"
   }
  ],
  "custom": [
+  {
+   "id": "MAiOlG_RcTw",
+   "title": "【作業用・睡眠用】FF7の落ち着くBGM集【ファイナルファンタジー7】",
+   "cat": "custom",
+   "src": "ファンタジー 街 BGM",
+   "ch": "チョコ / FFチャンネル",
+   "subs": 227,
+   "views": 20025,
+   "outlier": 88.2,
+   "age": 673,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "mliKZL3Bex0",
+   "title": "【作業用bgm】海賊の集う酒場 | 異世界に入り込む１時間 | 環境音 ASMR | ASMR BGM of a bar where pirates gather【ケルト音楽】",
+   "cat": "custom",
+   "src": "ファンタジー 街 BGM",
+   "ch": "Sound Canvas / 音の帆",
+   "subs": 8500,
+   "views": 545154,
+   "outlier": 64.1,
+   "age": 2470,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "7DaR0doNetk",
+   "title": "We are Alive! | Tavern Music for RPG &amp; DnD | Medieval Folk Song",
+   "cat": "custom",
+   "src": "fantasy tavern music",
+   "ch": "The Singing Tavern",
+   "subs": 15300,
+   "views": 1023544,
+   "outlier": 66.9,
+   "age": 1758,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "8n3DClnx_cM",
+   "title": "Burn the Tavern Down | Epic Celtic Tavern Dance Song",
+   "cat": "custom",
+   "src": "fantasy tavern music",
+   "ch": "Firelight Tavern",
+   "subs": 5280,
+   "views": 232604,
+   "outlier": 44.1,
+   "age": 195,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "jvmJw2uN_8o",
+   "title": "【作業用BGM】12時間使える300曲+18のアニソンメドレー",
+   "cat": "custom",
+   "src": "アニメ 作業用BGM オリジナル",
+   "ch": "なつめっちゃんねる隠居所",
+   "subs": 37000,
+   "views": 1785487,
+   "outlier": 48.3,
+   "age": 3607,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "lQ0jcss6Uuc",
+   "title": "【作業用ＢＧＭ】聴いて笑えるｗおもろい銀魂ドラマCD集！",
+   "cat": "custom",
+   "src": "アニメ 作業用BGM オリジナル",
+   "ch": "アニメdmcTVチャンネル",
+   "subs": 6540,
+   "views": 1903901,
+   "outlier": 291.1,
+   "age": 3096,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "q9gxhNCnmqs",
+   "title": "The Apothecary’s Window Seat 🌧️ Fantasy Medieval Music for Reading",
+   "cat": "custom",
+   "src": "fantasy bard song",
+   "ch": "The Resting Bard",
+   "subs": 11800,
+   "views": 308576,
+   "outlier": 26.2,
+   "age": 521,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "XvDTbO6y_v8",
+   "title": "How I Met Your Mother (D&amp;D Edition) | The Bard Anthem | Funny D&amp;D Song - Fantasy Tavern Music",
+   "cat": "custom",
+   "src": "fantasy bard song",
+   "ch": "ThaBard Tavern",
+   "subs": 5050,
+   "views": 98952,
+   "outlier": 19.6,
+   "age": 131,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "6DrePz9ou2Y",
+   "title": "Queen of the Cellar | Drow Tavern Music for RPG &amp; DnD | Medieval Folk",
+   "cat": "custom",
+   "src": "medieval folk music",
+   "ch": "The Singing Tavern",
+   "subs": 15300,
+   "views": 682525,
+   "outlier": 44.6,
+   "age": 1758,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "bvNZeh6f8vE",
+   "title": "Reverse Dance. Medieval Dance. Hurdy-Gurdy, Organ &amp; Drum",
+   "cat": "custom",
+   "src": "medieval folk music",
+   "ch": "Andrey Vinogradov",
+   "subs": 256000,
+   "views": 17407070,
+   "outlier": 68.0,
+   "age": 7257,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "QnV6szjo46M",
+   "title": "踊りたくなる　楽しい　ケルト音楽集　【作業用BGM】Celtic Music",
+   "cat": "custom",
+   "src": "ケルト音楽 作業用",
+   "ch": "Bmg JP Production.!!",
+   "subs": 84500,
+   "views": 3558813,
+   "outlier": 42.1,
+   "age": 2706,
+   "date": "2026-07-18"
+  },
+  {
+   "id": "35EXkA5tHmQ",
+   "title": "冒険に出かけたくなる ケルト音楽集　【celtic adventure music】 作業用BGM",
+   "cat": "custom",
+   "src": "ケルト音楽 作業用",
+   "ch": "Bmg JP Production.!!",
+   "subs": 84500,
+   "views": 2301494,
+   "outlier": 27.2,
+   "age": 2706,
+   "date": "2026-07-18"
+  },
   {
    "id": "aLKV7z_5iP4",
    "title": "【ノスタルジック】故郷が恋しくなる スクウェア名曲集【FF,クロノ,ロマサガ,サガフロ2,聖剣】SQUARE RPG Nostalgic BGM Compilation",
@@ -732,7 +876,7 @@
    "subs": 29600,
    "views": 473643,
    "outlier": 16.0,
-   "age": 3478,
+   "age": 3479,
    "date": "2026-07-17"
   },
   {
@@ -741,10 +885,10 @@
    "cat": "custom",
    "src": "ファンタジー 街 BGM",
    "ch": "チョコ / FFチャンネル",
-   "subs": 225,
+   "subs": 227,
    "views": 25065,
-   "outlier": 111.4,
-   "age": 672,
+   "outlier": 110.4,
+   "age": 673,
    "date": "2026-07-17"
   },
   {
@@ -753,10 +897,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "The Medieval Inn",
-   "subs": 8260,
+   "subs": 8290,
    "views": 424297,
-   "outlier": 51.4,
-   "age": 682,
+   "outlier": 51.2,
+   "age": 683,
    "date": "2026-07-17"
   },
   {
@@ -766,9 +910,9 @@
    "src": "medieval folk music",
    "ch": "Mystic Celtic",
    "subs": 21300,
-   "views": 963872,
+   "views": 963988,
    "outlier": 45.3,
-   "age": 557,
+   "age": 558,
    "date": "2026-07-17"
   },
   {
@@ -777,10 +921,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "幻想音楽のアトリエ GensouSoundAtelier ",
-   "subs": 2920,
-   "views": 323590,
-   "outlier": 110.8,
-   "age": 539,
+   "subs": 2930,
+   "views": 323861,
+   "outlier": 110.5,
+   "age": 540,
    "date": "2026-07-17"
   },
   {
@@ -792,7 +936,7 @@
    "subs": 29600,
    "views": 1280550,
    "outlier": 43.3,
-   "age": 3478,
+   "age": 3479,
    "date": "2026-07-16"
   },
   {
@@ -801,10 +945,10 @@
    "cat": "custom",
    "src": "fantasy tavern music",
    "ch": "The Riverside Tavern",
-   "subs": 19800,
-   "views": 436258,
+   "subs": 19900,
+   "views": 437011,
    "outlier": 22.0,
-   "age": 7099,
+   "age": 7100,
    "date": "2026-07-16"
   },
   {
@@ -813,10 +957,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "ハリネズミのBGM工房",
-   "subs": 9530,
+   "subs": 9540,
    "views": 195690,
    "outlier": 20.5,
-   "age": 172,
+   "age": 173,
    "date": "2026-07-16"
   },
   {
@@ -828,7 +972,7 @@
    "subs": 23900,
    "views": 2927530,
    "outlier": 122.5,
-   "age": 396,
+   "age": 397,
    "date": "2026-07-15"
   },
   {
@@ -838,9 +982,9 @@
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "바카라 미진이",
    "subs": 29500,
-   "views": 2528982,
+   "views": 2529287,
    "outlier": 85.7,
-   "age": 3394,
+   "age": 3395,
    "date": "2026-07-15"
   },
   {
@@ -850,9 +994,9 @@
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "DJぜふ",
    "subs": 99200,
-   "views": 4300077,
-   "outlier": 43.3,
-   "age": 4511,
+   "views": 4300935,
+   "outlier": 43.4,
+   "age": 4512,
    "date": "2026-07-15"
   },
   {
@@ -864,7 +1008,7 @@
    "subs": 49500,
    "views": 39162025,
    "outlier": 791.2,
-   "age": 4574,
+   "age": 4575,
    "date": "2026-07-15"
   },
   {
@@ -876,7 +1020,7 @@
    "subs": 71500,
    "views": 4324455,
    "outlier": 60.5,
-   "age": 5315,
+   "age": 5316,
    "date": "2026-07-15"
   },
   {
@@ -885,10 +1029,10 @@
    "cat": "custom",
    "src": "fantasy bard song",
    "ch": "Medieval Confessions",
-   "subs": 5860,
+   "subs": 5870,
    "views": 313255,
-   "outlier": 53.5,
-   "age": 657,
+   "outlier": 53.4,
+   "age": 658,
    "date": "2026-07-15"
   },
   {
@@ -898,9 +1042,9 @@
    "src": "medieval folk music",
    "ch": "World of OMNIA",
    "subs": 701000,
-   "views": 96205928,
-   "outlier": 137.2,
-   "age": 6233,
+   "views": 96218897,
+   "outlier": 137.3,
+   "age": 6234,
    "date": "2026-07-15"
   },
   {
@@ -909,10 +1053,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "Melegie",
-   "subs": 7420,
+   "subs": 7430,
    "views": 193603,
    "outlier": 26.1,
-   "age": 1969,
+   "age": 1970,
    "date": "2026-07-15"
   },
   {
@@ -924,7 +1068,7 @@
    "subs": 37900,
    "views": 774591,
    "outlier": 20.4,
-   "age": 2108,
+   "age": 2109,
    "date": "2026-07-15"
   },
   {
@@ -934,9 +1078,9 @@
    "src": "medieval folk music",
    "ch": "Healing Harmony Piano",
    "subs": 8760,
-   "views": 520711,
-   "outlier": 59.4,
-   "age": 376,
+   "views": 522593,
+   "outlier": 59.7,
+   "age": 377,
    "date": "2026-07-15"
   },
   {
@@ -946,9 +1090,9 @@
    "src": "ケルト音楽 作業用",
    "ch": "Bmg JP Production.!!",
    "subs": 84500,
-   "views": 2370948,
+   "views": 2371119,
    "outlier": 28.1,
-   "age": 2705,
+   "age": 2706,
    "date": "2026-07-15"
   },
   {
@@ -957,10 +1101,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "Sakura Cafe BGM【ケルト音楽で整える、癒しの時間】",
-   "subs": 2440,
-   "views": 81288,
-   "outlier": 33.3,
-   "age": 111,
+   "subs": 2480,
+   "views": 81965,
+   "outlier": 33.1,
+   "age": 112,
    "date": "2026-07-15"
   },
   {
@@ -969,10 +1113,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "Sounds of Scenery -あの風景の音-",
-   "subs": 3580,
-   "views": 180354,
-   "outlier": 50.4,
-   "age": 98,
+   "subs": 3660,
+   "views": 182591,
+   "outlier": 49.9,
+   "age": 99,
    "date": "2026-07-15"
   },
   {
@@ -981,10 +1125,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "よもぎの作業用BGM",
-   "subs": 7670,
+   "subs": 7800,
    "views": 120352,
-   "outlier": 15.7,
-   "age": 214,
+   "outlier": 15.4,
+   "age": 215,
    "date": "2026-07-15"
   },
   {
@@ -993,10 +1137,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "ハリネズミのBGM工房",
-   "subs": 9530,
+   "subs": 9540,
    "views": 120650,
-   "outlier": 12.7,
-   "age": 172,
+   "outlier": 12.6,
+   "age": 173,
    "date": "2026-07-15"
   },
   {
@@ -1006,9 +1150,9 @@
    "src": "fantasy tavern music",
    "ch": "Daydreaming of Persephone",
    "subs": 42800,
-   "views": 1159102,
+   "views": 1159373,
    "outlier": 27.1,
-   "age": 2078,
+   "age": 2079,
    "date": "2026-07-14"
   },
   {
@@ -1020,7 +1164,7 @@
    "subs": 2340,
    "views": 368838,
    "outlier": 157.6,
-   "age": 394,
+   "age": 395,
    "date": "2026-07-14"
   },
   {
@@ -1032,7 +1176,7 @@
    "subs": 17200,
    "views": 997361,
    "outlier": 58.0,
-   "age": 1081,
+   "age": 1082,
    "date": "2026-07-14"
   },
   {
@@ -1042,9 +1186,9 @@
    "src": "fantasy bard song",
    "ch": "Gunslinger Gaz",
    "subs": 5170,
-   "views": 272957,
+   "views": 272993,
    "outlier": 52.8,
-   "age": 5030,
+   "age": 5031,
    "date": "2026-07-14"
   },
   {
@@ -1054,9 +1198,9 @@
    "src": "fantasy bard song",
    "ch": "Aviators",
    "subs": 357000,
-   "views": 8666365,
+   "views": 8667222,
    "outlier": 24.3,
-   "age": 5337,
+   "age": 5338,
    "date": "2026-07-14"
   },
   {
@@ -1068,7 +1212,7 @@
    "subs": 344000,
    "views": 31370034,
    "outlier": 91.2,
-   "age": 6846,
+   "age": 6847,
    "date": "2026-07-14"
   },
   {
@@ -1077,10 +1221,10 @@
    "cat": "custom",
    "src": "fantasy bard song",
    "ch": "The Bardic DM",
-   "subs": 44300,
+   "subs": 44400,
    "views": 2825675,
-   "outlier": 63.8,
-   "age": 347,
+   "outlier": 63.6,
+   "age": 348,
    "date": "2026-07-14"
   },
   {
@@ -1089,10 +1233,10 @@
    "cat": "custom",
    "src": "fantasy bard song",
    "ch": "Medieval Bardcore",
-   "subs": 417,
-   "views": 103106,
-   "outlier": 247.3,
-   "age": 4919,
+   "subs": 418,
+   "views": 103570,
+   "outlier": 247.8,
+   "age": 4920,
    "date": "2026-07-14"
   },
   {
@@ -1102,9 +1246,9 @@
    "src": "fantasy bard song",
    "ch": "Celestial Draconis",
    "subs": 101000,
-   "views": 5294583,
+   "views": 5294903,
    "outlier": 52.4,
-   "age": 4554,
+   "age": 4555,
    "date": "2026-07-14"
   },
   {
@@ -1114,9 +1258,9 @@
    "src": "medieval folk music",
    "ch": "Veratus",
    "subs": 15000,
-   "views": 960139,
-   "outlier": 64.0,
-   "age": 1774,
+   "views": 961242,
+   "outlier": 64.1,
+   "age": 1775,
    "date": "2026-07-14"
   },
   {
@@ -1126,9 +1270,9 @@
    "src": "medieval folk music",
    "ch": "Fantasy World Melodies",
    "subs": 22500,
-   "views": 588111,
+   "views": 588229,
    "outlier": 26.1,
-   "age": 379,
+   "age": 380,
    "date": "2026-07-14"
   },
   {
@@ -1137,10 +1281,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "Forest Of Light",
-   "subs": 55500,
-   "views": 3252725,
+   "subs": 55600,
+   "views": 3259067,
    "outlier": 58.6,
-   "age": 455,
+   "age": 456,
    "date": "2026-07-14"
   },
   {
@@ -1150,9 +1294,9 @@
    "src": "medieval folk music",
    "ch": "Peaceful - Space ",
    "subs": 1980,
-   "views": 395456,
-   "outlier": 199.7,
-   "age": 977,
+   "views": 396389,
+   "outlier": 200.2,
+   "age": 978,
    "date": "2026-07-14"
   },
   {
@@ -1162,9 +1306,9 @@
    "src": "medieval folk music",
    "ch": "VacnaPaul",
    "subs": 37600,
-   "views": 3054006,
+   "views": 3054617,
    "outlier": 81.2,
-   "age": 6370,
+   "age": 6371,
    "date": "2026-07-14"
   },
   {
@@ -1176,7 +1320,7 @@
    "subs": 11900,
    "views": 1032779,
    "outlier": 86.8,
-   "age": 333,
+   "age": 334,
    "date": "2026-07-14"
   },
   {
@@ -1186,9 +1330,9 @@
    "src": "medieval folk music",
    "ch": "Ancient Folk Melodies",
    "subs": 2240,
-   "views": 150233,
+   "views": 150364,
    "outlier": 67.1,
-   "age": 4523,
+   "age": 4524,
    "date": "2026-07-14"
   },
   {
@@ -1198,9 +1342,9 @@
    "src": "medieval folk music",
    "ch": "The Oh Hellos - Topic",
    "subs": 4530,
-   "views": 85580013,
-   "outlier": 18891.8,
-   "age": 4600,
+   "views": 85627067,
+   "outlier": 18902.2,
+   "age": 4601,
    "date": "2026-07-14"
   },
   {
@@ -1209,10 +1353,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "Memoria",
-   "subs": 34400,
-   "views": 2474196,
+   "subs": 34500,
+   "views": 2480604,
    "outlier": 71.9,
-   "age": 1517,
+   "age": 1518,
    "date": "2026-07-14"
   },
   {
@@ -1221,10 +1365,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "Enchanted Celtic Realms",
-   "subs": 5070,
+   "subs": 5080,
    "views": 346614,
-   "outlier": 68.4,
-   "age": 5588,
+   "outlier": 68.2,
+   "age": 5589,
    "date": "2026-07-14"
   },
   {
@@ -1234,9 +1378,9 @@
    "src": "medieval folk music",
    "ch": "Universal Music Deutschland",
    "subs": 367000,
-   "views": 123460750,
+   "views": 123476064,
    "outlier": 336.4,
-   "age": 4778,
+   "age": 4779,
    "date": "2026-07-14"
   },
   {
@@ -1245,10 +1389,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "Ancient Dreamscape",
-   "subs": 7550,
+   "subs": 7620,
    "views": 334780,
-   "outlier": 44.3,
-   "age": 108,
+   "outlier": 43.9,
+   "age": 109,
    "date": "2026-07-14"
   },
   {
@@ -1258,9 +1402,9 @@
    "src": "medieval folk music",
    "ch": "Mystic Celtic",
    "subs": 21300,
-   "views": 632930,
+   "views": 632959,
    "outlier": 29.7,
-   "age": 557,
+   "age": 558,
    "date": "2026-07-14"
   },
   {
@@ -1272,7 +1416,7 @@
    "subs": 85000,
    "views": 2453800,
    "outlier": 28.9,
-   "age": 1723,
+   "age": 1724,
    "date": "2026-07-14"
   },
   {
@@ -1282,9 +1426,9 @@
    "src": "ケルト音楽 作業用",
    "ch": "Japanese non-verbal music",
    "subs": 2210,
-   "views": 191411,
-   "outlier": 86.6,
-   "age": 4386,
+   "views": 191679,
+   "outlier": 86.7,
+   "age": 4387,
    "date": "2026-07-14"
   },
   {
@@ -1293,270 +1437,126 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "Hamu’s Cozy BGM",
-   "subs": 761,
+   "subs": 799,
    "views": 27736,
-   "outlier": 36.4,
-   "age": 74,
+   "outlier": 34.7,
+   "age": 75,
    "date": "2026-07-14"
-  },
-  {
-   "id": "TqiJnA1qm4s",
-   "title": "【ケルト音楽】家事スイッチが入る🌿 朝の光が気持ちいいBGM｜Relax · Cafe Time",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "よもぎの作業用BGM",
-   "subs": 7670,
-   "views": 217951,
-   "outlier": 28.4,
-   "age": 214,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "J6IVI1NRl6E",
-   "title": "【無印良品BGM】朝のルーティンがテキパキはかどるケルト音楽集【モーニグルーティン用BGM】午後〜もぜひ♬ MUJI 無印良品 店内放送BGM 3時間耐久",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "MUJI BGM 2022",
-   "subs": 24700,
-   "views": 4303501,
-   "outlier": 174.2,
-   "age": 1819,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "eKnrayW4lPk",
-   "title": "【ケルト音楽】朝の港町とケルト音楽🦔/Morning port town and Celtic music/作業用BGM カフェBGM　朝BGM",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "ハリネズミのBGM工房",
-   "subs": 9530,
-   "views": 104793,
-   "outlier": 11.0,
-   "age": 172,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "QvaYycNrW8Y",
-   "title": "【1時間】戦闘用にぴったりなケルト系作業用BGM #4【集中・リラックス】",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "Rhythm Octopus",
-   "subs": 372,
-   "views": 15646,
-   "outlier": 42.1,
-   "age": 1211,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "bLwlx-w15ao",
-   "title": "【24時間ライブ】ランタン灯るヨーロッパの小道で、ケルト音楽を 🏰 作業・勉強・睡眠用BGM / Celtic Music 24/7",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "Sakura Cafe BGM【ケルト音楽で整える、癒しの時間】",
-   "subs": 2440,
-   "views": 21035,
-   "outlier": 8.6,
-   "age": 111,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "WXj5FqmDPCw",
-   "title": "睡眠用BGM　5時間耐久　ケルト音楽　森眠の誘い【ケルト音楽/Celtic Music】【作業用・勉強用・睡眠用BGM】",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "AI Sound Noguchi",
-   "subs": 123,
-   "views": 18784,
-   "outlier": 152.7,
-   "age": 431,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "trIF8N5WDU4",
-   "title": "【ケルト音楽】心地いい夏の音　さわやかに響くケルト音楽｜Relaxing Celtic Music｜癒しBGM　作業用BGM　リラックスBGM",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "Sounds of Scenery -あの風景の音-",
-   "subs": 3580,
-   "views": 83970,
-   "outlier": 23.5,
-   "age": 98,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "c7wYjSw3hX4",
-   "title": "【ケルト音楽】朝活がはかどるケルト音楽　すっきり整う朝時間🦔🎵/Celtic music to boost your morning routine/作業用BGM　家事BGM　カフェBGM　朝活BGM",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "ハリネズミのBGM工房",
-   "subs": 9530,
-   "views": 153850,
-   "outlier": 16.1,
-   "age": 172,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "gDqGlrcOnLE",
-   "title": "集中できない程の美しく壮大な女性ボーカルケルト音楽集 [German Vocals] - Dark Celtic Music for Work &amp; Study",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "LOREST | Celtic Music",
-   "subs": 30900,
-   "views": 737437,
-   "outlier": 23.9,
-   "age": 709,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "dobHUUgUDJA",
-   "title": "【無印良品BGM】ジメジメ梅雨をスッキリ涼しく🍧【北欧ケルト音楽集】",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "無印良浜【MUJI BGM】",
-   "subs": 2270,
-   "views": 147133,
-   "outlier": 64.8,
-   "age": 323,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "Lk7XIv2qCS4",
-   "title": "【ケルト音楽】澄み切った空気の草原で、心が晴れていく 🏔️ Celtic Music in the Meadow / 作業・勉強・リラックス / relaxing music sleep",
-   "cat": "custom",
-   "src": "ケルト音楽 作業用",
-   "ch": "Sakura Cafe BGM【ケルト音楽で整える、癒しの時間】",
-   "subs": 2440,
-   "views": 27246,
-   "outlier": 11.2,
-   "age": 111,
-   "date": "2026-07-14"
-  },
-  {
-   "id": "vyg5jJrZ42s",
-   "title": "Medieval Fantasy Tavern | D&amp;D Fantasy Music and Ambience",
-   "cat": "custom",
-   "src": "fantasy tavern music",
-   "ch": "Daydreaming of Persephone",
-   "subs": 42800,
-   "views": 10715062,
-   "outlier": 250.4,
-   "age": 2078,
-   "date": "2026-07-13"
   }
  ],
  "categories": [
   {
    "cat": "音楽",
-   "n": 10,
-   "avg": 8178106
+   "n": 8,
+   "avg": 4082984
+  },
+  {
+   "cat": "エンタメ",
+   "n": 27,
+   "avg": 2612110
   },
   {
    "cat": "ハウツー",
    "n": 30,
-   "avg": 2565448
-  },
-  {
-   "cat": "エンタメ",
-   "n": 30,
-   "avg": 2534767
+   "avg": 2576793
   },
   {
    "cat": "コメディ",
-   "n": 16,
-   "avg": 1449358
+   "n": 19,
+   "avg": 1435094
   },
   {
    "cat": "映画アニメ",
-   "n": 22,
-   "avg": 1231061
+   "n": 23,
+   "avg": 1372559
   },
   {
    "cat": "総合",
-   "n": 47,
-   "avg": 1079980
+   "n": 49,
+   "avg": 1163071
   },
   {
    "cat": "ゲーム",
-   "n": 15,
-   "avg": 108219
+   "n": 14,
+   "avg": 168357
   },
   {
    "cat": "ブログ/人物",
    "n": 1,
-   "avg": 48504
+   "avg": 49447
   }
  ],
  "field": [
   {
    "kw": "fantasy sleep ambience",
-   "n": 38,
-   "avg": 1989153,
-   "max": 23401971,
-   "min_avg": 349,
-   "vel": 1517,
+   "n": 42,
+   "avg": 1852853,
+   "max": 23405149,
+   "min_avg": 363,
+   "vel": 1205,
    "n_alert": 9
   },
   {
    "kw": "アニメ 作業用BGM オリジナル",
-   "n": 29,
-   "avg": 1588119,
-   "max": 8283228,
-   "min_avg": 111,
-   "vel": 1051,
-   "n_alert": 3
+   "n": 34,
+   "avg": 1495513,
+   "max": 8285227,
+   "min_avg": 123,
+   "vel": 1141,
+   "n_alert": 4
   },
   {
    "kw": "medieval town ambience",
-   "n": 36,
-   "avg": 1180248,
-   "max": 10714903,
-   "min_avg": 308,
-   "vel": 456,
+   "n": 43,
+   "avg": 1065522,
+   "max": 10720632,
+   "min_avg": 290,
+   "vel": 459,
    "n_alert": 2
   },
   {
    "kw": "fantasy tavern music",
-   "n": 39,
-   "avg": 736855,
-   "max": 5316750,
-   "min_avg": 152,
-   "vel": 1467,
+   "n": 46,
+   "avg": 721216,
+   "max": 5317430,
+   "min_avg": 138,
+   "vel": 1319,
    "n_alert": 7
   },
   {
    "kw": "作業用BGM ファンタジー",
-   "n": 38,
-   "avg": 587307,
-   "max": 3921885,
-   "min_avg": 89,
-   "vel": 701,
-   "n_alert": 2
+   "n": 41,
+   "avg": 604249,
+   "max": 3922055,
+   "min_avg": 86,
+   "vel": 677,
+   "n_alert": 4
   },
   {
    "kw": "RPG town music",
-   "n": 31,
-   "avg": 443645,
-   "max": 4876282,
-   "min_avg": 77,
-   "vel": 244,
+   "n": 35,
+   "avg": 471583,
+   "max": 4876686,
+   "min_avg": 68,
+   "vel": 270,
    "n_alert": 0
   },
   {
    "kw": "ファンタジー 街 BGM",
-   "n": 28,
-   "avg": 300021,
-   "max": 1670213,
-   "min_avg": 72,
-   "vel": 189,
+   "n": 35,
+   "avg": 284835,
+   "max": 1670664,
+   "min_avg": 65,
+   "vel": 186,
    "n_alert": 0
   },
   {
    "kw": "fantasy market ambience",
-   "n": 20,
-   "avg": 259973,
-   "max": 1159227,
-   "min_avg": 125,
-   "vel": 96,
+   "n": 21,
+   "avg": 250158,
+   "max": 1160099,
+   "min_avg": 121,
+   "vel": 124,
    "n_alert": 0
   }
  ],
@@ -1565,162 +1565,183 @@
    "id": "2x8I2TQ66WU",
    "kw": "fantasy tavern music",
    "title": "Ride the Inferno | Epic Celtic Tavern Dance Song",
-   "views": 461459,
-   "vel": 12504
+   "views": 472925,
+   "vel": 11466
   },
   {
    "id": "P0ujwN8_Fj8",
    "kw": "fantasy tavern music",
    "title": "Medieval Tavern Song - Stomp! Clap! Drink! [D&amp;D Tavern Music / Fantasy Folk]",
-   "views": 1837254,
-   "vel": 6324
-  },
-  {
-   "id": "4WIMyqBG9gs",
-   "kw": "fantasy tavern music",
-   "title": "Fantasy Medieval Music for Focus &amp; Calm | The Dwarf’s Long Mountain Journey",
-   "views": 3093853,
-   "vel": 5667
-  },
-  {
-   "id": "1RcVIuZ8Wdk",
-   "kw": "fantasy sleep ambience",
-   "title": "Cozy Cabin Ambience - Rain and Fireplace Sounds at Night 8 Hours for Sleeping, Reading, Relaxation",
-   "views": 22345870,
-   "vel": 5617
+   "views": 1843044,
+   "vel": 5790
   },
   {
    "id": "vyg5jJrZ42s",
    "kw": "medieval town ambience",
    "title": "Medieval Fantasy Tavern | D&amp;D Fantasy Music and Ambience",
-   "views": 10714903,
-   "vel": 4833
+   "views": 10720632,
+   "vel": 5729
   },
   {
-   "id": "YKJ-fkbMOOg",
+   "id": "1RcVIuZ8Wdk",
    "kw": "fantasy sleep ambience",
-   "title": "Peaceful Night in Skyrim | Elder Scrolls Music &amp; Ambience, 💤 Peaceful Scenes /w @videogameworlds",
-   "views": 1764303,
-   "vel": 4736
+   "title": "Cozy Cabin Ambience - Rain and Fireplace Sounds at Night 8 Hours for Sleeping, Reading, Relaxation",
+   "views": 22351240,
+   "vel": 5370
   },
   {
-   "id": "vRpduLErQ1k",
+   "id": "4WIMyqBG9gs",
    "kw": "fantasy tavern music",
-   "title": "Dance With Me | Fantasy Bard Song of Elven Dance in the Tavern",
-   "views": 1965199,
-   "vel": 4333
+   "title": "Fantasy Medieval Music for Focus &amp; Calm | The Dwarf’s Long Mountain Journey",
+   "views": 3098653,
+   "vel": 4800
   },
   {
    "id": "nK2zvrVMamE",
    "kw": "作業用BGM ファンタジー",
    "title": "【夜のBGM】星空と図書館｜Ambient Night Background Music",
-   "views": 2927447,
-   "vel": 4168
+   "views": 2932145,
+   "vel": 4698
   },
   {
-   "id": "MzvxL9HrpQM",
-   "kw": "fantasy sleep ambience",
-   "title": "Relaxing Celtic Fantasy Music for Study &amp; Relaxation | The Path Into the Quiet Forest",
-   "views": 321843,
-   "vel": 3907
-  },
-  {
-   "id": "7DaR0doNetk",
+   "id": "vRpduLErQ1k",
    "kw": "fantasy tavern music",
-   "title": "We are Alive! | Tavern Music for RPG &amp; DnD | Medieval Folk Song",
-   "views": 1019949,
-   "vel": 3665
+   "title": "Dance With Me | Fantasy Bard Song of Elven Dance in the Tavern",
+   "views": 1969488,
+   "vel": 4289
   },
   {
-   "id": "ipFaubyDUT4",
-   "kw": "medieval town ambience",
-   "title": "Medieval Celtic Music and Fantasy Celtic Music - 10 Hour No ads",
-   "views": 9895430,
-   "vel": 3594
-  },
-  {
-   "id": "rJhSZQdLARE",
+   "id": "YKJ-fkbMOOg",
    "kw": "fantasy sleep ambience",
-   "title": "Lord of the Rings | ⛈️ The Shire, Peaceful Music &amp; Ambience During Midnight Thunderstorm",
-   "views": 2577731,
-   "vel": 3562
+   "title": "Peaceful Night in Skyrim | Elder Scrolls Music &amp; Ambience, 💤 Peaceful Scenes /w @videogameworlds",
+   "views": 1768590,
+   "vel": 4287
   },
   {
    "id": "Rjc6SbZseW4",
    "kw": "アニメ 作業用BGM オリジナル",
    "title": "【作業用BGM】頭文字D / Initial D - Music",
-   "views": 6022226,
-   "vel": 3545
+   "views": 6026168,
+   "vel": 3942
   },
   {
-   "id": "62j1xAdYKAQ",
-   "kw": "fantasy sleep ambience",
-   "title": "Middle Earth | Rivendell - Music &amp; Ambience",
-   "views": 23401971,
-   "vel": 3475
+   "id": "ipFaubyDUT4",
+   "kw": "medieval town ambience",
+   "title": "Medieval Celtic Music and Fantasy Celtic Music - 10 Hour No ads",
+   "views": 9899124,
+   "vel": 3694
   },
   {
-   "id": "talRDCCgN9Q",
-   "kw": "fantasy sleep ambience",
-   "title": "When the Wind Spoke | Fantasy Celtic Ambience | Relaxing Music [No Ads]",
-   "views": 972159,
-   "vel": 3321
-  },
-  {
-   "id": "YyOTLcs6pHM",
-   "kw": "作業用BGM ファンタジー",
-   "title": "ASMR「ポーション屋」古びた魔法屋、リラックスする環境音【作業用BGM / 勉強用BGM】",
-   "views": 1947101,
-   "vel": 3253
-  },
-  {
-   "id": "wkOIEXFjy5M",
-   "kw": "fantasy sleep ambience",
-   "title": "Noble Elf Quiet Forest | Soft Fantasy Medieval Music for Relaxing &amp; Calm",
-   "views": 793267,
-   "vel": 3124
+   "id": "7DaR0doNetk",
+   "kw": "fantasy tavern music",
+   "title": "We are Alive! | Tavern Music for RPG &amp; DnD | Medieval Folk Song",
+   "views": 1023433,
+   "vel": 3484
   },
   {
    "id": "0uBMYmh31SM",
    "kw": "fantasy tavern music",
    "title": "The Green Dragon | The Lord of the Rings Tavern Music | Shire Ambience &amp; Happy Hobbit Folk",
-   "views": 203751,
-   "vel": 2987
+   "views": 206992,
+   "vel": 3241
+  },
+  {
+   "id": "rJhSZQdLARE",
+   "kw": "fantasy sleep ambience",
+   "title": "Lord of the Rings | ⛈️ The Shire, Peaceful Music &amp; Ambience During Midnight Thunderstorm",
+   "views": 2580939,
+   "vel": 3208
   },
   {
    "id": "4cHoIP2JFBE",
    "kw": "アニメ 作業用BGM オリジナル",
    "title": "【歌詞付】平成アニソンメドレーMIX★ANIME SONG★名曲★BEST【DJ MIX】",
-   "views": 1072994,
-   "vel": 2708
+   "views": 1076185,
+   "vel": 3191
+  },
+  {
+   "id": "62j1xAdYKAQ",
+   "kw": "fantasy sleep ambience",
+   "title": "Middle Earth | Rivendell - Music &amp; Ambience",
+   "views": 23405149,
+   "vel": 3178
+  },
+  {
+   "id": "talRDCCgN9Q",
+   "kw": "fantasy sleep ambience",
+   "title": "When the Wind Spoke | Fantasy Celtic Ambience | Relaxing Music [No Ads]",
+   "views": 975212,
+   "vel": 3053
+  },
+  {
+   "id": "wkOIEXFjy5M",
+   "kw": "fantasy sleep ambience",
+   "title": "Noble Elf Quiet Forest | Soft Fantasy Medieval Music for Relaxing &amp; Calm",
+   "views": 796247,
+   "vel": 2980
+  },
+  {
+   "id": "MzvxL9HrpQM",
+   "kw": "fantasy sleep ambience",
+   "title": "Relaxing Celtic Fantasy Music for Study &amp; Relaxation | The Path Into the Quiet Forest",
+   "views": 324743,
+   "vel": 2900
+  },
+  {
+   "id": "F6sIGqNR_hk",
+   "kw": "作業用BGM ファンタジー",
+   "title": "【ケルト音楽/Celtic Music】冒険者と古代遺跡【作業用・勉強用・睡眠用BGM】",
+   "views": 2294821,
+   "vel": 2715
+  },
+  {
+   "id": "YyOTLcs6pHM",
+   "kw": "作業用BGM ファンタジー",
+   "title": "ASMR「ポーション屋」古びた魔法屋、リラックスする環境音【作業用BGM / 勉強用BGM】",
+   "views": 1949625,
+   "vel": 2524
   },
   {
    "id": "3pbjqJGix0A",
    "kw": "fantasy sleep ambience",
    "title": "Harry Potter | ⛈️ Hogwarts Peaceful Music &amp; Ambience, Rain and Thunderstorm, No Mid-roll Ads",
-   "views": 854582,
-   "vel": 2582
+   "views": 856998,
+   "vel": 2416
   },
   {
    "id": "fo0i9rk-rac",
    "kw": "fantasy tavern music",
    "title": "Bardcore Techno 🏰 Fantasy Tavern Music for Knights &amp; Adventurers",
-   "views": 90381,
-   "vel": 2534
-  },
-  {
-   "id": "dBEqWbIdhZM",
-   "kw": "fantasy sleep ambience",
-   "title": "Wind Sounds For Sleeping | Thunderstorm Over A Medieval Castle | Medieval Ambience",
-   "views": 1866010,
-   "vel": 2276
+   "views": 92651,
+   "vel": 2270
   },
   {
    "id": "bwvdW0iAkPw",
    "kw": "アニメ 作業用BGM オリジナル",
    "title": "【令和×平成】アニソン紅白歌合戦！【新旧名曲対決】",
-   "views": 1781596,
-   "vel": 2213
+   "views": 1783797,
+   "vel": 2201
+  },
+  {
+   "id": "dBEqWbIdhZM",
+   "kw": "fantasy sleep ambience",
+   "title": "Wind Sounds For Sleeping | Thunderstorm Over A Medieval Castle | Medieval Ambience",
+   "views": 1868193,
+   "vel": 2183
+  },
+  {
+   "id": "yk7fgRjnUzI",
+   "kw": "作業用BGM ファンタジー",
+   "title": "【異世界ケルト音楽/Celtic Music】時の図書館 -星時計の書庫で過ごす2時間-【作業用/勉強用/睡眠用】",
+   "views": 180244,
+   "vel": 2138
+  },
+  {
+   "id": "g7QJagoDWXg",
+   "kw": "アニメ 作業用BGM オリジナル",
+   "title": "【葬送のフリーレンBGM】ゾルトラーク／Zoltraak【30分耐久】",
+   "views": 1484992,
+   "vel": 2024
   }
  ],
  "trend_daily": [
@@ -1753,17 +1774,23 @@
    "total": 23,
    "chart": 18,
    "custom": 5
+  },
+  {
+   "date": "2026-07-18",
+   "total": 24,
+   "chart": 12,
+   "custom": 12
   }
  ],
  "review_custom": [
   {
    "kw": "medieval folk music",
    "start": "2026-07-14",
-   "days": 4,
-   "d1": 94261,
-   "d1_n": 19,
-   "d3": 228716,
-   "d3_n": 15,
+   "days": 5,
+   "d1": 98641,
+   "d1_n": 21,
+   "d3": 278611,
+   "d3_n": 19,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1772,11 +1799,11 @@
   {
    "kw": "fantasy tavern music",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 55500,
-   "d1_n": 40,
-   "d3": 117806,
-   "d3_n": 33,
+   "days": 6,
+   "d1": 56555,
+   "d1_n": 42,
+   "d3": 121519,
+   "d3_n": 35,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1785,11 +1812,11 @@
   {
    "kw": "ケルト音楽 作業用",
    "start": "2026-07-14",
-   "days": 4,
-   "d1": 39225,
-   "d1_n": 22,
-   "d3": 87855,
-   "d3_n": 10,
+   "days": 5,
+   "d1": 40266,
+   "d1_n": 24,
+   "d3": 100018,
+   "d3_n": 17,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1798,11 +1825,11 @@
   {
    "kw": "アニメ 作業用BGM オリジナル",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 31594,
+   "days": 6,
+   "d1": 32783,
    "d1_n": 28,
-   "d3": 79503,
-   "d3_n": 25,
+   "d3": 86100,
+   "d3_n": 27,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1811,11 +1838,11 @@
   {
    "kw": "fantasy bard song",
    "start": "2026-07-14",
-   "days": 4,
-   "d1": 22087,
+   "days": 5,
+   "d1": 20170,
    "d1_n": 18,
-   "d3": 34627,
-   "d3_n": 12,
+   "d3": 35748,
+   "d3_n": 14,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1824,10 +1851,10 @@
   {
    "kw": "ファンタジー 街 BGM",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 14691,
+   "days": 6,
+   "d1": 15826,
    "d1_n": 26,
-   "d3": 31568,
+   "d3": 31159,
    "d3_n": 22,
    "d7": null,
    "d7_n": 0,
@@ -1837,7 +1864,7 @@
   {
    "kw": "ãã¡ã³ã¿ã¸ã¼ è¡ BGM",
    "start": "2026-07-13",
-   "days": 5,
+   "days": 6,
    "d1": null,
    "d1_n": 0,
    "d3": null,
@@ -1850,7 +1877,7 @@
   {
    "kw": "ã¢ãã¡ ä½æ¥­ç¨BGM ãªãªã¸ãã«",
    "start": "2026-07-13",
-   "days": 5,
+   "days": 6,
    "d1": null,
    "d1_n": 0,
    "d3": null,
@@ -1863,25 +1890,25 @@
  ],
  "review_field": [
   {
-   "kw": "fantasy sleep ambience",
+   "kw": "fantasy tavern music",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 48550,
-   "d1_n": 32,
-   "d3": 100558,
-   "d3_n": 25,
+   "days": 6,
+   "d1": 51472,
+   "d1_n": 39,
+   "d3": 156718,
+   "d3_n": 34,
    "d7": null,
    "d7_n": 0,
    "d30": null,
    "d30_n": 0
   },
   {
-   "kw": "fantasy tavern music",
+   "kw": "fantasy sleep ambience",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 54280,
-   "d1_n": 37,
-   "d3": 96806,
+   "days": 6,
+   "d1": 45805,
+   "d1_n": 38,
+   "d3": 121608,
    "d3_n": 30,
    "d7": null,
    "d7_n": 0,
@@ -1891,11 +1918,11 @@
   {
    "kw": "アニメ 作業用BGM オリジナル",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 30492,
+   "days": 6,
+   "d1": 33103,
    "d1_n": 29,
-   "d3": 83396,
-   "d3_n": 26,
+   "d3": 91017,
+   "d3_n": 28,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1904,11 +1931,11 @@
   {
    "kw": "作業用BGM ファンタジー",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 23862,
-   "d1_n": 34,
-   "d3": 66729,
-   "d3_n": 30,
+   "days": 6,
+   "d1": 25743,
+   "d1_n": 38,
+   "d3": 74633,
+   "d3_n": 34,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1917,10 +1944,10 @@
   {
    "kw": "medieval town ambience",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 15059,
-   "d1_n": 33,
-   "d3": 43577,
+   "days": 6,
+   "d1": 16532,
+   "d1_n": 36,
+   "d3": 45897,
    "d3_n": 33,
    "d7": null,
    "d7_n": 0,
@@ -1930,10 +1957,10 @@
   {
    "kw": "RPG town music",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 6859,
-   "d1_n": 28,
-   "d3": 19377,
+   "days": 6,
+   "d1": 8374,
+   "d1_n": 31,
+   "d3": 21200,
    "d3_n": 26,
    "d7": null,
    "d7_n": 0,
@@ -1943,11 +1970,11 @@
   {
    "kw": "ファンタジー 街 BGM",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 4920,
-   "d1_n": 26,
-   "d3": 12934,
-   "d3_n": 22,
+   "days": 6,
+   "d1": 5219,
+   "d1_n": 28,
+   "d3": 14830,
+   "d3_n": 26,
    "d7": null,
    "d7_n": 0,
    "d30": null,
@@ -1956,11 +1983,11 @@
   {
    "kw": "fantasy market ambience",
    "start": "2026-07-13",
-   "days": 5,
-   "d1": 1834,
-   "d1_n": 19,
-   "d3": 5827,
-   "d3_n": 18,
+   "days": 6,
+   "d1": 2487,
+   "d1_n": 20,
+   "d3": 5925,
+   "d3_n": 19,
    "d7": null,
    "d7_n": 0,
    "d30": null,
