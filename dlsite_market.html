@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLsite AIフロア 市場分析</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #242836;
+    --border: #2e3346;
+    --text: #e2e4ea;
+    --text2: #8b8fa4;
+    --text3: #5c6178;
+    --accent: #6c5ce7;
+    --accent2: #a29bfe;
+    --green: #00b894;
+    --red: #ff6b6b;
+    --orange: #fdcb6e;
+    --blue: #4dabf7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 20px 64px;
+    background: var(--bg); color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, system-ui, sans-serif;
+    font-size: 14px; line-height: 1.6;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+
+  header { margin-bottom: 28px; }
+  .eyebrow {
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--accent2); font-weight: 700; margin-bottom: 6px;
+  }
+  h1 { font-size: 24px; margin: 0 0 4px; font-weight: 700; letter-spacing: .02em; }
+  .sub { color: var(--text2); font-size: 13px; }
+
+  /* --- 判定パネル --- */
+  .verdict {
+    background: linear-gradient(180deg, var(--surface2), var(--surface));
+    border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 10px; padding: 20px 22px; margin-bottom: 26px;
+  }
+  .verdict h2 {
+    font-size: 13px; margin: 0 0 16px; color: var(--text2);
+    font-weight: 600; letter-spacing: .06em;
+  }
+  .vgrid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px;
+  }
+  .vcell { border-left: 2px solid var(--border); padding-left: 14px; }
+  .vlabel { font-size: 11px; color: var(--text3); margin-bottom: 5px; letter-spacing: .04em; }
+  .vnow {
+    font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums;
+    line-height: 1.15; letter-spacing: -.01em;
+  }
+  .vdelta { font-size: 12px; margin-top: 5px; font-variant-numeric: tabular-nums; }
+  .up { color: var(--green); } .down { color: var(--red); } .flat { color: var(--text2); }
+  .vnote { font-size: 11px; color: var(--text3); margin-top: 3px; }
+
+  /* --- KPI --- */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-bottom: 26px; }
+  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .kpi .l { font-size: 11px; color: var(--text3); margin-bottom: 4px; }
+  .kpi .v { font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+  /* --- カード --- */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px; margin-bottom: 20px;
+  }
+  .card h3 { font-size: 15px; margin: 0 0 3px; font-weight: 700; }
+  .card .desc { font-size: 12px; color: var(--text2); margin-bottom: 16px; }
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; font-size: 11px; color: var(--text2); }
+  .legend i { display: inline-block; width: 18px; height: 2px; margin-right: 6px; vertical-align: middle; border-radius: 2px; }
+
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .grid-line { stroke: var(--border); stroke-width: 1; }
+  .axis-txt { fill: var(--text3); font-size: 10px; font-family: inherit; }
+
+  /* --- テーブル --- */
+  .tblwrap { overflow-x: auto; margin-top: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+  th { text-align: right; padding: 7px 10px; color: var(--text3); font-weight: 600; border-bottom: 1px solid var(--border); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  td { text-align: right; padding: 7px 10px; border-bottom: 1px solid rgba(46,51,70,.45); white-space: nowrap; }
+  tbody tr:hover { background: rgba(108,92,231,.07); }
+  .dim { color: var(--text3); }
+
+  /* --- 空状態 --- */
+  .empty { text-align: center; padding: 70px 24px; color: var(--text2); }
+  .empty .big { font-size: 17px; color: var(--text); margin-bottom: 10px; font-weight: 600; }
+  .empty code { background: var(--surface2); padding: 3px 8px; border-radius: 4px; color: var(--accent2); font-size: 12px; }
+
+  .back { display: inline-block; margin-bottom: 18px; color: var(--text2); text-decoration: none; font-size: 12px; }
+  .back:hover { color: var(--accent2); }
+  footer { color: var(--text3); font-size: 11px; margin-top: 30px; }
+  @media (max-width: 600px) { body { padding: 16px 12px 48px; } .vnow { font-size: 22px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="index.html">← ツールランチャー</a>
+  <header>
+    <div class="eyebrow">DLsite AI Floor</div>
+    <h1>市場分析</h1>
+    <div class="sub" id="sub">読み込み中…</div>
+  </header>
+  <div id="app"></div>
+  <footer>データ: dlsite_market.json / dlsite_analyze.py が週次で更新</footer>
+</div>
+
+<script>
+const C = { accent:'#6c5ce7', accent2:'#a29bfe', green:'#00b894', red:'#ff6b6b', orange:'#fdcb6e', blue:'#4dabf7' };
+const fmt  = n => (n===null||n===undefined) ? '–' : Number(n).toLocaleString('ja-JP');
+const fmt1 = n => (n===null||n===undefined) ? '–' : Number(n).toFixed(1);
+
+function avgLast(arr, key, n, offset=0){
+  const s = arr.slice(Math.max(0, arr.length-n-offset), arr.length-offset);
+  const v = s.map(r=>r[key]).filter(x=>x!==null&&x!==undefined);
+  return v.length ? v.reduce((a,b)=>a+b,0)/v.length : null;
+}
+
+/* 折れ線チャート（依存なし） */
+function lineChart(rows, series, opts={}){
+  const W=920, H=opts.height||220, P={t:14,r:14,b:26,l:52};
+  if(!rows.length) return '';
+  const iw=W-P.l-P.r, ih=H-P.t-P.b;
+  let max=0;
+  series.forEach(s=>rows.forEach(r=>{ const v=r[s.key]; if(v!=null&&v>max) max=v; }));
+  if(opts.percent && max<100) max=Math.ceil(max/10)*10 || 10;
+  max = max || 1;
+  const x = i => P.l + (rows.length===1 ? iw/2 : i*iw/(rows.length-1));
+  const y = v => P.t + ih - (v/max)*ih;
+
+  let g='';
+  for(let k=0;k<=4;k++){
+    const yy=P.t+ih*k/4, val=max*(1-k/4);
+    g+=`<line class="grid-line" x1="${P.l}" y1="${yy}" x2="${W-P.r}" y2="${yy}"/>`;
+    g+=`<text class="axis-txt" x="${P.l-8}" y="${yy+3.5}" text-anchor="end">${opts.percent?fmt1(val)+'%':fmt(Math.round(val))}</text>`;
+  }
+  const step=Math.max(1,Math.ceil(rows.length/12));
+  rows.forEach((r,i)=>{ if(i%step===0||i===rows.length-1)
+    g+=`<text class="axis-txt" x="${x(i)}" y="${H-8}" text-anchor="middle">${r.month.slice(2)}</text>`; });
+
+  series.forEach(s=>{
+    const pts=rows.map((r,i)=>r[s.key]==null?null:`${x(i)},${y(r[s.key])}`).filter(Boolean);
+    if(!pts.length) return;
+    g+=`<polyline points="${pts.join(' ')}" fill="none" stroke="${s.color}" stroke-width="2"
+         stroke-linejoin="round" stroke-linecap="round" opacity="${s.dim?0.55:1}"/>`;
+    const li=rows.length-1;
+    if(rows[li][s.key]!=null)
+      g+=`<circle cx="${x(li)}" cy="${y(rows[li][s.key])}" r="3.5" fill="${s.color}"/>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${g}</svg>`;
+}
+
+function legend(series){
+  return `<div class="legend">${series.map(s=>
+    `<span><i style="background:${s.color}"></i>${s.label}</span>`).join('')}</div>`;
+}
+
+function deltaCell(label, now, prev, opts={}){
+  const suffix=opts.suffix||'';
+  let d='', cls='flat';
+  if(now!=null && prev!=null && prev!==0){
+    const pc=(now-prev)/Math.abs(prev)*100;
+    cls = Math.abs(pc)<5 ? 'flat' : (pc>0 ? (opts.invert?'down':'up') : (opts.invert?'up':'down'));
+    d=`${pc>0?'+':''}${pc.toFixed(1)}% <span class="dim">vs 1年前</span>`;
+  } else { d='<span class="dim">比較データ不足</span>'; }
+  return `<div class="vcell">
+    <div class="vlabel">${label}</div>
+    <div class="vnow">${now==null?'–':(opts.int?fmt(Math.round(now)):fmt1(now))}${suffix}</div>
+    <div class="vdelta ${cls}">${d}</div>
+    ${opts.note?`<div class="vnote">${opts.note}</div>`:''}
+  </div>`;
+}
+
+function capShift(cap){
+  // 実効上限が動いた月を検出
+  if(cap.length<2) return null;
+  let base=cap[0].max, shift=null;
+  for(let i=1;i<cap.length;i++){
+    if(cap[i].max>base && cap[i].max>=base+1){ shift={month:cap[i].month, from:base, to:cap[i].max}; }
+    base=Math.max(base, cap[i].max);
+  }
+  return shift;
+}
+
+function render(a){
+  const sup=a.supply_by_month||[], nc=a.new_circles_by_month||[],
+        cap=a.cap_by_month||[], coh=a.cohort_dl||[], bat=a.batting_by_month||[], s=a.summary||{};
+
+  // 直近コホートは観測期間が短く不利なので2ヶ月落とす
+  const cohT = coh.slice(0, Math.max(0, coh.length-2));
+
+  const batNow=avgLast(bat,'batting_avg',3),      batPrev=avgLast(bat,'batting_avg',3,12);
+  const medNow=avgLast(cohT,'median',3),          medPrev=avgLast(cohT,'median',3,12);
+  const supNow=avgLast(sup,'works',3),            supPrev=avgLast(sup,'works',3,12);
+  const ncNow =avgLast(nc,'circles',3),           ncPrev =avgLast(nc,'circles',3,12);
+  const shift=capShift(cap);
+  const lastCap=cap.length?cap[cap.length-1]:null;
+
+  document.getElementById('sub').textContent =
+    `全${fmt(s.total_works)}作品 / ${fmt(s.total_circles)}サークル ・ 当たり定義 累計DL ${fmt(s.hit_threshold)}以上`;
+
+  const supSeries=[{key:'works',label:'新規出品数',color:C.accent2}];
+  const ncSeries =[{key:'circles',label:'新規サークル数',color:C.blue}];
+  const capSeries=[{key:'max',label:'最大出品数',color:C.orange},{key:'p99',label:'p99',color:C.accent,dim:true}];
+  const cohSeries=[{key:'median',label:'中央値',color:C.green},{key:'p75',label:'p75',color:C.accent2,dim:true},{key:'p90',label:'p90',color:C.blue,dim:true}];
+  const batSeries=[{key:'batting_avg',label:'新規参入打率',color:C.orange}];
+
+  return `
+  <div class="verdict">
+    <h2>直近3ヶ月 ／ 1年前との比較</h2>
+    <div class="vgrid">
+      ${deltaCell('新規参入打率', batNow, batPrev, {suffix:'%', note:'初出3作以内に当たりを出した割合'})}
+      ${deltaCell('作品あたりDL中央値', medNow, medPrev, {int:true, note:'直近2ヶ月は観測期間が短いため除外'})}
+      ${deltaCell('月間の新規出品数', supNow, supPrev, {int:true, invert:true, note:'増加は競合の増加'})}
+      ${deltaCell('月間の新規サークル数', ncNow, ncPrev, {int:true, invert:true, note:'増加は参入者の増加'})}
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="l">総作品数</div><div class="v">${fmt(s.total_works)}</div></div>
+    <div class="kpi"><div class="l">総サークル数</div><div class="v">${fmt(s.total_circles)}</div></div>
+    <div class="kpi"><div class="l">1サークル平均</div><div class="v">${fmt1(s.works_per_circle)}<span class="dim" style="font-size:12px"> 作</span></div></div>
+    <div class="kpi"><div class="l">今月の実効上限</div><div class="v">${lastCap?lastCap.max:'–'}<span class="dim" style="font-size:12px"> 本</span></div></div>
+  </div>
+
+  <div class="card">
+    <h3>実効上限</h3>
+    <div class="desc">
+      サークルあたり月間出品数の最大値。規約を読まずに、実際に許されている本数が分かります。
+      ${shift ? `<strong style="color:var(--orange)">${shift.month} に ${shift.from}本 → ${shift.to}本 へ動いています。</strong> 供給の蓋が緩んだ時期です。`
+              : '観測期間中、上限の切り上がりは検出されていません。'}
+    </div>
+    ${legend(capSeries)}
+    ${lineChart(cap, capSeries)}
+    <div class="tblwrap"><table>
+      <thead><tr><th>月</th><th>稼働サークル</th><th>最大</th><th>p95</th><th>p99</th><th>3本超の割合</th></tr></thead>
+      <tbody>${cap.slice(-14).reverse().map(r=>`<tr>
+        <td>${r.month}</td><td>${fmt(r.circles_active)}</td><td>${r.max}</td>
+        <td>${fmt1(r.p95)}</td><td>${fmt1(r.p99)}</td><td>${fmt1(r.over3_ratio)}%</td></tr>`).join('')}</tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>新規参入打率</h3>
+    <div class="desc">初出から3作以内に累計DL ${fmt(s.hit_threshold)} を超えたサークルの割合。窓が開いているかどうかの直接の指標です。</div>
+    ${legend(batSeries)}
+    ${lineChart(bat, batSeries, {percent:true})}
+    <div class="tblwrap"><table>
+      <thead><tr><th>月</th><th>新規サークル</th><th>当たり</th><th>打率</th></tr></thead>
+      <tbody>${bat.slice(-14).reverse().map(r=>`<tr>
+        <td>${r.month}</td><td>${fmt(r.new_circles)}</td><td>${fmt(r.hits)}</td>
+        <td>${fmt1(r.batting_avg)}%</td></tr>`).join('')}</tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>コホート別 累計DL数</h3>
+    <div class="desc">発売月ごとの分位点。古い作品ほど累計が積み上がるので構造的に有利です。それでも中央値が下がっていれば、飽和が進んでいます。</div>
+    ${legend(cohSeries)}
+    ${lineChart(cohT, cohSeries)}
+    <div class="tblwrap"><table>
+      <thead><tr><th>月</th><th>件数</th><th>中央値</th><th>p75</th><th>p90</th><th>p99</th><th>当たり率</th></tr></thead>
+      <tbody>${coh.slice(-14).reverse().map(r=>`<tr>
+        <td>${r.month}</td><td>${fmt(r.n)}</td><td>${fmt(r.median)}</td><td>${fmt(r.p75)}</td>
+        <td>${fmt(r.p90)}</td><td>${fmt(r.p99)}</td><td>${fmt1(r.hit_ratio)}%</td></tr>`).join('')}</tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3>供給と参入者</h3>
+    <div class="desc">月ごとの新規出品数と、新しく入ってきたサークルの数。分母の膨張速度です。</div>
+    ${legend([...supSeries, ...ncSeries])}
+    ${lineChart(sup, supSeries, {height:190})}
+    ${lineChart(nc, ncSeries, {height:190})}
+  </div>`;
+}
+
+fetch('dlsite_market.json?t=' + Date.now())
+  .then(r => { if(!r.ok) throw new Error('not found'); return r.json(); })
+  .then(a => {
+    if(!a.supply_by_month || !a.supply_by_month.length) throw new Error('empty');
+    document.getElementById('app').innerHTML = render(a);
+  })
+  .catch(() => {
+    document.getElementById('sub').textContent = 'データ未生成';
+    document.getElementById('app').innerHTML = `
+      <div class="empty">
+        <div class="big">まだデータがありません</div>
+        <p>フルスキャンの完了後、分析を1回実行するとここに表示されます。</p>
+        <p><code>python3 dlsite_analyze.py --json ~/sedori-tool/dlsite_market.json</code></p>
+        <p style="margin-top:14px">生成した <code>dlsite_market.json</code> をこのページと同じ階層に置いてください。</p>
+      </div>`;
+  });
+</script>
+</body>
+</html>
