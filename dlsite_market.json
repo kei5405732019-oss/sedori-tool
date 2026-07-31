@@ -194,7 +194,11 @@
     },
     {
       "month": "2026-07",
-      "works": 2761
+      "works": 2800
+    },
+    {
+      "month": "2026-08",
+      "works": 69
     }
   ],
   "new_circles_by_month": [
@@ -392,7 +396,11 @@
     },
     {
       "month": "2026-07",
-      "circles": 315
+      "circles": 322
+    },
+    {
+      "month": "2026-08",
+      "circles": 6
     }
   ],
   "cap_by_month": [
@@ -1082,19 +1090,32 @@
     },
     {
       "month": "2026-07",
-      "circles_active": 1526,
+      "circles_active": 1544,
       "max": 7,
       "p95": 4.0,
       "p99": 6.0,
-      "over3_ratio": 9.17,
+      "over3_ratio": 9.2,
       "dist": {
-        "1": 864,
-        "2": 329,
-        "3": 193,
-        "4": 75,
-        "5": 31,
+        "1": 869,
+        "2": 337,
+        "3": 196,
+        "4": 76,
+        "5": 32,
         "6": 33,
         "7": 1
+      }
+    },
+    {
+      "month": "2026-08",
+      "circles_active": 61,
+      "max": 3,
+      "p95": 2.0,
+      "p99": 3.0,
+      "over3_ratio": 0.0,
+      "dist": {
+        "1": 55,
+        "2": 4,
+        "3": 2
       }
     }
   ],
@@ -1509,36 +1530,45 @@
       "n": 1401,
       "median": 30.0,
       "p75": 78.0,
-      "p90": 188.0,
-      "p99": 596.0,
-      "hit_ratio": 19.84
+      "p90": 190.0,
+      "p99": 597.0,
+      "hit_ratio": 19.91
     },
     {
       "month": "2026-05",
       "n": 2312,
       "median": 25.0,
-      "p75": 67.0,
-      "p90": 144.0,
-      "p99": 563.7,
-      "hit_ratio": 15.96
+      "p75": 68.0,
+      "p90": 146.0,
+      "p99": 565.0,
+      "hit_ratio": 16.18
     },
     {
       "month": "2026-06",
       "n": 2064,
       "median": 19.0,
-      "p75": 44.0,
-      "p90": 99.7,
-      "p99": 341.1,
-      "hit_ratio": 10.03
+      "p75": 44.2,
+      "p90": 100.7,
+      "p99": 343.8,
+      "hit_ratio": 10.08
     },
     {
       "month": "2026-07",
-      "n": 2761,
+      "n": 2800,
       "median": 10.0,
-      "p75": 24.0,
-      "p90": 52.0,
-      "p99": 193.4,
-      "hit_ratio": 3.55
+      "p75": 25.0,
+      "p90": 53.0,
+      "p99": 194.1,
+      "hit_ratio": 3.75
+    },
+    {
+      "month": "2026-08",
+      "n": 69,
+      "median": 0.0,
+      "p75": 1.0,
+      "p90": 2.0,
+      "p99": 5.3,
+      "hit_ratio": 0.0
     }
   ],
   "batting_by_month": [
@@ -1827,20 +1857,26 @@
     {
       "month": "2026-06",
       "new_circles": 343,
-      "hits": 30,
-      "batting_avg": 8.75
+      "hits": 31,
+      "batting_avg": 9.04
     },
     {
       "month": "2026-07",
-      "new_circles": 315,
-      "hits": 9,
-      "batting_avg": 2.86
+      "new_circles": 322,
+      "hits": 10,
+      "batting_avg": 3.11
+    },
+    {
+      "month": "2026-08",
+      "new_circles": 6,
+      "hits": 0,
+      "batting_avg": 0.0
     }
   ],
   "summary": {
-    "total_works": 39116,
-    "total_circles": 7044,
+    "total_works": 39224,
+    "total_circles": 7057,
     "hit_threshold": 100,
-    "works_per_circle": 5.55
+    "works_per_circle": 5.56
   }
 }
