@@ -76,16 +76,6 @@ body{background:#0d0f14;color:#e8eaf0;font-family:'Noto Sans JP',sans-serif;min-
       <div class="card-arrow">›</div>
     </a>
 
-    <a class="card" href="./stock_dashboard.html">
-      <div class="card-icon amber">📦</div>
-      <div class="card-body">
-        <div class="card-name">在庫トラッカー</div>
-        <div class="card-desc">在庫・未入荷・お気に入りJANの買取価格を日次で追跡。1週間／1ヶ月の推移グラフと販売予定額との差額を一覧表示。</div>
-        <div class="card-badge">STOCK TRACKER</div>
-      </div>
-      <div class="card-arrow">›</div>
-    </a>
-
     <a class="card" href="./techo.html">
       <div class="card-icon teal">📒</div>
       <div class="card-body">
