@@ -40,6 +40,10 @@ tr.r:hover td{background:var(--card)}
 .tag.f{background:#3a2e18;color:var(--acc)}
 .tag.a{background:#3a2020;color:#e09a9a}
 .tag.o{background:#2b2438;color:#b39ae0}
+.jan{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:var(--tx3);letter-spacing:.02em}
+.shop{color:var(--tx3)}
+.shop.lk{color:#7fd4a8;font-weight:600}
+.shop.lk::before{content:"\1F512 ";font-size:10px}
 .u{color:var(--up)}.d{color:var(--down)}.n{color:var(--flat)}
 .spark{width:78px;height:22px;vertical-align:middle}
 .det{background:var(--card);padding:14px}
@@ -121,7 +125,9 @@ function rows(){
   let a = DATA.items.filter(x => TAG === 'all' ? true : x.tag === TAG);
   if (Q){
     const q = Q.toLowerCase();
-    a = a.filter(x => (x.name || '').toLowerCase().includes(q) || x.jan.includes(q));
+    a = a.filter(x => (x.name || '').toLowerCase().includes(q)
+                   || x.jan.includes(q) || x.jan.replace(/^0+/, '').includes(q)
+                   || (x.shop || '').includes(Q));
   }
   a.forEach(x => x.chg = change(x));
   const k = SORT;
@@ -154,10 +160,13 @@ function draw(){
     const tags = (x.tag === 'fav' ? '<span class="tag f">相場</span>' : '')
                + (x.units > 1 ? `<span class="tag a">÷${x.units}</span>` : '')
                + (x.outlier ? `<span class="tag o" title="最高値 ¥${F(x.outlier.raw)}（${x.outlier.shop}）が中央値の${x.outlier.ratio}倍だったため除外">外れ値除外</span>` : '');
-    const meta = [x.buy_date, x.ch, x.shop, x.n_shop ? x.n_shop + '社' : '', x.asof]
+    const shopHtml = x.shop
+        ? `<span class="shop${x.locked ? ' lk' : ''}">${x.shop}</span>` : '';
+  const meta = [x.buy_date, x.ch, x.locked ? '' : (x.n_shop ? x.n_shop + '社' : ''), x.asof]
                  .filter(Boolean).join(' · ');
     return `<tr class="r" data-i="${i}">
-      <td><div class="nm">${tags}${x.name || x.jan}</div><div class="meta">${meta}</div></td>
+      <td><div class="nm">${tags}${x.name || '(名称なし)'}</div>
+          <div class="meta"><span class="jan">${x.jan.replace(/^0+/, '')}</span> · ${meta}${shopHtml ? ' · ' : ''}${shopHtml}</div></td>
       <td class="hide">${x.ch || '—'}</td>
       <td>${x.tag === 'fav' ? '—' : x.qty}</td>
       <td>${x.tag === 'fav' ? '—' : F(x.plan)}</td>
