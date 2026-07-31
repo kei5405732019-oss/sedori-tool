@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在庫トラッカー</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#12120f; --card:#1b1b18; --card2:#232320; --line:#33332e;
+  --tx:#e8e7e0; --tx2:#a3a29a; --tx3:#6e6d67;
+  --up:#4fa3e3; --down:#e06a6a; --flat:#6e6d67; --acc:#c98f3a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font:14px/1.6 -apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;padding:16px;max-width:1180px;margin:0 auto}
+h1{font-size:19px;font-weight:600;margin-bottom:2px}
+.sub{color:var(--tx3);font-size:12px;margin-bottom:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px}
+.c{background:var(--card);border-radius:10px;padding:13px 15px}
+.c .l{font-size:11px;color:var(--tx3);margin-bottom:5px}
+.c .v{font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}
+.bar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+button{background:var(--card);color:var(--tx2);border:1px solid var(--line);border-radius:7px;padding:6px 13px;font-size:13px;cursor:pointer;font-family:inherit}
+button:hover{background:var(--card2);color:var(--tx)}
+button.on{background:var(--acc);color:#12120f;border-color:var(--acc);font-weight:600}
+.sp{margin-left:auto;font-size:12px;color:var(--tx3)}
+input[type=search]{background:var(--card);border:1px solid var(--line);border-radius:7px;padding:6px 11px;color:var(--tx);font-size:13px;width:180px;font-family:inherit}
+#total{background:var(--card);border-radius:10px;padding:14px;margin-bottom:16px;height:190px;position:relative}
+table{width:100%;border-collapse:collapse}
+th{font-size:11px;color:var(--tx3);font-weight:400;text-align:right;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+th:first-child,th:nth-child(2){text-align:left}
+th:hover{color:var(--tx)}
+td{padding:8px;border-bottom:1px solid var(--line);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+td:first-child,td:nth-child(2){text-align:left}
+tr.r{cursor:pointer}
+tr.r:hover td{background:var(--card)}
+.nm{max-width:290px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.meta{font-size:11px;color:var(--tx3);margin-top:1px}
+.tag{display:inline-block;font-size:10px;padding:1px 6px;border-radius:4px;background:var(--card2);color:var(--tx2);margin-right:5px}
+.tag.f{background:#3a2e18;color:var(--acc)}
+.tag.a{background:#3a2020;color:#e09a9a}
+.tag.o{background:#2b2438;color:#b39ae0}
+.u{color:var(--up)}.d{color:var(--down)}.n{color:var(--flat)}
+.spark{width:78px;height:22px;vertical-align:middle}
+.det{background:var(--card);padding:14px}
+.det .box{height:210px;position:relative}
+.empty{color:var(--tx3);padding:36px;text-align:center}
+@media(max-width:720px){.hide{display:none}.nm{max-width:150px}}
+</style>
+</head>
+<body>
+
+<h1>在庫トラッカー</h1>
+<div class="sub" id="gen">読み込み中…</div>
+
+<div class="cards" id="cards"></div>
+
+<div id="total"><canvas id="tc"></canvas></div>
+
+<div class="bar">
+  <button class="on" data-tag="all">すべて</button>
+  <button data-tag="stock">在庫</button>
+  <button data-tag="pending">未入荷</button>
+  <button data-tag="fav">お気に入り</button>
+  <span style="width:14px"></span>
+  <button class="on" data-r="7">1週間</button>
+  <button data-r="30">1ヶ月</button>
+  <button data-r="90">3ヶ月</button>
+  <button data-r="0">全期間</button>
+  <input type="search" id="q" placeholder="商品名・JAN">
+  <span class="sp" id="cnt"></span>
+</div>
+
+<table>
+<thead><tr>
+  <th data-s="name">商品</th>
+  <th data-s="ch" class="hide">経路</th>
+  <th data-s="qty">数</th>
+  <th data-s="plan">予定</th>
+  <th data-s="price">買取</th>
+  <th data-s="diff">差額</th>
+  <th data-s="rate">率</th>
+  <th data-s="chg">期間変動</th>
+  <th class="hide">推移</th>
+</tr></thead>
+<tbody id="tb"></tbody>
+</table>
+
+<script>
+const F = n => n == null ? '—' : n.toLocaleString();
+const S = n => (n > 0 ? '+' : '') + F(n);
+const CLS = n => n == null ? 'n' : n > 0 ? 'u' : n < 0 ? 'd' : 'n';
+
+let DATA = null, TAG = 'all', RANGE = 7, SORT = 'diff', ASC = true, Q = '';
+let totalChart = null, openRow = null, detChart = null;
+
+function since(days){
+  if (!days) return '0000-00-00';
+  const d = new Date();
+  d.setDate(d.getDate() - days);
+  return d.toISOString().slice(0, 10);
+}
+
+function inRange(h){
+  const s = since(RANGE);
+  return h.filter(p => p[0] >= s);
+}
+
+// 期間内の変動額。期間の開始時点の実測値と最新値の差。
+function change(it){
+  const h = it.hist;
+  if (!h.length) return null;
+  const s = since(RANGE);
+  const past = h.filter(p => p[0] <= s);
+  const base = past.length ? past[past.length - 1][1] : h[0][1];
+  const now = h[h.length - 1][1];
+  return now - base;
+}
+
+function rows(){
+  let a = DATA.items.filter(x => TAG === 'all' ? true : x.tag === TAG);
+  if (Q){
+    const q = Q.toLowerCase();
+    a = a.filter(x => (x.name || '').toLowerCase().includes(q) || x.jan.includes(q));
+  }
+  a.forEach(x => x.chg = change(x));
+  const k = SORT;
+  a.sort((p, q2) => {
+    let u = p[k], v = q2[k];
+    if (k === 'name' || k === 'ch'){ u = u || ''; v = v || ''; return ASC ? u.localeCompare(v) : v.localeCompare(u); }
+    u = u == null ? -Infinity : u; v = v == null ? -Infinity : v;
+    return ASC ? u - v : v - u;
+  });
+  return a;
+}
+
+function spark(h){
+  const p = inRange(h);
+  if (p.length < 2) return '';
+  const v = p.map(x => x[1]), mn = Math.min(...v), mx = Math.max(...v);
+  const rg = mx - mn || 1;
+  const pts = v.map((y, i) => `${i / (v.length - 1) * 76 + 1},${20 - (y - mn) / rg * 18}`).join(' ');
+  const col = v[v.length - 1] > v[0] ? 'var(--up)' : v[v.length - 1] < v[0] ? 'var(--down)' : 'var(--flat)';
+  return `<svg class="spark" viewBox="0 0 78 22"><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.5"/></svg>`;
+}
+
+function draw(){
+  const a = rows();
+  document.getElementById('cnt').textContent = `${a.length}行 / ${a.reduce((s,x)=>s+(x.qty||0),0)}台`;
+  const tb = document.getElementById('tb');
+  if (!a.length){ tb.innerHTML = '<tr><td colspan="9" class="empty">該当なし</td></tr>'; return; }
+
+  tb.innerHTML = a.map((x, i) => {
+    const tags = (x.tag === 'fav' ? '<span class="tag f">相場</span>' : '')
+               + (x.units > 1 ? `<span class="tag a">÷${x.units}</span>` : '')
+               + (x.outlier ? `<span class="tag o" title="最高値 ¥${F(x.outlier.raw)}（${x.outlier.shop}）が中央値の${x.outlier.ratio}倍だったため除外">外れ値除外</span>` : '');
+    const meta = [x.buy_date, x.ch, x.shop, x.n_shop ? x.n_shop + '社' : '', x.asof]
+                 .filter(Boolean).join(' · ');
+    return `<tr class="r" data-i="${i}">
+      <td><div class="nm">${tags}${x.name || x.jan}</div><div class="meta">${meta}</div></td>
+      <td class="hide">${x.ch || '—'}</td>
+      <td>${x.tag === 'fav' ? '—' : x.qty}</td>
+      <td>${x.tag === 'fav' ? '—' : F(x.plan)}</td>
+      <td>${F(x.price)}</td>
+      <td class="${CLS(x.diff)}">${x.diff == null ? '—' : S(x.diff)}</td>
+      <td class="${CLS(x.rate)}">${x.rate == null ? '—' : (x.rate > 0 ? '+' : '') + x.rate + '%'}</td>
+      <td class="${CLS(x.chg)}">${x.chg == null ? '—' : S(x.chg)}</td>
+      <td class="hide">${spark(x.hist)}</td>
+    </tr>`;
+  }).join('');
+
+  tb.querySelectorAll('tr.r').forEach(tr => tr.onclick = () => detail(tr, a[+tr.dataset.i]));
+}
+
+function detail(tr, it){
+  const nx = tr.nextElementSibling;
+  if (nx && nx.classList.contains('dr')){ nx.remove(); openRow = null; return; }
+  document.querySelectorAll('tr.dr').forEach(e => e.remove());
+  const r = document.createElement('tr');
+  r.className = 'dr';
+  r.innerHTML = `<td colspan="9" class="det"><div class="box"><canvas></canvas></div></td>`;
+  tr.after(r);
+
+  const h = inRange(it.hist);
+  const cv = r.querySelector('canvas');
+  if (h.length < 2){
+    r.querySelector('.box').innerHTML = '<div class="empty">この期間の実測値が足りません</div>';
+    return;
+  }
+  if (detChart) detChart.destroy();
+  const ds = [{
+    label: '買取最高値', data: h.map(p => p[1]),
+    borderColor: '#4fa3e3', backgroundColor: 'rgba(79,163,227,.08)',
+    borderWidth: 2, pointRadius: 2, fill: true, tension: .15
+  }];
+  if (it.tag !== 'fav' && it.plan){
+    ds.push({
+      label: '販売予定（単価）', data: h.map(() => it.plan),
+      borderColor: '#c98f3a', borderWidth: 1, borderDash: [5, 4],
+      pointRadius: 0, fill: false
+    });
+  }
+  detChart = new Chart(cv, {
+    type: 'line',
+    data: { labels: h.map(p => p[0].slice(5)), datasets: ds },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { labels: { color: '#a3a29a', boxWidth: 12, font: { size: 11 } } },
+        tooltip: { callbacks: { label: c => c.dataset.label + ': ¥' + c.parsed.y.toLocaleString() } }
+      },
+      scales: {
+        x: { ticks: { color: '#6e6d67', font: { size: 10 }, maxTicksLimit: 12 }, grid: { color: '#26261f' } },
+        y: { ticks: { color: '#6e6d67', font: { size: 10 }, callback: v => '¥' + v.toLocaleString() }, grid: { color: '#26261f' } }
+      }
+    }
+  });
+}
+
+// 在庫全体の評価額推移。各日について、その日以前の最新実測値を使う。
+function totals(){
+  const s = since(RANGE);
+  const dates = DATA.dates.filter(d => d >= s);
+  const held = DATA.items.filter(x => x.tag !== 'fav' && x.qty);
+  return dates.map(d => {
+    let v = 0;
+    for (const x of held){
+      const past = x.hist.filter(p => p[0] <= d);
+      if (past.length) v += past[past.length - 1][1] * x.qty;
+    }
+    return v;
+  });
+}
+
+function drawTotal(){
+  const s = since(RANGE);
+  const labels = DATA.dates.filter(d => d >= s);
+  const v = totals();
+  if (totalChart) totalChart.destroy();
+  if (labels.length < 2){
+    document.getElementById('total').innerHTML = '<div class="empty">この期間の実測値が足りません</div>';
+    return;
+  }
+  document.getElementById('total').innerHTML = '<canvas id="tc"></canvas>';
+  totalChart = new Chart(document.getElementById('tc'), {
+    type: 'line',
+    data: { labels: labels.map(d => d.slice(5)), datasets: [{
+      label: '在庫評価額（買取ベース）', data: v,
+      borderColor: '#4fa3e3', backgroundColor: 'rgba(79,163,227,.08)',
+      borderWidth: 2, pointRadius: 2, fill: true, tension: .15
+    }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#a3a29a', boxWidth: 12, font: { size: 11 } } },
+        tooltip: { callbacks: { label: c => '¥' + c.parsed.y.toLocaleString() } }
+      },
+      scales: {
+        x: { ticks: { color: '#6e6d67', font: { size: 10 }, maxTicksLimit: 12 }, grid: { color: '#26261f' } },
+        y: { ticks: { color: '#6e6d67', font: { size: 10 }, callback: v2 => '¥' + (v2 / 10000).toFixed(0) + '万' }, grid: { color: '#26261f' } }
+      }
+    }
+  });
+}
+
+function cards(){
+  const held = DATA.items.filter(x => x.tag !== 'fav');
+  const val = held.reduce((s, x) => s + (x.price || 0) * x.qty, 0);
+  const dif = held.reduce((s, x) => s + (x.diff || 0), 0);
+  const qty = held.reduce((s, x) => s + x.qty, 0);
+  const v = totals();
+  const mv = v.length > 1 ? v[v.length - 1] - v[0] : null;
+  const lbl = RANGE ? (RANGE === 7 ? '1週間' : RANGE === 30 ? '1ヶ月' : '3ヶ月') : '全期間';
+  document.getElementById('cards').innerHTML = `
+    <div class="c"><div class="l">在庫評価額（買取）</div><div class="v">¥${F(val)}</div></div>
+    <div class="c"><div class="l">販売予定との差</div><div class="v ${CLS(dif)}">${S(dif)}</div></div>
+    <div class="c"><div class="l">${lbl}の変動</div><div class="v ${CLS(mv)}">${mv == null ? '—' : S(mv)}</div></div>
+    <div class="c"><div class="l">保有台数</div><div class="v">${qty}</div></div>
+    <div class="c"><div class="l">お気に入り</div><div class="v">${DATA.items.filter(x => x.tag === 'fav').length}</div></div>`;
+}
+
+function render(){ cards(); drawTotal(); draw(); }
+
+document.querySelectorAll('[data-tag]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('[data-tag]').forEach(e => e.classList.remove('on'));
+  b.classList.add('on'); TAG = b.dataset.tag; draw();
+});
+document.querySelectorAll('[data-r]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('[data-r]').forEach(e => e.classList.remove('on'));
+  b.classList.add('on'); RANGE = +b.dataset.r; render();
+});
+document.querySelectorAll('th[data-s]').forEach(th => th.onclick = () => {
+  const k = th.dataset.s;
+  if (SORT === k) ASC = !ASC; else { SORT = k; ASC = (k === 'diff' || k === 'rate' || k === 'chg'); }
+  draw();
+});
+document.getElementById('q').oninput = e => { Q = e.target.value.trim(); draw(); };
+
+fetch('stock_data.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    document.getElementById('gen').textContent =
+      `更新 ${d.generated} ／ 実測 ${d.dates.length}日分（${d.dates[0]} 〜 ${d.dates[d.dates.length - 1]}）`;
+    render();
+  })
+  .catch(e => {
+    document.getElementById('gen').textContent = 'stock_data.json を読み込めませんでした: ' + e;
+  });
+</script>
+</body>
+</html>

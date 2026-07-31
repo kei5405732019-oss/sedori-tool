@@ -1,0 +1,5435 @@
+{
+  "params": {
+    "hit_views": 10000,
+    "normalize_day": 30,
+    "niche": "battle",
+    "as_of": "2026-07-30"
+  },
+  "decay_curve": [
+    {
+      "age_from": 0,
+      "views_per_day": 431.5
+    },
+    {
+      "age_from": 1,
+      "views_per_day": 92.5
+    },
+    {
+      "age_from": 2,
+      "views_per_day": 442.25
+    },
+    {
+      "age_from": 3,
+      "views_per_day": 180.0
+    },
+    {
+      "age_from": 5,
+      "views_per_day": 84.0
+    },
+    {
+      "age_from": 7,
+      "views_per_day": 46.0
+    },
+    {
+      "age_from": 10,
+      "views_per_day": 41.0
+    },
+    {
+      "age_from": 14,
+      "views_per_day": 26.0
+    },
+    {
+      "age_from": 21,
+      "views_per_day": 14.0
+    },
+    {
+      "age_from": 30,
+      "views_per_day": 10.0
+    },
+    {
+      "age_from": 45,
+      "views_per_day": 7.0
+    },
+    {
+      "age_from": 60,
+      "views_per_day": 3.5
+    },
+    {
+      "age_from": 90,
+      "views_per_day": 3.0
+    },
+    {
+      "age_from": 120,
+      "views_per_day": 2.0
+    },
+    {
+      "age_from": 180,
+      "views_per_day": 1.5
+    },
+    {
+      "age_from": 270,
+      "views_per_day": 2.0
+    },
+    {
+      "age_from": 365,
+      "views_per_day": 1.0
+    },
+    {
+      "age_from": 540,
+      "views_per_day": 1.0
+    },
+    {
+      "age_from": 730,
+      "views_per_day": 1.0
+    }
+  ],
+  "decay_obs": 301156,
+  "cohort": [
+    {
+      "month": "2006-11",
+      "n": 2,
+      "shorts": 0,
+      "longform": 2,
+      "raw_median": 134121.5,
+      "permonth_median": 567.5,
+      "norm_median": 75678.8,
+      "norm_p75": 104008.8,
+      "norm_p90": 121006.8,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2007-03",
+      "n": 3,
+      "shorts": 0,
+      "longform": 3,
+      "raw_median": 2998751.0,
+      "permonth_median": 12896.0,
+      "norm_median": 1692061.9,
+      "norm_p75": 8592779.1,
+      "norm_p90": 12733209.5,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2007-07",
+      "n": 1,
+      "shorts": 0,
+      "longform": 1,
+      "raw_median": 5541.0,
+      "permonth_median": 24.3,
+      "norm_median": 3126.5,
+      "norm_p75": 3126.5,
+      "norm_p90": 3126.5,
+      "hit_ratio": 0.0
+    },
+    {
+      "month": "2007-10",
+      "n": 2,
+      "shorts": 0,
+      "longform": 2,
+      "raw_median": 24218895.5,
+      "permonth_median": 107419.7,
+      "norm_median": 13665646.1,
+      "norm_p75": 20465678.3,
+      "norm_p90": 24545697.7,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2007-11",
+      "n": 9,
+      "shorts": 1,
+      "longform": 8,
+      "raw_median": 14041.0,
+      "permonth_median": 62.6,
+      "norm_median": 7922.7,
+      "norm_p75": 89350.4,
+      "norm_p90": 198208.4,
+      "hit_ratio": 44.44
+    },
+    {
+      "month": "2007-12",
+      "n": 48,
+      "shorts": 0,
+      "longform": 48,
+      "raw_median": 48305.0,
+      "permonth_median": 216.4,
+      "norm_median": 27256.4,
+      "norm_p75": 92353.0,
+      "norm_p90": 469799.7,
+      "hit_ratio": 79.17
+    },
+    {
+      "month": "2008-01",
+      "n": 1,
+      "shorts": 0,
+      "longform": 1,
+      "raw_median": 3573587.0,
+      "permonth_median": 16061.1,
+      "norm_median": 2016416.3,
+      "norm_p75": 2016416.3,
+      "norm_p90": 2016416.3,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2008-02",
+      "n": 4,
+      "shorts": 0,
+      "longform": 4,
+      "raw_median": 808838.0,
+      "permonth_median": 3654.6,
+      "norm_median": 456391.3,
+      "norm_p75": 565458.3,
+      "norm_p90": 590734.5,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2008-03",
+      "n": 4,
+      "shorts": 0,
+      "longform": 4,
+      "raw_median": 336152.5,
+      "permonth_median": 1523.9,
+      "norm_median": 189675.9,
+      "norm_p75": 266406.9,
+      "norm_p90": 369996.9,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2008-04",
+      "n": 17,
+      "shorts": 0,
+      "longform": 17,
+      "raw_median": 83325.0,
+      "permonth_median": 379.9,
+      "norm_median": 47016.6,
+      "norm_p75": 69756.7,
+      "norm_p90": 163274.6,
+      "hit_ratio": 94.12
+    },
+    {
+      "month": "2008-05",
+      "n": 1,
+      "shorts": 0,
+      "longform": 1,
+      "raw_median": 612864.0,
+      "permonth_median": 2805.9,
+      "norm_median": 345811.9,
+      "norm_p75": 345811.9,
+      "norm_p90": 345811.9,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2008-06",
+      "n": 7,
+      "shorts": 0,
+      "longform": 7,
+      "raw_median": 200144.0,
+      "permonth_median": 917.7,
+      "norm_median": 112932.4,
+      "norm_p75": 1291018.7,
+      "norm_p90": 1825842.0,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2008-07",
+      "n": 22,
+      "shorts": 1,
+      "longform": 21,
+      "raw_median": 8087.5,
+      "permonth_median": 37.4,
+      "norm_median": 4563.4,
+      "norm_p75": 46967.1,
+      "norm_p90": 434419.0,
+      "hit_ratio": 27.27
+    },
+    {
+      "month": "2008-08",
+      "n": 8,
+      "shorts": 0,
+      "longform": 8,
+      "raw_median": 365886.0,
+      "permonth_median": 1697.9,
+      "norm_median": 206453.2,
+      "norm_p75": 306370.2,
+      "norm_p90": 399259.0,
+      "hit_ratio": 75.0
+    },
+    {
+      "month": "2008-09",
+      "n": 2,
+      "shorts": 0,
+      "longform": 2,
+      "raw_median": 1494052.0,
+      "permonth_median": 6958.3,
+      "norm_median": 843027.1,
+      "norm_p75": 1110141.8,
+      "norm_p90": 1270410.5,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2008-10",
+      "n": 4,
+      "shorts": 0,
+      "longform": 4,
+      "raw_median": 550345.0,
+      "permonth_median": 2573.4,
+      "norm_median": 310535.2,
+      "norm_p75": 484273.9,
+      "norm_p90": 623036.1,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2008-11",
+      "n": 31,
+      "shorts": 0,
+      "longform": 31,
+      "raw_median": 307670.0,
+      "permonth_median": 1449.7,
+      "norm_median": 173604.5,
+      "norm_p75": 243319.7,
+      "norm_p90": 289615.4,
+      "hit_ratio": 96.77
+    },
+    {
+      "month": "2008-12",
+      "n": 3,
+      "shorts": 0,
+      "longform": 3,
+      "raw_median": 161904.0,
+      "permonth_median": 765.7,
+      "norm_median": 91355.2,
+      "norm_p75": 291104.0,
+      "norm_p90": 410953.2,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2009-01",
+      "n": 3,
+      "shorts": 1,
+      "longform": 2,
+      "raw_median": 7332.0,
+      "permonth_median": 34.8,
+      "norm_median": 4137.1,
+      "norm_p75": 7167.5,
+      "norm_p90": 8985.7,
+      "hit_ratio": 33.33
+    },
+    {
+      "month": "2009-02",
+      "n": 2,
+      "shorts": 1,
+      "longform": 1,
+      "raw_median": 1513624.5,
+      "permonth_median": 7234.9,
+      "norm_median": 854071.0,
+      "norm_p75": 1278520.8,
+      "norm_p90": 1533190.7,
+      "hit_ratio": 50.0
+    },
+    {
+      "month": "2009-03",
+      "n": 6,
+      "shorts": 0,
+      "longform": 6,
+      "raw_median": 24148.5,
+      "permonth_median": 115.7,
+      "norm_median": 13625.9,
+      "norm_p75": 43123.8,
+      "norm_p90": 72422.8,
+      "hit_ratio": 50.0
+    },
+    {
+      "month": "2009-04",
+      "n": 13,
+      "shorts": 0,
+      "longform": 13,
+      "raw_median": 98727.0,
+      "permonth_median": 474.4,
+      "norm_median": 55707.3,
+      "norm_p75": 121507.9,
+      "norm_p90": 142100.4,
+      "hit_ratio": 61.54
+    },
+    {
+      "month": "2009-05",
+      "n": 9,
+      "shorts": 0,
+      "longform": 9,
+      "raw_median": 64345.0,
+      "permonth_median": 311.2,
+      "norm_median": 36307.0,
+      "norm_p75": 276859.3,
+      "norm_p90": 304722.8,
+      "hit_ratio": 66.67
+    },
+    {
+      "month": "2009-06",
+      "n": 2,
+      "shorts": 1,
+      "longform": 1,
+      "raw_median": 109.0,
+      "permonth_median": 0.5,
+      "norm_median": 61.5,
+      "norm_p75": 64.3,
+      "norm_p90": 66.0,
+      "hit_ratio": 0.0
+    },
+    {
+      "month": "2009-07",
+      "n": 4,
+      "shorts": 0,
+      "longform": 4,
+      "raw_median": 9007.0,
+      "permonth_median": 44.1,
+      "norm_median": 5082.2,
+      "norm_p75": 5319.0,
+      "norm_p90": 5504.3,
+      "hit_ratio": 0.0
+    },
+    {
+      "month": "2009-08",
+      "n": 5,
+      "shorts": 0,
+      "longform": 5,
+      "raw_median": 6093.0,
+      "permonth_median": 29.8,
+      "norm_median": 3438.0,
+      "norm_p75": 43787.9,
+      "norm_p90": 399230.7,
+      "hit_ratio": 40.0
+    },
+    {
+      "month": "2009-09",
+      "n": 16,
+      "shorts": 0,
+      "longform": 16,
+      "raw_median": 252781.5,
+      "permonth_median": 1244.7,
+      "norm_median": 142633.4,
+      "norm_p75": 276713.7,
+      "norm_p90": 516282.8,
+      "hit_ratio": 93.75
+    },
+    {
+      "month": "2009-10",
+      "n": 4,
+      "shorts": 0,
+      "longform": 4,
+      "raw_median": 96599.0,
+      "permonth_median": 479.4,
+      "norm_median": 54506.5,
+      "norm_p75": 61746.5,
+      "norm_p90": 64059.1,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2009-11",
+      "n": 6,
+      "shorts": 0,
+      "longform": 6,
+      "raw_median": 93553.5,
+      "permonth_median": 466.1,
+      "norm_median": 52788.1,
+      "norm_p75": 837221.2,
+      "norm_p90": 1250195.9,
+      "hit_ratio": 66.67
+    },
+    {
+      "month": "2009-12",
+      "n": 7,
+      "shorts": 1,
+      "longform": 6,
+      "raw_median": 25141.0,
+      "permonth_median": 125.9,
+      "norm_median": 14185.9,
+      "norm_p75": 53156.8,
+      "norm_p90": 1543689.9,
+      "hit_ratio": 57.14
+    },
+    {
+      "month": "2010-01",
+      "n": 5,
+      "shorts": 0,
+      "longform": 5,
+      "raw_median": 20879.0,
+      "permonth_median": 105.0,
+      "norm_median": 11781.1,
+      "norm_p75": 13427.0,
+      "norm_p90": 120924.8,
+      "hit_ratio": 60.0
+    },
+    {
+      "month": "2010-02",
+      "n": 3,
+      "shorts": 0,
+      "longform": 3,
+      "raw_median": 243175.0,
+      "permonth_median": 1228.6,
+      "norm_median": 137212.8,
+      "norm_p75": 186167.7,
+      "norm_p90": 215540.5,
+      "hit_ratio": 100.0
+    },
+    {
+      "month": "2010-03",
+      "n": 5,
+      "shorts": 0,
+      "longform": 5,
+      "raw_median": 20724.0,
+      "permonth_median": 105.4,
+      "norm_median": 11693.6,
+      "norm_p75": 19206.7,
+      "norm_p90": 413880.7,
+      "hit_ratio": 80.0
+    },
+    {
+      "month": "2010-04",
+      "n": 7,
+      "shorts": 1,
+      "longform": 6,
+      "raw_median": 32000.0,
+      "permonth_median": 163.8,
+      "norm_median": 18056.2,
+      "norm_p75": 240323.5,
+      "norm_p90": 525008.5,
+      "hit_ratio": 57.14
+    },
+    {
+      "month": "2010-05",
+      "n": 5,
+      "shorts": 0,
+      "longform": 5,
+      "raw_median": 28701.0,
+      "permonth_median": 147.5,
+      "norm_median": 16194.7,
+      "norm_p75": 99318.6,
+      "norm_p90": 7096316.3,
+      "hit_ratio": 80.0
+    },
+    {
+      "month": "2010-06",
+      "n": 5,
+      "shorts": 0,
+      "longform": 5,
+      "raw_median": 19919.0,
+      "permonth_median": 102.6,
+      "norm_median": 11239.4,
+      "norm_p75": 13437.7,
+      "norm_p90": 365033.5,
+      "hit_ratio": 60.0
+    },
+    {
+      "month": "2010-07",
+      "n": 4,
+      "shorts": 0,
+      "longform": 4,
+      "raw_median": 21567.0,
+      "permonth_median": 111.8,
+      "norm_median": 12169.3,
+      "norm_p75": 25379.9,
+      "norm_p90": 35623.4,
+      "hit_ratio": 50.0
+    },
+    {
+      "month": "2010-08",
+      "n": 19,
+      "shorts": 3,
+      "longform": 16,
+      "raw_median": 33311.0,
+      "permonth_median": 174.1,
+      "norm_median": 18795.9,
+      "norm_p75": 185593.5,
+      "norm_p90": 958452.9,
+      "hit_ratio": 57.89
+    },
+    {
+      "month": "2010-09",
+      "n": 25,
+      "shorts": 2,
+      "longform": 23,
+      "raw_median": 322460.0,
+      "permonth_median": 1693.6,
+      "norm_median": 181949.8,
+      "norm_p75": 221182.5,
+      "norm_p90": 383016.0,
+      "hit_ratio": 80.0
+    },
+    {
+      "month": "2010-10",
+      "n": 14,
+      "shorts": 0,
+      "longform": 14,
+      "raw_median": 154178.5,
+      "permonth_median": 811.3,
+      "norm_median": 86996.1,
+      "norm_p75": 239777.4,
+      "norm_p90": 1219635.7,
+      "hit_ratio": 85.71
+    },
+    {
+      "month": "2010-11",
+      "n": 16,
+      "shorts": 0,
+      "longform": 16,
+      "raw_median": 313704.0,
+      "permonth_median": 1661.1,
+      "norm_median": 177009.2,
+      "norm_p75": 885238.5,
+      "norm_p90": 1182898.0,
+      "hit_ratio": 93.75
+    },
+    {
+      "month": "2010-12",
+      "n": 17,
+      "shorts": 2,
+      "longform": 15,
+      "raw_median": 107782.0,
+      "permonth_median": 575.4,
+      "norm_median": 60816.6,
+      "norm_p75": 547033.9,
+      "norm_p90": 1671916.3,
+      "hit_ratio": 76.47
+    },
+    {
+      "month": "2011-01",
+      "n": 17,
+      "shorts": 6,
+      "longform": 11,
+      "raw_median": 27577.0,
+      "permonth_median": 148.1,
+      "norm_median": 15560.5,
+      "norm_p75": 32948.6,
+      "norm_p90": 1413765.1,
+      "hit_ratio": 58.82
+    },
+    {
+      "month": "2011-02",
+      "n": 21,
+      "shorts": 2,
+      "longform": 19,
+      "raw_median": 30756.0,
+      "permonth_median": 165.4,
+      "norm_median": 17354.2,
+      "norm_p75": 44120.8,
+      "norm_p90": 156056.2,
+      "hit_ratio": 52.38
+    },
+    {
+      "month": "2011-03",
+      "n": 14,
+      "shorts": 1,
+      "longform": 13,
+      "raw_median": 60026.0,
+      "permonth_median": 325.8,
+      "norm_median": 33870.0,
+      "norm_p75": 96891.0,
+      "norm_p90": 199759.6,
+      "hit_ratio": 71.43
+    },
+    {
+      "month": "2011-04",
+      "n": 22,
+      "shorts": 1,
+      "longform": 21,
+      "raw_median": 25980.0,
+      "permonth_median": 141.2,
+      "norm_median": 14659.4,
+      "norm_p75": 33553.5,
+      "norm_p90": 106756.1,
+      "hit_ratio": 68.18
+    },
+    {
+      "month": "2011-05",
+      "n": 43,
+      "shorts": 2,
+      "longform": 41,
+      "raw_median": 11259.0,
+      "permonth_median": 61.5,
+      "norm_median": 6353.0,
+      "norm_p75": 24453.1,
+      "norm_p90": 104522.5,
+      "hit_ratio": 44.19
+    },
+    {
+      "month": "2011-06",
+      "n": 20,
+      "shorts": 2,
+      "longform": 18,
+      "raw_median": 35846.5,
+      "permonth_median": 197.3,
+      "norm_median": 20226.6,
+      "norm_p75": 58414.0,
+      "norm_p90": 115779.0,
+      "hit_ratio": 65.0
+    },
+    {
+      "month": "2011-07",
+      "n": 104,
+      "shorts": 24,
+      "longform": 80,
+      "raw_median": 5564.0,
+      "permonth_median": 30.8,
+      "norm_median": 3139.5,
+      "norm_p75": 36624.7,
+      "norm_p90": 106388.0,
+      "hit_ratio": 35.58
+    },
+    {
+      "month": "2011-08",
+      "n": 23,
+      "shorts": 2,
+      "longform": 21,
+      "raw_median": 36210.0,
+      "permonth_median": 201.9,
+      "norm_median": 20431.7,
+      "norm_p75": 56704.9,
+      "norm_p90": 116360.3,
+      "hit_ratio": 56.52
+    },
+    {
+      "month": "2011-09",
+      "n": 61,
+      "shorts": 6,
+      "longform": 55,
+      "raw_median": 3894.0,
+      "permonth_median": 21.8,
+      "norm_median": 2197.2,
+      "norm_p75": 16769.1,
+      "norm_p90": 101465.0,
+      "hit_ratio": 32.79
+    },
+    {
+      "month": "2011-10",
+      "n": 35,
+      "shorts": 5,
+      "longform": 30,
+      "raw_median": 29188.0,
+      "permonth_median": 164.0,
+      "norm_median": 16469.5,
+      "norm_p75": 77384.5,
+      "norm_p90": 1005304.7,
+      "hit_ratio": 60.0
+    },
+    {
+      "month": "2011-11",
+      "n": 78,
+      "shorts": 3,
+      "longform": 75,
+      "raw_median": 52080.0,
+      "permonth_median": 295.1,
+      "norm_median": 29386.4,
+      "norm_p75": 326509.7,
+      "norm_p90": 1174465.3,
+      "hit_ratio": 74.36
+    },
+    {
+      "month": "2011-12",
+      "n": 60,
+      "shorts": 9,
+      "longform": 51,
+      "raw_median": 31123.5,
+      "permonth_median": 177.3,
+      "norm_median": 17561.6,
+      "norm_p75": 120108.8,
+      "norm_p90": 564387.0,
+      "hit_ratio": 60.0
+    },
+    {
+      "month": "2012-01",
+      "n": 8,
+      "shorts": 0,
+      "longform": 8,
+      "raw_median": 7708.5,
+      "permonth_median": 44.2,
+      "norm_median": 4349.6,
+      "norm_p75": 19015.3,
+      "norm_p90": 103123.7,
+      "hit_ratio": 25.0
+    },
+    {
+      "month": "2012-02",
+      "n": 14,
+      "shorts": 0,
+      "longform": 14,
+      "raw_median": 108547.5,
+      "permonth_median": 625.8,
+      "norm_median": 61248.5,
+      "norm_p75": 113080.9,
+      "norm_p90": 234040.5,
+      "hit_ratio": 78.57
+    },
+    {
+      "month": "2012-03",
+      "n": 46,
+      "shorts": 3,
+      "longform": 43,
+      "raw_median": 80939.0,
+      "permonth_median": 468.2,
+      "norm_median": 45670.3,
+      "norm_p75": 131330.3,
+      "norm_p90": 539533.8,
+      "hit_ratio": 73.91
+    },
+    {
+      "month": "2012-04",
+      "n": 46,
+      "shorts": 2,
+      "longform": 44,
+      "raw_median": 48213.0,
+      "permonth_median": 280.4,
+      "norm_median": 27204.5,
+      "norm_p75": 67431.5,
+      "norm_p90": 188643.9,
+      "hit_ratio": 76.09
+    },
+    {
+      "month": "2012-05",
+      "n": 31,
+      "shorts": 0,
+      "longform": 31,
+      "raw_median": 78751.0,
+      "permonth_median": 461.2,
+      "norm_median": 44435.7,
+      "norm_p75": 170930.5,
+      "norm_p90": 237306.1,
+      "hit_ratio": 77.42
+    },
+    {
+      "month": "2012-06",
+      "n": 40,
+      "shorts": 2,
+      "longform": 38,
+      "raw_median": 52814.5,
+      "permonth_median": 311.7,
+      "norm_median": 29800.9,
+      "norm_p75": 87904.4,
+      "norm_p90": 186294.7,
+      "hit_ratio": 70.0
+    },
+    {
+      "month": "2012-07",
+      "n": 25,
+      "shorts": 0,
+      "longform": 25,
+      "raw_median": 20685.0,
+      "permonth_median": 123.0,
+      "norm_median": 11671.6,
+      "norm_p75": 31152.0,
+      "norm_p90": 37285.1,
+      "hit_ratio": 56.0
+    },
+    {
+      "month": "2012-08",
+      "n": 83,
+      "shorts": 4,
+      "longform": 79,
+      "raw_median": 26215.0,
+      "permonth_median": 156.4,
+      "norm_median": 14792.0,
+      "norm_p75": 47123.2,
+      "norm_p90": 167811.3,
+      "hit_ratio": 62.65
+    },
+    {
+      "month": "2012-09",
+      "n": 22,
+      "shorts": 0,
+      "longform": 22,
+      "raw_median": 36303.5,
+      "permonth_median": 218.5,
+      "norm_median": 20484.5,
+      "norm_p75": 32621.2,
+      "norm_p90": 59286.1,
+      "hit_ratio": 72.73
+    },
+    {
+      "month": "2012-10",
+      "n": 36,
+      "shorts": 2,
+      "longform": 34,
+      "raw_median": 83659.0,
+      "permonth_median": 505.4,
+      "norm_median": 47205.1,
+      "norm_p75": 217092.2,
+      "norm_p90": 517383.4,
+      "hit_ratio": 66.67
+    },
+    {
+      "month": "2012-11",
+      "n": 29,
+      "shorts": 0,
+      "longform": 29,
+      "raw_median": 32435.0,
+      "permonth_median": 197.0,
+      "norm_median": 18301.6,
+      "norm_p75": 47386.2,
+      "norm_p90": 170910.6,
+      "hit_ratio": 62.07
+    },
+    {
+      "month": "2012-12",
+      "n": 28,
+      "shorts": 0,
+      "longform": 28,
+      "raw_median": 40653.0,
+      "permonth_median": 248.6,
+      "norm_median": 22938.7,
+      "norm_p75": 85513.8,
+      "norm_p90": 589722.1,
+      "hit_ratio": 71.43
+    },
+    {
+      "month": "2013-01",
+      "n": 106,
+      "shorts": 3,
+      "longform": 103,
+      "raw_median": 4610.0,
+      "permonth_median": 28.3,
+      "norm_median": 2601.2,
+      "norm_p75": 26456.5,
+      "norm_p90": 154294.6,
+      "hit_ratio": 38.68
+    },
+    {
+      "month": "2013-02",
+      "n": 67,
+      "shorts": 1,
+      "longform": 66,
+      "raw_median": 31240.0,
+      "permonth_median": 193.1,
+      "norm_median": 17627.3,
+      "norm_p75": 69044.6,
+      "norm_p90": 215135.2,
+      "hit_ratio": 64.18
+    },
+    {
+      "month": "2013-03",
+      "n": 57,
+      "shorts": 5,
+      "longform": 52,
+      "raw_median": 29314.0,
+      "permonth_median": 182.5,
+      "norm_median": 16540.6,
+      "norm_p75": 134698.5,
+      "norm_p90": 914271.2,
+      "hit_ratio": 57.89
+    },
+    {
+      "month": "2013-04",
+      "n": 74,
+      "shorts": 1,
+      "longform": 73,
+      "raw_median": 39110.5,
+      "permonth_median": 245.2,
+      "norm_median": 22068.3,
+      "norm_p75": 134445.9,
+      "norm_p90": 434816.3,
+      "hit_ratio": 83.78
+    },
+    {
+      "month": "2013-05",
+      "n": 94,
+      "shorts": 3,
+      "longform": 91,
+      "raw_median": 11960.0,
+      "permonth_median": 75.6,
+      "norm_median": 6748.5,
+      "norm_p75": 30163.5,
+      "norm_p90": 301762.3,
+      "hit_ratio": 47.87
+    },
+    {
+      "month": "2013-06",
+      "n": 66,
+      "shorts": 3,
+      "longform": 63,
+      "raw_median": 33487.0,
+      "permonth_median": 212.6,
+      "norm_median": 18895.2,
+      "norm_p75": 99111.6,
+      "norm_p90": 298310.9,
+      "hit_ratio": 68.18
+    },
+    {
+      "month": "2013-07",
+      "n": 67,
+      "shorts": 9,
+      "longform": 58,
+      "raw_median": 70683.0,
+      "permonth_median": 451.1,
+      "norm_median": 39883.3,
+      "norm_p75": 74967.0,
+      "norm_p90": 219733.1,
+      "hit_ratio": 83.58
+    },
+    {
+      "month": "2013-08",
+      "n": 66,
+      "shorts": 0,
+      "longform": 66,
+      "raw_median": 28266.5,
+      "permonth_median": 181.2,
+      "norm_median": 15949.5,
+      "norm_p75": 156019.5,
+      "norm_p90": 563002.1,
+      "hit_ratio": 57.58
+    },
+    {
+      "month": "2013-09",
+      "n": 47,
+      "shorts": 0,
+      "longform": 47,
+      "raw_median": 77554.0,
+      "permonth_median": 502.9,
+      "norm_median": 43760.3,
+      "norm_p75": 145404.4,
+      "norm_p90": 712275.2,
+      "hit_ratio": 82.98
+    },
+    {
+      "month": "2013-10",
+      "n": 31,
+      "shorts": 0,
+      "longform": 31,
+      "raw_median": 68958.0,
+      "permonth_median": 449.3,
+      "norm_median": 38909.9,
+      "norm_p75": 228170.6,
+      "norm_p90": 494891.6,
+      "hit_ratio": 93.55
+    },
+    {
+      "month": "2013-11",
+      "n": 21,
+      "shorts": 0,
+      "longform": 21,
+      "raw_median": 64554.0,
+      "permonth_median": 423.5,
+      "norm_median": 36425.0,
+      "norm_p75": 236244.8,
+      "norm_p90": 640799.1,
+      "hit_ratio": 76.19
+    },
+    {
+      "month": "2013-12",
+      "n": 39,
+      "shorts": 0,
+      "longform": 39,
+      "raw_median": 59062.0,
+      "permonth_median": 388.7,
+      "norm_median": 33326.1,
+      "norm_p75": 196913.3,
+      "norm_p90": 444055.2,
+      "hit_ratio": 66.67
+    },
+    {
+      "month": "2014-01",
+      "n": 51,
+      "shorts": 0,
+      "longform": 51,
+      "raw_median": 77092.0,
+      "permonth_median": 511.8,
+      "norm_median": 43499.6,
+      "norm_p75": 247554.7,
+      "norm_p90": 1069776.0,
+      "hit_ratio": 74.51
+    },
+    {
+      "month": "2014-02",
+      "n": 39,
+      "shorts": 1,
+      "longform": 38,
+      "raw_median": 43977.0,
+      "permonth_median": 293.6,
+      "norm_median": 24814.3,
+      "norm_p75": 91450.3,
+      "norm_p90": 361322.5,
+      "hit_ratio": 66.67
+    },
+    {
+      "month": "2014-03",
+      "n": 35,
+      "shorts": 1,
+      "longform": 34,
+      "raw_median": 71922.0,
+      "permonth_median": 483.1,
+      "norm_median": 40582.4,
+      "norm_p75": 144006.2,
+      "norm_p90": 279053.8,
+      "hit_ratio": 65.71
+    },
+    {
+      "month": "2014-04",
+      "n": 57,
+      "shorts": 2,
+      "longform": 55,
+      "raw_median": 57838.0,
+      "permonth_median": 393.1,
+      "norm_median": 32635.4,
+      "norm_p75": 105804.7,
+      "norm_p90": 582784.9,
+      "hit_ratio": 78.95
+    },
+    {
+      "month": "2014-05",
+      "n": 67,
+      "shorts": 2,
+      "longform": 65,
+      "raw_median": 113262.0,
+      "permonth_median": 772.2,
+      "norm_median": 63908.7,
+      "norm_p75": 226376.8,
+      "norm_p90": 468015.2,
+      "hit_ratio": 77.61
+    },
+    {
+      "month": "2014-06",
+      "n": 48,
+      "shorts": 1,
+      "longform": 47,
+      "raw_median": 56924.5,
+      "permonth_median": 391.5,
+      "norm_median": 32120.0,
+      "norm_p75": 156889.7,
+      "norm_p90": 524523.2,
+      "hit_ratio": 87.5
+    },
+    {
+      "month": "2014-07",
+      "n": 35,
+      "shorts": 0,
+      "longform": 35,
+      "raw_median": 65949.0,
+      "permonth_median": 456.6,
+      "norm_median": 37212.1,
+      "norm_p75": 275032.8,
+      "norm_p90": 476709.5,
+      "hit_ratio": 80.0
+    },
+    {
+      "month": "2014-08",
+      "n": 49,
+      "shorts": 1,
+      "longform": 48,
+      "raw_median": 29458.0,
+      "permonth_median": 205.7,
+      "norm_median": 16621.8,
+      "norm_p75": 65092.5,
+      "norm_p90": 220525.5,
+      "hit_ratio": 61.22
+    },
+    {
+      "month": "2014-09",
+      "n": 58,
+      "shorts": 1,
+      "longform": 57,
+      "raw_median": 14987.0,
+      "permonth_median": 105.3,
+      "norm_median": 8456.5,
+      "norm_p75": 34541.5,
+      "norm_p90": 110136.1,
+      "hit_ratio": 50.0
+    },
+    {
+      "month": "2014-10",
+      "n": 101,
+      "shorts": 0,
+      "longform": 101,
+      "raw_median": 17632.0,
+      "permonth_median": 124.3,
+      "norm_median": 9949.0,
+      "norm_p75": 33546.1,
+      "norm_p90": 195791.6,
+      "hit_ratio": 49.5
+    },
+    {
+      "month": "2014-11",
+      "n": 191,
+      "shorts": 5,
+      "longform": 186,
+      "raw_median": 55.0,
+      "permonth_median": 0.4,
+      "norm_median": 31.0,
+      "norm_p75": 1388.1,
+      "norm_p90": 25824.8,
+      "hit_ratio": 15.18
+    },
+    {
+      "month": "2014-12",
+      "n": 32,
+      "shorts": 2,
+      "longform": 30,
+      "raw_median": 85017.0,
+      "permonth_median": 610.0,
+      "norm_median": 47971.3,
+      "norm_p75": 276354.0,
+      "norm_p90": 1284395.1,
+      "hit_ratio": 75.0
+    },
+    {
+      "month": "2015-01",
+      "n": 30,
+      "shorts": 0,
+      "longform": 30,
+      "raw_median": 46935.5,
+      "permonth_median": 339.0,
+      "norm_median": 26483.6,
+      "norm_p75": 115376.2,
+      "norm_p90": 724747.7,
+      "hit_ratio": 66.67
+    },
+    {
+      "month": "2015-02",
+      "n": 21,
+      "shorts": 2,
+      "longform": 19,
+      "raw_median": 159352.0,
+      "permonth_median": 1158.1,
+      "norm_median": 89915.2,
+      "norm_p75": 499277.0,
+      "norm_p90": 752314.6,
+      "hit_ratio": 66.67
+    },
+    {
+      "month": "2015-03",
+      "n": 25,
+      "shorts": 0,
+      "longform": 25,
+      "raw_median": 59448.0,
+      "permonth_median": 435.5,
+      "norm_median": 33543.9,
+      "norm_p75": 124671.1,
+      "norm_p90": 4634262.1,
+      "hit_ratio": 72.0
+    },
+    {
+      "month": "2015-04",
+      "n": 217,
+      "shorts": 9,
+      "longform": 208,
+      "raw_median": 460.0,
+      "permonth_median": 3.4,
+      "norm_median": 259.6,
+      "norm_p75": 1189.5,
+      "norm_p90": 10855.4,
+      "hit_ratio": 11.52
+    },
+    {
+      "month": "2015-05",
+      "n": 89,
+      "shorts": 2,
+      "longform": 87,
+      "raw_median": 2198.0,
+      "permonth_median": 16.3,
+      "norm_median": 1240.2,
+      "norm_p75": 25084.0,
+      "norm_p90": 305244.9,
+      "hit_ratio": 32.58
+    },
+    {
+      "month": "2015-06",
+      "n": 176,
+      "shorts": 0,
+      "longform": 176,
+      "raw_median": 5006.5,
+      "permonth_median": 37.5,
+      "norm_median": 2824.9,
+      "norm_p75": 14997.2,
+      "norm_p90": 174651.8,
+      "hit_ratio": 30.11
+    },
+    {
+      "month": "2015-07",
+      "n": 134,
+      "shorts": 4,
+      "longform": 130,
+      "raw_median": 2788.5,
+      "permonth_median": 21.0,
+      "norm_median": 1573.4,
+      "norm_p75": 20603.8,
+      "norm_p90": 141859.7,
+      "hit_ratio": 31.34
+    },
+    {
+      "month": "2015-08",
+      "n": 148,
+      "shorts": 11,
+      "longform": 137,
+      "raw_median": 7937.5,
+      "permonth_median": 60.3,
+      "norm_median": 4478.8,
+      "norm_p75": 29435.1,
+      "norm_p90": 142151.4,
+      "hit_ratio": 40.54
+    },
+    {
+      "month": "2015-09",
+      "n": 122,
+      "shorts": 6,
+      "longform": 116,
+      "raw_median": 1846.0,
+      "permonth_median": 14.1,
+      "norm_median": 1041.6,
+      "norm_p75": 10039.7,
+      "norm_p90": 58545.7,
+      "hit_ratio": 25.41
+    },
+    {
+      "month": "2015-10",
+      "n": 89,
+      "shorts": 1,
+      "longform": 88,
+      "raw_median": 4387.0,
+      "permonth_median": 33.8,
+      "norm_median": 2475.4,
+      "norm_p75": 12276.5,
+      "norm_p90": 247464.7,
+      "hit_ratio": 29.21
+    },
+    {
+      "month": "2015-11",
+      "n": 124,
+      "shorts": 4,
+      "longform": 120,
+      "raw_median": 2567.0,
+      "permonth_median": 19.9,
+      "norm_median": 1448.4,
+      "norm_p75": 37465.6,
+      "norm_p90": 329155.3,
+      "hit_ratio": 35.48
+    },
+    {
+      "month": "2015-12",
+      "n": 121,
+      "shorts": 7,
+      "longform": 114,
+      "raw_median": 1758.0,
+      "permonth_median": 13.8,
+      "norm_median": 992.0,
+      "norm_p75": 14196.1,
+      "norm_p90": 70800.0,
+      "hit_ratio": 26.45
+    },
+    {
+      "month": "2016-01",
+      "n": 118,
+      "shorts": 3,
+      "longform": 115,
+      "raw_median": 5977.5,
+      "permonth_median": 47.3,
+      "norm_median": 3372.8,
+      "norm_p75": 51704.9,
+      "norm_p90": 336884.0,
+      "hit_ratio": 40.68
+    },
+    {
+      "month": "2016-02",
+      "n": 68,
+      "shorts": 2,
+      "longform": 66,
+      "raw_median": 11609.5,
+      "permonth_median": 92.2,
+      "norm_median": 6550.7,
+      "norm_p75": 25481.2,
+      "norm_p90": 272801.0,
+      "hit_ratio": 39.71
+    },
+    {
+      "month": "2016-03",
+      "n": 90,
+      "shorts": 0,
+      "longform": 90,
+      "raw_median": 12437.5,
+      "permonth_median": 99.8,
+      "norm_median": 7017.9,
+      "norm_p75": 44349.2,
+      "norm_p90": 114159.7,
+      "hit_ratio": 47.78
+    },
+    {
+      "month": "2016-04",
+      "n": 64,
+      "shorts": 1,
+      "longform": 63,
+      "raw_median": 28930.0,
+      "permonth_median": 234.1,
+      "norm_median": 16323.9,
+      "norm_p75": 71757.6,
+      "norm_p90": 270454.6,
+      "hit_ratio": 53.12
+    },
+    {
+      "month": "2016-05",
+      "n": 48,
+      "shorts": 2,
+      "longform": 46,
+      "raw_median": 12921.0,
+      "permonth_median": 105.2,
+      "norm_median": 7290.7,
+      "norm_p75": 122599.6,
+      "norm_p90": 760080.0,
+      "hit_ratio": 47.92
+    },
+    {
+      "month": "2016-06",
+      "n": 70,
+      "shorts": 9,
+      "longform": 61,
+      "raw_median": 19238.0,
+      "permonth_median": 158.4,
+      "norm_median": 10855.1,
+      "norm_p75": 59269.8,
+      "norm_p90": 693545.6,
+      "hit_ratio": 50.0
+    },
+    {
+      "month": "2016-07",
+      "n": 194,
+      "shorts": 5,
+      "longform": 189,
+      "raw_median": 90720.5,
+      "permonth_median": 750.9,
+      "norm_median": 51189.5,
+      "norm_p75": 185552.2,
+      "norm_p90": 431122.4,
+      "hit_ratio": 71.65
+    },
+    {
+      "month": "2016-08",
+      "n": 60,
+      "shorts": 2,
+      "longform": 58,
+      "raw_median": 65206.0,
+      "permonth_median": 544.1,
+      "norm_median": 36792.8,
+      "norm_p75": 123695.8,
+      "norm_p90": 452363.1,
+      "hit_ratio": 73.33
+    },
+    {
+      "month": "2016-09",
+      "n": 112,
+      "shorts": 3,
+      "longform": 109,
+      "raw_median": 15999.0,
+      "permonth_median": 135.4,
+      "norm_median": 9027.5,
+      "norm_p75": 36899.9,
+      "norm_p90": 194237.1,
+      "hit_ratio": 46.43
+    },
+    {
+      "month": "2016-10",
+      "n": 261,
+      "shorts": 5,
+      "longform": 256,
+      "raw_median": 11227.0,
+      "permonth_median": 95.5,
+      "norm_median": 6334.9,
+      "norm_p75": 21717.6,
+      "norm_p90": 208928.6,
+      "hit_ratio": 38.31
+    },
+    {
+      "month": "2016-11",
+      "n": 110,
+      "shorts": 6,
+      "longform": 104,
+      "raw_median": 9012.5,
+      "permonth_median": 77.1,
+      "norm_median": 5085.4,
+      "norm_p75": 48864.7,
+      "norm_p90": 303562.3,
+      "hit_ratio": 44.55
+    },
+    {
+      "month": "2016-12",
+      "n": 104,
+      "shorts": 6,
+      "longform": 98,
+      "raw_median": 17218.5,
+      "permonth_median": 149.2,
+      "norm_median": 9715.6,
+      "norm_p75": 117172.7,
+      "norm_p90": 550641.1,
+      "hit_ratio": 50.0
+    },
+    {
+      "month": "2017-01",
+      "n": 162,
+      "shorts": 7,
+      "longform": 155,
+      "raw_median": 8328.0,
+      "permonth_median": 72.8,
+      "norm_median": 4699.1,
+      "norm_p75": 81487.5,
+      "norm_p90": 432420.6,
+      "hit_ratio": 43.83
+    },
+    {
+      "month": "2017-02",
+      "n": 211,
+      "shorts": 6,
+      "longform": 205,
+      "raw_median": 4320.0,
+      "permonth_median": 37.9,
+      "norm_median": 2437.6,
+      "norm_p75": 21006.7,
+      "norm_p90": 92935.1,
+      "hit_ratio": 35.07
+    },
+    {
+      "month": "2017-03",
+      "n": 454,
+      "shorts": 12,
+      "longform": 442,
+      "raw_median": 4881.5,
+      "permonth_median": 43.2,
+      "norm_median": 2754.4,
+      "norm_p75": 10139.4,
+      "norm_p90": 53450.6,
+      "hit_ratio": 25.55
+    },
+    {
+      "month": "2017-04",
+      "n": 177,
+      "shorts": 9,
+      "longform": 168,
+      "raw_median": 7508.0,
+      "permonth_median": 67.4,
+      "norm_median": 4236.4,
+      "norm_p75": 55586.5,
+      "norm_p90": 432976.0,
+      "hit_ratio": 42.94
+    },
+    {
+      "month": "2017-05",
+      "n": 124,
+      "shorts": 6,
+      "longform": 118,
+      "raw_median": 3879.0,
+      "permonth_median": 35.1,
+      "norm_median": 2188.7,
+      "norm_p75": 30887.8,
+      "norm_p90": 69190.8,
+      "hit_ratio": 36.29
+    },
+    {
+      "month": "2017-06",
+      "n": 165,
+      "shorts": 2,
+      "longform": 163,
+      "raw_median": 13684.0,
+      "permonth_median": 125.3,
+      "norm_median": 7721.3,
+      "norm_p75": 46296.0,
+      "norm_p90": 337080.5,
+      "hit_ratio": 43.64
+    },
+    {
+      "month": "2017-07",
+      "n": 178,
+      "shorts": 8,
+      "longform": 170,
+      "raw_median": 21623.0,
+      "permonth_median": 199.3,
+      "norm_median": 12200.9,
+      "norm_p75": 46606.4,
+      "norm_p90": 458173.8,
+      "hit_ratio": 52.25
+    },
+    {
+      "month": "2017-08",
+      "n": 134,
+      "shorts": 7,
+      "longform": 127,
+      "raw_median": 39496.0,
+      "permonth_median": 367.4,
+      "norm_median": 22285.8,
+      "norm_p75": 60270.5,
+      "norm_p90": 632511.5,
+      "hit_ratio": 66.42
+    },
+    {
+      "month": "2017-09",
+      "n": 166,
+      "shorts": 7,
+      "longform": 159,
+      "raw_median": 15284.0,
+      "permonth_median": 143.4,
+      "norm_median": 8624.1,
+      "norm_p75": 75227.7,
+      "norm_p90": 709034.8,
+      "hit_ratio": 47.59
+    },
+    {
+      "month": "2017-10",
+      "n": 136,
+      "shorts": 2,
+      "longform": 134,
+      "raw_median": 6647.0,
+      "permonth_median": 62.8,
+      "norm_median": 3750.6,
+      "norm_p75": 25420.0,
+      "norm_p90": 181733.2,
+      "hit_ratio": 36.76
+    },
+    {
+      "month": "2017-11",
+      "n": 326,
+      "shorts": 14,
+      "longform": 312,
+      "raw_median": 8603.0,
+      "permonth_median": 82.7,
+      "norm_median": 4854.3,
+      "norm_p75": 43603.1,
+      "norm_p90": 221635.9,
+      "hit_ratio": 42.64
+    },
+    {
+      "month": "2017-12",
+      "n": 222,
+      "shorts": 24,
+      "longform": 198,
+      "raw_median": 38080.0,
+      "permonth_median": 366.2,
+      "norm_median": 21486.9,
+      "norm_p75": 52621.8,
+      "norm_p90": 210937.5,
+      "hit_ratio": 62.16
+    },
+    {
+      "month": "2018-01",
+      "n": 166,
+      "shorts": 8,
+      "longform": 158,
+      "raw_median": 22980.5,
+      "permonth_median": 224.7,
+      "norm_median": 12966.9,
+      "norm_p75": 57543.9,
+      "norm_p90": 638718.4,
+      "hit_ratio": 53.61
+    },
+    {
+      "month": "2018-02",
+      "n": 128,
+      "shorts": 8,
+      "longform": 120,
+      "raw_median": 26226.5,
+      "permonth_median": 258.5,
+      "norm_median": 14798.4,
+      "norm_p75": 125941.7,
+      "norm_p90": 594380.2,
+      "hit_ratio": 56.25
+    },
+    {
+      "month": "2018-03",
+      "n": 133,
+      "shorts": 7,
+      "longform": 126,
+      "raw_median": 17621.0,
+      "permonth_median": 174.8,
+      "norm_median": 9942.7,
+      "norm_p75": 61612.2,
+      "norm_p90": 235158.9,
+      "hit_ratio": 49.62
+    },
+    {
+      "month": "2018-04",
+      "n": 194,
+      "shorts": 14,
+      "longform": 180,
+      "raw_median": 7286.5,
+      "permonth_median": 73.1,
+      "norm_median": 4111.4,
+      "norm_p75": 31567.1,
+      "norm_p90": 367052.6,
+      "hit_ratio": 38.14
+    },
+    {
+      "month": "2018-05",
+      "n": 174,
+      "shorts": 3,
+      "longform": 171,
+      "raw_median": 24016.0,
+      "permonth_median": 243.5,
+      "norm_median": 13551.2,
+      "norm_p75": 102092.6,
+      "norm_p90": 1238899.6,
+      "hit_ratio": 56.32
+    },
+    {
+      "month": "2018-06",
+      "n": 176,
+      "shorts": 7,
+      "longform": 169,
+      "raw_median": 26082.5,
+      "permonth_median": 266.6,
+      "norm_median": 14717.2,
+      "norm_p75": 142433.2,
+      "norm_p90": 501989.9,
+      "hit_ratio": 52.27
+    },
+    {
+      "month": "2018-07",
+      "n": 204,
+      "shorts": 4,
+      "longform": 200,
+      "raw_median": 3785.0,
+      "permonth_median": 39.1,
+      "norm_median": 2135.7,
+      "norm_p75": 63160.8,
+      "norm_p90": 382726.9,
+      "hit_ratio": 37.75
+    },
+    {
+      "month": "2018-08",
+      "n": 75,
+      "shorts": 4,
+      "longform": 71,
+      "raw_median": 21974.0,
+      "permonth_median": 228.8,
+      "norm_median": 12399.0,
+      "norm_p75": 65841.9,
+      "norm_p90": 324410.2,
+      "hit_ratio": 54.67
+    },
+    {
+      "month": "2018-09",
+      "n": 96,
+      "shorts": 4,
+      "longform": 92,
+      "raw_median": 10653.0,
+      "permonth_median": 112.8,
+      "norm_median": 6011.0,
+      "norm_p75": 161244.5,
+      "norm_p90": 588584.3,
+      "hit_ratio": 44.79
+    },
+    {
+      "month": "2018-10",
+      "n": 346,
+      "shorts": 19,
+      "longform": 327,
+      "raw_median": 4798.0,
+      "permonth_median": 51.3,
+      "norm_median": 2707.3,
+      "norm_p75": 14788.4,
+      "norm_p90": 111748.8,
+      "hit_ratio": 30.64
+    },
+    {
+      "month": "2018-11",
+      "n": 88,
+      "shorts": 6,
+      "longform": 82,
+      "raw_median": 30146.0,
+      "permonth_median": 326.7,
+      "norm_median": 17010.0,
+      "norm_p75": 41959.9,
+      "norm_p90": 193654.8,
+      "hit_ratio": 60.23
+    },
+    {
+      "month": "2018-12",
+      "n": 97,
+      "shorts": 4,
+      "longform": 93,
+      "raw_median": 15282.0,
+      "permonth_median": 167.7,
+      "norm_median": 8623.0,
+      "norm_p75": 88628.2,
+      "norm_p90": 653245.9,
+      "hit_ratio": 48.45
+    },
+    {
+      "month": "2019-01",
+      "n": 111,
+      "shorts": 4,
+      "longform": 107,
+      "raw_median": 9903.0,
+      "permonth_median": 110.0,
+      "norm_median": 5587.8,
+      "norm_p75": 36705.4,
+      "norm_p90": 133054.8,
+      "hit_ratio": 40.54
+    },
+    {
+      "month": "2019-02",
+      "n": 142,
+      "shorts": 9,
+      "longform": 133,
+      "raw_median": 13692.0,
+      "permonth_median": 153.2,
+      "norm_median": 7725.8,
+      "norm_p75": 37392.5,
+      "norm_p90": 210496.0,
+      "hit_ratio": 44.37
+    },
+    {
+      "month": "2019-03",
+      "n": 236,
+      "shorts": 7,
+      "longform": 229,
+      "raw_median": 6944.0,
+      "permonth_median": 78.3,
+      "norm_median": 3918.2,
+      "norm_p75": 38820.6,
+      "norm_p90": 264676.5,
+      "hit_ratio": 36.44
+    },
+    {
+      "month": "2019-04",
+      "n": 176,
+      "shorts": 4,
+      "longform": 172,
+      "raw_median": 5182.0,
+      "permonth_median": 59.2,
+      "norm_median": 2924.0,
+      "norm_p75": 15103.7,
+      "norm_p90": 306345.9,
+      "hit_ratio": 29.55
+    },
+    {
+      "month": "2019-05",
+      "n": 157,
+      "shorts": 5,
+      "longform": 152,
+      "raw_median": 12499.0,
+      "permonth_median": 144.1,
+      "norm_median": 7052.6,
+      "norm_p75": 78890.8,
+      "norm_p90": 674255.8,
+      "hit_ratio": 45.22
+    },
+    {
+      "month": "2019-06",
+      "n": 164,
+      "shorts": 8,
+      "longform": 156,
+      "raw_median": 37180.5,
+      "permonth_median": 435.0,
+      "norm_median": 20979.3,
+      "norm_p75": 252508.9,
+      "norm_p90": 1218512.2,
+      "hit_ratio": 61.59
+    },
+    {
+      "month": "2019-07",
+      "n": 196,
+      "shorts": 2,
+      "longform": 194,
+      "raw_median": 101022.0,
+      "permonth_median": 1193.2,
+      "norm_median": 57002.2,
+      "norm_p75": 344022.4,
+      "norm_p90": 853677.5,
+      "hit_ratio": 71.43
+    },
+    {
+      "month": "2019-08",
+      "n": 228,
+      "shorts": 8,
+      "longform": 220,
+      "raw_median": 50970.5,
+      "permonth_median": 610.6,
+      "norm_median": 28760.4,
+      "norm_p75": 156458.5,
+      "norm_p90": 703894.3,
+      "hit_ratio": 66.23
+    },
+    {
+      "month": "2019-09",
+      "n": 206,
+      "shorts": 7,
+      "longform": 199,
+      "raw_median": 15827.5,
+      "permonth_median": 191.7,
+      "norm_median": 8930.8,
+      "norm_p75": 28525.0,
+      "norm_p90": 174575.6,
+      "hit_ratio": 49.03
+    },
+    {
+      "month": "2019-10",
+      "n": 172,
+      "shorts": 9,
+      "longform": 163,
+      "raw_median": 21791.0,
+      "permonth_median": 268.6,
+      "norm_median": 12295.7,
+      "norm_p75": 73799.4,
+      "norm_p90": 375890.7,
+      "hit_ratio": 51.74
+    },
+    {
+      "month": "2019-11",
+      "n": 244,
+      "shorts": 4,
+      "longform": 240,
+      "raw_median": 35069.5,
+      "permonth_median": 436.2,
+      "norm_median": 19788.2,
+      "norm_p75": 137741.1,
+      "norm_p90": 673036.7,
+      "hit_ratio": 59.02
+    },
+    {
+      "month": "2019-12",
+      "n": 248,
+      "shorts": 11,
+      "longform": 237,
+      "raw_median": 10741.0,
+      "permonth_median": 135.1,
+      "norm_median": 6060.7,
+      "norm_p75": 43936.3,
+      "norm_p90": 178724.0,
+      "hit_ratio": 45.16
+    },
+    {
+      "month": "2020-01",
+      "n": 181,
+      "shorts": 8,
+      "longform": 173,
+      "raw_median": 10926.0,
+      "permonth_median": 140.0,
+      "norm_median": 6165.1,
+      "norm_p75": 58743.0,
+      "norm_p90": 309774.6,
+      "hit_ratio": 44.2
+    },
+    {
+      "month": "2020-02",
+      "n": 229,
+      "shorts": 4,
+      "longform": 225,
+      "raw_median": 26793.0,
+      "permonth_median": 344.3,
+      "norm_median": 15118.1,
+      "norm_p75": 129377.6,
+      "norm_p90": 358197.7,
+      "hit_ratio": 53.28
+    },
+    {
+      "month": "2020-03",
+      "n": 258,
+      "shorts": 14,
+      "longform": 244,
+      "raw_median": 12248.0,
+      "permonth_median": 160.7,
+      "norm_median": 6911.0,
+      "norm_p75": 86500.9,
+      "norm_p90": 419772.4,
+      "hit_ratio": 46.12
+    },
+    {
+      "month": "2020-04",
+      "n": 429,
+      "shorts": 18,
+      "longform": 411,
+      "raw_median": 10965.0,
+      "permonth_median": 145.1,
+      "norm_median": 6187.1,
+      "norm_p75": 68888.8,
+      "norm_p90": 365091.1,
+      "hit_ratio": 46.85
+    },
+    {
+      "month": "2020-05",
+      "n": 340,
+      "shorts": 13,
+      "longform": 327,
+      "raw_median": 21182.0,
+      "permonth_median": 282.9,
+      "norm_median": 11952.1,
+      "norm_p75": 78562.0,
+      "norm_p90": 393113.6,
+      "hit_ratio": 52.94
+    },
+    {
+      "month": "2020-06",
+      "n": 382,
+      "shorts": 13,
+      "longform": 369,
+      "raw_median": 17550.0,
+      "permonth_median": 237.6,
+      "norm_median": 9902.7,
+      "norm_p75": 52363.6,
+      "norm_p90": 271393.8,
+      "hit_ratio": 49.48
+    },
+    {
+      "month": "2020-07",
+      "n": 363,
+      "shorts": 8,
+      "longform": 355,
+      "raw_median": 14840.0,
+      "permonth_median": 205.6,
+      "norm_median": 8373.6,
+      "norm_p75": 54849.9,
+      "norm_p90": 376491.6,
+      "hit_ratio": 48.48
+    },
+    {
+      "month": "2020-08",
+      "n": 380,
+      "shorts": 11,
+      "longform": 369,
+      "raw_median": 31774.5,
+      "permonth_median": 445.3,
+      "norm_median": 17928.9,
+      "norm_p75": 65886.1,
+      "norm_p90": 306474.3,
+      "hit_ratio": 60.79
+    },
+    {
+      "month": "2020-09",
+      "n": 613,
+      "shorts": 10,
+      "longform": 603,
+      "raw_median": 3612.0,
+      "permonth_median": 51.3,
+      "norm_median": 2038.1,
+      "norm_p75": 22493.5,
+      "norm_p90": 138863.9,
+      "hit_ratio": 33.12
+    },
+    {
+      "month": "2020-10",
+      "n": 453,
+      "shorts": 13,
+      "longform": 440,
+      "raw_median": 30207.0,
+      "permonth_median": 435.5,
+      "norm_median": 17044.5,
+      "norm_p75": 103178.6,
+      "norm_p90": 519950.5,
+      "hit_ratio": 58.06
+    },
+    {
+      "month": "2020-11",
+      "n": 353,
+      "shorts": 17,
+      "longform": 336,
+      "raw_median": 19962.0,
+      "permonth_median": 292.5,
+      "norm_median": 11263.7,
+      "norm_p75": 86397.1,
+      "norm_p90": 594522.7,
+      "hit_ratio": 51.27
+    },
+    {
+      "month": "2020-12",
+      "n": 356,
+      "shorts": 10,
+      "longform": 346,
+      "raw_median": 14277.0,
+      "permonth_median": 212.7,
+      "norm_median": 8055.9,
+      "norm_p75": 56222.6,
+      "norm_p90": 231056.2,
+      "hit_ratio": 47.19
+    },
+    {
+      "month": "2021-01",
+      "n": 392,
+      "shorts": 14,
+      "longform": 378,
+      "raw_median": 29737.0,
+      "permonth_median": 448.2,
+      "norm_median": 16779.3,
+      "norm_p75": 75686.4,
+      "norm_p90": 341258.1,
+      "hit_ratio": 55.36
+    },
+    {
+      "month": "2021-02",
+      "n": 337,
+      "shorts": 14,
+      "longform": 323,
+      "raw_median": 27130.0,
+      "permonth_median": 415.1,
+      "norm_median": 15308.3,
+      "norm_p75": 77259.0,
+      "norm_p90": 356719.9,
+      "hit_ratio": 56.38
+    },
+    {
+      "month": "2021-03",
+      "n": 578,
+      "shorts": 23,
+      "longform": 555,
+      "raw_median": 18713.5,
+      "permonth_median": 290.7,
+      "norm_median": 10559.2,
+      "norm_p75": 57500.7,
+      "norm_p90": 232464.7,
+      "hit_ratio": 50.52
+    },
+    {
+      "month": "2021-04",
+      "n": 527,
+      "shorts": 23,
+      "longform": 504,
+      "raw_median": 21535.0,
+      "permonth_median": 338.5,
+      "norm_median": 12151.2,
+      "norm_p75": 61596.1,
+      "norm_p90": 248065.8,
+      "hit_ratio": 52.37
+    },
+    {
+      "month": "2021-05",
+      "n": 546,
+      "shorts": 39,
+      "longform": 507,
+      "raw_median": 14776.5,
+      "permonth_median": 237.1,
+      "norm_median": 8337.7,
+      "norm_p75": 53797.8,
+      "norm_p90": 198211.4,
+      "hit_ratio": 47.62
+    },
+    {
+      "month": "2021-06",
+      "n": 421,
+      "shorts": 27,
+      "longform": 394,
+      "raw_median": 22462.0,
+      "permonth_median": 367.3,
+      "norm_median": 12674.3,
+      "norm_p75": 72918.2,
+      "norm_p90": 267955.4,
+      "hit_ratio": 52.73
+    },
+    {
+      "month": "2021-07",
+      "n": 503,
+      "shorts": 49,
+      "longform": 454,
+      "raw_median": 11445.0,
+      "permonth_median": 189.7,
+      "norm_median": 6457.9,
+      "norm_p75": 62491.6,
+      "norm_p90": 368675.8,
+      "hit_ratio": 45.53
+    },
+    {
+      "month": "2021-08",
+      "n": 523,
+      "shorts": 43,
+      "longform": 480,
+      "raw_median": 8414.0,
+      "permonth_median": 140.8,
+      "norm_median": 4747.6,
+      "norm_p75": 65665.0,
+      "norm_p90": 312727.2,
+      "hit_ratio": 45.32
+    },
+    {
+      "month": "2021-09",
+      "n": 517,
+      "shorts": 32,
+      "longform": 485,
+      "raw_median": 16713.0,
+      "permonth_median": 287.4,
+      "norm_median": 9430.4,
+      "norm_p75": 97672.6,
+      "norm_p90": 656407.6,
+      "hit_ratio": 49.71
+    },
+    {
+      "month": "2021-10",
+      "n": 551,
+      "shorts": 49,
+      "longform": 502,
+      "raw_median": 14052.0,
+      "permonth_median": 245.4,
+      "norm_median": 7928.9,
+      "norm_p75": 62793.7,
+      "norm_p90": 427512.2,
+      "hit_ratio": 46.1
+    },
+    {
+      "month": "2021-11",
+      "n": 505,
+      "shorts": 52,
+      "longform": 453,
+      "raw_median": 15597.0,
+      "permonth_median": 275.7,
+      "norm_median": 8800.7,
+      "norm_p75": 56418.2,
+      "norm_p90": 309454.4,
+      "hit_ratio": 48.91
+    },
+    {
+      "month": "2021-12",
+      "n": 459,
+      "shorts": 56,
+      "longform": 403,
+      "raw_median": 21478.0,
+      "permonth_median": 388.6,
+      "norm_median": 12119.1,
+      "norm_p75": 71243.5,
+      "norm_p90": 422771.2,
+      "hit_ratio": 53.16
+    },
+    {
+      "month": "2022-01",
+      "n": 538,
+      "shorts": 57,
+      "longform": 481,
+      "raw_median": 16678.5,
+      "permonth_median": 307.1,
+      "norm_median": 9410.9,
+      "norm_p75": 58929.6,
+      "norm_p90": 510872.0,
+      "hit_ratio": 48.7
+    },
+    {
+      "month": "2022-02",
+      "n": 595,
+      "shorts": 40,
+      "longform": 555,
+      "raw_median": 11381.0,
+      "permonth_median": 211.4,
+      "norm_median": 6421.8,
+      "norm_p75": 52320.9,
+      "norm_p90": 402025.1,
+      "hit_ratio": 44.71
+    },
+    {
+      "month": "2022-03",
+      "n": 724,
+      "shorts": 88,
+      "longform": 636,
+      "raw_median": 21195.0,
+      "permonth_median": 401.0,
+      "norm_median": 11959.4,
+      "norm_p75": 65613.5,
+      "norm_p90": 298129.7,
+      "hit_ratio": 52.49
+    },
+    {
+      "month": "2022-04",
+      "n": 585,
+      "shorts": 78,
+      "longform": 507,
+      "raw_median": 10962.0,
+      "permonth_median": 214.6,
+      "norm_median": 6185.4,
+      "norm_p75": 50392.0,
+      "norm_p90": 365000.2,
+      "hit_ratio": 44.44
+    },
+    {
+      "month": "2022-05",
+      "n": 633,
+      "shorts": 122,
+      "longform": 511,
+      "raw_median": 16343.0,
+      "permonth_median": 320.7,
+      "norm_median": 9221.6,
+      "norm_p75": 45099.3,
+      "norm_p90": 292549.2,
+      "hit_ratio": 48.97
+    },
+    {
+      "month": "2022-06",
+      "n": 502,
+      "shorts": 61,
+      "longform": 441,
+      "raw_median": 16439.5,
+      "permonth_median": 333.3,
+      "norm_median": 9276.1,
+      "norm_p75": 52620.2,
+      "norm_p90": 216551.3,
+      "hit_ratio": 48.61
+    },
+    {
+      "month": "2022-07",
+      "n": 549,
+      "shorts": 58,
+      "longform": 491,
+      "raw_median": 10859.0,
+      "permonth_median": 225.8,
+      "norm_median": 6127.3,
+      "norm_p75": 54136.4,
+      "norm_p90": 447422.7,
+      "hit_ratio": 43.72
+    },
+    {
+      "month": "2022-08",
+      "n": 551,
+      "shorts": 63,
+      "longform": 488,
+      "raw_median": 8681.0,
+      "permonth_median": 184.3,
+      "norm_median": 4898.3,
+      "norm_p75": 29625.7,
+      "norm_p90": 291577.9,
+      "hit_ratio": 39.02
+    },
+    {
+      "month": "2022-09",
+      "n": 612,
+      "shorts": 93,
+      "longform": 519,
+      "raw_median": 12550.5,
+      "permonth_median": 270.8,
+      "norm_median": 7081.7,
+      "norm_p75": 45630.5,
+      "norm_p90": 420607.9,
+      "hit_ratio": 46.24
+    },
+    {
+      "month": "2022-10",
+      "n": 662,
+      "shorts": 99,
+      "longform": 563,
+      "raw_median": 9496.5,
+      "permonth_median": 209.7,
+      "norm_median": 5358.5,
+      "norm_p75": 50818.1,
+      "norm_p90": 326778.5,
+      "hit_ratio": 41.99
+    },
+    {
+      "month": "2022-11",
+      "n": 963,
+      "shorts": 213,
+      "longform": 750,
+      "raw_median": 28128.0,
+      "permonth_median": 634.3,
+      "norm_median": 15871.4,
+      "norm_p75": 196711.1,
+      "norm_p90": 741742.7,
+      "hit_ratio": 53.89
+    },
+    {
+      "month": "2022-12",
+      "n": 757,
+      "shorts": 166,
+      "longform": 591,
+      "raw_median": 7925.0,
+      "permonth_median": 181.7,
+      "norm_median": 4471.7,
+      "norm_p75": 35967.3,
+      "norm_p90": 213824.1,
+      "hit_ratio": 39.5
+    },
+    {
+      "month": "2023-01",
+      "n": 683,
+      "shorts": 118,
+      "longform": 565,
+      "raw_median": 8065.0,
+      "permonth_median": 190.3,
+      "norm_median": 4550.7,
+      "norm_p75": 26227.4,
+      "norm_p90": 179223.4,
+      "hit_ratio": 39.39
+    },
+    {
+      "month": "2023-02",
+      "n": 638,
+      "shorts": 140,
+      "longform": 498,
+      "raw_median": 6239.5,
+      "permonth_median": 150.6,
+      "norm_median": 3520.7,
+      "norm_p75": 28679.0,
+      "norm_p90": 167875.3,
+      "hit_ratio": 38.56
+    },
+    {
+      "month": "2023-03",
+      "n": 745,
+      "shorts": 165,
+      "longform": 580,
+      "raw_median": 5471.0,
+      "permonth_median": 135.1,
+      "norm_median": 3087.0,
+      "norm_p75": 23534.5,
+      "norm_p90": 151541.7,
+      "hit_ratio": 34.77
+    },
+    {
+      "month": "2023-04",
+      "n": 808,
+      "shorts": 150,
+      "longform": 658,
+      "raw_median": 3350.5,
+      "permonth_median": 84.0,
+      "norm_median": 1890.5,
+      "norm_p75": 23490.2,
+      "norm_p90": 111581.7,
+      "hit_ratio": 33.42
+    },
+    {
+      "month": "2023-05",
+      "n": 755,
+      "shorts": 147,
+      "longform": 608,
+      "raw_median": 13759.0,
+      "permonth_median": 359.1,
+      "norm_median": 7763.6,
+      "norm_p75": 34729.4,
+      "norm_p90": 151116.9,
+      "hit_ratio": 47.02
+    },
+    {
+      "month": "2023-06",
+      "n": 678,
+      "shorts": 223,
+      "longform": 455,
+      "raw_median": 12535.5,
+      "permonth_median": 335.2,
+      "norm_median": 7073.2,
+      "norm_p75": 59702.5,
+      "norm_p90": 270040.1,
+      "hit_ratio": 43.66
+    },
+    {
+      "month": "2023-07",
+      "n": 833,
+      "shorts": 207,
+      "longform": 626,
+      "raw_median": 8538.0,
+      "permonth_median": 234.3,
+      "norm_median": 4817.6,
+      "norm_p75": 39250.2,
+      "norm_p90": 192028.8,
+      "hit_ratio": 39.14
+    },
+    {
+      "month": "2023-08",
+      "n": 735,
+      "shorts": 138,
+      "longform": 597,
+      "raw_median": 6015.0,
+      "permonth_median": 171.4,
+      "norm_median": 3419.7,
+      "norm_p75": 28446.0,
+      "norm_p90": 186455.4,
+      "hit_ratio": 35.92
+    },
+    {
+      "month": "2023-09",
+      "n": 665,
+      "shorts": 128,
+      "longform": 537,
+      "raw_median": 5371.0,
+      "permonth_median": 154.8,
+      "norm_median": 3063.5,
+      "norm_p75": 26300.8,
+      "norm_p90": 170548.0,
+      "hit_ratio": 34.74
+    },
+    {
+      "month": "2023-10",
+      "n": 701,
+      "shorts": 167,
+      "longform": 534,
+      "raw_median": 5223.0,
+      "permonth_median": 157.2,
+      "norm_median": 3015.8,
+      "norm_p75": 28901.8,
+      "norm_p90": 121426.3,
+      "hit_ratio": 34.38
+    },
+    {
+      "month": "2023-11",
+      "n": 747,
+      "shorts": 203,
+      "longform": 544,
+      "raw_median": 4378.0,
+      "permonth_median": 135.4,
+      "norm_median": 2549.1,
+      "norm_p75": 19704.6,
+      "norm_p90": 136578.1,
+      "hit_ratio": 32.13
+    },
+    {
+      "month": "2023-12",
+      "n": 865,
+      "shorts": 262,
+      "longform": 603,
+      "raw_median": 4643.0,
+      "permonth_median": 146.3,
+      "norm_median": 2721.3,
+      "norm_p75": 23870.6,
+      "norm_p90": 191291.8,
+      "hit_ratio": 33.99
+    },
+    {
+      "month": "2024-01",
+      "n": 801,
+      "shorts": 250,
+      "longform": 551,
+      "raw_median": 5768.0,
+      "permonth_median": 188.8,
+      "norm_median": 3412.0,
+      "norm_p75": 36103.6,
+      "norm_p90": 183435.4,
+      "hit_ratio": 38.2
+    },
+    {
+      "month": "2024-02",
+      "n": 1043,
+      "shorts": 267,
+      "longform": 776,
+      "raw_median": 9968.0,
+      "permonth_median": 339.0,
+      "norm_median": 5953.9,
+      "norm_p75": 42837.7,
+      "norm_p90": 174822.7,
+      "hit_ratio": 44.49
+    },
+    {
+      "month": "2024-03",
+      "n": 996,
+      "shorts": 263,
+      "longform": 733,
+      "raw_median": 5894.5,
+      "permonth_median": 207.5,
+      "norm_median": 3546.6,
+      "norm_p75": 33640.3,
+      "norm_p90": 175199.0,
+      "hit_ratio": 38.86
+    },
+    {
+      "month": "2024-04",
+      "n": 904,
+      "shorts": 231,
+      "longform": 673,
+      "raw_median": 7542.0,
+      "permonth_median": 274.4,
+      "norm_median": 4579.9,
+      "norm_p75": 36726.1,
+      "norm_p90": 262422.0,
+      "hit_ratio": 40.6
+    },
+    {
+      "month": "2024-05",
+      "n": 1083,
+      "shorts": 243,
+      "longform": 840,
+      "raw_median": 5594.0,
+      "permonth_median": 211.0,
+      "norm_median": 3411.7,
+      "norm_p75": 37267.3,
+      "norm_p90": 138352.1,
+      "hit_ratio": 36.66
+    },
+    {
+      "month": "2024-06",
+      "n": 1036,
+      "shorts": 251,
+      "longform": 785,
+      "raw_median": 6035.5,
+      "permonth_median": 239.7,
+      "norm_median": 3736.2,
+      "norm_p75": 28813.8,
+      "norm_p90": 139961.8,
+      "hit_ratio": 37.64
+    },
+    {
+      "month": "2024-07",
+      "n": 1012,
+      "shorts": 259,
+      "longform": 753,
+      "raw_median": 6690.0,
+      "permonth_median": 275.7,
+      "norm_median": 4165.9,
+      "norm_p75": 32034.6,
+      "norm_p90": 158650.2,
+      "hit_ratio": 38.24
+    },
+    {
+      "month": "2024-08",
+      "n": 1204,
+      "shorts": 212,
+      "longform": 992,
+      "raw_median": 5068.5,
+      "permonth_median": 215.0,
+      "norm_median": 3181.0,
+      "norm_p75": 17692.1,
+      "norm_p90": 104803.7,
+      "hit_ratio": 31.81
+    },
+    {
+      "month": "2024-09",
+      "n": 1099,
+      "shorts": 219,
+      "longform": 880,
+      "raw_median": 4908.0,
+      "permonth_median": 220.9,
+      "norm_median": 3119.8,
+      "norm_p75": 29758.4,
+      "norm_p90": 178814.3,
+      "hit_ratio": 35.03
+    },
+    {
+      "month": "2024-10",
+      "n": 1061,
+      "shorts": 231,
+      "longform": 830,
+      "raw_median": 5553.0,
+      "permonth_median": 262.9,
+      "norm_median": 3556.8,
+      "norm_p75": 24015.4,
+      "norm_p90": 117961.1,
+      "hit_ratio": 36.1
+    },
+    {
+      "month": "2024-11",
+      "n": 1014,
+      "shorts": 172,
+      "longform": 842,
+      "raw_median": 4906.5,
+      "permonth_median": 241.0,
+      "norm_median": 3173.6,
+      "norm_p75": 21620.7,
+      "norm_p90": 93802.2,
+      "hit_ratio": 33.53
+    },
+    {
+      "month": "2024-12",
+      "n": 1212,
+      "shorts": 189,
+      "longform": 1023,
+      "raw_median": 4403.5,
+      "permonth_median": 227.4,
+      "norm_median": 2873.9,
+      "norm_p75": 21589.2,
+      "norm_p90": 102868.2,
+      "hit_ratio": 35.48
+    },
+    {
+      "month": "2025-01",
+      "n": 1274,
+      "shorts": 327,
+      "longform": 947,
+      "raw_median": 5766.0,
+      "permonth_median": 311.8,
+      "norm_median": 3795.3,
+      "norm_p75": 18094.8,
+      "norm_p90": 111011.0,
+      "hit_ratio": 33.91
+    },
+    {
+      "month": "2025-02",
+      "n": 1431,
+      "shorts": 384,
+      "longform": 1047,
+      "raw_median": 4117.0,
+      "permonth_median": 232.3,
+      "norm_median": 2726.6,
+      "norm_p75": 21431.7,
+      "norm_p90": 125360.0,
+      "hit_ratio": 32.22
+    },
+    {
+      "month": "2025-03",
+      "n": 1660,
+      "shorts": 331,
+      "longform": 1329,
+      "raw_median": 3764.0,
+      "permonth_median": 226.2,
+      "norm_median": 2530.3,
+      "norm_p75": 16536.8,
+      "norm_p90": 103281.6,
+      "hit_ratio": 31.08
+    },
+    {
+      "month": "2025-04",
+      "n": 1680,
+      "shorts": 497,
+      "longform": 1183,
+      "raw_median": 4678.5,
+      "permonth_median": 304.2,
+      "norm_median": 3183.1,
+      "norm_p75": 21394.5,
+      "norm_p90": 96295.5,
+      "hit_ratio": 35.42
+    },
+    {
+      "month": "2025-05",
+      "n": 1710,
+      "shorts": 388,
+      "longform": 1322,
+      "raw_median": 3922.0,
+      "permonth_median": 270.6,
+      "norm_median": 2686.4,
+      "norm_p75": 15580.1,
+      "norm_p90": 81488.2,
+      "hit_ratio": 30.12
+    },
+    {
+      "month": "2025-06",
+      "n": 1642,
+      "shorts": 389,
+      "longform": 1253,
+      "raw_median": 5172.5,
+      "permonth_median": 382.2,
+      "norm_median": 3578.1,
+      "norm_p75": 25911.8,
+      "norm_p90": 141648.7,
+      "hit_ratio": 37.33
+    },
+    {
+      "month": "2025-07",
+      "n": 1848,
+      "shorts": 466,
+      "longform": 1382,
+      "raw_median": 6366.0,
+      "permonth_median": 510.8,
+      "norm_median": 4442.6,
+      "norm_p75": 53041.4,
+      "norm_p90": 260808.3,
+      "hit_ratio": 40.42
+    },
+    {
+      "month": "2025-08",
+      "n": 1885,
+      "shorts": 433,
+      "longform": 1452,
+      "raw_median": 5034.0,
+      "permonth_median": 437.1,
+      "norm_median": 3561.7,
+      "norm_p75": 29780.2,
+      "norm_p90": 174497.0,
+      "hit_ratio": 37.4
+    },
+    {
+      "month": "2025-09",
+      "n": 1805,
+      "shorts": 416,
+      "longform": 1389,
+      "raw_median": 3783.0,
+      "permonth_median": 365.0,
+      "norm_median": 2744.9,
+      "norm_p75": 22624.7,
+      "norm_p90": 144174.9,
+      "hit_ratio": 34.24
+    },
+    {
+      "month": "2025-10",
+      "n": 2402,
+      "shorts": 550,
+      "longform": 1852,
+      "raw_median": 3552.0,
+      "permonth_median": 380.8,
+      "norm_median": 2629.2,
+      "norm_p75": 19522.2,
+      "norm_p90": 154270.8,
+      "hit_ratio": 33.6
+    },
+    {
+      "month": "2025-11",
+      "n": 2589,
+      "shorts": 536,
+      "longform": 2053,
+      "raw_median": 2732.0,
+      "permonth_median": 322.4,
+      "norm_median": 2058.5,
+      "norm_p75": 16932.1,
+      "norm_p90": 97504.5,
+      "hit_ratio": 30.48
+    },
+    {
+      "month": "2025-12",
+      "n": 3070,
+      "shorts": 643,
+      "longform": 2427,
+      "raw_median": 2956.0,
+      "permonth_median": 399.4,
+      "norm_median": 2267.5,
+      "norm_p75": 15334.3,
+      "norm_p90": 84857.6,
+      "hit_ratio": 29.38
+    },
+    {
+      "month": "2026-01",
+      "n": 2895,
+      "shorts": 610,
+      "longform": 2285,
+      "raw_median": 3641.0,
+      "permonth_median": 576.6,
+      "norm_median": 2847.4,
+      "norm_p75": 18263.4,
+      "norm_p90": 116303.3,
+      "hit_ratio": 32.12
+    },
+    {
+      "month": "2026-02",
+      "n": 3065,
+      "shorts": 733,
+      "longform": 2332,
+      "raw_median": 3156.0,
+      "permonth_median": 585.3,
+      "norm_median": 2506.6,
+      "norm_p75": 20867.6,
+      "norm_p90": 120174.1,
+      "hit_ratio": 32.14
+    },
+    {
+      "month": "2026-03",
+      "n": 3855,
+      "shorts": 999,
+      "longform": 2856,
+      "raw_median": 2789.0,
+      "permonth_median": 636.5,
+      "norm_median": 2265.3,
+      "norm_p75": 17021.5,
+      "norm_p90": 120400.3,
+      "hit_ratio": 31.08
+    },
+    {
+      "month": "2026-04",
+      "n": 4381,
+      "shorts": 1163,
+      "longform": 3218,
+      "raw_median": 2591.0,
+      "permonth_median": 764.3,
+      "norm_median": 2177.7,
+      "norm_p75": 14998.6,
+      "norm_p90": 111112.6,
+      "hit_ratio": 29.29
+    },
+    {
+      "month": "2026-05",
+      "n": 4520,
+      "shorts": 1174,
+      "longform": 3346,
+      "raw_median": 2210.0,
+      "permonth_median": 903.0,
+      "norm_median": 1925.4,
+      "norm_p75": 12123.3,
+      "norm_p90": 80663.2,
+      "hit_ratio": 26.84
+    },
+    {
+      "month": "2026-06",
+      "n": 4749,
+      "shorts": 1195,
+      "longform": 3554,
+      "raw_median": 2324.0,
+      "permonth_median": 1698.4,
+      "norm_median": 2194.7,
+      "norm_p75": 16143.5,
+      "norm_p90": 110232.4,
+      "hit_ratio": 29.52
+    },
+    {
+      "month": "2026-07",
+      "n": 5385,
+      "shorts": 1528,
+      "longform": 3857,
+      "raw_median": 1725.0,
+      "permonth_median": 5270.4,
+      "norm_median": 1868.0,
+      "norm_p75": 15724.0,
+      "norm_p90": 125162.8,
+      "hit_ratio": 28.8
+    }
+  ],
+  "batting": [
+    {
+      "month": "2006-03",
+      "new_channels": 2,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2006-05",
+      "new_channels": 1,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2006-06",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2006-07",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2006-08",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2006-09",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2006-10",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2006-11",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2006-12",
+      "new_channels": 2,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2007-01",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2007-03",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2007-04",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2007-05",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2007-06",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2007-08",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2007-09",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2007-10",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2007-11",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-01",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2008-02",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-03",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-04",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-05",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-06",
+      "new_channels": 2,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2008-07",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-08",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2008-09",
+      "new_channels": 3,
+      "hits": 3,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-10",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2008-11",
+      "new_channels": 3,
+      "hits": 1,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2008-12",
+      "new_channels": 3,
+      "hits": 1,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2009-01",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2009-02",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2009-03",
+      "new_channels": 3,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2009-04",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2009-05",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2009-06",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2009-07",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2009-08",
+      "new_channels": 1,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2009-09",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2009-10",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2009-11",
+      "new_channels": 3,
+      "hits": 3,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2009-12",
+      "new_channels": 5,
+      "hits": 1,
+      "batting_avg": 20.0
+    },
+    {
+      "month": "2010-01",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2010-02",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2010-03",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2010-04",
+      "new_channels": 4,
+      "hits": 1,
+      "batting_avg": 25.0
+    },
+    {
+      "month": "2010-05",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2010-06",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2010-07",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2010-08",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2010-09",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2010-10",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2010-11",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2010-12",
+      "new_channels": 5,
+      "hits": 3,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2011-01",
+      "new_channels": 3,
+      "hits": 3,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2011-02",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2011-03",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2011-04",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2011-05",
+      "new_channels": 4,
+      "hits": 4,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2011-06",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2011-07",
+      "new_channels": 5,
+      "hits": 3,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2011-08",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2011-09",
+      "new_channels": 8,
+      "hits": 4,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2011-10",
+      "new_channels": 13,
+      "hits": 12,
+      "batting_avg": 92.31
+    },
+    {
+      "month": "2011-11",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2011-12",
+      "new_channels": 6,
+      "hits": 6,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2012-01",
+      "new_channels": 4,
+      "hits": 4,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2012-03",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2012-04",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2012-05",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2012-06",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2012-07",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2012-08",
+      "new_channels": 3,
+      "hits": 3,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2012-09",
+      "new_channels": 5,
+      "hits": 1,
+      "batting_avg": 20.0
+    },
+    {
+      "month": "2012-10",
+      "new_channels": 3,
+      "hits": 1,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2012-11",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2012-12",
+      "new_channels": 9,
+      "hits": 9,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2013-01",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2013-02",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2013-03",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2013-04",
+      "new_channels": 5,
+      "hits": 3,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2013-05",
+      "new_channels": 8,
+      "hits": 5,
+      "batting_avg": 62.5
+    },
+    {
+      "month": "2013-06",
+      "new_channels": 5,
+      "hits": 5,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2013-07",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2013-08",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2013-09",
+      "new_channels": 8,
+      "hits": 4,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2013-10",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2013-11",
+      "new_channels": 8,
+      "hits": 7,
+      "batting_avg": 87.5
+    },
+    {
+      "month": "2013-12",
+      "new_channels": 14,
+      "hits": 10,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2014-01",
+      "new_channels": 5,
+      "hits": 1,
+      "batting_avg": 20.0
+    },
+    {
+      "month": "2014-02",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2014-03",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2014-04",
+      "new_channels": 5,
+      "hits": 3,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2014-05",
+      "new_channels": 9,
+      "hits": 6,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2014-06",
+      "new_channels": 8,
+      "hits": 5,
+      "batting_avg": 62.5
+    },
+    {
+      "month": "2014-07",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2014-08",
+      "new_channels": 2,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2014-09",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2014-10",
+      "new_channels": 4,
+      "hits": 4,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2014-11",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2014-12",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2015-01",
+      "new_channels": 7,
+      "hits": 4,
+      "batting_avg": 57.14
+    },
+    {
+      "month": "2015-02",
+      "new_channels": 4,
+      "hits": 4,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2015-03",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2015-04",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2015-05",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2015-06",
+      "new_channels": 10,
+      "hits": 6,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2015-07",
+      "new_channels": 6,
+      "hits": 6,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2015-08",
+      "new_channels": 5,
+      "hits": 3,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2015-09",
+      "new_channels": 4,
+      "hits": 4,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2015-10",
+      "new_channels": 3,
+      "hits": 1,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2015-11",
+      "new_channels": 5,
+      "hits": 5,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2015-12",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2016-01",
+      "new_channels": 4,
+      "hits": 1,
+      "batting_avg": 25.0
+    },
+    {
+      "month": "2016-02",
+      "new_channels": 7,
+      "hits": 4,
+      "batting_avg": 57.14
+    },
+    {
+      "month": "2016-03",
+      "new_channels": 9,
+      "hits": 5,
+      "batting_avg": 55.56
+    },
+    {
+      "month": "2016-04",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2016-05",
+      "new_channels": 5,
+      "hits": 5,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2016-06",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2016-07",
+      "new_channels": 7,
+      "hits": 6,
+      "batting_avg": 85.71
+    },
+    {
+      "month": "2016-08",
+      "new_channels": 1,
+      "hits": 1,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2016-09",
+      "new_channels": 3,
+      "hits": 3,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2016-10",
+      "new_channels": 8,
+      "hits": 7,
+      "batting_avg": 87.5
+    },
+    {
+      "month": "2016-11",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2016-12",
+      "new_channels": 6,
+      "hits": 2,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2017-01",
+      "new_channels": 13,
+      "hits": 12,
+      "batting_avg": 92.31
+    },
+    {
+      "month": "2017-02",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2017-03",
+      "new_channels": 12,
+      "hits": 11,
+      "batting_avg": 91.67
+    },
+    {
+      "month": "2017-04",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2017-05",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2017-06",
+      "new_channels": 8,
+      "hits": 6,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2017-07",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2017-08",
+      "new_channels": 4,
+      "hits": 1,
+      "batting_avg": 25.0
+    },
+    {
+      "month": "2017-09",
+      "new_channels": 8,
+      "hits": 6,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2017-10",
+      "new_channels": 7,
+      "hits": 6,
+      "batting_avg": 85.71
+    },
+    {
+      "month": "2017-11",
+      "new_channels": 8,
+      "hits": 5,
+      "batting_avg": 62.5
+    },
+    {
+      "month": "2017-12",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2018-01",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2018-02",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2018-03",
+      "new_channels": 7,
+      "hits": 4,
+      "batting_avg": 57.14
+    },
+    {
+      "month": "2018-04",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2018-05",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2018-06",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2018-07",
+      "new_channels": 4,
+      "hits": 1,
+      "batting_avg": 25.0
+    },
+    {
+      "month": "2018-08",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2018-09",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2018-10",
+      "new_channels": 8,
+      "hits": 5,
+      "batting_avg": 62.5
+    },
+    {
+      "month": "2018-11",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2018-12",
+      "new_channels": 9,
+      "hits": 6,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2019-01",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2019-02",
+      "new_channels": 6,
+      "hits": 5,
+      "batting_avg": 83.33
+    },
+    {
+      "month": "2019-03",
+      "new_channels": 7,
+      "hits": 7,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2019-04",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2019-05",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2019-06",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2019-07",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2019-08",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2019-09",
+      "new_channels": 4,
+      "hits": 4,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2019-10",
+      "new_channels": 7,
+      "hits": 3,
+      "batting_avg": 42.86
+    },
+    {
+      "month": "2019-11",
+      "new_channels": 10,
+      "hits": 9,
+      "batting_avg": 90.0
+    },
+    {
+      "month": "2019-12",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2020-01",
+      "new_channels": 10,
+      "hits": 8,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2020-02",
+      "new_channels": 7,
+      "hits": 3,
+      "batting_avg": 42.86
+    },
+    {
+      "month": "2020-03",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2020-04",
+      "new_channels": 13,
+      "hits": 10,
+      "batting_avg": 76.92
+    },
+    {
+      "month": "2020-05",
+      "new_channels": 9,
+      "hits": 8,
+      "batting_avg": 88.89
+    },
+    {
+      "month": "2020-06",
+      "new_channels": 8,
+      "hits": 5,
+      "batting_avg": 62.5
+    },
+    {
+      "month": "2020-07",
+      "new_channels": 8,
+      "hits": 5,
+      "batting_avg": 62.5
+    },
+    {
+      "month": "2020-08",
+      "new_channels": 14,
+      "hits": 12,
+      "batting_avg": 85.71
+    },
+    {
+      "month": "2020-09",
+      "new_channels": 10,
+      "hits": 7,
+      "batting_avg": 70.0
+    },
+    {
+      "month": "2020-10",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2020-11",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2020-12",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2021-01",
+      "new_channels": 7,
+      "hits": 6,
+      "batting_avg": 85.71
+    },
+    {
+      "month": "2021-02",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2021-03",
+      "new_channels": 12,
+      "hits": 9,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2021-04",
+      "new_channels": 7,
+      "hits": 6,
+      "batting_avg": 85.71
+    },
+    {
+      "month": "2021-05",
+      "new_channels": 15,
+      "hits": 11,
+      "batting_avg": 73.33
+    },
+    {
+      "month": "2021-06",
+      "new_channels": 10,
+      "hits": 5,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2021-07",
+      "new_channels": 11,
+      "hits": 8,
+      "batting_avg": 72.73
+    },
+    {
+      "month": "2021-08",
+      "new_channels": 11,
+      "hits": 7,
+      "batting_avg": 63.64
+    },
+    {
+      "month": "2021-09",
+      "new_channels": 7,
+      "hits": 4,
+      "batting_avg": 57.14
+    },
+    {
+      "month": "2021-10",
+      "new_channels": 13,
+      "hits": 11,
+      "batting_avg": 84.62
+    },
+    {
+      "month": "2021-11",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2021-12",
+      "new_channels": 7,
+      "hits": 4,
+      "batting_avg": 57.14
+    },
+    {
+      "month": "2022-01",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2022-02",
+      "new_channels": 8,
+      "hits": 7,
+      "batting_avg": 87.5
+    },
+    {
+      "month": "2022-03",
+      "new_channels": 7,
+      "hits": 2,
+      "batting_avg": 28.57
+    },
+    {
+      "month": "2022-04",
+      "new_channels": 5,
+      "hits": 5,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2022-05",
+      "new_channels": 4,
+      "hits": 4,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2022-06",
+      "new_channels": 10,
+      "hits": 6,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2022-07",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2022-08",
+      "new_channels": 5,
+      "hits": 1,
+      "batting_avg": 20.0
+    },
+    {
+      "month": "2022-09",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2022-10",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2022-11",
+      "new_channels": 6,
+      "hits": 3,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2022-12",
+      "new_channels": 3,
+      "hits": 1,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2023-01",
+      "new_channels": 3,
+      "hits": 3,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2023-02",
+      "new_channels": 2,
+      "hits": 2,
+      "batting_avg": 100.0
+    },
+    {
+      "month": "2023-03",
+      "new_channels": 7,
+      "hits": 4,
+      "batting_avg": 57.14
+    },
+    {
+      "month": "2023-04",
+      "new_channels": 10,
+      "hits": 5,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2023-05",
+      "new_channels": 7,
+      "hits": 6,
+      "batting_avg": 85.71
+    },
+    {
+      "month": "2023-06",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2023-07",
+      "new_channels": 7,
+      "hits": 6,
+      "batting_avg": 85.71
+    },
+    {
+      "month": "2023-08",
+      "new_channels": 7,
+      "hits": 5,
+      "batting_avg": 71.43
+    },
+    {
+      "month": "2023-09",
+      "new_channels": 6,
+      "hits": 2,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2023-10",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2023-11",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2023-12",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2024-01",
+      "new_channels": 4,
+      "hits": 2,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2024-02",
+      "new_channels": 8,
+      "hits": 4,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2024-03",
+      "new_channels": 9,
+      "hits": 3,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2024-04",
+      "new_channels": 10,
+      "hits": 6,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2024-05",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2024-06",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2024-07",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2024-08",
+      "new_channels": 6,
+      "hits": 4,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2024-09",
+      "new_channels": 5,
+      "hits": 3,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2024-10",
+      "new_channels": 9,
+      "hits": 4,
+      "batting_avg": 44.44
+    },
+    {
+      "month": "2024-11",
+      "new_channels": 9,
+      "hits": 3,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2024-12",
+      "new_channels": 5,
+      "hits": 4,
+      "batting_avg": 80.0
+    },
+    {
+      "month": "2025-01",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2025-02",
+      "new_channels": 9,
+      "hits": 5,
+      "batting_avg": 55.56
+    },
+    {
+      "month": "2025-03",
+      "new_channels": 15,
+      "hits": 9,
+      "batting_avg": 60.0
+    },
+    {
+      "month": "2025-04",
+      "new_channels": 5,
+      "hits": 2,
+      "batting_avg": 40.0
+    },
+    {
+      "month": "2025-05",
+      "new_channels": 11,
+      "hits": 6,
+      "batting_avg": 54.55
+    },
+    {
+      "month": "2025-06",
+      "new_channels": 12,
+      "hits": 7,
+      "batting_avg": 58.33
+    },
+    {
+      "month": "2025-07",
+      "new_channels": 14,
+      "hits": 5,
+      "batting_avg": 35.71
+    },
+    {
+      "month": "2025-08",
+      "new_channels": 8,
+      "hits": 3,
+      "batting_avg": 37.5
+    },
+    {
+      "month": "2025-09",
+      "new_channels": 8,
+      "hits": 4,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2025-10",
+      "new_channels": 7,
+      "hits": 3,
+      "batting_avg": 42.86
+    },
+    {
+      "month": "2025-11",
+      "new_channels": 9,
+      "hits": 5,
+      "batting_avg": 55.56
+    },
+    {
+      "month": "2025-12",
+      "new_channels": 2,
+      "hits": 1,
+      "batting_avg": 50.0
+    },
+    {
+      "month": "2026-01",
+      "new_channels": 5,
+      "hits": 1,
+      "batting_avg": 20.0
+    },
+    {
+      "month": "2026-02",
+      "new_channels": 3,
+      "hits": 2,
+      "batting_avg": 66.67
+    },
+    {
+      "month": "2026-03",
+      "new_channels": 3,
+      "hits": 1,
+      "batting_avg": 33.33
+    },
+    {
+      "month": "2026-04",
+      "new_channels": 2,
+      "hits": 0,
+      "batting_avg": 0.0
+    },
+    {
+      "month": "2026-05",
+      "new_channels": 4,
+      "hits": 3,
+      "batting_avg": 75.0
+    },
+    {
+      "month": "2026-06",
+      "new_channels": 4,
+      "hits": 0,
+      "batting_avg": 0.0
+    }
+  ],
+  "supply": [
+    {
+      "month": "2006-11",
+      "videos": 2,
+      "channels": 1
+    },
+    {
+      "month": "2007-02",
+      "videos": 1,
+      "channels": 1
+    },
+    {
+      "month": "2007-03",
+      "videos": 3,
+      "channels": 1
+    },
+    {
+      "month": "2007-07",
+      "videos": 1,
+      "channels": 1
+    },
+    {
+      "month": "2007-09",
+      "videos": 8,
+      "channels": 1
+    },
+    {
+      "month": "2007-10",
+      "videos": 3,
+      "channels": 2
+    },
+    {
+      "month": "2007-11",
+      "videos": 12,
+      "channels": 4
+    },
+    {
+      "month": "2007-12",
+      "videos": 52,
+      "channels": 5
+    },
+    {
+      "month": "2008-01",
+      "videos": 7,
+      "channels": 2
+    },
+    {
+      "month": "2008-02",
+      "videos": 10,
+      "channels": 2
+    },
+    {
+      "month": "2008-03",
+      "videos": 13,
+      "channels": 4
+    },
+    {
+      "month": "2008-04",
+      "videos": 27,
+      "channels": 3
+    },
+    {
+      "month": "2008-05",
+      "videos": 7,
+      "channels": 2
+    },
+    {
+      "month": "2008-06",
+      "videos": 8,
+      "channels": 3
+    },
+    {
+      "month": "2008-07",
+      "videos": 31,
+      "channels": 5
+    },
+    {
+      "month": "2008-08",
+      "videos": 23,
+      "channels": 4
+    },
+    {
+      "month": "2008-09",
+      "videos": 5,
+      "channels": 2
+    },
+    {
+      "month": "2008-10",
+      "videos": 5,
+      "channels": 2
+    },
+    {
+      "month": "2008-11",
+      "videos": 35,
+      "channels": 4
+    },
+    {
+      "month": "2008-12",
+      "videos": 31,
+      "channels": 5
+    },
+    {
+      "month": "2009-01",
+      "videos": 23,
+      "channels": 5
+    },
+    {
+      "month": "2009-02",
+      "videos": 9,
+      "channels": 4
+    },
+    {
+      "month": "2009-03",
+      "videos": 39,
+      "channels": 7
+    },
+    {
+      "month": "2009-04",
+      "videos": 72,
+      "channels": 5
+    },
+    {
+      "month": "2009-05",
+      "videos": 21,
+      "channels": 7
+    },
+    {
+      "month": "2009-06",
+      "videos": 9,
+      "channels": 2
+    },
+    {
+      "month": "2009-07",
+      "videos": 9,
+      "channels": 6
+    },
+    {
+      "month": "2009-08",
+      "videos": 5,
+      "channels": 3
+    },
+    {
+      "month": "2009-09",
+      "videos": 16,
+      "channels": 4
+    },
+    {
+      "month": "2009-10",
+      "videos": 38,
+      "channels": 6
+    },
+    {
+      "month": "2009-11",
+      "videos": 27,
+      "channels": 5
+    },
+    {
+      "month": "2009-12",
+      "videos": 23,
+      "channels": 7
+    },
+    {
+      "month": "2010-01",
+      "videos": 12,
+      "channels": 7
+    },
+    {
+      "month": "2010-02",
+      "videos": 15,
+      "channels": 3
+    },
+    {
+      "month": "2010-03",
+      "videos": 9,
+      "channels": 4
+    },
+    {
+      "month": "2010-04",
+      "videos": 29,
+      "channels": 6
+    },
+    {
+      "month": "2010-05",
+      "videos": 34,
+      "channels": 9
+    },
+    {
+      "month": "2010-06",
+      "videos": 13,
+      "channels": 6
+    },
+    {
+      "month": "2010-07",
+      "videos": 22,
+      "channels": 8
+    },
+    {
+      "month": "2010-08",
+      "videos": 27,
+      "channels": 8
+    },
+    {
+      "month": "2010-09",
+      "videos": 45,
+      "channels": 14
+    },
+    {
+      "month": "2010-10",
+      "videos": 23,
+      "channels": 7
+    },
+    {
+      "month": "2010-11",
+      "videos": 23,
+      "channels": 9
+    },
+    {
+      "month": "2010-12",
+      "videos": 31,
+      "channels": 11
+    },
+    {
+      "month": "2011-01",
+      "videos": 37,
+      "channels": 12
+    },
+    {
+      "month": "2011-02",
+      "videos": 33,
+      "channels": 9
+    },
+    {
+      "month": "2011-03",
+      "videos": 31,
+      "channels": 9
+    },
+    {
+      "month": "2011-04",
+      "videos": 26,
+      "channels": 13
+    },
+    {
+      "month": "2011-05",
+      "videos": 81,
+      "channels": 17
+    },
+    {
+      "month": "2011-06",
+      "videos": 137,
+      "channels": 12
+    },
+    {
+      "month": "2011-07",
+      "videos": 246,
+      "channels": 14
+    },
+    {
+      "month": "2011-08",
+      "videos": 35,
+      "channels": 14
+    },
+    {
+      "month": "2011-09",
+      "videos": 83,
+      "channels": 15
+    },
+    {
+      "month": "2011-10",
+      "videos": 64,
+      "channels": 21
+    },
+    {
+      "month": "2011-11",
+      "videos": 99,
+      "channels": 16
+    },
+    {
+      "month": "2011-12",
+      "videos": 92,
+      "channels": 18
+    },
+    {
+      "month": "2012-01",
+      "videos": 36,
+      "channels": 11
+    },
+    {
+      "month": "2012-02",
+      "videos": 42,
+      "channels": 14
+    },
+    {
+      "month": "2012-03",
+      "videos": 85,
+      "channels": 18
+    },
+    {
+      "month": "2012-04",
+      "videos": 69,
+      "channels": 14
+    },
+    {
+      "month": "2012-05",
+      "videos": 44,
+      "channels": 20
+    },
+    {
+      "month": "2012-06",
+      "videos": 47,
+      "channels": 13
+    },
+    {
+      "month": "2012-07",
+      "videos": 87,
+      "channels": 18
+    },
+    {
+      "month": "2012-08",
+      "videos": 94,
+      "channels": 23
+    },
+    {
+      "month": "2012-09",
+      "videos": 25,
+      "channels": 11
+    },
+    {
+      "month": "2012-10",
+      "videos": 42,
+      "channels": 15
+    },
+    {
+      "month": "2012-11",
+      "videos": 36,
+      "channels": 14
+    },
+    {
+      "month": "2012-12",
+      "videos": 31,
+      "channels": 16
+    },
+    {
+      "month": "2013-01",
+      "videos": 108,
+      "channels": 18
+    },
+    {
+      "month": "2013-02",
+      "videos": 100,
+      "channels": 20
+    },
+    {
+      "month": "2013-03",
+      "videos": 88,
+      "channels": 20
+    },
+    {
+      "month": "2013-04",
+      "videos": 83,
+      "channels": 16
+    },
+    {
+      "month": "2013-05",
+      "videos": 105,
+      "channels": 28
+    },
+    {
+      "month": "2013-06",
+      "videos": 78,
+      "channels": 23
+    },
+    {
+      "month": "2013-07",
+      "videos": 73,
+      "channels": 20
+    },
+    {
+      "month": "2013-08",
+      "videos": 107,
+      "channels": 25
+    },
+    {
+      "month": "2013-09",
+      "videos": 55,
+      "channels": 21
+    },
+    {
+      "month": "2013-10",
+      "videos": 55,
+      "channels": 17
+    },
+    {
+      "month": "2013-11",
+      "videos": 24,
+      "channels": 11
+    },
+    {
+      "month": "2013-12",
+      "videos": 45,
+      "channels": 20
+    },
+    {
+      "month": "2014-01",
+      "videos": 59,
+      "channels": 23
+    },
+    {
+      "month": "2014-02",
+      "videos": 45,
+      "channels": 16
+    },
+    {
+      "month": "2014-03",
+      "videos": 51,
+      "channels": 21
+    },
+    {
+      "month": "2014-04",
+      "videos": 61,
+      "channels": 21
+    },
+    {
+      "month": "2014-05",
+      "videos": 76,
+      "channels": 22
+    },
+    {
+      "month": "2014-06",
+      "videos": 50,
+      "channels": 20
+    },
+    {
+      "month": "2014-07",
+      "videos": 45,
+      "channels": 20
+    },
+    {
+      "month": "2014-08",
+      "videos": 58,
+      "channels": 24
+    },
+    {
+      "month": "2014-09",
+      "videos": 70,
+      "channels": 23
+    },
+    {
+      "month": "2014-10",
+      "videos": 124,
+      "channels": 23
+    },
+    {
+      "month": "2014-11",
+      "videos": 211,
+      "channels": 24
+    },
+    {
+      "month": "2014-12",
+      "videos": 55,
+      "channels": 24
+    },
+    {
+      "month": "2015-01",
+      "videos": 44,
+      "channels": 23
+    },
+    {
+      "month": "2015-02",
+      "videos": 37,
+      "channels": 20
+    },
+    {
+      "month": "2015-03",
+      "videos": 43,
+      "channels": 24
+    },
+    {
+      "month": "2015-04",
+      "videos": 241,
+      "channels": 27
+    },
+    {
+      "month": "2015-05",
+      "videos": 130,
+      "channels": 34
+    },
+    {
+      "month": "2015-06",
+      "videos": 199,
+      "channels": 28
+    },
+    {
+      "month": "2015-07",
+      "videos": 151,
+      "channels": 34
+    },
+    {
+      "month": "2015-08",
+      "videos": 180,
+      "channels": 34
+    },
+    {
+      "month": "2015-09",
+      "videos": 159,
+      "channels": 36
+    },
+    {
+      "month": "2015-10",
+      "videos": 126,
+      "channels": 29
+    },
+    {
+      "month": "2015-11",
+      "videos": 172,
+      "channels": 36
+    },
+    {
+      "month": "2015-12",
+      "videos": 136,
+      "channels": 31
+    },
+    {
+      "month": "2016-01",
+      "videos": 150,
+      "channels": 42
+    },
+    {
+      "month": "2016-02",
+      "videos": 130,
+      "channels": 43
+    },
+    {
+      "month": "2016-03",
+      "videos": 122,
+      "channels": 34
+    },
+    {
+      "month": "2016-04",
+      "videos": 77,
+      "channels": 33
+    },
+    {
+      "month": "2016-05",
+      "videos": 78,
+      "channels": 28
+    },
+    {
+      "month": "2016-06",
+      "videos": 95,
+      "channels": 41
+    },
+    {
+      "month": "2016-07",
+      "videos": 223,
+      "channels": 34
+    },
+    {
+      "month": "2016-08",
+      "videos": 99,
+      "channels": 38
+    },
+    {
+      "month": "2016-09",
+      "videos": 138,
+      "channels": 38
+    },
+    {
+      "month": "2016-10",
+      "videos": 291,
+      "channels": 42
+    },
+    {
+      "month": "2016-11",
+      "videos": 127,
+      "channels": 41
+    },
+    {
+      "month": "2016-12",
+      "videos": 127,
+      "channels": 49
+    },
+    {
+      "month": "2017-01",
+      "videos": 208,
+      "channels": 49
+    },
+    {
+      "month": "2017-02",
+      "videos": 270,
+      "channels": 51
+    },
+    {
+      "month": "2017-03",
+      "videos": 496,
+      "channels": 65
+    },
+    {
+      "month": "2017-04",
+      "videos": 214,
+      "channels": 49
+    },
+    {
+      "month": "2017-05",
+      "videos": 181,
+      "channels": 50
+    },
+    {
+      "month": "2017-06",
+      "videos": 209,
+      "channels": 38
+    },
+    {
+      "month": "2017-07",
+      "videos": 291,
+      "channels": 56
+    },
+    {
+      "month": "2017-08",
+      "videos": 240,
+      "channels": 53
+    },
+    {
+      "month": "2017-09",
+      "videos": 194,
+      "channels": 53
+    },
+    {
+      "month": "2017-10",
+      "videos": 183,
+      "channels": 60
+    },
+    {
+      "month": "2017-11",
+      "videos": 403,
+      "channels": 75
+    },
+    {
+      "month": "2017-12",
+      "videos": 288,
+      "channels": 65
+    },
+    {
+      "month": "2018-01",
+      "videos": 251,
+      "channels": 69
+    },
+    {
+      "month": "2018-02",
+      "videos": 164,
+      "channels": 53
+    },
+    {
+      "month": "2018-03",
+      "videos": 164,
+      "channels": 60
+    },
+    {
+      "month": "2018-04",
+      "videos": 247,
+      "channels": 64
+    },
+    {
+      "month": "2018-05",
+      "videos": 212,
+      "channels": 61
+    },
+    {
+      "month": "2018-06",
+      "videos": 237,
+      "channels": 52
+    },
+    {
+      "month": "2018-07",
+      "videos": 284,
+      "channels": 64
+    },
+    {
+      "month": "2018-08",
+      "videos": 95,
+      "channels": 47
+    },
+    {
+      "month": "2018-09",
+      "videos": 124,
+      "channels": 49
+    },
+    {
+      "month": "2018-10",
+      "videos": 376,
+      "channels": 61
+    },
+    {
+      "month": "2018-11",
+      "videos": 116,
+      "channels": 50
+    },
+    {
+      "month": "2018-12",
+      "videos": 157,
+      "channels": 55
+    },
+    {
+      "month": "2019-01",
+      "videos": 171,
+      "channels": 59
+    },
+    {
+      "month": "2019-02",
+      "videos": 181,
+      "channels": 65
+    },
+    {
+      "month": "2019-03",
+      "videos": 309,
+      "channels": 78
+    },
+    {
+      "month": "2019-04",
+      "videos": 232,
+      "channels": 60
+    },
+    {
+      "month": "2019-05",
+      "videos": 208,
+      "channels": 68
+    },
+    {
+      "month": "2019-06",
+      "videos": 213,
+      "channels": 75
+    },
+    {
+      "month": "2019-07",
+      "videos": 287,
+      "channels": 63
+    },
+    {
+      "month": "2019-08",
+      "videos": 313,
+      "channels": 72
+    },
+    {
+      "month": "2019-09",
+      "videos": 274,
+      "channels": 72
+    },
+    {
+      "month": "2019-10",
+      "videos": 256,
+      "channels": 80
+    },
+    {
+      "month": "2019-11",
+      "videos": 292,
+      "channels": 69
+    },
+    {
+      "month": "2019-12",
+      "videos": 324,
+      "channels": 93
+    },
+    {
+      "month": "2020-01",
+      "videos": 265,
+      "channels": 83
+    },
+    {
+      "month": "2020-02",
+      "videos": 313,
+      "channels": 101
+    },
+    {
+      "month": "2020-03",
+      "videos": 331,
+      "channels": 104
+    },
+    {
+      "month": "2020-04",
+      "videos": 549,
+      "channels": 117
+    },
+    {
+      "month": "2020-05",
+      "videos": 434,
+      "channels": 124
+    },
+    {
+      "month": "2020-06",
+      "videos": 447,
+      "channels": 107
+    },
+    {
+      "month": "2020-07",
+      "videos": 427,
+      "channels": 112
+    },
+    {
+      "month": "2020-08",
+      "videos": 463,
+      "channels": 123
+    },
+    {
+      "month": "2020-09",
+      "videos": 683,
+      "channels": 130
+    },
+    {
+      "month": "2020-10",
+      "videos": 547,
+      "channels": 132
+    },
+    {
+      "month": "2020-11",
+      "videos": 451,
+      "channels": 139
+    },
+    {
+      "month": "2020-12",
+      "videos": 516,
+      "channels": 139
+    },
+    {
+      "month": "2021-01",
+      "videos": 476,
+      "channels": 138
+    },
+    {
+      "month": "2021-02",
+      "videos": 439,
+      "channels": 136
+    },
+    {
+      "month": "2021-03",
+      "videos": 689,
+      "channels": 166
+    },
+    {
+      "month": "2021-04",
+      "videos": 633,
+      "channels": 162
+    },
+    {
+      "month": "2021-05",
+      "videos": 660,
+      "channels": 150
+    },
+    {
+      "month": "2021-06",
+      "videos": 527,
+      "channels": 148
+    },
+    {
+      "month": "2021-07",
+      "videos": 682,
+      "channels": 165
+    },
+    {
+      "month": "2021-08",
+      "videos": 679,
+      "channels": 171
+    },
+    {
+      "month": "2021-09",
+      "videos": 665,
+      "channels": 158
+    },
+    {
+      "month": "2021-10",
+      "videos": 697,
+      "channels": 170
+    },
+    {
+      "month": "2021-11",
+      "videos": 621,
+      "channels": 156
+    },
+    {
+      "month": "2021-12",
+      "videos": 636,
+      "channels": 180
+    },
+    {
+      "month": "2022-01",
+      "videos": 729,
+      "channels": 180
+    },
+    {
+      "month": "2022-02",
+      "videos": 880,
+      "channels": 175
+    },
+    {
+      "month": "2022-03",
+      "videos": 935,
+      "channels": 196
+    },
+    {
+      "month": "2022-04",
+      "videos": 803,
+      "channels": 215
+    },
+    {
+      "month": "2022-05",
+      "videos": 845,
+      "channels": 198
+    },
+    {
+      "month": "2022-06",
+      "videos": 755,
+      "channels": 181
+    },
+    {
+      "month": "2022-07",
+      "videos": 747,
+      "channels": 195
+    },
+    {
+      "month": "2022-08",
+      "videos": 796,
+      "channels": 202
+    },
+    {
+      "month": "2022-09",
+      "videos": 761,
+      "channels": 193
+    },
+    {
+      "month": "2022-10",
+      "videos": 867,
+      "channels": 209
+    },
+    {
+      "month": "2022-11",
+      "videos": 1261,
+      "channels": 213
+    },
+    {
+      "month": "2022-12",
+      "videos": 1016,
+      "channels": 232
+    },
+    {
+      "month": "2023-01",
+      "videos": 922,
+      "channels": 215
+    },
+    {
+      "month": "2023-02",
+      "videos": 841,
+      "channels": 218
+    },
+    {
+      "month": "2023-03",
+      "videos": 944,
+      "channels": 221
+    },
+    {
+      "month": "2023-04",
+      "videos": 1067,
+      "channels": 230
+    },
+    {
+      "month": "2023-05",
+      "videos": 949,
+      "channels": 226
+    },
+    {
+      "month": "2023-06",
+      "videos": 856,
+      "channels": 215
+    },
+    {
+      "month": "2023-07",
+      "videos": 1000,
+      "channels": 231
+    },
+    {
+      "month": "2023-08",
+      "videos": 953,
+      "channels": 230
+    },
+    {
+      "month": "2023-09",
+      "videos": 860,
+      "channels": 213
+    },
+    {
+      "month": "2023-10",
+      "videos": 880,
+      "channels": 233
+    },
+    {
+      "month": "2023-11",
+      "videos": 914,
+      "channels": 227
+    },
+    {
+      "month": "2023-12",
+      "videos": 1109,
+      "channels": 257
+    },
+    {
+      "month": "2024-01",
+      "videos": 990,
+      "channels": 242
+    },
+    {
+      "month": "2024-02",
+      "videos": 1281,
+      "channels": 254
+    },
+    {
+      "month": "2024-03",
+      "videos": 1372,
+      "channels": 257
+    },
+    {
+      "month": "2024-04",
+      "videos": 1199,
+      "channels": 257
+    },
+    {
+      "month": "2024-05",
+      "videos": 1392,
+      "channels": 276
+    },
+    {
+      "month": "2024-06",
+      "videos": 1350,
+      "channels": 263
+    },
+    {
+      "month": "2024-07",
+      "videos": 1351,
+      "channels": 269
+    },
+    {
+      "month": "2024-08",
+      "videos": 1514,
+      "channels": 283
+    },
+    {
+      "month": "2024-09",
+      "videos": 1421,
+      "channels": 292
+    },
+    {
+      "month": "2024-10",
+      "videos": 1450,
+      "channels": 297
+    },
+    {
+      "month": "2024-11",
+      "videos": 1349,
+      "channels": 283
+    },
+    {
+      "month": "2024-12",
+      "videos": 1627,
+      "channels": 311
+    },
+    {
+      "month": "2025-01",
+      "videos": 1664,
+      "channels": 304
+    },
+    {
+      "month": "2025-02",
+      "videos": 1840,
+      "channels": 325
+    },
+    {
+      "month": "2025-03",
+      "videos": 2208,
+      "channels": 351
+    },
+    {
+      "month": "2025-04",
+      "videos": 2258,
+      "channels": 348
+    },
+    {
+      "month": "2025-05",
+      "videos": 2427,
+      "channels": 368
+    },
+    {
+      "month": "2025-06",
+      "videos": 2316,
+      "channels": 382
+    },
+    {
+      "month": "2025-07",
+      "videos": 2746,
+      "channels": 392
+    },
+    {
+      "month": "2025-08",
+      "videos": 2931,
+      "channels": 396
+    },
+    {
+      "month": "2025-09",
+      "videos": 2900,
+      "channels": 398
+    },
+    {
+      "month": "2025-10",
+      "videos": 3819,
+      "channels": 424
+    },
+    {
+      "month": "2025-11",
+      "videos": 3952,
+      "channels": 441
+    },
+    {
+      "month": "2025-12",
+      "videos": 4860,
+      "channels": 461
+    },
+    {
+      "month": "2026-01",
+      "videos": 4601,
+      "channels": 457
+    },
+    {
+      "month": "2026-02",
+      "videos": 4677,
+      "channels": 478
+    },
+    {
+      "month": "2026-03",
+      "videos": 5858,
+      "channels": 493
+    },
+    {
+      "month": "2026-04",
+      "videos": 6484,
+      "channels": 500
+    },
+    {
+      "month": "2026-05",
+      "videos": 7096,
+      "channels": 507
+    },
+    {
+      "month": "2026-06",
+      "videos": 7762,
+      "channels": 529
+    },
+    {
+      "month": "2026-07",
+      "videos": 9408,
+      "channels": 526
+    }
+  ],
+  "summary": {
+    "channels": 1259,
+    "videos": 103013,
+    "snapshot_days": 4
+  }
+}
