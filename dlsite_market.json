@@ -198,7 +198,7 @@
     },
     {
       "month": "2026-08",
-      "works": 415
+      "works": 507
     }
   ],
   "new_circles_by_month": [
@@ -400,7 +400,7 @@
     },
     {
       "month": "2026-08",
-      "circles": 76
+      "circles": 89
     }
   ],
   "cap_by_month": [
@@ -1107,15 +1107,15 @@
     },
     {
       "month": "2026-08",
-      "circles_active": 366,
+      "circles_active": 431,
       "max": 3,
       "p95": 2.0,
       "p99": 3.0,
       "over3_ratio": 0.0,
       "dist": {
-        "1": 323,
-        "2": 37,
-        "3": 6
+        "1": 367,
+        "2": 52,
+        "3": 12
       }
     }
   ],
@@ -1540,7 +1540,7 @@
       "median": 25.0,
       "p75": 69.0,
       "p90": 148.0,
-      "p99": 581.8,
+      "p99": 583.9,
       "hit_ratio": 16.65
     },
     {
@@ -1549,26 +1549,26 @@
       "median": 20.0,
       "p75": 45.0,
       "p90": 103.0,
-      "p99": 350.2,
-      "hit_ratio": 10.32
+      "p99": 350.8,
+      "hit_ratio": 10.56
     },
     {
       "month": "2026-07",
       "n": 2800,
       "median": 12.0,
-      "p75": 30.0,
-      "p90": 64.0,
-      "p99": 236.1,
-      "hit_ratio": 4.93
+      "p75": 31.0,
+      "p90": 65.0,
+      "p99": 241.2,
+      "hit_ratio": 5.0
     },
     {
       "month": "2026-08",
-      "n": 415,
+      "n": 507,
       "median": 4.0,
       "p75": 11.0,
-      "p90": 20.0,
-      "p99": 45.4,
-      "hit_ratio": 0.24
+      "p90": 21.0,
+      "p99": 48.9,
+      "hit_ratio": 0.2
     }
   ],
   "batting_by_month": [
@@ -1868,14 +1868,14 @@
     },
     {
       "month": "2026-08",
-      "new_circles": 76,
+      "new_circles": 89,
       "hits": 0,
       "batting_avg": 0.0
     }
   ],
   "summary": {
-    "total_works": 39570,
-    "total_circles": 7127,
+    "total_works": 39662,
+    "total_circles": 7140,
     "hit_threshold": 100,
     "works_per_circle": 5.55
   }
