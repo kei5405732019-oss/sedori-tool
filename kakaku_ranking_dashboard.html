@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>価格.comランキングボード | かつらぎ屋</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#11162A;--panel:#1A2140;--panel2:#212a4d;--border:#2C3560;--amber:#FFB627;--amberdim:#8a6c2c;--coral:#FF6B6B;--green:#4ADE80;--blue:#60A5FA;--text:#F2EFE4;--muted:#8C95BD;--faint:#5C6491;}
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:"Noto Sans JP",sans-serif;font-size:14px}
+    .mono{font-family:"JetBrains Mono",monospace}.display{font-family:"Barlow Condensed",sans-serif} button,input{font:inherit}
+    header{padding:20px clamp(16px,4vw,40px) 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    .brand{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}.brand-tag{font:800 13px "Barlow Condensed",sans-serif;letter-spacing:.2em;color:var(--bg);background:var(--amber);padding:3px 9px;border-radius:3px}
+    h1{font:700 clamp(22px,3vw,30px) "Barlow Condensed",sans-serif;margin:0;letter-spacing:.03em}.meta{font-size:11px;color:var(--muted)}
+    main{padding:20px clamp(12px,3vw,32px) 42px}.tabs{display:flex;gap:5px;border-bottom:1px solid var(--border);margin-bottom:17px;flex-wrap:wrap}.tab{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--faint);padding:9px 9px;margin-bottom:-1px;cursor:pointer;font:700 17px "Barlow Condensed",sans-serif;letter-spacing:.04em}.tab:hover{color:var(--muted)}.tab.active{color:var(--amber);border-bottom-color:var(--amber)}
+    .view{display:none}.view.active{display:block}.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:14px}.stat{padding:12px 14px;background:var(--panel);border:1px solid var(--border);border-radius:10px}.stat-label{font-size:10px;color:var(--faint);letter-spacing:.05em}.stat-value{font:700 28px "Barlow Condensed",sans-serif;color:var(--amber);line-height:1.1;margin-top:4px}.stat-value.good{color:var(--green)}.stat-value.alert{color:var(--coral)}.stat-value.info{color:var(--blue)}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:14px}.panel h2{font:700 18px "Barlow Condensed",sans-serif;letter-spacing:.04em;margin:0 0 12px}.subnote{margin:0 0 12px;font-size:11px;line-height:1.7;color:var(--faint)}
+    .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer}.chip:hover,.chip.active{background:var(--amber);border-color:var(--amber);color:var(--bg);font-weight:700}.input-wrap{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}.number-input,.search{border:1px solid var(--border);border-radius:6px;background:var(--panel2);color:var(--text);padding:6px 9px;font-size:12px}.number-input{width:82px;font-family:"JetBrains Mono",monospace}.search{margin-left:auto;min-width:min(250px,100%)}
+    .table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:760px}th{text-align:left;color:var(--faint);font-weight:500;font-size:10px;letter-spacing:.04em;padding:7px 8px;border-bottom:1px solid var(--border);white-space:nowrap}td{padding:8px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}.item-row{cursor:pointer}.item-row:hover td{background:rgba(255,182,39,.05)}.flag-drop td{background:rgba(255,107,107,.06)}.flag-profit td{background:rgba(74,222,128,.06)}.flag-new td{background:rgba(96,165,250,.06)}
+    .rank{font:700 14px "JetBrains Mono",monospace}.move{font:10px "JetBrains Mono",monospace;margin-left:3px}.move.up{color:var(--green)}.move.down{color:var(--coral)}.move.flat{color:var(--faint)}.name{font-size:13px;color:var(--text)}.id{font:10px "JetBrains Mono",monospace;color:var(--faint);margin-top:2px}.price{font:700 12px "JetBrains Mono",monospace;text-align:right;white-space:nowrap}.diff{font:11px "JetBrains Mono",monospace;text-align:right;white-space:nowrap}.diff.down{color:var(--coral)}.diff.up{color:var(--muted)}
+    .badge{display:inline-block;font-size:10px;font-weight:700;line-height:1.4;padding:2px 6px;border-radius:4px;margin:0 3px 3px 0;white-space:nowrap}.badge.new{background:rgba(96,165,250,.18);color:var(--blue)}.badge.drop{background:rgba(255,107,107,.18);color:var(--coral)}.badge.profit{background:rgba(74,222,128,.18);color:var(--green)}.badge.shop,.badge.flip{background:rgba(255,182,39,.18);color:var(--amber)}.badge.missing,.badge.error{background:rgba(140,149,189,.18);color:var(--muted)}
+    .expand td{background:var(--panel2);padding:13px 16px}.shop-table{min-width:640px;font-size:11.5px}.shop-table th{padding:4px 8px}.shop-table td{padding:5px 8px}.shop-table tr.top td{background:rgba(74,222,128,.06)}.shop-table tr.added td{color:var(--blue)}.shop-table tr.removed td{color:var(--faint);text-decoration:line-through;opacity:.65}.small-tag{font-size:9px;color:var(--faint);border-radius:3px;background:var(--panel);padding:1px 5px;margin-left:4px}.small-tag.best{color:var(--green)}.point{font-size:10px;color:var(--amber)}
+    a.out{display:inline-block;color:var(--amber);border:1px solid var(--amberdim);border-radius:3px;text-decoration:none;font-size:10px;padding:1px 5px;margin-left:5px}.empty{padding:32px 16px;color:var(--faint);text-align:center}.error-box{padding:13px 15px;border:1px solid rgba(255,107,107,.5);border-radius:8px;background:rgba(255,107,107,.08);color:#ffd2d2;font-size:12px;line-height:1.7}.hidden{display:none!important}
+    .setup{max-width:620px;margin:8vh auto 0;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:22px}.setup h2{font:700 24px "Barlow Condensed",sans-serif;margin:0 0 9px}.setup p{color:var(--muted);font-size:12px;line-height:1.7}.setup label{display:block;color:var(--muted);font-size:11px;margin-top:12px}.setup input{width:100%;margin-top:4px;padding:9px;border:1px solid var(--border);border-radius:6px;background:var(--panel2);color:var(--text)}.setup button{margin-top:16px;padding:8px 14px;border:0;border-radius:5px;background:var(--amber);color:var(--bg);font-weight:700;cursor:pointer}.setup code{font-family:"JetBrains Mono",monospace;color:var(--amber)}
+    @media(max-width:700px){header{align-items:flex-start}.search{margin-left:0;width:100%;min-width:0}main{padding-top:14px}.panel{padding:13px}.table-wrap{margin:0 -4px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  </style>
+</head>
+<body>
+  <section id="setup" class="setup">
+    <div class="brand-tag">KAKAKU WATCH</div>
+    <h2>価格.comランキングボード</h2>
+    <p>ダッシュボードを開くには、GASのWebアプリURLとアクセスキーを入力してください。アクセスキーはこのブラウザのタブを閉じるまでだけ保持され、HTMLやGitHubには保存されません。</p>
+    <label for="gas-url">GAS WebアプリURL</label>
+    <input id="gas-url" type="url" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off">
+    <label for="gas-key">アクセスキー</label>
+    <input id="gas-key" type="password" placeholder="アクセスキー" autocomplete="off">
+    <button id="open-dashboard">読み込む</button>
+    <p>GASは <code>action=kakaku_ranking_dashboard</code> と <code>key</code> を受け取り、`kakaku_ranking_watch.py` が送信したJSONを返す必要があります。</p>
+  </section>
+
+  <div id="app" class="hidden">
+    <header>
+      <div class="brand"><div class="brand-tag">KAKAKU WATCH</div><h1>価格.comランキングボード</h1></div>
+      <div class="meta mono">最終更新 <span id="updated-at">-</span> <button id="reload" class="chip" style="margin-left:8px">再読込</button></div>
+    </header>
+    <main>
+      <div class="tabs">
+        <button class="tab active" data-tab="ranking">ランキング一覧</button>
+        <button class="tab" data-tab="drop">値下がりウォッチ</button>
+        <button class="tab" data-tab="profit">利益チェック</button>
+      </div>
+      <div id="error" class="error-box hidden"></div>
+      <div id="stats" class="stat-grid"></div>
+      <p class="subnote">店舗の表示価格とポイント相当額を記録し、実質価格（表示価格 − ポイント相当額）で最安店・値下がり・利益を判定しています。送料はデータとして保持しますが、監視側設定で送料を含めない限り判定には加算しません。</p>
+
+      <section id="view-ranking" class="view active">
+        <div id="category-chips" class="chips" style="margin-bottom:12px"></div>
+        <div class="panel">
+          <h2>カテゴリー内ランキング <span id="category-title" class="mono" style="font-size:11px;color:var(--faint);margin-left:6px"></span></h2>
+          <div class="toolbar"><span class="subnote" style="margin:0">行をクリックすると、店舗別の実質価格と前回比較を展開します。</span><input id="ranking-search" class="search" placeholder="商品名・JAN・商品IDで検索"></div>
+          <div class="table-wrap"><table><thead><tr><th>順位</th><th>商品</th><th style="text-align:right">実質最安</th><th style="text-align:right">前回比</th><th>状態</th></tr></thead><tbody id="ranking-body"></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="view-drop" class="view">
+        <div class="panel">
+          <h2>値下がりウォッチ <span id="drop-count" class="mono" style="font-size:11px;color:var(--faint);margin-left:6px"></span></h2>
+          <div class="toolbar"><label class="input-wrap">値下がり閾値 <input id="drop-threshold" class="number-input" type="number" min="0" step="500"> 円以上</label><input id="drop-search" class="search" placeholder="商品名・JAN・商品IDで検索"></div>
+          <div class="table-wrap"><table><thead><tr><th>カテゴリー</th><th>商品</th><th style="text-align:right">前回実質</th><th style="text-align:right">現在実質</th><th style="text-align:right">値下がり幅</th><th>実質最安店舗</th><th>状態</th></tr></thead><tbody id="drop-body"></tbody></table></div>
+        </div>
+      </section>
+
+      <section id="view-profit" class="view">
+        <div class="panel">
+          <h2>利益チェック <span id="profit-count" class="mono" style="font-size:11px;color:var(--faint);margin-left:6px"></span></h2>
+          <p class="subnote">利益 = 買取価格（最高値） − 価格.com実質最安値です。JAN未取得または買取マスター未一致の商品は対象外です。</p>
+          <div class="toolbar"><label class="input-wrap">利益閾値 <input id="profit-threshold" class="number-input" type="number" min="0" step="500"> 円以上</label><input id="profit-search" class="search" placeholder="商品名・JAN・商品IDで検索"></div>
+          <div class="table-wrap"><table><thead><tr><th>カテゴリー</th><th>商品</th><th style="text-align:right">実質最安</th><th style="text-align:right">買取最高</th><th style="text-align:right">利益</th><th>実質最安店舗</th></tr></thead><tbody id="profit-body"></tbody></table></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+  (() => {
+    'use strict';
+    const state = { data:null, currentCategory:null, expandRanking:null, expandDrop:null, expandProfit:null, dropThreshold:1000, profitThreshold:2000, gasUrl:'', gasKey:'' };
+    const $ = (id) => document.getElementById(id);
+    const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const yen = (value) => value == null ? '-' : `¥${Number(value).toLocaleString('ja-JP')}`;
+    const num = (value) => Number(value || 0).toLocaleString('ja-JP');
+    const itemKey = (item) => `${item.categoryKey}|${item.productId}`;
+    const pointLabel = (shop) => {
+      if (shop.pointText) return esc(shop.pointText);
+      if (shop.pointYen) return `${num(shop.pointYen)}円相当`;
+      if (shop.pointRate != null) return `${shop.pointRate}%`;
+      return '-';
+    };
+    const allItems = () => (state.data?.categories || []).flatMap(cat => cat.items.map(item => ({...item, categoryKey:cat.key, categoryLabel:cat.label})));
+    const matches = (item, query) => {
+      const q = (query || '').trim().toLowerCase();
+      return !q || [item.name,item.jan,item.productId,item.kcode].filter(Boolean).join(' ').toLowerCase().includes(q);
+    };
+    const effective = (item) => item.effPrice ?? item.shops?.[0]?.effPrice ?? null;
+    const prevEffective = (item) => item.prevEffPrice ?? item.prevShops?.[0]?.effPrice ?? null;
+    const priceDrop = (item) => {
+      const oldP = prevEffective(item), newP = effective(item);
+      return oldP != null && newP != null ? oldP - newP : null;
+    };
+    const profit = (item) => item.profit != null ? item.profit : (item.buyback != null && effective(item) != null ? item.buyback - effective(item) : null);
+    const isNew = (item) => item.prevRank == null;
+    const getConfig = () => state.data?.config || {};
+
+    function showError(message) { $('error').textContent = message; $('error').classList.remove('hidden'); }
+    function clearError() { $('error').classList.add('hidden'); $('error').textContent = ''; }
+
+    function statusBadges(item) {
+      const f = item.flags || {};
+      const drop = priceDrop(item), p = profit(item);
+      let html = '';
+      if (isNew(item) || f.isNew) html += '<span class="badge new">NEW</span>';
+      if (drop != null && drop >= state.dropThreshold) html += `<span class="badge drop">▼${num(drop)}円</span>`;
+      if (f.shopChanged) html += '<span class="badge shop">店舗変更</span>';
+      if (p != null && p >= state.profitThreshold) html += `<span class="badge profit">利益+${num(p)}円</span>`;
+      if (f.pointFlip) html += '<span class="badge flip">Pt込み順位逆転</span>';
+      if (!item.jan || f.janMissing) html += '<span class="badge missing">JAN未取得</span>';
+      if (f.parseError) html += '<span class="badge error">店舗取得失敗</span>';
+      return html || '<span style="font-size:11px;color:var(--faint)">変化なし</span>';
+    }
+
+    function rankMove(item) {
+      if (isNew(item)) return '<span class="badge new">NEW</span>';
+      const delta = item.prevRank - item.rank;
+      if (delta > 0) return `<span class="move up">▲${delta}</span>`;
+      if (delta < 0) return `<span class="move down">▼${Math.abs(delta)}</span>`;
+      return '<span class="move flat">―</span>';
+    }
+
+    function itemClasses(item) {
+      const p = profit(item), d = priceDrop(item);
+      if (isNew(item)) return 'flag-new';
+      if (d != null && d >= state.dropThreshold) return 'flag-drop';
+      if (p != null && p >= state.profitThreshold) return 'flag-profit';
+      return '';
+    }
+
+    function shopsHtml(item) {
+      const shops = [...(item.shops || [])].sort((a,b) => (a.effPrice-b.effPrice) || (a.price-b.price));
+      const prevShops = item.prevShops || [];
+      const previousByStore = new Map(prevShops.map(s => [s.store, s]));
+      const currentNames = new Set(shops.map(s => s.store));
+      const rows = shops.map((shop, index) => {
+        const prev = previousByStore.get(shop.store);
+        const diff = prev ? shop.effPrice - prev.effPrice : null;
+        const diffHtml = item.prevShops == null ? '' : diff == null ? '<span class="small-tag">NEW</span>' : diff < 0 ? `<span class="diff down">${num(diff)}円</span>` : diff > 0 ? `<span class="diff up">+${num(diff)}円</span>` : '<span style="color:var(--faint)">±0</span>';
+        const shipping = shop.shippingYen == null ? '要確認' : shop.shippingYen === 0 ? '無料' : yen(shop.shippingYen);
+        return `<tr class="${index===0?'top':''} ${prev?'':'added'}"><td class="mono">${index+1}</td><td>${esc(shop.store)}${prev?'':' <span class="small-tag">NEW</span>'}${index===0?' <span class="small-tag best">実質最安</span>':''}</td><td class="price">${yen(shop.price)}</td><td class="point">${pointLabel(shop)}</td><td class="mono" style="text-align:right;color:var(--muted)">${shipping}</td><td class="price">${yen(shop.effPrice)}</td><td style="text-align:right">${diffHtml}</td></tr>`;
+      }).join('');
+      const removed = prevShops.filter(s => !currentNames.has(s.store)).map(s => `<tr class="removed"><td></td><td>${esc(s.store)} <span class="small-tag">圏外</span></td><td class="price">${yen(s.price)}</td><td class="point">${pointLabel(s)}</td><td></td><td class="price">${yen(s.effPrice)}</td><td></td></tr>`).join('');
+      if (!shops.length) return '<div class="empty">店舗価格を取得できませんでした。次回実行で再試行します。</div>';
+      const rawTop = [...shops].sort((a,b)=>(a.price-b.price)||a.store.localeCompare(b.store))[0];
+      const note = rawTop && rawTop.store !== shops[0].store ? `<p class="subnote" style="margin:8px 0 0;color:var(--amber)">表示価格だけでは「${esc(rawTop.store)}」が最安ですが、ポイント込みの実質価格では「${esc(shops[0].store)}」が最安です。</p>` : '';
+      const first = item.prevShops == null ? '<p class="subnote" style="margin:8px 0 0;color:var(--blue)">今回から追跡開始のため、前回比較はありません。</p>' : '';
+      return `<div class="table-wrap"><table class="shop-table"><thead><tr><th>実質順位</th><th>店舗</th><th style="text-align:right">表示価格</th><th style="text-align:right">Pt還元</th><th style="text-align:right">送料</th><th style="text-align:right">実質価格</th><th style="text-align:right">前回実質比</th></tr></thead><tbody>${rows}${removed}</tbody></table></div>${note}${first}`;
+    }
+
+    function renderStats() {
+      const items = allItems();
+      const drops = items.filter(i => (priceDrop(i) ?? -Infinity) >= state.dropThreshold).length;
+      const profits = items.filter(i => (profit(i) ?? -Infinity) >= state.profitThreshold).length;
+      const news = items.filter(isNew).length;
+      const shops = items.filter(i => i.flags?.shopChanged).length;
+      const flips = items.filter(i => i.flags?.pointFlip).length;
+      $('stats').innerHTML = `<div class="stat"><div class="stat-label">追跡商品数</div><div class="stat-value">${num(items.length)}</div></div><div class="stat"><div class="stat-label">新規ランクイン</div><div class="stat-value info">${num(news)}</div></div><div class="stat"><div class="stat-label">値下がり検知（${num(state.dropThreshold)}円〜）</div><div class="stat-value alert">${num(drops)}</div></div><div class="stat"><div class="stat-label">利益条件ヒット（${num(state.profitThreshold)}円〜）</div><div class="stat-value good">${num(profits)}</div></div><div class="stat"><div class="stat-label">店舗入替あり</div><div class="stat-value">${num(shops)}</div></div><div class="stat"><div class="stat-label">Pt込み順位逆転</div><div class="stat-value">${num(flips)}</div></div>`;
+    }
+
+    function renderCategoryChips() {
+      const cats = state.data?.categories || [];
+      if (!state.currentCategory && cats[0]) state.currentCategory = cats[0].key;
+      $('category-chips').innerHTML = cats.map(c => `<button class="chip ${c.key===state.currentCategory?'active':''}" data-category="${esc(c.key)}">${esc(c.label)} <span style="opacity:.65">${c.items.length}</span></button>`).join('');
+      $('category-chips').querySelectorAll('[data-category]').forEach(button => button.addEventListener('click', () => { state.currentCategory = button.dataset.category; state.expandRanking = null; renderRanking(); }));
+    }
+
+    function renderRanking() {
+      renderCategoryChips();
+      const category = (state.data?.categories || []).find(c => c.key === state.currentCategory);
+      const query = $('ranking-search').value;
+      const list = (category?.items || []).map(i => ({...i, categoryKey:category.key, categoryLabel:category.label})).filter(i => matches(i, query));
+      $('category-title').textContent = category ? `${category.label} 上位${category.items.length}件` : '';
+      $('ranking-body').innerHTML = list.map(item => {
+        const key = itemKey(item), drop = priceDrop(item), open = state.expandRanking === key;
+        const diff = isNew(item) ? '<span style="color:var(--blue)">初回</span>' : drop == null ? '-' : drop > 0 ? `<span class="diff down">-${num(drop)}</span>` : drop < 0 ? `<span class="diff up">+${num(-drop)}</span>` : '<span style="color:var(--faint)">±0</span>';
+        const url = item.url || `https://kakaku.com/item/${item.productId}/`;
+        return `<tr class="item-row ${itemClasses(item)}" data-key="${esc(key)}"><td><span class="rank">${item.rank}</span>${rankMove(item)}</td><td><div class="name">${esc(item.name)}</div><div class="id">${item.jan?`JAN:${esc(item.jan)}`:'JAN:未取得'} / ${esc(item.productId)} <a class="out" target="_blank" rel="noopener" href="${esc(url)}">価格.com</a></div></td><td class="price">${yen(effective(item))}<div style="font-size:9px;color:var(--faint);font-weight:400">${esc(item.topShop || item.shops?.[0]?.store || '-')}</div></td><td class="diff">${diff}</td><td>${statusBadges(item)}</td></tr>${open?`<tr class="expand"><td colspan="5">${shopsHtml(item)}</td></tr>`:''}`;
+      }).join('') || '<tr><td colspan="5" class="empty">該当する商品はありません。</td></tr>';
+      $('ranking-body').querySelectorAll('.item-row').forEach(row => row.addEventListener('click', () => { state.expandRanking = state.expandRanking===row.dataset.key ? null : row.dataset.key; renderRanking(); }));
+    }
+
+    function renderDrop() {
+      const query = $('drop-search').value;
+      const list = allItems().filter(i => (priceDrop(i) ?? -Infinity) >= state.dropThreshold && matches(i, query)).sort((a,b) => priceDrop(b)-priceDrop(a));
+      $('drop-count').textContent = `${list.length}件`;
+      $('drop-body').innerHTML = list.map(item => {
+        const key=itemKey(item), open=state.expandDrop===key, oldP=prevEffective(item), newP=effective(item), drop=priceDrop(item);
+        const store = item.topShop || item.shops?.[0]?.store || '-';
+        const previousStore = item.prevTopShop || item.prevShops?.[0]?.store;
+        return `<tr class="item-row flag-drop" data-key="${esc(key)}"><td style="color:var(--muted);font-size:11px">${esc(item.categoryLabel)}</td><td><div class="name">${esc(item.name)}</div><div class="id">${esc(item.jan || item.productId)}</div></td><td class="price" style="color:var(--faint)">${yen(oldP)}</td><td class="price">${yen(newP)}</td><td class="diff down">-${num(drop)}円</td><td>${esc(store)}${previousStore&&previousStore!==store?`<div class="id">前回: ${esc(previousStore)}</div>`:''}</td><td>${statusBadges(item)}</td></tr>${open?`<tr class="expand"><td colspan="7">${shopsHtml(item)}</td></tr>`:''}`;
+      }).join('') || '<tr><td colspan="7" class="empty">条件に合致する値下がりはありません。</td></tr>';
+      $('drop-body').querySelectorAll('.item-row').forEach(row => row.addEventListener('click', () => { state.expandDrop = state.expandDrop===row.dataset.key ? null : row.dataset.key; renderDrop(); }));
+    }
+
+    function renderProfit() {
+      const query = $('profit-search').value;
+      const list = allItems().filter(i => (profit(i) ?? -Infinity) >= state.profitThreshold && matches(i, query)).sort((a,b) => profit(b)-profit(a));
+      $('profit-count').textContent = `${list.length}件`;
+      $('profit-body').innerHTML = list.map(item => {
+        const key=itemKey(item), open=state.expandProfit===key, p=profit(item), store=item.topShop || item.shops?.[0]?.store || '-';
+        return `<tr class="item-row flag-profit" data-key="${esc(key)}"><td style="color:var(--muted);font-size:11px">${esc(item.categoryLabel)}</td><td><div class="name">${esc(item.name)}</div><div class="id">${item.jan?`JAN:${esc(item.jan)}`:esc(item.productId)}</div></td><td class="price">${yen(effective(item))}</td><td class="price" style="color:var(--green)">${yen(item.buyback)}</td><td class="price" style="color:var(--green)">+${num(p)}円</td><td>${esc(store)}</td></tr>${open?`<tr class="expand"><td colspan="6">${shopsHtml(item)}</td></tr>`:''}`;
+      }).join('') || '<tr><td colspan="6" class="empty">条件に合致する利益商品はありません。</td></tr>';
+      $('profit-body').querySelectorAll('.item-row').forEach(row => row.addEventListener('click', () => { state.expandProfit = state.expandProfit===row.dataset.key ? null : row.dataset.key; renderProfit(); }));
+    }
+
+    function renderAll() { renderStats(); renderRanking(); renderDrop(); renderProfit(); }
+
+    async function loadData() {
+      clearError();
+      $('reload').disabled = true;
+      try {
+        const url = new URL(state.gasUrl);
+        url.searchParams.set('action', 'kakaku_ranking_dashboard');
+        url.searchParams.set('key', state.gasKey);
+        const response = await fetch(url.toString(), {cache:'no-store'});
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const raw = await response.json();
+        if (raw.error) throw new Error(raw.error);
+        const payload = raw.payload || raw.data || raw;
+        if (!Array.isArray(payload.categories)) throw new Error('GAS応答に categories 配列がありません。GAS_CONTRACT.md の形式を確認してください。');
+        state.data = payload;
+        const cfg = getConfig();
+        state.dropThreshold = Number(cfg.dropThreshold ?? state.dropThreshold);
+        state.profitThreshold = Number(cfg.profitThreshold ?? state.profitThreshold);
+        $('drop-threshold').value = state.dropThreshold;
+        $('profit-threshold').value = state.profitThreshold;
+        $('updated-at').textContent = payload.generatedAt || payload.currentRun?.runAt || '-';
+        $('setup').classList.add('hidden'); $('app').classList.remove('hidden');
+        renderAll();
+      } catch (error) {
+        const message = `データを取得できませんでした: ${error.message}`;
+        if ($('app').classList.contains('hidden')) alert(message); else showError(message);
+      } finally { $('reload').disabled = false; }
+    }
+
+    document.querySelectorAll('.tab').forEach(button => button.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b===button));
+      document.querySelectorAll('.view').forEach(v => v.classList.toggle('active', v.id===`view-${button.dataset.tab}`));
+    }));
+    $('ranking-search').addEventListener('input', renderRanking); $('drop-search').addEventListener('input', renderDrop); $('profit-search').addEventListener('input', renderProfit);
+    $('drop-threshold').addEventListener('input', () => { state.dropThreshold=Number($('drop-threshold').value)||0; renderAll(); });
+    $('profit-threshold').addEventListener('input', () => { state.profitThreshold=Number($('profit-threshold').value)||0; renderAll(); });
+    $('reload').addEventListener('click', loadData);
+    $('open-dashboard').addEventListener('click', () => { state.gasUrl=$('gas-url').value.trim(); state.gasKey=$('gas-key').value; if (!state.gasUrl) { alert('GAS WebアプリURLを入力してください。'); return; } sessionStorage.setItem('kakakuGasUrl',state.gasUrl); sessionStorage.setItem('kakakuGasKey',state.gasKey); loadData(); });
+
+    const params = new URLSearchParams(location.search);
+    state.gasUrl = params.get('gas_url') || sessionStorage.getItem('kakakuGasUrl') || '';
+    state.gasKey = sessionStorage.getItem('kakakuGasKey') || '';
+    $('gas-url').value = state.gasUrl; $('gas-key').value = state.gasKey;
+    if (state.gasUrl && state.gasKey) loadData();
+  })();
+  </script>
+</body>
+</html>
