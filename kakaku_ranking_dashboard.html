@@ -201,12 +201,13 @@
       const currentNames = new Set(shops.map(s => s.store));
       const rows = shops.map((shop, index) => {
         const prev = previousByStore.get(shop.store);
+        const shopLabel = shop.url ? `<a class="out" target="_blank" rel="noopener" href="${esc(shop.url)}">${esc(shop.store)}</a>` : esc(shop.store);
         const diff = prev ? shop.effPrice - prev.effPrice : null;
         const diffHtml = item.prevShops == null ? '' : diff == null ? '<span class="small-tag">NEW</span>' : diff < 0 ? `<span class="diff down">${num(diff)}円</span>` : diff > 0 ? `<span class="diff up">+${num(diff)}円</span>` : '<span style="color:var(--faint)">±0</span>';
         const shipping = shop.shippingYen == null ? '要確認' : shop.shippingYen === 0 ? '無料' : yen(shop.shippingYen);
-        return `<tr class="${index===0?'top':''} ${prev?'':'added'}"><td class="mono">${index+1}</td><td>${esc(shop.store)}${prev?'':' <span class="small-tag">NEW</span>'}${index===0?' <span class="small-tag best">実質最安</span>':''}</td><td class="price">${yen(shop.price)}</td><td class="point">${pointLabel(shop)}</td><td class="mono" style="text-align:right;color:var(--muted)">${shipping}</td><td class="price">${yen(shop.effPrice)}</td><td style="text-align:right">${diffHtml}</td></tr>`;
+        return `<tr class="${index===0?'top':''} ${prev?'':'added'}"><td class="mono">${index+1}</td><td>${shopLabel}${prev?'':' <span class="small-tag">NEW</span>'}${index===0?' <span class="small-tag best">実質最安</span>':''}</td><td class="price">${yen(shop.price)}</td><td class="point">${pointLabel(shop)}</td><td class="mono" style="text-align:right;color:var(--muted)">${shipping}</td><td class="price">${yen(shop.effPrice)}</td><td style="text-align:right">${diffHtml}</td></tr>`;
       }).join('');
-      const removed = prevShops.filter(s => !currentNames.has(s.store)).map(s => `<tr class="removed"><td></td><td>${esc(s.store)} <span class="small-tag">圏外</span></td><td class="price">${yen(s.price)}</td><td class="point">${pointLabel(s)}</td><td></td><td class="price">${yen(s.effPrice)}</td><td></td></tr>`).join('');
+      const removed = prevShops.filter(s => !currentNames.has(s.store)).map(s => `<tr class="removed"><td></td><td>${s.url ? `<a class="out" target="_blank" rel="noopener" href="${esc(s.url)}">${esc(s.store)}</a>` : esc(s.store)} <span class="small-tag">圏外</span></td><td class="price">${yen(s.price)}</td><td class="point">${pointLabel(s)}</td><td></td><td class="price">${yen(s.effPrice)}</td><td></td></tr>`).join('');
       if (!shops.length) return '<div class="empty">店舗価格を取得できませんでした。次回実行で再試行します。</div>';
       const rawTop = [...shops].sort((a,b)=>(a.price-b.price)||a.store.localeCompare(b.store))[0];
       const note = rawTop && rawTop.store !== shops[0].store ? `<p class="subnote" style="margin:8px 0 0;color:var(--amber)">表示価格だけでは「${esc(rawTop.store)}」が最安ですが、ポイント込みの実質価格では「${esc(shops[0].store)}」が最安です。</p>` : '';
@@ -282,7 +283,10 @@
         const store = item.topShop || item.shops?.[0]?.store || '-';
         const storeChanged = point?.topShop && point.topShop !== store;
         const comparisonNote = `<p class="subnote" style="margin:0 0 10px;color:var(--amber)">${formatDate(state.dropBaseDate)} の実質${yen(point?.effPrice)} → 現在${yen(newP)}（-${num(drop)}円 / ${rate?.toFixed(1)}%）${storeChanged ? `。最安店: ${esc(point.topShop)} → ${esc(store)}` : ''}</p>`;
-        return `<tr class="item-row flag-drop" data-key="${esc(key)}"><td style="color:var(--muted);font-size:11px">${esc(item.categoryLabel)}</td><td><div class="name">${esc(item.name)}</div><div class="id">${esc(item.jan || item.productId)}</div></td><td class="price" style="color:var(--faint)">${yen(point?.effPrice)}</td><td class="price">${yen(newP)}</td><td class="diff down">-${num(drop)}円</td><td class="diff down">-${rate.toFixed(1)}%</td><td>${esc(store)}${storeChanged?`<div class="id">基準日: ${esc(point.topShop)}</div>`:''}</td><td>${sparkline(item.dailyHistory || [])}</td></tr>${open?`<tr class="expand"><td colspan="8">${comparisonNote}${shopsHtml(item)}</td></tr>`:''}`;
+        const productLink = item.url || `https://kakaku.com/item/${item.productId}/`;
+        const currentShop = (item.shops || []).find(shop => shop.store === store);
+        const storeLabel = currentShop?.url ? `<a class="out" target="_blank" rel="noopener" href="${esc(currentShop.url)}">${esc(store)}</a>` : esc(store);
+        return `<tr class="item-row flag-drop" data-key="${esc(key)}"><td style="color:var(--muted);font-size:11px">${esc(item.categoryLabel)}</td><td><div class="name">${esc(item.name)}</div><div class="id">${item.jan ? `JAN:${esc(item.jan)}` : 'JAN:未取得'} / ${esc(item.productId)} <a class="out" target="_blank" rel="noopener" href="${esc(productLink)}">商品ページ</a></div></td><td class="price" style="color:var(--faint)">${yen(point?.effPrice)}</td><td class="price">${yen(newP)}</td><td class="diff down">-${num(drop)}円</td><td class="diff down">-${rate.toFixed(1)}%</td><td>${storeLabel}${storeChanged?`<div class="id">基準日: ${esc(point.topShop)}</div>`:''}</td><td>${sparkline(item.dailyHistory || [])}</td></tr>${open?`<tr class="expand"><td colspan="8">${comparisonNote}${shopsHtml(item)}</td></tr>`:''}`;
       }).join('') || `<tr><td colspan="8" class="empty">${dateExists ? '選択した基準日から、設定額以上に値下がりした商品はありません。' : '比較基準日の取得履歴がありません。'}</td></tr>`;
       $('drop-body').querySelectorAll('.item-row').forEach(row => row.addEventListener('click', () => { state.expandDrop = state.expandDrop===row.dataset.key ? null : row.dataset.key; renderDrop(); }));
     }
@@ -293,7 +297,10 @@
       $('profit-count').textContent = `${list.length}件`;
       $('profit-body').innerHTML = list.map(item => {
         const key=itemKey(item), open=state.expandProfit===key, p=profit(item), store=item.topShop || item.shops?.[0]?.store || '-';
-        return `<tr class="item-row flag-profit" data-key="${esc(key)}"><td style="color:var(--muted);font-size:11px">${esc(item.categoryLabel)}</td><td><div class="name">${esc(item.name)}</div><div class="id">${item.jan?`JAN:${esc(item.jan)}`:esc(item.productId)}</div></td><td class="price">${yen(effective(item))}</td><td class="price" style="color:var(--green)">${yen(item.buyback)}</td><td class="price" style="color:var(--green)">+${num(p)}円</td><td>${esc(store)}</td></tr>${open?`<tr class="expand"><td colspan="6">${shopsHtml(item)}</td></tr>`:''}`;
+        const productLink = item.url || `https://kakaku.com/item/${item.productId}/`;
+        const currentShop = (item.shops || []).find(shop => shop.store === store);
+        const storeLabel = currentShop?.url ? `<a class="out" target="_blank" rel="noopener" href="${esc(currentShop.url)}">${esc(store)}</a>` : esc(store);
+        return `<tr class="item-row flag-profit" data-key="${esc(key)}"><td style="color:var(--muted);font-size:11px">${esc(item.categoryLabel)}</td><td><div class="name">${esc(item.name)}</div><div class="id">${item.jan ? `JAN:${esc(item.jan)}` : 'JAN:未取得'} / ${esc(item.productId)} <a class="out" target="_blank" rel="noopener" href="${esc(productLink)}">商品ページ</a></div></td><td class="price">${yen(effective(item))}</td><td class="price" style="color:var(--green)">${yen(item.buyback)}</td><td class="price" style="color:var(--green)">+${num(p)}円</td><td>${storeLabel}</td></tr>${open?`<tr class="expand"><td colspan="6">${shopsHtml(item)}</td></tr>`:''}`;
       }).join('') || '<tr><td colspan="6" class="empty">条件に合致する利益商品はありません。</td></tr>';
       $('profit-body').querySelectorAll('.item-row').forEach(row => row.addEventListener('click', () => { state.expandProfit = state.expandProfit===row.dataset.key ? null : row.dataset.key; renderProfit(); }));
     }
