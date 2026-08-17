@@ -46,6 +46,10 @@ body{background:#0d0f14;color:#e8eaf0;font-family:'Noto Sans JP',sans-serif;min-
 .card:hover .card-arrow,.card:active .card-arrow{color:#4fffb0;}
 .col.creator .card:hover .card-arrow,.col.creator .card:active .card-arrow{color:#a78bfa;}
 
+.kakaku-quick{display:flex;flex-wrap:wrap;gap:6px;margin:-4px 4px 2px;padding:0 4px;}
+.kakaku-quick a{font-size:10px;font-family:'JetBrains Mono',monospace;color:#9bc8ff;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.24);border-radius:999px;padding:5px 8px;text-decoration:none;transition:all .18s;}
+.kakaku-quick a:hover,.kakaku-quick a:active{color:#0d0f14;background:#60a5fa;border-color:#60a5fa;transform:translateY(-1px);}
+
 .hint{padding:0 24px 20px;max-width:1200px;width:100%;margin:0 auto;}
 .hint-box{background:#161920;border:1px solid #2a2f3f;border-radius:10px;padding:14px 16px;}
 .hint-title{font-size:10px;font-family:'JetBrains Mono',monospace;color:#454a60;letter-spacing:.1em;margin-bottom:8px;}
@@ -120,11 +124,19 @@ body{background:#0d0f14;color:#e8eaf0;font-family:'Noto Sans JP',sans-serif;min-
       <div class="card-icon blue">🏷️</div>
       <div class="card-body">
         <div class="card-name">価格.comランキング監視</div>
-        <div class="card-desc">ランキング上位商品の店舗別実質価格を定点観測。値下がり・店舗入替・買取価格との差益をまとめて確認。</div>
+        <div class="card-desc">ランキング上位商品の店舗別実質価格を定点観測。下のジャンルタグから、見たい分野だけ直接開けます。</div>
         <div class="card-badge">KAKAKU WATCH</div>
       </div>
       <div class="card-arrow">›</div>
     </a>
+    <nav class="kakaku-quick" aria-label="価格.comランキング監視のジャンルタグ">
+      <a href="./kakaku_ranking_dashboard.html?group=camera">📷 カメラ</a>
+      <a href="./kakaku_ranking_dashboard.html?group=pc">💻 PC・タブレット</a>
+      <a href="./kakaku_ranking_dashboard.html?group=home">🏠 白物家電</a>
+      <a href="./kakaku_ranking_dashboard.html?group=av">🎧 AV・情報家電</a>
+      <a href="./kakaku_ranking_dashboard.html?group=beauty">✨ 美容家電</a>
+      <a href="./kakaku_ranking_dashboard.html?group=gaming">🎮 ゲーム</a>
+    </nav>
 
     <a class="card" href="./price_dashboard.html">
       <div class="card-icon green">📊</div>

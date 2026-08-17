@@ -18,7 +18,7 @@
     main{padding:20px clamp(12px,3vw,32px) 42px}.tabs{display:flex;gap:5px;border-bottom:1px solid var(--border);margin-bottom:17px;flex-wrap:wrap}.tab{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--faint);padding:9px 9px;margin-bottom:-1px;cursor:pointer;font:700 17px "Barlow Condensed",sans-serif;letter-spacing:.04em}.tab:hover{color:var(--muted)}.tab.active{color:var(--amber);border-bottom-color:var(--amber)}
     .view{display:none}.view.active{display:block}.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:14px}.stat{padding:12px 14px;background:var(--panel);border:1px solid var(--border);border-radius:10px}.stat-label{font-size:10px;color:var(--faint);letter-spacing:.05em}.stat-value{font:700 28px "Barlow Condensed",sans-serif;color:var(--amber);line-height:1.1;margin-top:4px}.stat-value.good{color:var(--green)}.stat-value.alert{color:var(--coral)}.stat-value.info{color:var(--blue)}
     .panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:14px}.panel h2{font:700 18px "Barlow Condensed",sans-serif;letter-spacing:.04em;margin:0 0 12px}.subnote{margin:0 0 12px;font-size:11px;line-height:1.7;color:var(--faint)}
-    .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer}.chip:hover,.chip.active{background:var(--amber);border-color:var(--amber);color:var(--bg);font-weight:700}.input-wrap{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}.number-input,.search{border:1px solid var(--border);border-radius:6px;background:var(--panel2);color:var(--text);padding:6px 9px;font-size:12px}.number-input{width:82px;font-family:"JetBrains Mono",monospace}.search{margin-left:auto;min-width:min(250px,100%)}
+    .toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.chips{display:flex;gap:6px;flex-wrap:wrap}.chip{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer}.chip:hover,.chip.active{background:var(--amber);border-color:var(--amber);color:var(--bg);font-weight:700}.group-nav{padding:11px 12px;margin-bottom:12px;border:1px solid var(--border);border-radius:10px;background:rgba(33,42,77,.56)}.group-label{font:700 10px "Barlow Condensed",sans-serif;color:var(--faint);letter-spacing:.12em;margin:0 0 7px}.group-chip{border-color:rgba(96,165,250,.36);color:#9bc8ff}.group-chip:hover,.group-chip.active{background:var(--blue);border-color:var(--blue);color:var(--bg)}.input-wrap{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}.number-input,.search{border:1px solid var(--border);border-radius:6px;background:var(--panel2);color:var(--text);padding:6px 9px;font-size:12px}.number-input{width:82px;font-family:"JetBrains Mono",monospace}.search{margin-left:auto;min-width:min(250px,100%)}
     .table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:760px}th{text-align:left;color:var(--faint);font-weight:500;font-size:10px;letter-spacing:.04em;padding:7px 8px;border-bottom:1px solid var(--border);white-space:nowrap}td{padding:8px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}.item-row{cursor:pointer}.item-row:hover td{background:rgba(255,182,39,.05)}.flag-drop td{background:rgba(255,107,107,.06)}.flag-profit td{background:rgba(74,222,128,.06)}.flag-new td{background:rgba(96,165,250,.06)}
     .rank{font:700 14px "JetBrains Mono",monospace}.move{font:10px "JetBrains Mono",monospace;margin-left:3px}.move.up{color:var(--green)}.move.down{color:var(--coral)}.move.flat{color:var(--faint)}.name{font-size:13px;color:var(--text)}.id{font:10px "JetBrains Mono",monospace;color:var(--faint);margin-top:2px}.price{font:700 12px "JetBrains Mono",monospace;text-align:right;white-space:nowrap}.diff{font:11px "JetBrains Mono",monospace;text-align:right;white-space:nowrap}.diff.down{color:var(--coral)}.diff.up{color:var(--muted)}
     .badge{display:inline-block;font-size:10px;font-weight:700;line-height:1.4;padding:2px 6px;border-radius:4px;margin:0 3px 3px 0;white-space:nowrap}.badge.new{background:rgba(96,165,250,.18);color:var(--blue)}.badge.drop{background:rgba(255,107,107,.18);color:var(--coral)}.badge.profit{background:rgba(74,222,128,.18);color:var(--green)}.badge.shop,.badge.flip{background:rgba(255,182,39,.18);color:var(--amber)}.badge.missing,.badge.error{background:rgba(140,149,189,.18);color:var(--muted)}
@@ -57,6 +57,10 @@
       <p class="subnote">店舗の表示価格とポイント相当額を記録し、実質価格（表示価格 − ポイント相当額）で最安店・値下がり・利益を判定しています。送料はデータとして保持しますが、監視側設定で送料を含めない限り判定には加算しません。</p>
 
       <section id="view-ranking" class="view active">
+        <div class="group-nav">
+          <p class="group-label">ジャンルタグ — 大分類から絞り込む</p>
+          <div id="group-chips" class="chips"></div>
+        </div>
         <div id="category-chips" class="chips" style="margin-bottom:12px"></div>
         <div class="panel">
           <h2>カテゴリー内ランキング <span id="category-title" class="mono" style="font-size:11px;color:var(--faint);margin-left:6px"></span></h2>
@@ -87,7 +91,7 @@
   <script>
   (() => {
     'use strict';
-    const state = { data:null, currentCategory:null, expandRanking:null, expandDrop:null, expandProfit:null, dropThreshold:1000, profitThreshold:2000, gasUrl:'', gasKey:'' };
+    const state = { data:null, currentGroup:'all', currentCategory:null, expandRanking:null, expandDrop:null, expandProfit:null, dropThreshold:1000, profitThreshold:2000, gasUrl:'', gasKey:'' };
     const $ = (id) => document.getElementById(id);
     const esc = (value) => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
     const yen = (value) => value == null ? '-' : `¥${Number(value).toLocaleString('ja-JP')}`;
@@ -113,6 +117,27 @@
     const profit = (item) => item.profit != null ? item.profit : (item.buyback != null && effective(item) != null ? item.buyback - effective(item) : null);
     const isNew = (item) => item.prevRank == null;
     const getConfig = () => state.data?.config || {};
+
+    // 新カテゴリを追加しても、key または表示名のどちらかで大分類タグに自動で入る。
+    const CATEGORY_GROUPS = [
+      { key:'all', label:'すべて', icon:'▦', keys:[], labels:[] },
+      { key:'camera', label:'カメラ', icon:'📷', keys:['digital-camera','mirrorless-slr','digital-slr-camera','camera-lens','video-camera'], labels:['デジタルカメラ','ミラーレス','一眼レフ','一眼カメラ','レンズ','ビデオカメラ'] },
+      { key:'pc', label:'PC・タブレット', icon:'💻', keys:['note-pc','gaming-note-pc','mobile-note-pc','desktop-pc','mini-pc','gaming-pc','pc-server','mac-notebook','mac-desktop','tablet-pc','2in1-tablet','used-pc'], labels:['ノートパソコン','ゲーミングノート','モバイルノート','デスクトップ','ミニPC','ゲーミングPC','PCサーバー','Mac ノート','Macデスクトップ','タブレット','2in1','中古パソコン'] },
+      { key:'home', label:'白物家電', icon:'🏠', keys:['rice-cooker','vacuum-cleaner','microwave-oven','shaver'], labels:['炊飯器','掃除機','電子レンジ','オーブンレンジ','シェーバー'] },
+      { key:'av', label:'AV・情報家電', icon:'🎧', keys:['lcd-tv','blu-ray-recorder','headphones','speaker','mobile-battery','ic-dictionary','projector'], labels:['液晶テレビ','有機ELテレビ','ブルーレイ','DVDレコーダー','イヤホン','ヘッドホン','スピーカー','モバイルバッテリー','電子辞書','プロジェクター'] },
+      { key:'beauty', label:'美容家電', icon:'✨', keys:['women-shaver','hair-dryer','beauty-device','skincare-system'], labels:['女性用シェーバー','脱毛器','ヘアドライヤー','ドライヤー','美容器具','美容家電'] },
+      { key:'gaming', label:'ゲーム', icon:'🎮', keys:['game-console'], labels:['ゲーム機本体'] }
+    ];
+    const groupByKey = (key) => CATEGORY_GROUPS.find(g => g.key === key) || CATEGORY_GROUPS[0];
+    const categoryInGroup = (category, groupKey = state.currentGroup) => {
+      if (groupKey === 'all') return true;
+      const group = groupByKey(groupKey);
+      const key = String(category.key || '').toLowerCase();
+      const label = String(category.label || '');
+      return group.keys.some(k => key === k || key.includes(k)) || group.labels.some(text => label.includes(text));
+    };
+    const visibleCategories = () => (state.data?.categories || []).filter(category => categoryInGroup(category));
+    const visibleItems = () => visibleCategories().flatMap(cat => cat.items.map(item => ({...item, categoryKey:cat.key, categoryLabel:cat.label})));
 
     function showError(message) { $('error').textContent = message; $('error').classList.remove('hidden'); }
     function clearError() { $('error').classList.add('hidden'); $('error').textContent = ''; }
@@ -177,16 +202,35 @@
       $('stats').innerHTML = `<div class="stat"><div class="stat-label">追跡商品数</div><div class="stat-value">${num(items.length)}</div></div><div class="stat"><div class="stat-label">新規ランクイン</div><div class="stat-value info">${num(news)}</div></div><div class="stat"><div class="stat-label">値下がり検知（${num(state.dropThreshold)}円〜）</div><div class="stat-value alert">${num(drops)}</div></div><div class="stat"><div class="stat-label">利益条件ヒット（${num(state.profitThreshold)}円〜）</div><div class="stat-value good">${num(profits)}</div></div><div class="stat"><div class="stat-label">店舗入替あり</div><div class="stat-value">${num(shops)}</div></div><div class="stat"><div class="stat-label">Pt込み順位逆転</div><div class="stat-value">${num(flips)}</div></div>`;
     }
 
+    function renderGroupChips() {
+      const allCats = state.data?.categories || [];
+      const groups = CATEGORY_GROUPS.filter(group => group.key === 'all' || allCats.some(category => categoryInGroup(category, group.key)));
+      if (!groups.some(group => group.key === state.currentGroup)) state.currentGroup = 'all';
+      $('group-chips').innerHTML = groups.map(group => {
+        const count = group.key === 'all' ? allCats.length : allCats.filter(category => categoryInGroup(category, group.key)).length;
+        return `<button class="chip group-chip ${group.key===state.currentGroup?'active':''}" data-group="${esc(group.key)}">${group.icon} ${esc(group.label)} <span style="opacity:.68">${count}</span></button>`;
+      }).join('');
+      $('group-chips').querySelectorAll('[data-group]').forEach(button => button.addEventListener('click', () => {
+        state.currentGroup = button.dataset.group;
+        state.currentCategory = null;
+        state.expandRanking = null;
+        state.expandDrop = null;
+        state.expandProfit = null;
+        renderAll();
+      }));
+    }
+
     function renderCategoryChips() {
-      const cats = state.data?.categories || [];
-      if (!state.currentCategory && cats[0]) state.currentCategory = cats[0].key;
-      $('category-chips').innerHTML = cats.map(c => `<button class="chip ${c.key===state.currentCategory?'active':''}" data-category="${esc(c.key)}">${esc(c.label)} <span style="opacity:.65">${c.items.length}</span></button>`).join('');
+      const cats = visibleCategories();
+      if (!cats.some(category => category.key === state.currentCategory)) state.currentCategory = cats[0]?.key || null;
+      $('category-chips').innerHTML = cats.map(c => `<button class="chip ${c.key===state.currentCategory?'active':''}" data-category="${esc(c.key)}">${esc(c.label)} <span style="opacity:.65">${c.items.length}</span></button>`).join('') || '<span class="subnote">このタグに該当する取得済みカテゴリはまだありません。</span>';
       $('category-chips').querySelectorAll('[data-category]').forEach(button => button.addEventListener('click', () => { state.currentCategory = button.dataset.category; state.expandRanking = null; renderRanking(); }));
     }
 
     function renderRanking() {
+      renderGroupChips();
       renderCategoryChips();
-      const category = (state.data?.categories || []).find(c => c.key === state.currentCategory);
+      const category = visibleCategories().find(c => c.key === state.currentCategory);
       const query = $('ranking-search').value;
       const list = (category?.items || []).map(i => ({...i, categoryKey:category.key, categoryLabel:category.label})).filter(i => matches(i, query));
       $('category-title').textContent = category ? `${category.label} 上位${category.items.length}件` : '';
@@ -201,7 +245,7 @@
 
     function renderDrop() {
       const query = $('drop-search').value;
-      const list = allItems().filter(i => (priceDrop(i) ?? -Infinity) >= state.dropThreshold && matches(i, query)).sort((a,b) => priceDrop(b)-priceDrop(a));
+      const list = visibleItems().filter(i => (priceDrop(i) ?? -Infinity) >= state.dropThreshold && matches(i, query)).sort((a,b) => priceDrop(b)-priceDrop(a));
       $('drop-count').textContent = `${list.length}件`;
       $('drop-body').innerHTML = list.map(item => {
         const key=itemKey(item), open=state.expandDrop===key, oldP=prevEffective(item), newP=effective(item), drop=priceDrop(item);
@@ -214,7 +258,7 @@
 
     function renderProfit() {
       const query = $('profit-search').value;
-      const list = allItems().filter(i => (profit(i) ?? -Infinity) >= state.profitThreshold && matches(i, query)).sort((a,b) => profit(b)-profit(a));
+      const list = visibleItems().filter(i => (profit(i) ?? -Infinity) >= state.profitThreshold && matches(i, query)).sort((a,b) => profit(b)-profit(a));
       $('profit-count').textContent = `${list.length}件`;
       $('profit-body').innerHTML = list.map(item => {
         const key=itemKey(item), open=state.expandProfit===key, p=profit(item), store=item.topShop || item.shops?.[0]?.store || '-';
@@ -266,6 +310,8 @@
     const params = new URLSearchParams(location.search);
     state.gasUrl = params.get('gas_url') || sessionStorage.getItem('kakakuGasUrl') || '';
     state.gasKey = sessionStorage.getItem('kakakuGasKey') || '';
+    const requestedGroup = params.get('group');
+    if (CATEGORY_GROUPS.some(group => group.key === requestedGroup)) state.currentGroup = requestedGroup;
     $('gas-url').value = state.gasUrl; $('gas-key').value = state.gasKey;
     if (state.gasUrl && state.gasKey) loadData();
   })();
