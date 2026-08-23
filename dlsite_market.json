@@ -198,7 +198,7 @@
     },
     {
       "month": "2026-08",
-      "works": 2035
+      "works": 2176
     }
   ],
   "new_circles_by_month": [
@@ -400,7 +400,7 @@
     },
     {
       "month": "2026-08",
-      "circles": 253
+      "circles": 282
     }
   ],
   "cap_by_month": [
@@ -1107,16 +1107,16 @@
     },
     {
       "month": "2026-08",
-      "circles_active": 1319,
+      "circles_active": 1395,
       "max": 6,
       "p95": 3.0,
       "p99": 4.0,
-      "over3_ratio": 1.52,
+      "over3_ratio": 1.65,
       "dist": {
-        "1": 831,
-        "2": 293,
-        "3": 175,
-        "4": 12,
+        "1": 867,
+        "2": 311,
+        "3": 194,
+        "4": 15,
         "5": 3,
         "6": 5
       }
@@ -1535,43 +1535,43 @@
       "p75": 83.0,
       "p90": 197.0,
       "p99": 619.0,
-      "hit_ratio": 20.49
+      "hit_ratio": 20.56
     },
     {
       "month": "2026-05",
       "n": 2312,
       "median": 28.0,
-      "p75": 76.0,
-      "p90": 162.7,
-      "p99": 663.6,
-      "hit_ratio": 18.56
+      "p75": 76.2,
+      "p90": 163.6,
+      "p99": 663.8,
+      "hit_ratio": 18.77
     },
     {
       "month": "2026-06",
       "n": 2064,
       "median": 23.0,
       "p75": 53.0,
-      "p90": 124.0,
-      "p99": 413.7,
-      "hit_ratio": 13.57
+      "p90": 125.7,
+      "p99": 419.1,
+      "hit_ratio": 13.61
     },
     {
       "month": "2026-07",
       "n": 2800,
-      "median": 15.5,
-      "p75": 41.0,
-      "p90": 85.0,
-      "p99": 337.5,
-      "hit_ratio": 7.89
+      "median": 16.0,
+      "p75": 42.0,
+      "p90": 86.0,
+      "p99": 343.4,
+      "hit_ratio": 7.93
     },
     {
       "month": "2026-08",
-      "n": 2035,
+      "n": 2176,
       "median": 9.0,
       "p75": 22.0,
       "p90": 49.0,
-      "p99": 189.0,
-      "hit_ratio": 3.19
+      "p99": 191.2,
+      "hit_ratio": 3.31
     }
   ],
   "batting_by_month": [
@@ -1848,8 +1848,8 @@
     {
       "month": "2026-04",
       "new_circles": 182,
-      "hits": 30,
-      "batting_avg": 16.48
+      "hits": 32,
+      "batting_avg": 17.58
     },
     {
       "month": "2026-05",
@@ -1871,14 +1871,14 @@
     },
     {
       "month": "2026-08",
-      "new_circles": 253,
-      "hits": 7,
-      "batting_avg": 2.77
+      "new_circles": 282,
+      "hits": 10,
+      "batting_avg": 3.55
     }
   ],
   "summary": {
-    "total_works": 41190,
-    "total_circles": 7304,
+    "total_works": 41331,
+    "total_circles": 7333,
     "hit_threshold": 100,
     "works_per_circle": 5.64
   }
