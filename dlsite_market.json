@@ -198,7 +198,7 @@
     },
     {
       "month": "2026-08",
-      "works": 2285
+      "works": 2345
     }
   ],
   "new_circles_by_month": [
@@ -400,7 +400,7 @@
     },
     {
       "month": "2026-08",
-      "circles": 299
+      "circles": 311
     }
   ],
   "cap_by_month": [
@@ -1107,16 +1107,16 @@
     },
     {
       "month": "2026-08",
-      "circles_active": 1453,
+      "circles_active": 1482,
       "max": 6,
       "p95": 3.0,
       "p99": 4.0,
-      "over3_ratio": 1.79,
+      "over3_ratio": 1.96,
       "dist": {
-        "1": 892,
-        "2": 330,
-        "3": 205,
-        "4": 17,
+        "1": 902,
+        "2": 340,
+        "3": 211,
+        "4": 20,
         "5": 4,
         "6": 5
       }
@@ -1543,35 +1543,35 @@
       "median": 28.0,
       "p75": 77.0,
       "p90": 164.9,
-      "p99": 663.9,
-      "hit_ratio": 18.86
+      "p99": 664.9,
+      "hit_ratio": 18.99
     },
     {
       "month": "2026-06",
       "n": 2064,
       "median": 23.0,
       "p75": 54.0,
-      "p90": 126.7,
-      "p99": 423.4,
-      "hit_ratio": 13.86
+      "p90": 128.0,
+      "p99": 428.8,
+      "hit_ratio": 13.91
     },
     {
       "month": "2026-07",
       "n": 2800,
       "median": 16.0,
-      "p75": 42.0,
+      "p75": 43.0,
       "p90": 87.0,
-      "p99": 349.4,
-      "hit_ratio": 8.07
+      "p99": 351.4,
+      "hit_ratio": 8.18
     },
     {
       "month": "2026-08",
-      "n": 2285,
+      "n": 2345,
       "median": 9.0,
-      "p75": 22.0,
-      "p90": 48.0,
-      "p99": 199.6,
-      "hit_ratio": 3.54
+      "p75": 23.0,
+      "p90": 49.0,
+      "p99": 204.0,
+      "hit_ratio": 3.58
     }
   ],
   "batting_by_month": [
@@ -1871,14 +1871,14 @@
     },
     {
       "month": "2026-08",
-      "new_circles": 299,
+      "new_circles": 311,
       "hits": 13,
-      "batting_avg": 4.35
+      "batting_avg": 4.18
     }
   ],
   "summary": {
-    "total_works": 41440,
-    "total_circles": 7350,
+    "total_works": 41500,
+    "total_circles": 7362,
     "hit_threshold": 100,
     "works_per_circle": 5.64
   }
