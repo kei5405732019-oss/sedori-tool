@@ -1,16 +1,244 @@
 {
- "generated": "2026-09-09 05:30",
+ "generated": "2026-09-10 05:30",
  "signals": [
+  {
+   "id": "y4DYGdpGdKs",
+   "title": "Usodayo Sukidayo",
+   "cat": "音楽",
+   "src": "chart",
+   "ch": "King & Prince - Topic",
+   "subs": 13900,
+   "views": 454453,
+   "outlier": 32.7,
+   "age": 1176,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "bNtTE_O1oa4",
+   "title": "中国版SASUKEで無双した末路 #shorts #おもしろ",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "海外で笑おう",
+   "subs": 113000,
+   "views": 3951659,
+   "outlier": 35.0,
+   "age": 2039,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "cqt4Gs7m7uo",
+   "title": "滅びゆくマーベルに向けたデッドプールの辛辣な忠告",
+   "cat": "コメディ",
+   "src": "chart",
+   "ch": "4K_シネマムービー",
+   "subs": 34000,
+   "views": 1707732,
+   "outlier": 50.2,
+   "age": 275,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "weuSUtbEADk",
+   "title": "TOP FAN REACTIONS TO \" GODZILLA MINUS ZERO \" Trailer .",
+   "cat": "総合",
+   "src": "chart",
+   "ch": "Cinema ReaX",
+   "subs": 573,
+   "views": 57985,
+   "outlier": 101.2,
+   "age": 107,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "YCJAAaWj8Wk",
+   "title": "IGNITE",
+   "cat": "総合",
+   "src": "chart",
+   "ch": "JO1 - Topic",
+   "subs": 1030,
+   "views": 135906,
+   "outlier": 131.9,
+   "age": 2382,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "H48HvEYiNQA",
+   "title": "Metasequoia",
+   "cat": "総合",
+   "src": "chart",
+   "ch": "Mone Kamishiraishi - Topic",
+   "subs": 332,
+   "views": 63596,
+   "outlier": 191.6,
+   "age": 3656,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "SbpgAk8VHI4",
+   "title": "MISMATCH",
+   "cat": "音楽",
+   "src": "chart",
+   "ch": "LEE JISOO - Topic",
+   "subs": 6620,
+   "views": 202430,
+   "outlier": 30.6,
+   "age": 3,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "WE2ydI0ZYXw",
+   "title": "【嵐】“後輩からイジられる”松潤って最高な先輩だな？www#嵐 #shorts",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "いいねが好物さん",
+   "subs": 114000,
+   "views": 3609722,
+   "outlier": 31.7,
+   "age": 331,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "Ycsm_CyPd0M",
+   "title": "聞こえてくる謎の音正体を知って絶望",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "もふバズ",
+   "subs": 66500,
+   "views": 3223476,
+   "outlier": 48.5,
+   "age": 374,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "iArf7Bz6eTE",
+   "title": "ゼンデイヤを嫉妬させたトム・ホランド",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "ただひとつ",
+   "subs": 29500,
+   "views": 2092696,
+   "outlier": 70.9,
+   "age": 465,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "WozuE9i31pg",
+   "title": "毛利小五郎が麻酔薬に耐性を持つ理由 #shortvideo #viralvideo #comentarios #cartoonfilm",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "Gemmaris ",
+   "subs": 26800,
+   "views": 2861832,
+   "outlier": 106.8,
+   "age": 1726,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "-CFjAAw59F8",
+   "title": "兄の元カノが突然登場容赦ない弟の返し",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "カメライフ",
+   "subs": 10000,
+   "views": 4689840,
+   "outlier": 469.0,
+   "age": 267,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "8tfPxermcNg",
+   "title": "**竹田恒泰「中国EVは欧米で売れない」その理由とは？ #竹田恒泰 #切り抜き #そこまで言って委員会",
+   "cat": "エンタメ",
+   "src": "chart",
+   "ch": "見るだけ政治チャンネル",
+   "subs": 31100,
+   "views": 2412156,
+   "outlier": 77.6,
+   "age": 584,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "jiBQFerrDO8",
+   "title": "第6宇宙にもサイヤ人がいた！？悟空とベジータ、キャベと初めて語り合う！",
+   "cat": "映画アニメ",
+   "src": "chart",
+   "ch": "超サイヤ研究所",
+   "subs": 18200,
+   "views": 1135504,
+   "outlier": 62.4,
+   "age": 119,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "jw3sgE5tgc4",
+   "title": "坂本がまさか授業中にご飯を食べている。#映画 #シネマ #ショートフィルム #レビュー",
+   "cat": "映画アニメ",
+   "src": "chart",
+   "ch": "Movie切り抜き",
+   "subs": 12500,
+   "views": 1432715,
+   "outlier": 114.6,
+   "age": 232,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "B5rrab0tWOM",
+   "title": "脱出したい惑星で… 頼れるのは裏切り者w #アベンジャーズ #マーベル #マーベル映画",
+   "cat": "映画アニメ",
+   "src": "chart",
+   "ch": "チラ見シネマ",
+   "subs": 33500,
+   "views": 1584459,
+   "outlier": 47.3,
+   "age": 170,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "Y85qycFRhW8",
+   "title": "俺にしか見えないもの #shorts",
+   "cat": "映画アニメ",
+   "src": "chart",
+   "ch": "スカッと撃退お兄さん",
+   "subs": 35500,
+   "views": 1477317,
+   "outlier": 41.6,
+   "age": 1037,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "3G-SWV4bRo4",
+   "title": "最速の男が… 首を支える理由",
+   "cat": "映画アニメ",
+   "src": "chart",
+   "ch": "オイシイワールド",
+   "subs": 16600,
+   "views": 1092986,
+   "outlier": 65.8,
+   "age": 157,
+   "date": "2026-09-09"
+  },
+  {
+   "id": "ZLwcYcPMBw4",
+   "title": "ちいかわの手のひらで転がされる人間たち",
+   "cat": "ハウツー",
+   "src": "chart",
+   "ch": "山田太郎128世",
+   "subs": 54100,
+   "views": 1781658,
+   "outlier": 32.9,
+   "age": 382,
+   "date": "2026-09-09"
+  },
   {
    "id": "nKfitzcnr74",
    "title": "Movie Star",
    "cat": "総合",
    "src": "chart",
    "ch": "LEE JISOO - Topic",
-   "subs": 6170,
-   "views": 93158,
-   "outlier": 15.1,
-   "age": 2,
+   "subs": 6620,
+   "views": 124242,
+   "outlier": 18.8,
+   "age": 3,
    "date": "2026-09-08"
   },
   {
@@ -22,7 +250,7 @@
    "subs": 3050,
    "views": 144719,
    "outlier": 47.4,
-   "age": 860,
+   "age": 861,
    "date": "2026-09-08"
   },
   {
@@ -31,10 +259,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "海外ざんまい",
-   "subs": 29700,
-   "views": 3673442,
-   "outlier": 123.7,
-   "age": 310,
+   "subs": 30000,
+   "views": 3863015,
+   "outlier": 128.8,
+   "age": 311,
    "date": "2026-09-08"
   },
   {
@@ -43,10 +271,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "Xx面白保管庫xX",
-   "subs": 45100,
-   "views": 2295108,
-   "outlier": 50.9,
-   "age": 112,
+   "subs": 45500,
+   "views": 2858244,
+   "outlier": 62.8,
+   "age": 113,
    "date": "2026-09-08"
   },
   {
@@ -55,10 +283,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "意外とおもしろい",
-   "subs": 42900,
-   "views": 1545562,
-   "outlier": 36.0,
-   "age": 435,
+   "subs": 43200,
+   "views": 1909377,
+   "outlier": 44.2,
+   "age": 436,
    "date": "2026-09-08"
   },
   {
@@ -67,10 +295,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "ムックの宝庫",
-   "subs": 11500,
-   "views": 1012989,
-   "outlier": 88.1,
-   "age": 189,
+   "subs": 12200,
+   "views": 1469826,
+   "outlier": 120.5,
+   "age": 190,
    "date": "2026-09-08"
   },
   {
@@ -79,10 +307,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "ムックの宝庫",
-   "subs": 11500,
-   "views": 1488341,
-   "outlier": 129.4,
-   "age": 189,
+   "subs": 12200,
+   "views": 2077865,
+   "outlier": 170.3,
+   "age": 190,
    "date": "2026-09-08"
   },
   {
@@ -91,10 +319,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "Adu LakLak",
-   "subs": 15000,
-   "views": 1071301,
-   "outlier": 71.4,
-   "age": 2612,
+   "subs": 15100,
+   "views": 1783944,
+   "outlier": 118.1,
+   "age": 2613,
    "date": "2026-09-08"
   },
   {
@@ -103,10 +331,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "笑いを届ける人",
-   "subs": 12600,
-   "views": 1249307,
-   "outlier": 99.2,
-   "age": 3882,
+   "subs": 13300,
+   "views": 1638986,
+   "outlier": 123.2,
+   "age": 3883,
    "date": "2026-09-08"
   },
   {
@@ -115,10 +343,10 @@
    "cat": "総合",
    "src": "chart",
    "ch": "M!LK",
-   "subs": 40200,
-   "views": 1657049,
-   "outlier": 41.2,
-   "age": 1884,
+   "subs": 40300,
+   "views": 1881904,
+   "outlier": 46.7,
+   "age": 1885,
    "date": "2026-09-07"
   },
   {
@@ -128,9 +356,9 @@
    "src": "chart",
    "ch": "Hatsuboshi Gakuen - Topic",
    "subs": 3050,
-   "views": 460147,
-   "outlier": 150.9,
-   "age": 860,
+   "views": 560801,
+   "outlier": 183.9,
+   "age": 861,
    "date": "2026-09-07"
   },
   {
@@ -140,9 +368,9 @@
    "src": "chart",
    "ch": "Ado - Topic",
    "subs": 3480,
-   "views": 581349,
-   "outlier": 167.1,
-   "age": 4009,
+   "views": 673850,
+   "outlier": 193.6,
+   "age": 4010,
    "date": "2026-09-07"
   },
   {
@@ -152,9 +380,9 @@
    "src": "chart",
    "ch": "セカイノマド",
    "subs": 92400,
-   "views": 3169178,
-   "outlier": 34.3,
-   "age": 790,
+   "views": 3255722,
+   "outlier": 35.2,
+   "age": 791,
    "date": "2026-09-07"
   },
   {
@@ -166,7 +394,7 @@
    "subs": 123000,
    "views": 2179078,
    "outlier": 17.7,
-   "age": 163,
+   "age": 164,
    "date": "2026-09-07"
   },
   {
@@ -178,7 +406,7 @@
    "subs": 2170,
    "views": 296343,
    "outlier": 136.6,
-   "age": 3793,
+   "age": 3794,
    "date": "2026-09-07"
   },
   {
@@ -187,10 +415,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "もふバズ",
-   "subs": 65800,
+   "subs": 66500,
    "views": 3268088,
-   "outlier": 49.7,
-   "age": 373,
+   "outlier": 49.1,
+   "age": 374,
    "date": "2026-09-07"
   },
   {
@@ -199,10 +427,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "MintyMochi",
-   "subs": 14100,
-   "views": 1862130,
-   "outlier": 132.1,
-   "age": 3708,
+   "subs": 14600,
+   "views": 2035713,
+   "outlier": 139.4,
+   "age": 3709,
    "date": "2026-09-07"
   },
   {
@@ -211,10 +439,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "4K_シネマムービー",
-   "subs": 33500,
+   "subs": 34000,
    "views": 2327310,
-   "outlier": 69.5,
-   "age": 274,
+   "outlier": 68.5,
+   "age": 275,
    "date": "2026-09-07"
   },
   {
@@ -223,10 +451,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "なんだこりゃ",
-   "subs": 56400,
-   "views": 4305632,
-   "outlier": 76.3,
-   "age": 302,
+   "subs": 56800,
+   "views": 5330136,
+   "outlier": 93.8,
+   "age": 303,
    "date": "2026-09-07"
   },
   {
@@ -235,10 +463,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "ケーポたんてい",
-   "subs": 74700,
+   "subs": 74800,
    "views": 3844084,
-   "outlier": 51.5,
-   "age": 600,
+   "outlier": 51.4,
+   "age": 601,
    "date": "2026-09-07"
   },
   {
@@ -247,10 +475,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "シネマの記憶",
-   "subs": 20300,
+   "subs": 20500,
    "views": 1710240,
-   "outlier": 84.2,
-   "age": 321,
+   "outlier": 83.4,
+   "age": 322,
    "date": "2026-09-07"
   },
   {
@@ -259,10 +487,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "千年ぶりのYouTube",
-   "subs": 168000,
-   "views": 6914029,
-   "outlier": 41.2,
-   "age": 943,
+   "subs": 169000,
+   "views": 7312843,
+   "outlier": 43.3,
+   "age": 944,
    "date": "2026-09-06"
   },
   {
@@ -274,7 +502,7 @@
    "subs": 166000,
    "views": 5310926,
    "outlier": 32.0,
-   "age": 2069,
+   "age": 2070,
    "date": "2026-09-06"
   },
   {
@@ -283,10 +511,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "アニマル研究室",
-   "subs": 106000,
-   "views": 4293974,
-   "outlier": 40.5,
-   "age": 547,
+   "subs": 107000,
+   "views": 4832475,
+   "outlier": 45.2,
+   "age": 548,
    "date": "2026-09-06"
   },
   {
@@ -296,9 +524,9 @@
    "src": "chart",
    "ch": "THE RAMPAGE from EXILE TRIBE - Topic",
    "subs": 7170,
-   "views": 554449,
-   "outlier": 77.3,
-   "age": 4040,
+   "views": 651208,
+   "outlier": 90.8,
+   "age": 4041,
    "date": "2026-09-06"
   },
   {
@@ -308,9 +536,9 @@
    "src": "chart",
    "ch": "つばき蛍",
    "subs": 110000,
-   "views": 4178511,
-   "outlier": 38.0,
-   "age": 2572,
+   "views": 4298045,
+   "outlier": 39.1,
+   "age": 2573,
    "date": "2026-09-06"
   },
   {
@@ -319,10 +547,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "いいねが好物さん",
-   "subs": 113000,
+   "subs": 114000,
    "views": 5315584,
-   "outlier": 47.0,
-   "age": 330,
+   "outlier": 46.6,
+   "age": 331,
    "date": "2026-09-06"
   },
   {
@@ -331,10 +559,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "Jamil one man",
-   "subs": 138000,
+   "subs": 139000,
    "views": 2873880,
-   "outlier": 20.8,
-   "age": 182,
+   "outlier": 20.7,
+   "age": 183,
    "date": "2026-09-06"
   },
   {
@@ -343,10 +571,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "POPPY JUMPSCARES",
-   "subs": 11700,
-   "views": 9116448,
-   "outlier": 779.2,
-   "age": 6733,
+   "subs": 12400,
+   "views": 9862751,
+   "outlier": 795.4,
+   "age": 6734,
    "date": "2026-09-06"
   },
   {
@@ -355,10 +583,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "海外で笑おう",
-   "subs": 112000,
+   "subs": 113000,
    "views": 4254294,
-   "outlier": 38.0,
-   "age": 2038,
+   "outlier": 37.6,
+   "age": 2039,
    "date": "2026-09-06"
   },
   {
@@ -367,10 +595,10 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "たったの1分",
-   "subs": 37100,
+   "subs": 37200,
    "views": 5531799,
-   "outlier": 149.1,
-   "age": 396,
+   "outlier": 148.7,
+   "age": 397,
    "date": "2026-09-06"
   },
   {
@@ -379,10 +607,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "チラ見シネマ",
-   "subs": 33300,
+   "subs": 33500,
    "views": 2134719,
-   "outlier": 64.1,
-   "age": 169,
+   "outlier": 63.7,
+   "age": 170,
    "date": "2026-09-06"
   },
   {
@@ -391,10 +619,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "1分エンジョイ",
-   "subs": 38200,
+   "subs": 38300,
    "views": 3500923,
-   "outlier": 91.6,
-   "age": 337,
+   "outlier": 91.4,
+   "age": 338,
    "date": "2026-09-06"
   },
   {
@@ -403,10 +631,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "東京ワロタイムズ",
-   "subs": 11800,
+   "subs": 11900,
    "views": 1414667,
-   "outlier": 119.9,
-   "age": 97,
+   "outlier": 118.9,
+   "age": 98,
    "date": "2026-09-06"
   },
   {
@@ -415,10 +643,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "笑えば大丈夫",
-   "subs": 21900,
-   "views": 2528238,
-   "outlier": 115.4,
-   "age": 2607,
+   "subs": 22300,
+   "views": 2829673,
+   "outlier": 126.9,
+   "age": 2608,
    "date": "2026-09-06"
   },
   {
@@ -427,10 +655,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "名作アーカイブ",
-   "subs": 32300,
-   "views": 2395667,
-   "outlier": 74.2,
-   "age": 5856,
+   "subs": 32500,
+   "views": 2675442,
+   "outlier": 82.3,
+   "age": 5857,
    "date": "2026-09-06"
   },
   {
@@ -439,10 +667,10 @@
    "cat": "映画アニメ",
    "src": "chart",
    "ch": "バズアニメ全書",
-   "subs": 18800,
+   "subs": 19200,
    "views": 1650423,
-   "outlier": 87.8,
-   "age": 54,
+   "outlier": 86.0,
+   "age": 55,
    "date": "2026-09-06"
   },
   {
@@ -451,10 +679,10 @@
    "cat": "ハウツー",
    "src": "chart",
    "ch": "勝手にランキング",
-   "subs": 37600,
+   "subs": 38900,
    "views": 2919261,
-   "outlier": 77.6,
-   "age": 121,
+   "outlier": 75.0,
+   "age": 122,
    "date": "2026-09-06"
   },
   {
@@ -463,10 +691,10 @@
    "cat": "コメディ",
    "src": "chart",
    "ch": "Adu LakLak",
-   "subs": 15000,
+   "subs": 15100,
    "views": 1435271,
-   "outlier": 95.7,
-   "age": 2612,
+   "outlier": 95.1,
+   "age": 2613,
    "date": "2026-09-06"
   },
   {
@@ -478,7 +706,7 @@
    "subs": 192000,
    "views": 7270206,
    "outlier": 37.9,
-   "age": 1248,
+   "age": 1249,
    "date": "2026-09-05"
   },
   {
@@ -487,242 +715,26 @@
    "cat": "エンタメ",
    "src": "chart",
    "ch": "バズワールド",
-   "subs": 32700,
-   "views": 8520995,
-   "outlier": 260.6,
-   "age": 441,
+   "subs": 32800,
+   "views": 8978689,
+   "outlier": 273.7,
+   "age": 442,
    "date": "2026-09-05"
-  },
-  {
-   "id": "HU9PlTxvHgo",
-   "title": "クワガタを洗濯したことがある方...　いませんか？",
-   "cat": "エンタメ",
-   "src": "chart",
-   "ch": "逆襲の和田",
-   "subs": 26800,
-   "views": 2222976,
-   "outlier": 82.9,
-   "age": 2146,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "eiTxoiaoGJY",
-   "title": "女友達とバンジーアリ？ナシ？",
-   "cat": "エンタメ",
-   "src": "chart",
-   "ch": "海外バズ速報",
-   "subs": 16800,
-   "views": 5085233,
-   "outlier": 302.7,
-   "age": 190,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "5ElBjw-6F3s",
-   "title": "映画館が一瞬でパニックに",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "教えてショート",
-   "subs": 16500,
-   "views": 5114955,
-   "outlier": 310.0,
-   "age": 353,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "gJv3eVBWABs",
-   "title": "あゆみが明かりをつけたことで、津川館長に気づかれてしまった #shortvideo #viralvideo #comentarios #cartoonfilm",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "Gemmaris ",
-   "subs": 26600,
-   "views": 4591373,
-   "outlier": 172.6,
-   "age": 1725,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "cvliHQU5188",
-   "title": "トップ俳優は声優もできちゃうんだね#shorts #おすすめ #おもしろ #アニメ",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "アドライフ【5秒で笑える動画製作所】",
-   "subs": 16800,
-   "views": 1508679,
-   "outlier": 89.8,
-   "age": 523,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "AVPKdBnfL6s",
-   "title": "関係者がクセ強すぎるｗ",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "FTZ tv",
-   "subs": 50900,
-   "views": 3457894,
-   "outlier": 67.9,
-   "age": 1510,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "kq_O42hi9jQ",
-   "title": "スパイダーマンの意外すぎる才能 TOP3",
-   "cat": "映画アニメ",
-   "src": "chart",
-   "ch": "映画撮るグロミット",
-   "subs": 10500,
-   "views": 2268166,
-   "outlier": 216.0,
-   "age": 354,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "Au1Krs6AJTs",
-   "title": "大人になった息子が父親に抱きつくと",
-   "cat": "ハウツー",
-   "src": "chart",
-   "ch": "ちょっと1分",
-   "subs": 38500,
-   "views": 4545559,
-   "outlier": 118.1,
-   "age": 621,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "_AxxIfoTghY",
-   "title": "男女で違いすぎるイタズラのレベル",
-   "cat": "ハウツー",
-   "src": "chart",
-   "ch": "クレイジーアース",
-   "subs": 72200,
-   "views": 4411914,
-   "outlier": 61.1,
-   "age": 175,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "WiGwKYPRWV8",
-   "title": "スタッフが動かない中、よしこを救いに行ったちゃんみな #感動する話 #芸人 #感動",
-   "cat": "ハウツー",
-   "src": "chart",
-   "ch": "ピヨの芸能感動話",
-   "subs": 50300,
-   "views": 6801763,
-   "outlier": 135.2,
-   "age": 1410,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "QB4haNEnxVo",
-   "title": "目が追えない速射弓術！師匠 vs 天才弟子",
-   "cat": "ハウツー",
-   "src": "chart",
-   "ch": "一分抜刀",
-   "subs": 14800,
-   "views": 5527284,
-   "outlier": 373.5,
-   "age": 526,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "1zQT7W9AuxM",
-   "title": "歴代級の「平和ないたずら」愉快な家族 TOP3",
-   "cat": "コメディ",
-   "src": "chart",
-   "ch": "トラショ",
-   "subs": 44400,
-   "views": 3792650,
-   "outlier": 85.4,
-   "age": 334,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "hOUAV3McT5Q",
-   "title": "ギャルが作る梅、まさかの仕上がりにびっくりwww",
-   "cat": "コメディ",
-   "src": "chart",
-   "ch": "Jazz Coffee Shop",
-   "subs": 35600,
-   "views": 3800181,
-   "outlier": 106.7,
-   "age": 1491,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "s2HkO16LYVA",
-   "title": "遠藤の浮気クセ  ヤバ〜い#ココリコ 遠藤 #離婚 #結婚 #元嫁 #恋愛 #恋愛相談 #浮気 #相性 #相手の本音 #大好きな人の気持ち #占い",
-   "cat": "コメディ",
-   "src": "chart",
-   "ch": "リョウ",
-   "subs": 10100,
-   "views": 5537019,
-   "outlier": 548.2,
-   "age": 3115,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "3Zk5RN2sEjw",
-   "title": "エイプリルフールに生徒よりノリノリになっちゃった先生ｗｗ",
-   "cat": "コメディ",
-   "src": "chart",
-   "ch": "マジかよ",
-   "subs": 19300,
-   "views": 2734052,
-   "outlier": 141.7,
-   "age": 264,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "NTTO2EQjzGk",
-   "title": "愛に対する考え方は人それぞれ！一番大切なのは相性です。",
-   "cat": "コメディ",
-   "src": "chart",
-   "ch": "Lan Ngoc",
-   "subs": 12800,
-   "views": 1807659,
-   "outlier": 141.2,
-   "age": 3071,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "0D_YpHr-MPw",
-   "title": "妻の一言で夫がブチギレその衝撃すぎる理由",
-   "cat": "コメディ",
-   "src": "chart",
-   "ch": "気づいたら沼",
-   "subs": 10600,
-   "views": 2436942,
-   "outlier": 229.9,
-   "age": 455,
-   "date": "2026-09-05"
-  },
-  {
-   "id": "ZNucwN80tLE",
-   "title": "水上アスレチックの瞬間！",
-   "cat": "ハウツー",
-   "src": "chart",
-   "ch": "笑ンク",
-   "subs": 384000,
-   "views": 13909925,
-   "outlier": 36.2,
-   "age": 222,
-   "date": "2026-09-04"
-  },
-  {
-   "id": "Kms0rAGe-qw",
-   "title": "本気の人は目を見れば分かる",
-   "cat": "エンタメ",
-   "src": "chart",
-   "ch": "心のままに",
-   "subs": 115000,
-   "views": 7373578,
-   "outlier": 64.1,
-   "age": 388,
-   "date": "2026-09-04"
   }
  ],
  "custom": [
+  {
+   "id": "Wfaam86Zk-A",
+   "title": "[アニソン:作業用BGM]【黒子のバスケ/GRANRODEO】オリジナルメドレー(4曲)Full",
+   "cat": "custom",
+   "src": "アニメ 作業用BGM オリジナル",
+   "ch": "Lv8農夫",
+   "subs": 630,
+   "views": 53845,
+   "outlier": 85.5,
+   "age": 4519,
+   "date": "2026-09-09"
+  },
   {
    "id": "4RBXjCW93NY",
    "title": "【作業用BGM】Sword Art Online Anime Full Songsソードアート•オンライン SAO 神曲アニソンメドレー",
@@ -730,9 +742,9 @@
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "ちゃらあ",
    "subs": 13,
-   "views": 8727,
-   "outlier": 87.3,
-   "age": 1309,
+   "views": 8748,
+   "outlier": 87.5,
+   "age": 1310,
    "date": "2026-09-08"
   },
   {
@@ -742,9 +754,9 @@
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "切り抜くペコ",
    "subs": 3700,
-   "views": 1189223,
-   "outlier": 321.4,
-   "age": 2132,
+   "views": 1189522,
+   "outlier": 321.5,
+   "age": 2133,
    "date": "2026-09-08"
   },
   {
@@ -753,10 +765,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "koチャンネル",
-   "subs": 744,
+   "subs": 747,
    "views": 1030680,
-   "outlier": 1385.3,
-   "age": 1520,
+   "outlier": 1379.8,
+   "age": 1521,
    "date": "2026-09-07"
   },
   {
@@ -768,7 +780,7 @@
    "subs": 4790,
    "views": 1174931,
    "outlier": 245.3,
-   "age": 1170,
+   "age": 1171,
    "date": "2026-09-07"
   },
   {
@@ -780,7 +792,7 @@
    "subs": 551,
    "views": 14743,
    "outlier": 26.8,
-   "age": 1272,
+   "age": 1273,
    "date": "2026-09-06"
   },
   {
@@ -789,10 +801,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "マーチチャンネル",
-   "subs": 3770,
-   "views": 162323,
-   "outlier": 43.1,
-   "age": 2004,
+   "subs": 3780,
+   "views": 162348,
+   "outlier": 42.9,
+   "age": 2005,
    "date": "2026-09-05"
   },
   {
@@ -801,10 +813,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "Kimura Yunu",
-   "subs": 15000,
+   "subs": 15100,
    "views": 313647,
-   "outlier": 20.9,
-   "age": 96,
+   "outlier": 20.8,
+   "age": 97,
    "date": "2026-09-05"
   },
   {
@@ -813,10 +825,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "Dragons- ドラゴンズ",
-   "subs": 8260,
+   "subs": 8270,
    "views": 387183,
-   "outlier": 46.9,
-   "age": 1254,
+   "outlier": 46.8,
+   "age": 1255,
    "date": "2026-09-05"
   },
   {
@@ -826,9 +838,9 @@
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "ネッシー店長(iNat)のゲーム実況",
    "subs": 4110,
-   "views": 312538,
-   "outlier": 76.0,
-   "age": 5563,
+   "views": 312750,
+   "outlier": 76.1,
+   "age": 5564,
    "date": "2026-09-04"
   },
   {
@@ -840,7 +852,7 @@
    "subs": 8800,
    "views": 5131811,
    "outlier": 583.2,
-   "age": 3402,
+   "age": 3403,
    "date": "2026-09-04"
   },
   {
@@ -852,7 +864,7 @@
    "subs": 3440,
    "views": 166010,
    "outlier": 48.3,
-   "age": 2463,
+   "age": 2464,
    "date": "2026-09-04"
   },
   {
@@ -864,7 +876,7 @@
    "subs": 4420,
    "views": 3159429,
    "outlier": 714.8,
-   "age": 5064,
+   "age": 5065,
    "date": "2026-08-29"
   },
   {
@@ -874,9 +886,9 @@
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "바카라 미진이",
    "subs": 29400,
-   "views": 1327283,
+   "views": 1327395,
    "outlier": 45.1,
-   "age": 3447,
+   "age": 3448,
    "date": "2026-08-28"
   },
   {
@@ -888,7 +900,7 @@
    "subs": 43200,
    "views": 1047033,
    "outlier": 24.2,
-   "age": 5943,
+   "age": 5944,
    "date": "2026-08-28"
   },
   {
@@ -900,7 +912,7 @@
    "subs": 1840,
    "views": 32545,
    "outlier": 17.7,
-   "age": 127,
+   "age": 128,
    "date": "2026-08-25"
   },
   {
@@ -909,10 +921,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "ナ【ディズニーオタク】",
-   "subs": 1940,
+   "subs": 1950,
    "views": 1322504,
-   "outlier": 681.7,
-   "age": 804,
+   "outlier": 678.2,
+   "age": 805,
    "date": "2026-08-22"
   },
   {
@@ -924,7 +936,7 @@
    "subs": 630,
    "views": 24219,
    "outlier": 38.4,
-   "age": 4518,
+   "age": 4519,
    "date": "2026-08-19"
   },
   {
@@ -933,10 +945,10 @@
    "cat": "custom",
    "src": "fantasy tavern music",
    "ch": "Firelight Tavern",
-   "subs": 6910,
-   "views": 183380,
-   "outlier": 26.5,
-   "age": 247,
+   "subs": 6920,
+   "views": 227351,
+   "outlier": 32.9,
+   "age": 248,
    "date": "2026-08-18"
   },
   {
@@ -945,10 +957,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "Ken's Cafe&Jazz Lounge BGM",
-   "subs": 5580,
+   "subs": 5590,
    "views": 185456,
    "outlier": 33.2,
-   "age": 647,
+   "age": 648,
    "date": "2026-08-17"
   },
   {
@@ -960,7 +972,7 @@
    "subs": 694000,
    "views": 28080189,
    "outlier": 40.5,
-   "age": 5476,
+   "age": 5477,
    "date": "2026-08-17"
   },
   {
@@ -972,7 +984,7 @@
    "subs": 1080,
    "views": 93142,
    "outlier": 86.2,
-   "age": 3347,
+   "age": 3348,
    "date": "2026-08-17"
   },
   {
@@ -982,9 +994,9 @@
    "src": "medieval folk music",
    "ch": "Elthin",
    "subs": 43200,
-   "views": 1587891,
+   "views": 1588985,
    "outlier": 36.8,
-   "age": 5943,
+   "age": 5944,
    "date": "2026-08-17"
   },
   {
@@ -996,7 +1008,7 @@
    "subs": 128000,
    "views": 2027588,
    "outlier": 15.8,
-   "age": 3348,
+   "age": 3349,
    "date": "2026-08-16"
   },
   {
@@ -1008,7 +1020,7 @@
    "subs": 18800,
    "views": 1141519,
    "outlier": 60.7,
-   "age": 362,
+   "age": 363,
    "date": "2026-08-16"
   },
   {
@@ -1017,10 +1029,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "猗窩座 OST",
-   "subs": 7250,
+   "subs": 7270,
    "views": 2437926,
-   "outlier": 336.3,
-   "age": 1926,
+   "outlier": 335.3,
+   "age": 1927,
    "date": "2026-08-16"
   },
   {
@@ -1032,7 +1044,7 @@
    "subs": 35000,
    "views": 51239941,
    "outlier": 1464.0,
-   "age": 4705,
+   "age": 4706,
    "date": "2026-08-16"
   },
   {
@@ -1044,7 +1056,7 @@
    "subs": 6580,
    "views": 12434298,
    "outlier": 1889.7,
-   "age": 6325,
+   "age": 6326,
    "date": "2026-08-16"
   },
   {
@@ -1056,7 +1068,7 @@
    "subs": 1180,
    "views": 135290,
    "outlier": 114.7,
-   "age": 139,
+   "age": 140,
    "date": "2026-08-14"
   },
   {
@@ -1068,7 +1080,7 @@
    "subs": 5770,
    "views": 1226906,
    "outlier": 212.6,
-   "age": 564,
+   "age": 565,
    "date": "2026-08-11"
   },
   {
@@ -1080,7 +1092,7 @@
    "subs": 2250,
    "views": 1774886,
    "outlier": 788.8,
-   "age": 968,
+   "age": 969,
    "date": "2026-08-11"
   },
   {
@@ -1092,7 +1104,7 @@
    "subs": 2450,
    "views": 1140064,
    "outlier": 465.3,
-   "age": 1888,
+   "age": 1889,
    "date": "2026-08-09"
   },
   {
@@ -1102,9 +1114,9 @@
    "src": "ケルト音楽 作業用",
    "ch": "Hamu’s Cozy BGM",
    "subs": 1840,
-   "views": 63412,
-   "outlier": 34.5,
-   "age": 127,
+   "views": 63585,
+   "outlier": 34.6,
+   "age": 128,
    "date": "2026-08-09"
   },
   {
@@ -1113,10 +1125,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "Sakura Cafe BGM【ケルト音楽で整える、癒しの時間】",
-   "subs": 3630,
+   "subs": 3640,
    "views": 111970,
    "outlier": 30.8,
-   "age": 164,
+   "age": 165,
    "date": "2026-08-09"
   },
   {
@@ -1128,7 +1140,7 @@
    "subs": 9480,
    "views": 1967066,
    "outlier": 207.5,
-   "age": 3150,
+   "age": 3151,
    "date": "2026-08-07"
   },
   {
@@ -1138,9 +1150,9 @@
    "src": "medieval folk music",
    "ch": "Brandon Fiechter's Music",
    "subs": 141000,
-   "views": 2736739,
+   "views": 2738261,
    "outlier": 19.4,
-   "age": 5163,
+   "age": 5164,
    "date": "2026-08-06"
   },
   {
@@ -1150,9 +1162,9 @@
    "src": "medieval folk music",
    "ch": "tice music | Celtic Fantasy Music",
    "subs": 28700,
-   "views": 1470838,
-   "outlier": 51.2,
-   "age": 5129,
+   "views": 1473970,
+   "outlier": 51.4,
+   "age": 5130,
    "date": "2026-08-06"
   },
   {
@@ -1164,7 +1176,7 @@
    "subs": 13100,
    "views": 585886,
    "outlier": 44.7,
-   "age": 390,
+   "age": 391,
    "date": "2026-08-05"
   },
   {
@@ -1174,9 +1186,9 @@
    "src": "medieval folk music",
    "ch": "lost treasure",
    "subs": 18600,
-   "views": 2581346,
+   "views": 2582297,
    "outlier": 138.8,
-   "age": 1977,
+   "age": 1978,
    "date": "2026-08-03"
   },
   {
@@ -1188,7 +1200,7 @@
    "subs": 21100,
    "views": 349615,
    "outlier": 16.6,
-   "age": 890,
+   "age": 891,
    "date": "2026-08-02"
   },
   {
@@ -1197,10 +1209,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "Strings of Eternity",
-   "subs": 43700,
+   "subs": 43800,
    "views": 1113696,
-   "outlier": 25.5,
-   "age": 378,
+   "outlier": 25.4,
+   "age": 379,
    "date": "2026-08-02"
   },
   {
@@ -1212,7 +1224,7 @@
    "subs": 443000,
    "views": 36170847,
    "outlier": 81.6,
-   "age": 3101,
+   "age": 3102,
    "date": "2026-08-02"
   },
   {
@@ -1221,10 +1233,10 @@
    "cat": "custom",
    "src": "ケルト音楽 作業用",
    "ch": "異世界 Fantasia BGM",
-   "subs": 3500,
+   "subs": 3490,
    "views": 78807,
-   "outlier": 22.5,
-   "age": 727,
+   "outlier": 22.6,
+   "age": 728,
    "date": "2026-08-02"
   },
   {
@@ -1233,10 +1245,10 @@
    "cat": "custom",
    "src": "アニメ 作業用BGM オリジナル",
    "ch": "PerfectKoji",
-   "subs": 7990,
+   "subs": 8000,
    "views": 2707574,
-   "outlier": 338.9,
-   "age": 1100,
+   "outlier": 338.4,
+   "age": 1101,
    "date": "2026-07-31"
   },
   {
@@ -1248,7 +1260,7 @@
    "subs": 4040,
    "views": 5274112,
    "outlier": 1305.5,
-   "age": 4804,
+   "age": 4805,
    "date": "2026-07-31"
   },
   {
@@ -1260,7 +1272,7 @@
    "subs": 713,
    "views": 624221,
    "outlier": 875.5,
-   "age": 3638,
+   "age": 3639,
    "date": "2026-07-31"
   },
   {
@@ -1272,7 +1284,7 @@
    "subs": 1250,
    "views": 80950,
    "outlier": 64.8,
-   "age": 180,
+   "age": 181,
    "date": "2026-07-30"
   },
   {
@@ -1281,10 +1293,10 @@
    "cat": "custom",
    "src": "fantasy tavern music",
    "ch": "Strings of Eternity",
-   "subs": 43700,
+   "subs": 43800,
    "views": 882481,
-   "outlier": 20.2,
-   "age": 378,
+   "outlier": 20.1,
+   "age": 379,
    "date": "2026-07-30"
   },
   {
@@ -1293,10 +1305,10 @@
    "cat": "custom",
    "src": "fantasy tavern music",
    "ch": "The Medieval Inn",
-   "subs": 9290,
+   "subs": 9300,
    "views": 300731,
-   "outlier": 32.4,
-   "age": 735,
+   "outlier": 32.3,
+   "age": 736,
    "date": "2026-07-30"
   },
   {
@@ -1305,10 +1317,10 @@
    "cat": "custom",
    "src": "fantasy tavern music",
    "ch": "Kael Emberfall",
-   "subs": 4680,
+   "subs": 4690,
    "views": 297910,
-   "outlier": 63.7,
-   "age": 4926,
+   "outlier": 63.5,
+   "age": 4927,
    "date": "2026-07-30"
   },
   {
@@ -1320,7 +1332,7 @@
    "subs": 62800,
    "views": 15866370,
    "outlier": 252.6,
-   "age": 4061,
+   "age": 4062,
    "date": "2026-07-30"
   },
   {
@@ -1332,7 +1344,7 @@
    "subs": 2620,
    "views": 83079,
    "outlier": 31.7,
-   "age": 949,
+   "age": 950,
    "date": "2026-07-30"
   },
   {
@@ -1344,7 +1356,7 @@
    "subs": 70100,
    "views": 3574944,
    "outlier": 51.0,
-   "age": 6207,
+   "age": 6208,
    "date": "2026-07-30"
   },
   {
@@ -1356,7 +1368,7 @@
    "subs": 13100,
    "views": 1670681,
    "outlier": 127.5,
-   "age": 227,
+   "age": 228,
    "date": "2026-07-30"
   },
   {
@@ -1365,10 +1377,10 @@
    "cat": "custom",
    "src": "medieval folk music",
    "ch": "Stuffz",
-   "subs": 2490,
+   "subs": 2500,
    "views": 313736,
-   "outlier": 126.0,
-   "age": 223,
+   "outlier": 125.5,
+   "age": 224,
    "date": "2026-07-30"
   },
   {
@@ -1378,9 +1390,9 @@
    "src": "アニメ 作業用BGM オリジナル",
    "ch": " たぶん高音質ch【Maybe high sound quality】",
    "subs": 4560,
-   "views": 2068286,
-   "outlier": 453.6,
-   "age": 2898,
+   "views": 2069683,
+   "outlier": 453.9,
+   "age": 2899,
    "date": "2026-07-29"
   },
   {
@@ -1390,9 +1402,9 @@
    "src": "ファンタジー 街 BGM",
    "ch": "ふわり音楽工房 / Music Studio Fuwari",
    "subs": 11000,
-   "views": 184030,
-   "outlier": 16.7,
-   "age": 1491,
+   "views": 185483,
+   "outlier": 16.9,
+   "age": 1492,
    "date": "2026-07-26"
   },
   {
@@ -1401,10 +1413,10 @@
    "cat": "custom",
    "src": "fantasy tavern music",
    "ch": "The Tavern Song",
-   "subs": 4010,
+   "subs": 4030,
    "views": 423556,
-   "outlier": 105.6,
-   "age": 204,
+   "outlier": 105.1,
+   "age": 205,
    "date": "2026-07-26"
   },
   {
@@ -1416,7 +1428,7 @@
    "subs": 16300,
    "views": 241454,
    "outlier": 14.8,
-   "age": 1810,
+   "age": 1811,
    "date": "2026-07-26"
   },
   {
@@ -1428,62 +1440,50 @@
    "subs": 1440,
    "views": 84177,
    "outlier": 58.5,
-   "age": 216,
-   "date": "2026-07-26"
-  },
-  {
-   "id": "2lf2uWlM3nI",
-   "title": "Introducing the Renaissance Lute! #lute #medieval #baldursgate3 #bard #dnd #renfaire #cosplay",
-   "cat": "custom",
-   "src": "fantasy bard song",
-   "ch": "Stringwizard",
-   "subs": 6580,
-   "views": 304232,
-   "outlier": 46.2,
-   "age": 1382,
+   "age": 217,
    "date": "2026-07-26"
   }
  ],
  "categories": [
   {
    "cat": "エンタメ",
-   "n": 23,
-   "avg": 5756366
+   "n": 29,
+   "avg": 5111914
   },
   {
    "cat": "ハウツー",
    "n": 30,
-   "avg": 4884734
+   "avg": 4241406
   },
   {
    "cat": "総合",
    "n": 52,
-   "avg": 4103315
+   "avg": 4187044
   },
   {
    "cat": "映画アニメ",
-   "n": 27,
-   "avg": 3341220
+   "n": 24,
+   "avg": 3397014
   },
   {
    "cat": "コメディ",
-   "n": 16,
-   "avg": 2065967
+   "n": 18,
+   "avg": 2349784
   },
   {
    "cat": "音楽",
    "n": 3,
-   "avg": 359414
-  },
-  {
-   "cat": "ゲーム",
-   "n": 20,
-   "avg": 200361
+   "avg": 1025884
   },
   {
    "cat": "ブログ/人物",
    "n": 1,
-   "avg": 173458
+   "avg": 175493
+  },
+  {
+   "cat": "ゲーム",
+   "n": 18,
+   "avg": 171556
   }
  ],
  "field": [
@@ -1774,12 +1774,6 @@
  ],
  "trend_daily": [
   {
-   "date": "2026-08-09",
-   "total": 12,
-   "chart": 9,
-   "custom": 3
-  },
-  {
    "date": "2026-08-10",
    "total": 11,
    "chart": 11,
@@ -1958,91 +1952,97 @@
    "total": 11,
    "chart": 9,
    "custom": 2
+  },
+  {
+   "date": "2026-09-09",
+   "total": 20,
+   "chart": 19,
+   "custom": 1
   }
  ],
  "review_custom": [
   {
    "kw": "medieval folk music",
    "start": "2026-07-14",
-   "days": 57,
-   "d1": 585260,
+   "days": 58,
+   "d1": 597231,
    "d1_n": 48,
-   "d3": 916662,
+   "d3": 925485,
    "d3_n": 48,
-   "d7": 1492743,
+   "d7": 1448387,
    "d7_n": 47,
-   "d30": 4007547,
+   "d30": 4024742,
    "d30_n": 37
   },
   {
    "kw": "fantasy tavern music",
    "start": "2026-07-13",
-   "days": 58,
-   "d1": 376494,
-   "d1_n": 70,
-   "d3": 576567,
-   "d3_n": 69,
-   "d7": 1022450,
-   "d7_n": 64,
-   "d30": 2349776,
+   "days": 59,
+   "d1": 382817,
+   "d1_n": 71,
+   "d3": 627655,
+   "d3_n": 70,
+   "d7": 1085468,
+   "d7_n": 65,
+   "d30": 2340476,
    "d30_n": 50
   },
   {
    "kw": "アニメ 作業用BGM オリジナル",
    "start": "2026-07-13",
-   "days": 58,
-   "d1": 425609,
-   "d1_n": 61,
-   "d3": 710184,
+   "days": 59,
+   "d1": 411893,
+   "d1_n": 63,
+   "d3": 723851,
    "d3_n": 57,
-   "d7": 1009241,
+   "d7": 1009456,
    "d7_n": 50,
-   "d30": 1548164,
+   "d30": 1565142,
    "d30_n": 41
   },
   {
    "kw": "fantasy bard song",
    "start": "2026-07-14",
-   "days": 57,
-   "d1": 238787,
-   "d1_n": 35,
-   "d3": 274640,
-   "d3_n": 34,
-   "d7": 388951,
+   "days": 58,
+   "d1": 240156,
+   "d1_n": 36,
+   "d3": 276585,
+   "d3_n": 35,
+   "d7": 390016,
    "d7_n": 30,
-   "d30": 948613,
-   "d30_n": 26
+   "d30": 950969,
+   "d30_n": 27
   },
   {
    "kw": "ファンタジー 街 BGM",
    "start": "2026-07-13",
-   "days": 58,
-   "d1": 98089,
+   "days": 59,
+   "d1": 117890,
    "d1_n": 51,
-   "d3": 166146,
+   "d3": 191052,
    "d3_n": 51,
-   "d7": 310248,
+   "d7": 325729,
    "d7_n": 49,
-   "d30": 869920,
-   "d30_n": 39
+   "d30": 900267,
+   "d30_n": 40
   },
   {
    "kw": "ケルト音楽 作業用",
    "start": "2026-07-14",
-   "days": 57,
-   "d1": 99099,
-   "d1_n": 48,
-   "d3": 160177,
+   "days": 58,
+   "d1": 105927,
+   "d1_n": 49,
+   "d3": 160770,
    "d3_n": 46,
-   "d7": 241823,
+   "d7": 241552,
    "d7_n": 42,
-   "d30": 615280,
+   "d30": 615526,
    "d30_n": 29
   },
   {
    "kw": "ãã¡ã³ã¿ã¸ã¼ è¡ BGM",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": null,
    "d1_n": 0,
    "d3": null,
@@ -2055,7 +2055,7 @@
   {
    "kw": "ã¢ãã¡ ä½æ¥­ç¨BGM ãªãªã¸ãã«",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": null,
    "d1_n": 0,
    "d3": null,
@@ -2070,7 +2070,7 @@
   {
    "kw": "fantasy tavern music",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 68594,
    "d1_n": 57,
    "d3": 203021,
@@ -2083,7 +2083,7 @@
   {
    "kw": "fantasy sleep ambience",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 62264,
    "d1_n": 45,
    "d3": 175286,
@@ -2096,7 +2096,7 @@
   {
    "kw": "アニメ 作業用BGM オリジナル",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 54598,
    "d1_n": 44,
    "d3": 142365,
@@ -2109,7 +2109,7 @@
   {
    "kw": "作業用BGM ファンタジー",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 30562,
    "d1_n": 52,
    "d3": 90695,
@@ -2122,7 +2122,7 @@
   {
    "kw": "medieval town ambience",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 23882,
    "d1_n": 54,
    "d3": 73620,
@@ -2135,7 +2135,7 @@
   {
    "kw": "RPG town music",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 10239,
    "d1_n": 44,
    "d3": 32105,
@@ -2148,7 +2148,7 @@
   {
    "kw": "ファンタジー 街 BGM",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 8894,
    "d1_n": 38,
    "d3": 26362,
@@ -2161,7 +2161,7 @@
   {
    "kw": "fantasy market ambience",
    "start": "2026-07-13",
-   "days": 58,
+   "days": 59,
    "d1": 3161,
    "d1_n": 35,
    "d3": 8525,
