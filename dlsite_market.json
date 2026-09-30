@@ -202,7 +202,7 @@
     },
     {
       "month": "2026-09",
-      "works": 3041
+      "works": 3169
     }
   ],
   "new_circles_by_month": [
@@ -408,7 +408,7 @@
     },
     {
       "month": "2026-09",
-      "circles": 472
+      "circles": 496
     }
   ],
   "cap_by_month": [
@@ -1131,17 +1131,17 @@
     },
     {
       "month": "2026-09",
-      "circles_active": 1883,
+      "circles_active": 1933,
       "max": 6,
       "p95": 3.0,
       "p99": 4.0,
-      "over3_ratio": 1.7,
+      "over3_ratio": 1.76,
       "dist": {
-        "1": 1113,
-        "2": 423,
-        "3": 315,
+        "1": 1120,
+        "2": 435,
+        "3": 344,
         "4": 25,
-        "5": 5,
+        "5": 7,
         "6": 2
       }
     }
@@ -1575,36 +1575,36 @@
       "n": 2064,
       "median": 29.0,
       "p75": 67.0,
-      "p90": 160.0,
-      "p99": 537.0,
-      "hit_ratio": 17.05
+      "p90": 161.4,
+      "p99": 538.2,
+      "hit_ratio": 17.1
     },
     {
       "month": "2026-07",
       "n": 2800,
       "median": 22.0,
       "p75": 57.0,
-      "p90": 121.0,
-      "p99": 524.0,
-      "hit_ratio": 13.29
+      "p90": 121.1,
+      "p99": 526.0,
+      "hit_ratio": 13.32
     },
     {
       "month": "2026-08",
       "n": 3063,
       "median": 16.0,
       "p75": 41.0,
-      "p90": 88.8,
-      "p99": 379.1,
-      "hit_ratio": 8.75
+      "p90": 89.0,
+      "p99": 381.4,
+      "hit_ratio": 8.81
     },
     {
       "month": "2026-09",
-      "n": 3041,
+      "n": 3169,
       "median": 9.0,
       "p75": 23.0,
-      "p90": 52.0,
-      "p99": 225.6,
-      "hit_ratio": 3.85
+      "p90": 52.2,
+      "p99": 231.0,
+      "hit_ratio": 4.13
     }
   ],
   "batting_by_month": [
@@ -1910,14 +1910,14 @@
     },
     {
       "month": "2026-09",
-      "new_circles": 472,
-      "hits": 14,
-      "batting_avg": 2.97
+      "new_circles": 496,
+      "hits": 16,
+      "batting_avg": 3.23
     }
   ],
   "summary": {
-    "total_works": 45259,
-    "total_circles": 7955,
+    "total_works": 45387,
+    "total_circles": 7979,
     "hit_threshold": 100,
     "works_per_circle": 5.69
   }
