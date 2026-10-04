@@ -206,7 +206,7 @@
     },
     {
       "month": "2026-10",
-      "works": 230
+      "works": 327
     }
   ],
   "new_circles_by_month": [
@@ -416,7 +416,7 @@
     },
     {
       "month": "2026-10",
-      "circles": 47
+      "circles": 58
     }
   ],
   "cap_by_month": [
@@ -1155,15 +1155,15 @@
     },
     {
       "month": "2026-10",
-      "circles_active": 200,
+      "circles_active": 274,
       "max": 3,
-      "p95": 2.1,
+      "p95": 3.0,
       "p99": 3.0,
       "over3_ratio": 0.0,
       "dist": {
-        "1": 180,
-        "2": 10,
-        "3": 10
+        "1": 237,
+        "2": 21,
+        "3": 16
       }
     }
   ],
@@ -1597,44 +1597,44 @@
       "median": 29.0,
       "p75": 67.0,
       "p90": 163.0,
-      "p99": 548.5,
-      "hit_ratio": 17.25
+      "p99": 550.1,
+      "hit_ratio": 17.3
     },
     {
       "month": "2026-07",
       "n": 2800,
       "median": 23.0,
       "p75": 59.0,
-      "p90": 123.1,
-      "p99": 532.1,
-      "hit_ratio": 13.75
+      "p90": 124.0,
+      "p99": 533.1,
+      "hit_ratio": 13.86
     },
     {
       "month": "2026-08",
       "n": 3063,
       "median": 16.0,
       "p75": 42.0,
-      "p90": 91.0,
-      "p99": 389.0,
-      "hit_ratio": 8.95
+      "p90": 92.0,
+      "p99": 394.8,
+      "hit_ratio": 8.98
     },
     {
       "month": "2026-09",
       "n": 3190,
       "median": 11.0,
-      "p75": 26.0,
-      "p90": 59.0,
-      "p99": 250.1,
-      "hit_ratio": 5.08
+      "p75": 27.0,
+      "p90": 61.0,
+      "p99": 265.6,
+      "hit_ratio": 5.33
     },
     {
       "month": "2026-10",
-      "n": 230,
-      "median": 2.0,
-      "p75": 5.0,
-      "p90": 14.0,
-      "p99": 39.8,
-      "hit_ratio": 0.0
+      "n": 327,
+      "median": 3.0,
+      "p75": 9.0,
+      "p90": 19.0,
+      "p99": 52.0,
+      "hit_ratio": 0.31
     }
   ],
   "batting_by_month": [
@@ -1755,8 +1755,8 @@
     {
       "month": "2024-02",
       "new_circles": 119,
-      "hits": 25,
-      "batting_avg": 21.01
+      "hits": 26,
+      "batting_avg": 21.85
     },
     {
       "month": "2024-03",
@@ -1929,8 +1929,8 @@
     {
       "month": "2026-07",
       "new_circles": 322,
-      "hits": 33,
-      "batting_avg": 10.25
+      "hits": 34,
+      "batting_avg": 10.56
     },
     {
       "month": "2026-08",
@@ -1941,20 +1941,20 @@
     {
       "month": "2026-09",
       "new_circles": 502,
-      "hits": 19,
-      "batting_avg": 3.78
+      "hits": 21,
+      "batting_avg": 4.18
     },
     {
       "month": "2026-10",
-      "new_circles": 47,
-      "hits": 0,
-      "batting_avg": 0.0
+      "new_circles": 58,
+      "hits": 1,
+      "batting_avg": 1.72
     }
   ],
   "summary": {
-    "total_works": 45638,
-    "total_circles": 8032,
+    "total_works": 45735,
+    "total_circles": 8043,
     "hit_threshold": 100,
-    "works_per_circle": 5.68
+    "works_per_circle": 5.69
   }
 }
