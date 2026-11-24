@@ -206,7 +206,11 @@
     },
     {
       "month": "2026-10",
-      "works": 761
+      "works": 3399
+    },
+    {
+      "month": "2026-11",
+      "works": 3340
     }
   ],
   "new_circles_by_month": [
@@ -416,7 +420,11 @@
     },
     {
       "month": "2026-10",
-      "circles": 85
+      "circles": 506
+    },
+    {
+      "month": "2026-11",
+      "circles": 574
     }
   ],
   "cap_by_month": [
@@ -1155,16 +1163,34 @@
     },
     {
       "month": "2026-10",
-      "circles_active": 567,
-      "max": 4,
+      "circles_active": 2049,
+      "max": 6,
+      "p95": 3.0,
+      "p99": 4.0,
+      "over3_ratio": 1.76,
+      "dist": {
+        "1": 1155,
+        "2": 484,
+        "3": 374,
+        "4": 28,
+        "5": 6,
+        "6": 2
+      }
+    },
+    {
+      "month": "2026-11",
+      "circles_active": 2106,
+      "max": 6,
       "p95": 3.0,
       "p99": 3.0,
-      "over3_ratio": 0.35,
+      "over3_ratio": 0.9,
       "dist": {
-        "1": 434,
-        "2": 74,
-        "3": 57,
-        "4": 2
+        "1": 1256,
+        "2": 496,
+        "3": 335,
+        "4": 11,
+        "5": 5,
+        "6": 3
       }
     }
   ],
@@ -1595,47 +1621,56 @@
     {
       "month": "2026-06",
       "n": 2064,
-      "median": 29.0,
-      "p75": 69.0,
-      "p90": 165.0,
-      "p99": 560.0,
-      "hit_ratio": 17.64
+      "median": 30.0,
+      "p75": 71.0,
+      "p90": 166.7,
+      "p99": 567.0,
+      "hit_ratio": 18.22
     },
     {
       "month": "2026-07",
       "n": 2800,
-      "median": 23.0,
-      "p75": 62.0,
-      "p90": 129.0,
-      "p99": 555.1,
-      "hit_ratio": 14.39
+      "median": 26.0,
+      "p75": 71.0,
+      "p90": 153.0,
+      "p99": 614.0,
+      "hit_ratio": 16.93
     },
     {
       "month": "2026-08",
       "n": 3063,
-      "median": 17.0,
-      "p75": 43.0,
-      "p90": 95.0,
-      "p99": 409.9,
-      "hit_ratio": 9.44
+      "median": 23.0,
+      "p75": 59.0,
+      "p90": 136.0,
+      "p99": 552.0,
+      "hit_ratio": 14.4
     },
     {
       "month": "2026-09",
       "n": 3190,
-      "median": 13.0,
-      "p75": 31.0,
-      "p90": 68.0,
-      "p99": 297.1,
-      "hit_ratio": 6.21
+      "median": 19.0,
+      "p75": 45.0,
+      "p90": 108.0,
+      "p99": 471.6,
+      "hit_ratio": 11.13
     },
     {
       "month": "2026-10",
-      "n": 761,
-      "median": 5.0,
-      "p75": 13.0,
-      "p90": 27.0,
-      "p99": 104.2,
-      "hit_ratio": 1.18
+      "n": 3399,
+      "median": 14.0,
+      "p75": 34.0,
+      "p90": 78.0,
+      "p99": 441.0,
+      "hit_ratio": 7.5
+    },
+    {
+      "month": "2026-11",
+      "n": 3340,
+      "median": 6.0,
+      "p75": 15.0,
+      "p90": 37.0,
+      "p99": 189.6,
+      "hit_ratio": 2.66
     }
   ],
   "batting_by_month": [
@@ -1684,8 +1719,8 @@
     {
       "month": "2023-02",
       "new_circles": 129,
-      "hits": 38,
-      "batting_avg": 29.46
+      "hits": 39,
+      "batting_avg": 30.23
     },
     {
       "month": "2023-03",
@@ -1822,8 +1857,8 @@
     {
       "month": "2025-01",
       "new_circles": 167,
-      "hits": 44,
-      "batting_avg": 26.35
+      "hits": 45,
+      "batting_avg": 26.95
     },
     {
       "month": "2025-02",
@@ -1876,8 +1911,8 @@
     {
       "month": "2025-10",
       "new_circles": 270,
-      "hits": 68,
-      "batting_avg": 25.19
+      "hits": 69,
+      "batting_avg": 25.56
     },
     {
       "month": "2025-11",
@@ -1894,68 +1929,74 @@
     {
       "month": "2026-01",
       "new_circles": 239,
-      "hits": 47,
-      "batting_avg": 19.67
+      "hits": 48,
+      "batting_avg": 20.08
     },
     {
       "month": "2026-02",
       "new_circles": 218,
-      "hits": 64,
-      "batting_avg": 29.36
+      "hits": 65,
+      "batting_avg": 29.82
     },
     {
       "month": "2026-03",
       "new_circles": 243,
-      "hits": 42,
-      "batting_avg": 17.28
+      "hits": 44,
+      "batting_avg": 18.11
     },
     {
       "month": "2026-04",
       "new_circles": 182,
-      "hits": 33,
-      "batting_avg": 18.13
+      "hits": 35,
+      "batting_avg": 19.23
     },
     {
       "month": "2026-05",
       "new_circles": 326,
-      "hits": 53,
-      "batting_avg": 16.26
+      "hits": 56,
+      "batting_avg": 17.18
     },
     {
       "month": "2026-06",
       "new_circles": 343,
-      "hits": 53,
-      "batting_avg": 15.45
+      "hits": 59,
+      "batting_avg": 17.2
     },
     {
       "month": "2026-07",
       "new_circles": 322,
-      "hits": 36,
-      "batting_avg": 11.18
+      "hits": 40,
+      "batting_avg": 12.42
     },
     {
       "month": "2026-08",
       "new_circles": 432,
-      "hits": 33,
-      "batting_avg": 7.64
+      "hits": 49,
+      "batting_avg": 11.34
     },
     {
       "month": "2026-09",
       "new_circles": 502,
-      "hits": 24,
-      "batting_avg": 4.78
+      "hits": 44,
+      "batting_avg": 8.76
     },
     {
       "month": "2026-10",
-      "new_circles": 85,
-      "hits": 2,
-      "batting_avg": 2.35
+      "new_circles": 506,
+      "hits": 37,
+      "batting_avg": 7.31
+    },
+    {
+      "month": "2026-11",
+      "new_circles": 574,
+      "hits": 16,
+      "batting_avg": 2.79
     }
   ],
   "summary": {
-    "total_works": 46169,
-    "total_circles": 8070,
+    "total_works": 52147,
+    "total_circles": 9065,
     "hit_threshold": 100,
-    "works_per_circle": 5.72
+    "works_per_circle": 5.75
   }
 }
